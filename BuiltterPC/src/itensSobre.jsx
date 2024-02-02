@@ -1,6 +1,6 @@
 import { sessoesLista } from "./script";
 
-export function itensSobre(props){
+export function itemSobre(props){
     return<>
     
         <div className="sobre_container">

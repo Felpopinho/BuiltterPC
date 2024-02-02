@@ -1,4 +1,4 @@
-import { itensSobre } from 'itensSobre.jsx'
+import { itemSobre } from 'itensSobre.jsx';
 
 export function Menu(){
 
