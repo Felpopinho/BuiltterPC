@@ -1,0 +1,40 @@
+Projeto do que eu aprendo no intensivão js;
+
+Um site que tenha:
+
+-Resgate de elemento em variaveis;
+-Variaveis de controle;
+-Estrutura de condição e repetição;
+-Trocar elementos de texto e imagens;
+-Objetos e Arrays;
+-Vite e React;
+-elementos HTML dinamicos;
+-import/export de variaveis/funções e imagens;
+-Servidor com Express e Socket;
+-Arrow function;
+-criação elementos;
+-Posicionação de elementos filho.
+
+---------------------------------------
+
+Talvez tudo isso se encaixe em...
+
+BuiltterPC (Projeto de forum sobre computador)
+
+---------------------------------------
+
+CONTA --> Talvez utilzar um servidor para guardar informações novas em variveis;
+
+SOBRE, CATALOGO, SUPORTE, SIMULAÇÃO, PROMOÇÕES, FORUM: --> utilizar react para organizar um padrão de elementos;
+
+PESQUISA --> utilizar js para transitar pelo site;
+
+FORUM --> Utilizar um Servidor para criar novos comentarios
+
+
+
+
+
+
+
+
