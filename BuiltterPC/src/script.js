@@ -1,3 +1,5 @@
+import fotoPerfilImage from "./src/assets/imagens/foto-de-perfil.png";
+
 const suporteTecnico ={
     nome: 'Suporte Técnico',
     descricao: 'Disponibilizamos diversos videos de suporte técnico para resolução de problemas envolvendo computação',
@@ -20,3 +22,11 @@ const forum ={
 };
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
+
+export const fotoPerfilSelecionada = document.getElementById('FotoPerfil');
+
+if (fotoPerfilSelecionada === ""){
+    const fotoPerfil = fotoPerfilImage;
+} else{
+    const fotoPerfil = fotoPerfilSelecionada;
+}

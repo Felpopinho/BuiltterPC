@@ -1,3 +1,5 @@
+import { fotoPerfil } from "./script";
+
 export function Menu(){
 
     return(<>
@@ -5,7 +7,7 @@ export function Menu(){
             <h1>BuillterPC</h1>
 
             <div className="conta_container">
-                <img src="" />
+                <img src={fotoPerfil} />
             </div>
         </div>
 
