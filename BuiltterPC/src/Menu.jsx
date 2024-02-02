@@ -1,4 +1,7 @@
-import { itemSobre } from 'itensSobre.jsx';
+import { useState } from 'react';
+import { itensSobre } from './itensSobre.jsx';
+import { sessoesLista } from './script.js';
+import { AlterarSessaoSobre } from './AlterarSobre.jsx';
 
 export function Menu(){
 
@@ -30,7 +33,9 @@ export function Menu(){
                 <h1>Sobre</h1>
                 <p>Sessoes disponiveis da BuiltterPC:</p>
 
-                <itensSobre />
+                {sessoesLista.map(item =><itensSobre nome={item.nome} descricao={item.descricao} imagem={item.imagem}/>)}
+
+                <AlterarSessaoSobre />
 
             </div>
 

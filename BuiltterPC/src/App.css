@@ -109,3 +109,11 @@ body{
 } .btn_enter{
     background-color: gray;
 }
+
+.sobre_container{
+    height: 50vh;
+    width: 100%;
+}
+.sobre_container h2{
+    
+}
