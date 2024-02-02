@@ -1,4 +1,4 @@
-import { sessoesLista } from "./script";
+import { itensSobre } from 'itensSobre.jsx'
 
 export function Menu(){
 
@@ -30,7 +30,7 @@ export function Menu(){
                 <h1>Sobre</h1>
                 <p>Sessoes disponiveis da BuiltterPC:</p>
 
-                
+                <itensSobre />
 
             </div>
 
