@@ -1,4 +1,4 @@
-import { fotoPerfil } from "./script";
+import { sessoesLista } from "./script";
 
 export function Menu(){
 
@@ -7,7 +7,7 @@ export function Menu(){
             <h1>BuillterPC</h1>
 
             <div className="conta_container">
-                <img src={fotoPerfil} />
+                <img src="" />
             </div>
         </div>
 
@@ -18,7 +18,7 @@ export function Menu(){
                 <h1>Conheça a BuiltterPC</h1>
                 <p>diversas funcionalidades disponiveis para facilitar suas experiências com hardware!</p>
 
-                <div>
+                <div className="btn_accountainer">
                     <button className="btn_create">Criar conta</button>
                     <button className="btn_enter">Fazer login</button>
                 </div>
@@ -26,6 +26,11 @@ export function Menu(){
             </div>
 
             <div className="menu_direito_container">
+
+                <h1>Sobre</h1>
+                <p>Sessoes disponiveis da BuiltterPC:</p>
+
+                
 
             </div>
 

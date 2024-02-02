@@ -3,6 +3,8 @@
 :root{
     --black: #131313;
     --gray: #292929;
+    --lightgray: #494949;
+    --blue: #0030cc;
     --fundo: #f7fbff;
 }
 
@@ -56,13 +58,54 @@ body{
 }
 .menu_esquerdo_container,.menu_direito_container{
     background-color: white;
-    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 20px;
 } .menu_esquerdo_container{ 
     width: 30%;
-    box-shadow: 0 3px 50px var(--gray);
     border-radius: 15px;
+    height: auto;
+    min-height: 40vh;
+    max-height: 70vh;
+    align-self: flex-start;
+    justify-content: space-between;
+    margin-top: 7.5vh;
+    box-shadow: inset 0px 0px 50px -30px var(--blue);
+    filter: drop-shadow(var(--lightgray) 0px 5px 5px);
 }.menu_direito_container{
     width: 50%;
     border-radius: 20px;
-    box-shadow: 0 10px 50px var(--black);
+    box-shadow: 0 10px 50px -20px var(--black);
+    height: 70vh;
+}
+
+.menu_esquerdo_container h1,.menu_direito_container h1{
+    font-size: 2.6rem;
+}
+.menu_esquerdo_container p{
+    font-size: 1.5rem;
+    margin: 5vh 3% 5vh 3%;
+}
+.btn_accountainer{
+    width: 80%;
+    height: 6vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 3vh;
+} .btn_create,.btn_enter{
+    width: 40%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+} .btn_create{
+    background-color: var(--blue);
+} .btn_enter{
+    background-color: gray;
 }
