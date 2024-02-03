@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import { itensSobre } from './itensSobre.jsx';
 import { sessoesLista } from './script.js';
-import { AlterarSessaoSobre } from './AlterarSobre.jsx';
 
 export function Menu(){
-
-    const Sessoes = [sessoesLista];
-    const [sessaoSelecionada, AlterarSessao] = useState(0);
 
     return <>
 
@@ -36,10 +32,6 @@ export function Menu(){
 
                 <h1>Sobre</h1>
                 <p>Sessoes disponiveis da BuiltterPC:</p>
-
-                <AlterarSessaoSobre AlterarSessao={AlterarSessao}/>
-
-                {Sessoes[sessaoSelecionada].map(item => <itensSobre nome={item.nome} descricao={item.descricao} />)}
 
             </div>
 
