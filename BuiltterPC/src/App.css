@@ -113,7 +113,11 @@ body{
 .sobre_container{
     height: 50vh;
     width: 100%;
+    display: block;
 }
-.sobre_container h2{
-    
+.nav_sobre input{
+    display: none;
+}
+.nav_sobre input:checked + label{
+    background-color: var(--blue);
 }

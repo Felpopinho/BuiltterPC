@@ -5,14 +5,16 @@ import { AlterarSessaoSobre } from './AlterarSobre.jsx';
 
 export function Menu(){
 
+    const Sessoes = [sessoesLista];
     const [sessaoSelecionada, AlterarSessao] = useState(0);
 
-    return(<>
+    return <>
+
         <div className="nav_container">
             <h1>BuillterPC</h1>
 
             <div className="conta_container">
-                <img src="" />
+                <img src=""/>
             </div>
         </div>
 
@@ -35,14 +37,12 @@ export function Menu(){
                 <h1>Sobre</h1>
                 <p>Sessoes disponiveis da BuiltterPC:</p>
 
-                {sessoesLista[sessaoSelecionada].map(item =><itensSobre nome={item.nome} descricao={item.descricao} imagem={item.imagem}/>)}
+                <AlterarSessaoSobre AlterarSessao={AlterarSessao}/>
 
-                <AlterarSessaoSobre />
+                {Sessoes[sessaoSelecionada].map(item => <itensSobre nome={item.nome} descricao={item.descricao} />)}
 
             </div>
 
         </div>
     </>
-
-    )
 }
