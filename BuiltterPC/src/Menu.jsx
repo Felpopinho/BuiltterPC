@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { ItensSobre } from './itensSobre.jsx';
 import { sessoesLista } from './script.js';
+import { CriarConta } from './Criar-logar.jsx';
+
 
 export function Menu(){
 
@@ -23,8 +25,8 @@ export function Menu(){
                     <p>diversas funcionalidades disponiveis para facilitar suas experiências com hardware!</p>
 
                     <div className="btn_accountainer">
-                        <button className="btn_create">Criar conta</button>
-                        <button className="btn_enter">Fazer login</button>
+                        <button className="btn_create" onClick={CriarConta()}>Criar conta</button>
+                        <button className="btn_enter" onClick={CriarConta()}>Fazer login</button>
                     </div>
                 </div>
 
@@ -33,10 +35,10 @@ export function Menu(){
                     <h2>Já está logado? Navegue por ai</h2>
 
                     <ul className="navegacao">
-                        <li><a href=''>Suporte</a></li>
-                        <li><a href=''>Simulacao</a></li>
-                        <li><a href=''>Promoções</a></li>
-                        <li><a href=''>Forum </a></li>
+                        <li id='nav_sup'><a href='#Suporte'>Suporte</a></li>
+                        <li id='nav_sim'><a href='#Simulacao'>Simulacao</a></li>
+                        <li id='nav_pro'><a href='#Promocoes'>Promoções</a></li>
+                        <li id='nav_for'><a href='#Forum'>Forum</a></li>
                     </ul>
 
                 </div>

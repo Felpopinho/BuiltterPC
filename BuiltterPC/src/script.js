@@ -29,3 +29,26 @@ const forum ={
 };
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
+
+//const comentario0 ={
+//    conta:,
+//    comentario:,
+//    perfil:,
+//}
+//const comentario1 ={
+//    conta:,
+//    comentario:,
+//    perfil:,
+//}
+//const comentario2 ={
+//    conta:,
+//    comentario:,
+//    perfil:,
+//}
+//const comentario3 ={
+//    conta:,
+//    comentario:,
+//    perfil:,
+//}
+
+//export const comentarioLista = [comentario0,comentario1,comentario2,comentario3];
