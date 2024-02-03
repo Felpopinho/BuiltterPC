@@ -1,16 +1,24 @@
 import { useState } from 'react';
+import logo from './assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
-import { sessoesLista } from './script.js';
+import { comentarioLista, sessoesLista } from './script.js';
 import { CriarConta } from './Criar-logar.jsx';
+import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
 
 
 export function Menu(){
 
+    const previewSessao = ['suporteLista', 'simulacaoLista', 'promocaoLista', comentarioLista];
+    const [sessaoSelecionada, refreshSection] = useState(0);
+
     return <>
 
         <div className="nav_container">
-            <img src={logo} />
-            <h1>BuillterPC</h1>
+            <div className='logo_container'>
+                <img src={logo} className='Logo'/>
+                <div></div>
+                <h1>BuillterPC</h1>
+            </div>
 
             <div className="conta_container">
                 <img src=""/>
@@ -35,20 +43,11 @@ export function Menu(){
 
                     <h2>Já está logado? Navegue por ai</h2>
 
-                    <div className='navegacao_esquerdo'> 
-                        <ul>
-
-                            <li id='nav_sup'><a href='#Suporte'>Suporte</a></li>
-                            <li id='nav_sim'><a href='#Simulacao'>Simulacao</a></li>
-                            <li id='nav_pro'><a href='#Promocoes'>Promoções</a></li>
-                            <li id='nav_for'><a href='#Forum'>Forum</a></li>
-
-                        </ul>
-                    </div>
+                    <NavEsquerdo refreshSection={refreshSection}/>
 
                     <div className='display_container_esquerdo'>
 
-                        
+                        {previewSessao[1].map(section => <NavDisplay nome={section.nome} descricao={section.descricao} imagem={section.imagem}/>)}
 
                     </div>
 

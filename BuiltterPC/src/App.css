@@ -35,7 +35,7 @@ a{
     display: grid;
     align-content: center;
     grid-template-columns: 57% 43%;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr;
     justify-content: center;
     justify-items: flex-end;
     align-items: center;
@@ -44,10 +44,32 @@ a{
     background-color: var(--black);
     padding: 0 10% 0 10%;
 }
+.logo_container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    grid-column-start: 1;
+}
+.Logo{
+    position: absolute;
+    width: 125px;
+    height: auto;
+    z-index: 1;
+}
+.logo_container div{
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    background: linear-gradient(to left, var(--black), #131313de ,transparent);
+    z-index: 2;
+}
 .nav_container h1{
+    padding-left: 80px;
     display: flex;
     font-size: 3.5rem;
     color: white;
+    z-index: 4;
 }
 .conta_container{
     display: flex;
@@ -90,14 +112,14 @@ a{
     border-radius: 20px;
     width: 100%;
     height: 32vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     box-shadow: 0 10px 50px -20px var(--black);
     padding: 15px;
 }
 
 .inicio_esquerdo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
 }
 .inicio_esquerdo p{
@@ -132,33 +154,35 @@ a{
     transform: scale(1.1);
 }
 
+.after_esquerdo{
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 5vh 1fr;
+}
 .after_esquerdo h2{
     font-size: 1.8rem;
-    margin-bottom: 2vh;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
-.after_esquerdo ul{
-    margin: auto;
-    width: 90%;
+.navegacao_esquerdo{
+    width: 100%;
+    height: 100%;
+    border-right: solid 2px var(--gray);
+}
+.navegacao_esquerdo ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
-    align-items: center;
 }
-.after_esquerdo ul li{
-    border-radius: 10px;
-    height: 50px;
-    transition: all 1s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center ;
+.navegacao_esquerdo ul input{
+    display: none;
 }
-.after_esquerdo ul li a{
+.navegacao_esquerdo ul a{
     font-size: 1.2rem;
-    font-weight: 500;
-    color: white;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .desc_direito{

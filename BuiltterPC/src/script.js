@@ -2,11 +2,13 @@ export const tituloSobre = document.getElementById('Titulo_sobre');
 export const descSobre = document.getElementById('Desc_sobre');
 export const imageSobre = document.getElementById('Image_sobre');
 
-import logo from './assets/imagens/Logo.png';
 import imageSuporte from './assets/imagens/ImageSuporte.png';
 import imageSimulacao from './assets/imagens/ImageSimulacao.png';
 import imagePromocao from './assets/imagens/ImagePromocao.png';
 import imageForum from './assets/imagens/ImageForum.png';
+
+import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
+import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
 const suporteTecnico ={
     nome: 'Suporte Técnico',
@@ -31,25 +33,22 @@ const forum ={
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
 
-//const comentario0 ={
-//    conta:,
-//    comentario:,
-//    perfil:,
-//}
-//const comentario1 ={
-//    conta:,
-//    comentario:,
-//    perfil:,
-//}
-//const comentario2 ={
-//    conta:,
-//    comentario:,
-//    perfil:,
-//}
-//const comentario3 ={
-//    conta:,
-//    comentario:,
-//    perfil:,
-//}
+const comentario0 ={
+    nome: 'Kuribuh',
+    descricao: 'Eu abro muitos jogos porém quando abro vários PW e a memória atinge 61% de uso e tenro abrir navegador ou ate mais PW"S o Pc trava, e as vezes desinstala sozinho o softwaree da placa devídeo. Alguem sabe como resolver ?',
+    imagem: imageKuribuh,
+}
+const comentario1 ={
+    nome: 'Usuario_Secreto',
+    descricao: 'é minha primeira vez com uma GTX, e a minha é GTX 1050, ela é usada, a minha dúvida é, posso  colocar thermal pads nos chips que ficam perto  do chip gráfico ? (não sei se é esse o nome kkkk) irei colocar só para poder ajudar na temperatura,  ela não está com alta temperatura nem nada, pretendo mais para manter a vida dela ainda.',
+    imagem: imageUnknown,
+}
+const comentario2 ={
+    nome: 'Caroline Macedo Costa Silva',
+    descricao: 'não sei se uma Fonte Atx Gamer Semi-modular 600w Real 80plus Pfc Ativo Nf seria bom para esse processador e placa de Vídeo ou procuro outra melhor',
+    imagem: imageUnknown,
+}
 
-//export const comentarioLista = [comentario0,comentario1,comentario2,comentario3];
+export const comentarioLista = [comentario0,comentario1,comentario2];
+
+
