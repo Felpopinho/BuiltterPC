@@ -2,6 +2,7 @@ export const tituloSobre = document.getElementById('Titulo_sobre');
 export const descSobre = document.getElementById('Desc_sobre');
 export const imageSobre = document.getElementById('Image_sobre');
 
+import logo from './assets/imagens/Logo.png';
 import imageSuporte from './assets/imagens/ImageSuporte.png';
 import imageSimulacao from './assets/imagens/ImageSimulacao.png';
 import imagePromocao from './assets/imagens/ImagePromocao.png';

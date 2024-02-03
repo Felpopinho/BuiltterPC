@@ -9,6 +9,7 @@ export function Menu(){
     return <>
 
         <div className="nav_container">
+            <img src={logo} />
             <h1>BuillterPC</h1>
 
             <div className="conta_container">
@@ -34,12 +35,22 @@ export function Menu(){
 
                     <h2>Já está logado? Navegue por ai</h2>
 
-                    <ul className="navegacao">
-                        <li id='nav_sup'><a href='#Suporte'>Suporte</a></li>
-                        <li id='nav_sim'><a href='#Simulacao'>Simulacao</a></li>
-                        <li id='nav_pro'><a href='#Promocoes'>Promoções</a></li>
-                        <li id='nav_for'><a href='#Forum'>Forum</a></li>
-                    </ul>
+                    <div className='navegacao_esquerdo'> 
+                        <ul>
+
+                            <li id='nav_sup'><a href='#Suporte'>Suporte</a></li>
+                            <li id='nav_sim'><a href='#Simulacao'>Simulacao</a></li>
+                            <li id='nav_pro'><a href='#Promocoes'>Promoções</a></li>
+                            <li id='nav_for'><a href='#Forum'>Forum</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div className='display_container_esquerdo'>
+
+                        
+
+                    </div>
 
                 </div>
 

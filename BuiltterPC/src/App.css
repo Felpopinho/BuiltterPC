@@ -112,7 +112,7 @@ a{
     align-items: center;
     margin-bottom: 3vh;
 } .btn_create,.btn_enter{
-    width: 40%;
+    width: 38%;
     height: 100%;
     border: 0;
     outline: 0;
@@ -120,12 +120,16 @@ a{
     font-size: 1.5em;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s ease;
 } .btn_create{
     background-color: var(--blue);
     color: white;
 } .btn_enter{
     border: solid 2px var(--lightgray);
     color: var(--lightgray);
+}
+.btn_create:hover,.btn_enter:hover{
+    transform: scale(1.1);
 }
 
 .after_esquerdo h2{
@@ -141,8 +145,7 @@ a{
     justify-content: space-evenly;
     align-items: center;
 }
-.after_esquerdo li{
-    background-color: var(--lightblue);
+.after_esquerdo ul li{
     border-radius: 10px;
     height: 50px;
     transition: all 1s ease;
@@ -150,7 +153,7 @@ a{
     justify-content: center;
     align-items: center ;
 }
-.after_esquerdo li a{
+.after_esquerdo ul li a{
     font-size: 1.2rem;
     font-weight: 500;
     color: white;
