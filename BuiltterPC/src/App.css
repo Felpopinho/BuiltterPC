@@ -57,36 +57,45 @@ body{
     justify-content: space-evenly;
 }
 .menu_esquerdo_container,.menu_direito_container{
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    padding: 20px;
 } .menu_esquerdo_container{ 
-    width: 30%;
-    border-radius: 15px;
-    height: auto;
-    min-height: 40vh;
-    max-height: 70vh;
-    align-self: flex-start;
+    width: 40%;
+    height: 70vh;
     justify-content: space-between;
-    margin-top: 7.5vh;
-    box-shadow: inset 0px 0px 50px -30px var(--blue);
-    filter: drop-shadow(var(--lightgray) 0px 5px 5px);
+
 }.menu_direito_container{
+    background-color: white;
     width: 50%;
     border-radius: 20px;
     box-shadow: 0 10px 50px -20px var(--black);
     height: 70vh;
+    padding: 20px;
 }
-
 .menu_esquerdo_container h1,.menu_direito_container h1{
     font-size: 2.6rem;
 }
-.menu_esquerdo_container p{
+
+.inicio_esquerdo,.after_esquerdo{
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    height: 32vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 50px -20px var(--black);
+    padding: 15px;
+}
+
+.inicio_esquerdo{
+    justify-content: space-evenly;
+}
+.inicio_esquerdo p{
     font-size: 1.5rem;
-    margin: 5vh 3% 5vh 3%;
+    margin: 2vh 4% 3vh 4%;
 }
 .btn_accountainer{
     width: 80%;
@@ -110,14 +119,58 @@ body{
     background-color: gray;
 }
 
+.after_esquerdo ul{
+    width: 80%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.desc_direito{
+    margin: 2vh 0 5vh 0;
+    font-size: 1.5em;
+}
 .sobre_container{
     height: 50vh;
     width: 100%;
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
 }
-.nav_sobre input{
-    display: none;
+.section_content{
+    width: 90%;
+    height: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
 }
-.nav_sobre input:checked + label{
-    background-color: var(--blue);
+.image_sobre_container{
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 17vh;
+    top: 4vh;
+    display: flex;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
+#Image_sobre{
+    width: 100%;
+    opacity: 60%;
+    position: absolute;
+}
+.image_sobre_container div{
+    background: linear-gradient(white,white,transparent);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#Titulo_sobre,#Desc_sobre{
+    z-index: 2;
+    padding: 10px;
+} 
