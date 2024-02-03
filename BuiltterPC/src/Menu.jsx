@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { itensSobre } from './itensSobre.jsx';
+import { ItensSobre } from './itensSobre.jsx';
 import { sessoesLista } from './script.js';
 
 export function Menu(){
@@ -32,6 +32,8 @@ export function Menu(){
 
                 <h1>Sobre</h1>
                 <p>Sessoes disponiveis da BuiltterPC:</p>
+
+                {sessoesLista.map(item => <ItensSobre nome={item.nome} descricao={item.descricao} imagem={item.imagem}/>)}
 
             </div>
 
