@@ -47,7 +47,7 @@ export function Menu(){
 
                     <div className='display_container_esquerdo'>
 
-                        {previewSessao[1].map(section => <NavDisplay nome={section.nome} descricao={section.descricao} imagem={section.imagem}/>)}
+                        {Array(previewSessao[sessaoSelecionada]).map(sessao => <NavDisplay nome={sessao.nome} descricao={sessao.descricao} imagem={sessao.imagem}/>)}
 
                     </div>
 

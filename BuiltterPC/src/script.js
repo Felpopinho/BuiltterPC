@@ -10,6 +10,10 @@ import imageForum from './assets/imagens/ImageForum.png';
 import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
 import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
+import thumbnail0 from './assets/imagens/thumbnail-0.png'
+import thumbnail1 from './assets/imagens/thumbnail-1.png'
+import thumbnail2 from './assets/imagens/thumbnail-2.png'
+
 const suporteTecnico ={
     nome: 'Suporte Técnico',
     descricao: 'Disponibilizamos diversos videos de suporte técnico para resolução de problemas envolvendo computação',
@@ -31,7 +35,58 @@ const forum ={
     imagem: imageForum,
 };
 
-export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
+const video0 = {
+    nome: 'Montando um computado...',
+    descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso t...',
+    imagem: thumbnail0,
+}
+const video1 = {
+    nome: 'Como formatar um compu...',
+    descricao: 'Neste video mostraremos o passo a passo de como formatar um PC no windows 10. Não se esqueça de...',
+    imagem: thumbnail1,
+}
+const video2 = {
+    nome: 'Configurando uma placa d...',
+    descricao: 'Neste video mostraremos o passo a passo de como configurar uma placa de video, usando o software da...',
+    imagem: thumbnail2,
+}
+
+const simulacao0 ={
+    nome: 'Molde 1',
+    descricao: '',
+    imagem: '',
+}
+const simulacao1 ={
+    nome: 'Molde 2',
+    descricao: '',
+    imagem: '',
+}
+const simulacao2 ={
+    nome: 'Molde 3',
+    descricao: '',
+    imagem: '',
+}
+const simulacao3 ={
+    nome: 'Molde 4',
+    descricao: '',
+    imagem: '',
+}
+
+const promo0 ={
+    nome: '',
+    descricao: '',
+    imagem: '',
+}
+const promo1 ={
+    nome: ' ',
+    descricao: '',
+    imagem:'',
+}
+const promo2 ={
+    nome: '',
+    descricao: '',
+    imagem: '',
+}
 
 const comentario0 ={
     nome: 'Kuribuh',
@@ -49,6 +104,11 @@ const comentario2 ={
     imagem: imageUnknown,
 }
 
+export const suporteLista = [video0,video1,video2];
+export const simulacaoLista = [simulacao0,simulacao1,simulacao2];
+export const promocaoLista = [promo0,promo1,promo2];
 export const comentarioLista = [comentario0,comentario1,comentario2];
+
+export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
 
 
