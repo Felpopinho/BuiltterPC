@@ -39,68 +39,90 @@ const forum ={
 };
 
 const video0 = {
-    nome: 'Montando um computado...',
-    descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso t...',
-    imagem: thumbnail0,
+    video_nome: 'Montando um computado...',
+    video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso t...',
+    video_imagem: thumbnail0,
+    video_class1: 'display_suporte',
+    video_class2: 'display_suporte_container',
 }
 const video1 = {
-    nome: 'Como formatar um compu...',
-    descricao: 'Neste video mostraremos o passo a passo de como formatar um PC no windows 10. Não se esqueça de...',
-    imagem: thumbnail1,
+    video_nome: 'Como formatar um compu...',
+    video_descricao: 'Neste video mostraremos o passo a passo de como formatar um PC no windows 10. Não se esqueça de...',
+    video_imagem: thumbnail1,
 }
 const video2 = {
-    nome: 'Configurando uma placa d...',
-    descricao: 'Neste video mostraremos o passo a passo de como configurar uma placa de video, usando o software da...',
-    imagem: thumbnail2,
+    video_nome: 'Configurando uma placa d...',
+    video_descricao: 'Neste video mostraremos o passo a passo de como configurar uma placa de video, usando o software da...',
+    video_imagem: thumbnail2,
 }
 
 const simulacao0 ={
-    nome: 'Molde 1',
-    imagem: molde0,
+    simulacao_nome: 'Moldes feitos',
+    simulacao_imagem: molde0,
+    simulacao_class1: 'display_simulacao',
+    simulacao_class2: 'display_simulacao_container',
 }
 const simulacao1 ={
-    nome: 'Molde 2',
-    imagem: molde1,
+    simulacao_nome: 'Moldes feitos',
+    simulacao_imagem: molde1,
+    simulacao_class1: 'display_simulacao',
+    simulacao_class2: 'display_simulacao_container',
 }
 const simulacao2 ={
-    nome: 'Molde 3',
-    imagem: molde1,
+    simulacao_nome: 'Moldes feitos',
+    simulacao_imagem: molde1,
+    simulacao_class1: 'display_simulacao',
+    simulacao_class2: 'display_simulacao_container',
 }
 const simulacao3 ={
-    nome: 'Molde 4',
-    imagem: molde1,
+    simulacao_nome: 'Moldes feitos',
+    simulacao_imagem: molde1,
+    simulacao_class1: 'display_simulacao',
+    simulacao_class2: 'display_simulacao_container',
 }
 
 const promo0 ={
-    nome: 'a',
-    descricao: 'a',
-    imagem: 'a',
+    promocao_nome: 'a',
+    promocao_descricao: 'a',
+    promocao_imagem: 'a',
+    promocao_class1: 'display_promo',
+    promocao_class2: 'display_promo_container',
 }
 const promo1 ={
-    nome: 'a',
-    descricao: 'a',
-    imagem:'a',
+    promocao_nome: 'a',
+    promocao_descricao: 'a',
+    promocao_imagem:'a',
+    promocao_class1: 'display_promo',
+    promocao_class2: 'display_promo_container',
 }
 const promo2 ={
-    nome: 'a',
-    descricao: 'a',
-    imagem: 'a',
+    promocao_nome: 'a',
+    promocao_descricao: 'a',
+    promocao_imagem: 'a',
+    promocao_class1: 'display_promo',
+    promocao_class2: 'display_promo_container',
 }
 
 const comentario0 ={
-    nome: 'Kuribuh',
-    descricao: 'Eu abro muitos jogos porém quando abro vários PW e a memória atinge 61% de uso e tenro abrir navegador ou ate mais PW"S o Pc trava, e as vezes desinstala sozinho o softwaree da placa devídeo. Alguem sabe como resolver ?',
-    imagem: imageKuribuh,
+    forum_nome: 'Kuribuh',
+    forum_descricao: 'Eu abro muitos jogos porém quando abro vários PW e a memória atinge 61% de uso e tenro abrir navegador ou ate mais PW"S o Pc trava, e as vezes desinstala sozinho o softwaree da placa devídeo. Alguem sabe como resolver ?',
+    forum_imagem: imageKuribuh,
+    forum_class1: 'display_forum',
+    forum_class2: 'display_forum_container',
 }
 const comentario1 ={
-    nome: 'Usuario_Secreto',
-    descricao: 'é minha primeira vez com uma GTX, e a minha é GTX 1050, ela é usada, a minha dúvida é, posso  colocar thermal pads nos chips que ficam perto  do chip gráfico ? (não sei se é esse o nome kkkk) irei colocar só para poder ajudar na temperatura,  ela não está com alta temperatura nem nada, pretendo mais para manter a vida dela ainda.',
-    imagem: imageUnknown,
+    forum_nome: 'Usuario_Secreto',
+    forum_descricao: 'é minha primeira vez com uma GTX, e a minha é GTX 1050, ela é usada, a minha dúvida é, posso  colocar thermal pads nos chips que ficam perto  do chip gráfico ? (não sei se é esse o nome kkkk) irei colocar só para poder ajudar na temperatura,  ela não está com alta temperatura nem nada, pretendo mais para manter a vida dela ainda.',
+    forum_imagem: imageUnknown,
+    forum_class1: 'display_forum',
+    forum_class2: 'display_forum_container',
 }
 const comentario2 ={
-    nome: 'Caroline Macedo Costa Silva',
-    descricao: 'não sei se uma Fonte Atx Gamer Semi-modular 600w Real 80plus Pfc Ativo Nf seria bom para esse processador e placa de Vídeo ou procuro outra melhor',
-    imagem: imageUnknown,
+    forum_nome: 'Caroline Macedo Costa Silva',
+    forum_descricao: 'não sei se uma Fonte Atx Gamer Semi-modular 600w Real 80plus Pfc Ativo Nf seria bom para esse processador e placa de Vídeo ou procuro outra melhor',
+    forum_imagem: imageUnknown,
+    forum_class1: 'display_forum',
+    forum_class2: 'display_forum_container',
 }
 
 export const suporteLista = [video0,video1,video2];

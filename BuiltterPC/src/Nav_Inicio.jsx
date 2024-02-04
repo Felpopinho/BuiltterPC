@@ -19,13 +19,36 @@ export function NavEsquerdo(props){
 
 export function NavDisplay(props){
 
-    return <div display_esquerdo_content>
+    return <div className="display_esquerdo_content">
         
-        <div>
-            <h3>{props.nome}</h3>
-            <p>{props.descricao}</p>
+        <div className={props.video_class1}>
+            <div className={props.video_class2}>
+                <img src={props.video_imagem} className="display_sup_image"/>
+                <div>
+                    <h3>{props.video_nome}</h3>
+                    <p>{props.video_descricao}</p>
+                </div>
+            </div>
         </div>
-        <img src={props.imagem} />
+
+        <div className={props.simulacao_class1}>
+            <div className={props.simulacao_class2}>
+                <h3>{props.simulacao_nome}</h3>
+                <img src={props.simulacao_imagem} className="display_sim_image"/>
+            </div>
+        </div>
+
+        <div className={props.promocao_class1}>
+            <h3>{props.promocao_nome}</h3>
+            <p>{props.promocao_descricao}</p>
+            <img src={props.promocao_imagem} className="display_pro_image"/>
+        </div>
+
+        <div className={props.forum_class1}>
+            <h3>{props.forum_nome}</h3>
+            <p>{props.forum_descricao}</p>
+            <img src={props.forum_imagem} className="display_com_image"/>
+        </div>
     
     </div>
 
