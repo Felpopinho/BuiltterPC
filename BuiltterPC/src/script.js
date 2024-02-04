@@ -14,7 +14,8 @@ import thumbnail0 from './assets/imagens/thumbnail-0.png';
 import thumbnail1 from './assets/imagens/thumbnail-1.png';
 import thumbnail2 from './assets/imagens/thumbnail-2.png';
 
-
+import molde0 from './assets/imagens/molde-0.png';
+import molde1 from './assets/imagens/molde-1.png';
 
 const suporteTecnico ={
     nome: 'Suporte Técnico',
@@ -55,23 +56,19 @@ const video2 = {
 
 const simulacao0 ={
     nome: 'Molde 1',
-    descricao: 'a',
-    imagem: 'a',
+    imagem: molde0,
 }
 const simulacao1 ={
     nome: 'Molde 2',
-    descricao: 'a',
-    imagem: 'a',
+    imagem: molde1,
 }
 const simulacao2 ={
     nome: 'Molde 3',
-    descricao: 'a',
-    imagem: 'a',
+    imagem: molde1,
 }
 const simulacao3 ={
     nome: 'Molde 4',
-    descricao: 'a',
-    imagem: 'a',
+    imagem: molde1,
 }
 
 const promo0 ={

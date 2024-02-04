@@ -9,6 +9,7 @@ import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx';
 export function Menu(){
 
     const previewSessao = [suporteLista,simulacaoLista,promocaoLista,comentarioLista];
+    const linkSessao = ['#Suporte', '#Simulacao', '#Promocao', '#Forum']
     const [sessaoSelecionada, refreshSection] = useState(0);
 
     return <>
@@ -48,8 +49,11 @@ export function Menu(){
 
                         <div className='display_container_esquerdo'>
 
-                            {previewSessao[sessaoSelecionada].map( sessao => <NavDisplay name={sessao.nome} descricao={sessao.descricao} imagem={sessao.imagem}/>)}
+                            {previewSessao[sessaoSelecionada].slice(0, 2).map( sessao => <NavDisplay nome={sessao.nome} descricao={sessao.descricao} imagem={sessao.imagem}/>)}
 
+                            <div className="link_nav">
+                                <a href={linkSessao[sessaoSelecionada]}>Selecionar sessão</a>
+                            </div>
                         </div>
                     </div>
 

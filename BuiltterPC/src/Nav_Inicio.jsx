@@ -19,7 +19,7 @@ export function NavEsquerdo(props){
 
 export function NavDisplay(props){
 
-    return <>
+    return <div display_esquerdo_content>
         
         <div>
             <h3>{props.nome}</h3>
@@ -27,6 +27,6 @@ export function NavDisplay(props){
         </div>
         <img src={props.imagem} />
     
-    </>
+    </div>
 
 }
