@@ -10,9 +10,11 @@ import imageForum from './assets/imagens/ImageForum.png';
 import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
 import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
-import thumbnail0 from './assets/imagens/thumbnail-0.png'
-import thumbnail1 from './assets/imagens/thumbnail-1.png'
-import thumbnail2 from './assets/imagens/thumbnail-2.png'
+import thumbnail0 from './assets/imagens/thumbnail-0.png';
+import thumbnail1 from './assets/imagens/thumbnail-1.png';
+import thumbnail2 from './assets/imagens/thumbnail-2.png';
+
+
 
 const suporteTecnico ={
     nome: 'Suporte Técnico',
@@ -53,39 +55,39 @@ const video2 = {
 
 const simulacao0 ={
     nome: 'Molde 1',
-    descricao: '',
-    imagem: '',
+    descricao: 'a',
+    imagem: 'a',
 }
 const simulacao1 ={
     nome: 'Molde 2',
-    descricao: '',
-    imagem: '',
+    descricao: 'a',
+    imagem: 'a',
 }
 const simulacao2 ={
     nome: 'Molde 3',
-    descricao: '',
-    imagem: '',
+    descricao: 'a',
+    imagem: 'a',
 }
 const simulacao3 ={
     nome: 'Molde 4',
-    descricao: '',
-    imagem: '',
+    descricao: 'a',
+    imagem: 'a',
 }
 
 const promo0 ={
-    nome: '',
-    descricao: '',
-    imagem: '',
+    nome: 'a',
+    descricao: 'a',
+    imagem: 'a',
 }
 const promo1 ={
-    nome: ' ',
-    descricao: '',
-    imagem:'',
+    nome: 'a',
+    descricao: 'a',
+    imagem:'a',
 }
 const promo2 ={
-    nome: '',
-    descricao: '',
-    imagem: '',
+    nome: 'a',
+    descricao: 'a',
+    imagem: 'a',
 }
 
 const comentario0 ={

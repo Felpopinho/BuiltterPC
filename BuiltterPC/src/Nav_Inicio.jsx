@@ -1,14 +1,16 @@
 import { useState } from "react"
 
+import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista } from './script.js';
+
 export function NavEsquerdo(props){
 
     return <div className='navegacao_esquerdo'> 
         <ul>
 
-            <input type='radio' id='nav_sup'  defaultChecked onClick={() => {props.refreshSection(0)}}/><label htmlFor='nav_sup'><a href='#Suporte'>Suporte</a></label>
-            <input type='radio' id='nav_sim' onClick={() => {props.refreshSection(1)}}/><label htmlFor='nav_sim'><a href='#Simulacao'>Simulacao</a></label>
-            <input type='radio' id='nav_pro' onClick={() => {props.refreshSection(2)}}/><label htmlFor='nav_pro'><a href='#Promocoes'>Promoções</a></label>
-            <input type='radio' id='nav_for' onClick={() => {props.refreshSection(3)}}/><label htmlFor='nav_for'><a href='#Forum'>Forum</a></label>
+            <input type='radio' id='nav_sup'  defaultChecked onClick={() => {props.refreshSection(0)}}/><label htmlFor='nav_sup'>Suporte</label>
+            <input type='radio' id='nav_sim' onClick={() => {props.refreshSection(1)}}/><label htmlFor='nav_sim'>Simulação</label>
+            <input type='radio' id='nav_pro' onClick={() => {props.refreshSection(2)}}/><label htmlFor='nav_pro'>Promoções</label>
+            <input type='radio' id='nav_for' onClick={() => {props.refreshSection(3)}}/><label htmlFor='nav_for'>Forum</label>
 
         </ul>
     </div>
@@ -20,10 +22,10 @@ export function NavDisplay(props){
     return <>
         
         <div>
-            <h3>{(props.nome)}</h3>
-            <p>{(props.descricao)}</p>
+            <h3>{props.nome}</h3>
+            <p>{props.descricao}</p>
         </div>
-        <img src={(props.imagem)} />
+        <img src={props.imagem} />
     
     </>
 

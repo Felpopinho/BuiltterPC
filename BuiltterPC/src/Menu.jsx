@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import logo from './assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
-import { comentarioLista, sessoesLista } from './script.js';
+import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista } from './script.js';
 import { CriarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
 
 
 export function Menu(){
 
-    const previewSessao = ['suporteLista', 'simulacaoLista', 'promocaoLista', comentarioLista];
+    const previewSessao = [suporteLista,simulacaoLista,promocaoLista,comentarioLista];
     const [sessaoSelecionada, refreshSection] = useState(0);
 
     return <>
@@ -43,12 +43,14 @@ export function Menu(){
 
                     <h2>Já está logado? Navegue por ai</h2>
 
-                    <NavEsquerdo refreshSection={refreshSection}/>
+                    <div className='nav_esquerdo_container'>
+                        <NavEsquerdo refreshSection={refreshSection}/>
 
-                    <div className='display_container_esquerdo'>
+                        <div className='display_container_esquerdo'>
 
-                        {Array(previewSessao[sessaoSelecionada]).map(sessao => <NavDisplay nome={sessao.nome} descricao={sessao.descricao} imagem={sessao.imagem}/>)}
+                            {previewSessao[sessaoSelecionada].map( sessao => <NavDisplay name={sessao.nome} descricao={sessao.descricao} imagem={sessao.imagem}/>)}
 
+                        </div>
                     </div>
 
                 </div>
