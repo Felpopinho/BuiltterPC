@@ -243,6 +243,9 @@ a{
     justify-content: center;
     align-items: center;
 }
+.display_suporte_container,.display_simulacao_container,.display_promo_container,.display_forum_container{
+    overflow: hidden;
+}
 .display_suporte_container{
     width: 90%;
     height: 90%;
@@ -253,14 +256,22 @@ a{
     align-items: center;
     background-color: var(--darkgray);
     border-radius: 10px;
+    
 }
 .display_sup_image{
     width: 200px;
     border-radius: 5px;
 }
+.display_suporte_container div{
+    padding-right: 10px;
+}
 .display_suporte_container div h3{
+    width: 100%;
+    text-wrap: nowrap;
+    overflow: hidden;
     color: white;
 } .display_suporte_container div p{
+    overflow: hidden;
     color: var(--ultralightgray);
 }
 
