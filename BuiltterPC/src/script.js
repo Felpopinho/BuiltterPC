@@ -1,14 +1,15 @@
 export const tituloSobre = document.getElementById('Titulo_sobre');
 export const descSobre = document.getElementById('Desc_sobre');
 export const imageSobre = document.getElementById('Image_sobre');
+export const inputSup = document.getElementById('nav_sup');
+export const inputSim = document.getElementById('nav_sim');
+export const inputPro = document.getElementById('nav_pro');
+export const inputFor = document.getElementById('nav_for');
 
 import imageSuporte from './assets/imagens/ImageSuporte.png';
 import imageSimulacao from './assets/imagens/ImageSimulacao.png';
 import imagePromocao from './assets/imagens/ImagePromocao.png';
 import imageForum from './assets/imagens/ImageForum.png';
-
-import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
-import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
 import thumbnail0 from './assets/imagens/thumbnail-0.png';
 import thumbnail1 from './assets/imagens/thumbnail-1.png';
@@ -16,6 +17,11 @@ import thumbnail2 from './assets/imagens/thumbnail-2.png';
 
 import molde0 from './assets/imagens/molde-0.png';
 import molde1 from './assets/imagens/molde-1.png';
+
+import produto1 from './assets/imagens/produto1.png';
+
+import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
+import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
 const suporteTecnico ={
     nome: 'Suporte Técnico',
@@ -39,8 +45,8 @@ const forum ={
 };
 
 const video0 = {
-    video_nome: 'Montando um computado...',
-    video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso t...',
+    video_nome: 'Montando um computador...',
+    video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso tenha gostado e se inscre...',
     video_imagem: thumbnail0,
     video_class1: 'display_suporte',
     video_class2: 'display_suporte_container',
@@ -82,9 +88,9 @@ const simulacao3 ={
 }
 
 const promo0 ={
-    promocao_nome: 'a',
-    promocao_descricao: 'a',
-    promocao_imagem: 'a',
+    promocao_nome: 'ASUS TUF Gaming GeForce® GTX 1660 Ti EVO OC Edition 6GB GDDR6',
+    promocao_descricao: 'A PARTIR DE R$2460,00 40%Off',
+    promocao_imagem: produto1,
     promocao_class1: 'display_promo',
     promocao_class2: 'display_promo_container',
 }
