@@ -56,9 +56,13 @@ export function NavDisplay(props){
         </div>
 
         <div className={props.forum_class1} id="forumDisplay">
-            <h3>{props.forum_nome}</h3>
-            <p>{props.forum_descricao}</p>
-            <img src={props.forum_imagem} className="display_com_image"/>
+            <div className={props.forum_class2}>
+                <img src={props.forum_imagem} className="display_for_image"/>
+                <div>
+                    <h3>{props.forum_nome}</h3>
+                    <p>{props.forum_descricao}</p>
+                </div>
+            </div>
         </div>
     
     </div>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import logo from './assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
-import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista } from './script.js';
-import { CriarConta } from './Criar-logar.jsx';
+import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista, janelaConta } from './script.js';
+import { CriarConta, LogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
 
 
@@ -13,6 +13,8 @@ export function Menu(){
     const [sessaoSelecionada, refreshSection] = useState(0);
 
     return <>
+
+        <CriarConta />
 
         <div className="nav_container">
             <div className='logo_container'>
@@ -35,8 +37,8 @@ export function Menu(){
                     <p>diversas funcionalidades disponiveis para facilitar suas experiências com hardware!</p>
 
                     <div className="btn_accountainer">
-                        <button className="btn_create" onClick={CriarConta()}>Criar conta</button>
-                        <button className="btn_enter" onClick={CriarConta()}>Fazer login</button>
+                        <button className="btn_create">Criar conta</button>
+                        <button className="btn_enter">Fazer login</button>
                     </div>
                 </div>
 

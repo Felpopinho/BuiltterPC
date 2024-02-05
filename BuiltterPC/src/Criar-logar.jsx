@@ -1,3 +1,5 @@
+import { janelaConta } from "./script"
+
 export function CriarConta(){
 
 }
