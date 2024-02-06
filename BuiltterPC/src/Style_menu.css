@@ -19,7 +19,7 @@
 }
 
 body{
-    background-color: black;
+    background-color: var(--fundo);
     font-family: 'Work sans',sans-serif;
     display: flex;
     justify-content: center;
