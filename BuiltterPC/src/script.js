@@ -1,6 +1,7 @@
 export const tituloSobre = document.getElementById('Titulo_sobre');
 export const descSobre = document.getElementById('Desc_sobre');
 export const imageSobre = document.getElementById('Image_sobre');
+
 export const inputSup = document.getElementById('nav_sup');
 export const inputSim = document.getElementById('nav_sim');
 export const inputPro = document.getElementById('nav_pro');
