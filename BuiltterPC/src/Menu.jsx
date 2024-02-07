@@ -4,7 +4,8 @@ import { ItensSobre } from './itensSobre.jsx';
 import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista } from './script.js';
 import { CriarLogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
-
+import { Button } from '@mui/material';
+import { linkNav } from './object-styles.js'; 
 
 export function Menu(){
 
@@ -55,8 +56,10 @@ export function Menu(){
                             forum_nome={sessao.forum_nome} forum_descricao={sessao.forum_descricao} forum_imagem={sessao.forum_imagem} forum_class1={sessao.forum_class1} forum_class2={sessao.forum_class2}
                             />)}
 
-                            <div className="link_nav">
-                                <a href={linkSessao[sessaoSelecionada]}>Selecionar sessão</a>
+                            <div className='link_nav_container'>
+                                <Button variant='contained' className="link_nav" sx={linkNav}>
+                                    <a href={linkSessao[sessaoSelecionada]}>Selecionar sessão</a>
+                                </Button>
                             </div>
                         </div>
                     </div>
