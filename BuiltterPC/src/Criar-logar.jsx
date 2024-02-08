@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Modal, Box, Typography} from "@mui/material";
+import { Button, Modal, Box, Typography, Stepper, Step, StepButton} from "@mui/material";
 import { btnCriarConta, btnLogarConta, modalCriarConta, modalEntrarConta } from './object-styles'
 import {  previewUser } from "./script";
 import { PassoUm } from "./Passo-um"; 
@@ -15,6 +15,22 @@ export function CriarLogarConta(){
 
   const abrirModalLC = () => setAbrirLC(true)
   const fecharModalLC = () => setAbrirLC(false)
+
+  const passos = ['perfil', 'descrições', 'finalização'];
+
+  const [ativarPasso, setAtivarPasso] = useState(0)
+
+  const acaoProxPasso = () =>{
+    const proxPasso = ativarPasso + 1;
+    setAtivarPasso(proxPasso);
+  }
+
+  const acaoAntePasso = () =>{
+    const antePasso = ativarPasso - 1;
+    setAtivarPasso(antePasso)
+  }
+  
+
   
   return <>
   
@@ -27,6 +43,19 @@ export function CriarLogarConta(){
       >
         <Box sx={modalCriarConta} className="modal_criar_conta">
           <PassoUm />
+          <Stepper activeStep={ativarPasso}>
+            {passos.map((label, index) => (
+            <Step key={label} >
+              <StepButton>
+                {label}
+              </StepButton>
+            </Step>
+            ))}
+          </Stepper>
+          <div>
+            <Button variant="contained" onClick={acaoAntePasso}>Voltar</Button>
+            <Button variant="contained" onClick={acaoProxPasso}>Proximo</Button>
+          </div>
         </Box>
       </Modal>
       

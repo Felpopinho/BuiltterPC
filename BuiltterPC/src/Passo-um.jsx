@@ -60,10 +60,6 @@ export function PassoUm() {
               </div>
             </div>
           </div>
-          <div>
-            <Button variant="contained" >Voltar</Button>
-            <Button variant="contained" >Proximo</Button>
-        </div>
         </div>
     </>
 }
