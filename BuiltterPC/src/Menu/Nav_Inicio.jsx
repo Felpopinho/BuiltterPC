@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista, inputSup, inputFor, inputSim, inputPro } from './script.js';
+import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista, inputSup, inputFor, inputSim, inputPro } from '../script.js';
 
 export function NavEsquerdo(props){
 

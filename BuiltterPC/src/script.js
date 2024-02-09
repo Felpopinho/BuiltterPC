@@ -1,4 +1,9 @@
 export const perfilUsuario = document.getElementById('UserPerfil');
+export const emailUsuario = document.getElementById('UserEmail');
+export const nomeUsuario = document.getElementById('UserName');
+export const senhaUsuario = document.getElementById('UserPassword');
+
+export const proxPasso = document.getElementById('proxPassoBtn');
 
 export const tituloSobre = document.getElementById('Titulo_sobre');
 export const descSobre = document.getElementById('Desc_sobre');
@@ -25,12 +30,6 @@ import produto1 from './assets/imagens/produto1.png';
 
 import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
 import imageUnknown from './assets/imagens/perfil-desconhecido.png';
-
-export const previewUser ={
-    usuario: '',
-    email: '',
-    perfil: '',
-}
 
 const suporteTecnico ={
     nome: 'Suporte Técnico',

@@ -33,7 +33,11 @@ export const areaTextoCriarConta ={
     width: '100%'
 }
 export const buttonCriarConta ={
-    width: '90%'
+    width: '100%'
+}
+export const btnVerPreview ={
+    width: '100%',
+    height: '100%',
 }
 
 export const linkNav ={

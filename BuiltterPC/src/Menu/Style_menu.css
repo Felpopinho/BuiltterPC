@@ -150,22 +150,22 @@ a{
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
 }
 .form_criarconta{
-    height: 100%;
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.criarConta_container{
+.criarConta_container, .passoDois_container, .passotres_container{
     display: flex;
     flex-direction: column;
     height: 40vh;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 .inputCriarConta{
@@ -173,44 +173,76 @@ a{
     display: flex;
     justify-content: center;
 }
-.perfil-preview{
+.fotoperfil_container{
     width: 100%;
-    height: 20vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-.btn_fotoperfil{
-    width: 30%;
+    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 50%;
 }
-.preview_container{
-    width: 65%;
-    border: solid 1px var(--darkgray);
-    height: auto;
-    border-radius: 10px;
-    padding: 10px;
-    position: relative;
-    display: grid;
-    grid-template-columns: 70px auto;
-} .perfilACC_container{
-    width: 60px;
-    height: 60px;
-    border-radius: 60px;
-    border: solid 2px var(--darkgray);
-    position: relative;
-    overflow: hidden;
+.descricaoContainer{
+    width: 80%;
+    height: 40vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-} .perfilACC_container img{
-    width: 100%;
-    position: absolute;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
-
+.termos_container{
+    height: 30vh;
+    width: 80%;
+    border: solid 2px var(--darkgray);
+    border-radius: 10px;
+} .termos_servico{
+    padding: 10px;
+    height: 25vh;
+    overflow-y: scroll;
+    width: 100%;
+    border-bottom: solid 2px var(--darkgray);
+} .escolha_termos{
+    height: 5vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+} .escolha_termos div{
+    display: flex;
+    align-items: center; 
+}.escolha_termos div label{
+    font-size: small;
+}.escolha_termos div input{
+    width: 1.5rem;
+}
+.btn_passos_container{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+.passosFinalizados_container{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.previewPerfil_container{
+    height: 20vh;
+    width: 80%;
+    border: solid 2px var(--darkgray);
+    display: flex;
+    border-radius: 15px;
+}
+.previewPerfil{
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} .previewPerfil img{
+    width: 100%;
+    border-radius: 70px;
+}
 
 .after_esquerdo h2{
     font-size: 1.8rem;

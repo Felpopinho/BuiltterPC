@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import logo from './assets/imagens/Logo.png';
+import logo from '../assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
-import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista } from './script.js';
+import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista } from '../script.js';
 import { CriarLogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
 import { Button } from '@mui/material';
-import { linkNav } from './object-styles.js'; 
+import { linkNav } from '../object-styles.js'; 
 
 export function Menu(){
 
