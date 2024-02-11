@@ -1,4 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --black: #131313;
+    --darkgray: #292929;
+    --gray: #494949;
+    --lightgray: #707070;
+    --ultralightgray: #a3a3a3;
+    --blue: #0030cc;
+    --lightblue: #3053c7;
+    --ultralightblue: #627ac9;
+    --fundo: #f7fbff;
+}
+
 .suporte_container{
     width: 100%;
     height: 100vh;
+    display: grid;
+    grid-template-columns: 400px 70%;
+    grid-template-rows: 20vh 80vh;
+    justify-items: center;
+    align-items: center;
+}
+
+.nav_suporte_container{
+    grid-row: 1/3;
+    width: 90%;
+    height: 95vh;
+    background-color: var(--darkgray);
+    border-radius: 40px;
+}
+
+.titulo_sessao_container{
+    font-size: 2rem;
+    justify-self: self-start;
+    width: 100%;
+    height: 20vh;
+    display: grid;
+    grid-template-rows: 15vh 5vh;
+}
+.titulo_sessao_container h1{
+    margin-left: 4vw;
+    align-self: flex-end;
+}
+.sessao_videos_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.videos_container{
+    width: 90%;
+    height: 90%;
+    overflow-y: scroll;
+    padding: 0 0 0 4vw;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.divisor_video{
+    grid-column: 1/3;
+}
+.videoimagem_container img{
+    width: 90%;
+    height: auto;
+}
+.videodesc_container{
+    width: 100%;
+}
+.videodesc_container h2{
+    font-size: 2.5rem;
+    overflow: hidden;
+    height: 30%;
+    text-wrap: nowrap;
+} .videodesc_container p{
+    font-size: 1.3rem;
+    font-weight: 300;
+    overflow: hidden;
+    height: 70%;
 }

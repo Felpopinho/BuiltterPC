@@ -31,9 +31,8 @@ export function NavDisplay(props){
         <div className={props.video_class1} id="suporteDisplay">
             <div className={props.video_class2}>
                 <img src={props.video_imagem} className="display_sup_image"/>
-                <div>
+                <div className="display_sup_titulo">
                     <h3>{props.video_nome}</h3>
-                    <p>{props.video_descricao}</p>
                 </div>
             </div>
         </div>

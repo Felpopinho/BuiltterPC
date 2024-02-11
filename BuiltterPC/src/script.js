@@ -62,20 +62,20 @@ const forum ={
 };
 
 const video0 = {
-    video_nome: 'Montando um computador...',
-    video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso tenha gostado e se inscre...',
+    video_nome: 'Montando um computador do zero',
+    video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail0,
     video_class1: 'display_suporte',
     video_class2: 'display_suporte_container',
 }
 const video1 = {
-    video_nome: 'Como formatar um compu...',
-    video_descricao: 'Neste video mostraremos o passo a passo de como formatar um PC no windows 10. Não se esqueça de...',
+    video_nome: 'Como formatar um computador PASSO a PASSO',
+    video_descricao: 'Neste video mostraremos o passo a passo de como formatar um PC no windows 10. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail1,
 }
 const video2 = {
-    video_nome: 'Configurando uma placa d...',
-    video_descricao: 'Neste video mostraremos o passo a passo de como configurar uma placa de video, usando o software da...',
+    video_nome: 'Configurando uma placa da NVIDIA + dicas',
+    video_descricao: 'Neste video mostraremos o passo a passo de como configurar uma placa de video, usando o software da NVIDIA.  Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail2,
 }
 

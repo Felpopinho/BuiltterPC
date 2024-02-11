@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { Divider } from '@mui/material'; 
+
 import './Menu/Style_menu.css';
 import { Menu } from './Menu/Menu.jsx';
 
@@ -20,9 +22,13 @@ function App() {
   return <>
 
       <Menu />
+      <Divider sx={{margin: 3}}/>
       <Suporte />
+      <Divider sx={{margin: 3}}/>
       <Simulacao />
+      <Divider sx={{margin: 3}}/>
       <Promocoes />
+      <Divider sx={{margin: 3}}/>
       <Forum />
       
   </>
