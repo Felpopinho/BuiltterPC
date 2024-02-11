@@ -3,6 +3,7 @@ import { Button, Modal, Box, Typography, Stepper, Step, StepButton} from "@mui/m
 import { btnCriarConta, btnLogarConta, modalCriarConta, modalEntrarConta } from '../object-styles'
 import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta"; 
 import { PreviewPerfil } from "./Preview-Perfil";
+import { previewUser } from "../script";
 
 export function CriarLogarConta(){
 
@@ -60,44 +61,44 @@ export function CriarLogarConta(){
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalCriarConta} className="modal_criar_conta">
+            <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
+              Criar conta
+            </Typography>
+            <Stepper activeStep={ativarPasso}>
+              {passos.map((label, index) => (
+                <Step key={label} completed={completed[index]}>
+                <StepButton>
+                  {label}
+                </StepButton>
+              </Step>
+              ))}
+            </Stepper>
+            {ativarPasso === totalPassos() ? (
+            <div className="passosFinalizados_container">
+              <h1>Sua conta foi criada com sucesso</h1>
+              <div className="previewPerfil_container">
+                {arrPreview.map(inputs =>(<PreviewPerfil perfil={inputs.perfil} usuario={inputs.usuario} email={inputs.email} titulo={inputs.titulo} descricao={inputs.descricao}/>))}
+              </div>
+              <Button>
+                <a href="">visitar perfil</a>
+              </Button>
+            </div> ) : ativarPasso === 0 ? (
+            <Fragment>
+              <PassoUm />
+            </Fragment> ) : ativarPasso === 1 ? (
+            <Fragment>
+              <PassoDois />
+            </Fragment>) : (
+            <Fragment>
+              <PassoTres />
+            </Fragment> )}
+            <div className="btn_passos_container">
+              <Button variant="text" disabled={ativarPasso === 0 || ativarPasso === totalPassos()} onClick={acaoAntePasso}>Voltar</Button>
 
-          <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
-            Criar conta
-          </Typography>
-
-          <Stepper activeStep={ativarPasso}>
-            {passos.map((label, index) => (
-            <Step key={label} completed={completed[index]}>
-              <StepButton>
-                {label}
-              </StepButton>
-            </Step>
-            ))}
-          </Stepper>
-          {ativarPasso === totalPassos() ? (
-          <div className="passosFinalizados_container">
-            <h1>Sua conta foi criada com sucesso</h1>
-            <div className="previewPerfil_container">
-              {arrPreview.map(inputs =>(<PreviewPerfil perfil={inputs.perfil} usuario={inputs.usuario} email={inputs.email}/>))}
+              <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() } id="proxPassoBtn" type="submit">
+                    {ativarPasso === totalPassos() - 1 ? 'Finalizar' : ativarPasso <= totalPassos() - 2 ? 'Proximo' : 'Finalizado'}
+              </Button>
             </div>
-            <a href="">visitar perfil</a>
-          </div> ) : ativarPasso === 0 ? (
-          <Fragment>
-            <PassoUm />
-          </Fragment> ) : ativarPasso === 1 ? (
-          <Fragment>
-            <PassoDois />
-          </Fragment>) : (
-          <Fragment>
-            <PassoTres />
-          </Fragment> )}
-          <div className="btn_passos_container">
-            <Button variant="text" disabled={ativarPasso === 0 || ativarPasso === totalPassos()} onClick={acaoAntePasso}>Voltar</Button>
-
-            <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() } id="proxPassoBtn">
-                  {ativarPasso === totalPassos() - 1 ? 'Finalizar' : ativarPasso <= totalPassos() - 2 ? 'Proximo' : 'Finalizado'}
-            </Button>
-          </div>
         </Box>
       </Modal>
       

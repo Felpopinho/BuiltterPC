@@ -1,14 +1,8 @@
 import { useState } from "react";
 import { Button, Typography, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import { areaTextoCriarConta, buttonCriarConta } from '../object-styles'
-import { proxPasso } from "../script";
-
-export const previewUser ={
-  usuario: '',
-  email: '',
-  perfil: '',
-  senha: '',
-}
+import { previewUser, proxPasso } from "../script";
+import { PreviewPerfil } from "./Preview-Perfil"; 
 export const arrPreview = [previewUser];
 
 export function PassoUm() {
@@ -28,47 +22,47 @@ export function PassoUm() {
     const [valorName, setValorName] = useState('')
     const mudarName = (event) =>{
       setValorName(event.target.value);
-      previewUser.usuario = valorName;
-    }
+    };
 
     const [valorEmail, setValorEmail] = useState('')
     const mudarEmail = (event) =>{
-      setValorEmail(event.target.value);
-      previewUser.email = valorEmail;
-    }
+      setValorEmail(event.target.value); 
+      
+    };
 
     const [valorSenha, setValorSenha] = useState('')
     const mudarSenha = (event) =>{
       setValorSenha(event.target.value);
-      previewUser.senha = valorSenha;
-    }
+    };
 
     const [valorPerfil, setValorPerfil] = useState('')
     const mudarPerfil = (event) =>{
       setValorPerfil(URL.createObjectURL(event.target.files[0]));
-      previewUser.perfil = valorPerfil;
-    }
+    };
+
+    previewUser.usuario = valorName;
+    previewUser.email = valorEmail;
+    previewUser.senha = valorSenha;
+    previewUser.perfil = valorPerfil;
 
     return <>
-      <form className="form_criarconta">
-        <div className="criarConta_container">
-          <div className="inputCriarConta">
-            <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={areaTextoCriarConta} onChange={mudarName}></Input>
-          </div>
-          <div className="inputCriarConta">  
-            <Input id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={areaTextoCriarConta} onChange={mudarEmail}></Input>
-          </div>
-          <div className="inputCriarConta">
-            <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={areaTextoCriarConta} onChange={mudarSenha}></Input>
-          </div>
-          <div className="fotoperfil_container">
-            <Button component="label" variant="contained" sx={buttonCriarConta}>
-              Foto de perfil
-              <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil}/>
-            </Button>
-          </div>
+      <div className="criarConta_container">
+        <div className="inputCriarConta">
+          <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={areaTextoCriarConta} onChange={mudarName}></Input>
         </div>
-      </form>
+        <div className="inputCriarConta">  
+          <Input id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={areaTextoCriarConta} onChange={mudarEmail}></Input>
+        </div>
+        <div className="inputCriarConta">
+          <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={areaTextoCriarConta} onChange={mudarSenha}></Input>
+        </div>
+        <div className="fotoperfil_container">
+          <Button component="label" variant="contained" sx={buttonCriarConta}>
+            Foto de perfil
+            <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil}/>
+          </Button>
+        </div>
+      </div>
     </>
 }
 
@@ -78,7 +72,14 @@ export function PassoDois(){
   const mudarSelecao = (event) =>{
     setTitulo(event.target.value);
   }
-  
+
+  const [desc, setDesc] = useState('');
+  const mudarDesc = (event) =>{
+    setDesc(event.target.value);
+  }
+
+  previewUser.titulo = titulo;
+  previewUser.descricao = desc;
 
   return <div className="passoDois_container">
 
@@ -86,17 +87,17 @@ export function PassoDois(){
       <h2>Deixe seu perfil completo!</h2>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Titulo</InputLabel>
-        <Select label="Titulo" value={titulo} onChange={mudarSelecao} labelId="demo-simple-select-label" id="demo-simple-select-label">
-          <MenuItem value={1}>Programador</MenuItem>
-          <MenuItem value={2}>Técnico de informática</MenuItem>
-          <MenuItem value={3}>Leigo</MenuItem>
-          <MenuItem value={4}>Analista</MenuItem>
-          <MenuItem value={5}>Fanático</MenuItem>
-          <MenuItem value={6}>Gamer</MenuItem>
+        <Select label="Titulo" value={titulo} onChange={mudarSelecao} labelId="demo-simple-select-label" id="SelectTitulo">
+          <MenuItem value={'Programador'}>Programador</MenuItem>
+          <MenuItem value={'Técnico de informática'}>Técnico de informática</MenuItem>
+          <MenuItem value={'Leigo'}>Leigo</MenuItem>
+          <MenuItem value={'Analista'}>Analista</MenuItem>
+          <MenuItem value={'Fanático'}>Fanático</MenuItem>
+          <MenuItem value={'Gamer'}>Gamer</MenuItem>
         </Select>
       </FormControl>
 
-      <TextField label="Descrição" rows={4} multiline fullWidth></TextField>
+      <TextField label="Descrição" rows={4} multiline fullWidth onChange={mudarDesc}></TextField>
     </div>
   </div>
 }

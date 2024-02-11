@@ -2,28 +2,28 @@ import { useState } from 'react';
 
 import './Menu/Style_menu.css';
 import { Menu } from './Menu/Menu.jsx';
-import { createTheme } from '@mui/material';
 
-export const Theme = createTheme({
-  palette: {
-    primary: {
-      light: '#6573c3',
-      main: '#3f51b5',
-      dark: '#2c387e',
-    },
-    secondary: {
-      light: '#834bff',
-      main: '#651fff',
-      dark: '#4615b2',
-    },
-  },
-})
+import './Suporte_tecnico/Style_suporte.css'
+import { Suporte } from './Suporte_tecnico/Suporte.jsx'
+
+import './Forum_dicas/Style_forum.css'
+import { Forum } from './Forum_dicas/Forum.jsx';
+
+import './Promocoes_pecas/Style_promocoes.css'
+import { Promocoes } from './Promocoes_pecas/Promocoes.jsx';
+
+import './Simulacao_pecas/Style_simulacao.css'
+import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
 function App() {
 
   return <>
 
       <Menu />
+      <Suporte />
+      <Simulacao />
+      <Promocoes />
+      <Forum />
       
   </>
 

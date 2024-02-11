@@ -31,6 +31,15 @@ import produto1 from './assets/imagens/produto1.png';
 import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
 import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
+export const previewUser ={
+    usuario: '',
+    email: '',
+    perfil: '',
+    senha: '',
+    titulo: '',
+    descricao: '',
+}
+
 const suporteTecnico ={
     nome: 'Suporte Técnico',
     descricao: 'Disponibilizamos diversos videos de suporte técnico para resolução de problemas envolvendo computação',
