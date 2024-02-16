@@ -7,6 +7,7 @@ import { previewUser } from "../script";
 
 export function CriarLogarConta(){
 
+
   const [abrirCC, setAbrirCC] = useState(false)
 
   const abrirModalCC = () => setAbrirCC(true)
@@ -57,8 +58,7 @@ export function CriarLogarConta(){
       <Modal
         open={abrirCC}
         onClose={fecharModalCC}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="modal-criarconta"
       >
         <Box sx={modalCriarConta} className="modal_criar_conta">
             <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
@@ -95,7 +95,7 @@ export function CriarLogarConta(){
             <div className="btn_passos_container">
               <Button variant="text" disabled={ativarPasso === 0 || ativarPasso === totalPassos()} onClick={acaoAntePasso}>Voltar</Button>
 
-              <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() } id="proxPassoBtn" type="submit">
+              <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() } id="proxPassoBtn">
                     {ativarPasso === totalPassos() - 1 ? 'Finalizar' : ativarPasso <= totalPassos() - 2 ? 'Proximo' : 'Finalizado'}
               </Button>
             </div>

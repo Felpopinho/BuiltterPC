@@ -21,7 +21,7 @@ function App() {
 
   return <>
 
-      <Menu />
+      <Menu/>
       <Divider sx={{margin: 3}}/>
       <Suporte />
       <Divider sx={{margin: 3}}/>

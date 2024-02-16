@@ -22,6 +22,8 @@ import imageForum from './assets/imagens/ImageForum.png';
 import thumbnail0 from './assets/imagens/thumbnail-0.png';
 import thumbnail1 from './assets/imagens/thumbnail-1.png';
 import thumbnail2 from './assets/imagens/thumbnail-2.png';
+import thumbnail3 from './assets/imagens/thumbnail-3.jpg';
+import thumbnail4 from './assets/imagens/thumbnail-deleted.jpg'
 
 import molde0 from './assets/imagens/molde-0.png';
 import molde1 from './assets/imagens/molde-1.png';
@@ -67,16 +69,50 @@ const video0 = {
     video_imagem: thumbnail0,
     video_class1: 'display_suporte',
     video_class2: 'display_suporte_container',
+    video_id: 'hardware',
+    video_favorite: '',
 }
 const video1 = {
     video_nome: 'Como formatar um computador PASSO a PASSO',
     video_descricao: 'Neste video mostraremos o passo a passo de como formatar um PC no windows 10. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail1,
+    video_id: 'software',
+    video_favorite: '',
 }
 const video2 = {
     video_nome: 'Configurando uma placa da NVIDIA + dicas',
     video_descricao: 'Neste video mostraremos o passo a passo de como configurar uma placa de video, usando o software da NVIDIA.  Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail2,
+    video_id: 'software',
+    video_favorite: '',
+}
+const video3 = {
+    video_nome: 'Testando até onde um Ryzen 3 consegue aguentar',
+    video_descricao: 'Neste video vamos testar todo o pontêncial que o ryzen 3 pode ter. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
+    video_imagem: thumbnail3,
+    video_id: 'testes',
+    video_favorite: '',
+}
+const video4 = {
+    video_nome: 'Instalando placa memoria ram dual channel',
+    video_descricao: 'Neste video instalamos a memoria ram dual channel. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
+    video_imagem: thumbnail4,
+    video_id: 'hardware',
+    video_favorite: '',
+}
+const video5 = {
+    video_nome: 'Otimazando o windows para um melhor desempenho',
+    video_descricao: 'Neste video nós mexemos nas config do windows. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
+    video_imagem: thumbnail4,
+    video_id: 'software',
+    video_favorite: '',
+}
+const video6 = {
+    video_nome: 'Testando o novo modem ULTRA potente',
+    video_descricao: 'Neste video mostraremos o novo modem Gamer super potente.  Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
+    video_imagem: thumbnail4,
+    video_id: 'testes',
+    video_favorite: '',
 }
 
 const simulacao0 ={
@@ -148,7 +184,7 @@ const comentario2 ={
     forum_class2: 'display_forum_container',
 }
 
-export const suporteLista = [video0,video1,video2];
+export const suporteLista = [video0,video1,video2,video3,video4,video5,video6];
 export const simulacaoLista = [simulacao0,simulacao1,simulacao2];
 export const promocaoLista = [promo0,promo1,promo2];
 export const comentarioLista = [comentario0,comentario1,comentario2];

@@ -15,7 +15,7 @@ export function Menu(){
 
     return <>
 
-        <div className="nav_container">
+        <div className="nav_container" id='Menu'>
             <div className='logo_container'>
                 <img src={logo} className='Logo'/>
                 <div></div>

@@ -1,19 +1,19 @@
 Projeto do que eu aprendo no intensivão js;
 
 Um site que tenha:
-
--Resgate de elemento em variaveis;
--Variaveis de controle;
--Estrutura de condição e repetição;
--Trocar elementos de texto e imagens;
--Objetos e Arrays;
--Vite e React;
--elementos HTML dinamicos;
--import/export de variaveis/funções e imagens;
--Servidor com Express e Socket;
--Arrow function;
--criação elementos;
--Posicionação de elementos filho.
+			
+-Resgate de elemento em variaveis;              *check
+-Variaveis de controle;              	        *check
+-Estrutura de condição e repetição;		*chck
+-Trocar elementos de texto e imagens;           *check
+-Objetos e Arrays;			        *check
+-Vite e React;					*check
+-elementos HTML dinamicos;			*check
+-import/export de variaveis/funções e imagens;	*check
+-Servidor com Express e Socket;			*falta
+-Arrow function;				*check
+-criação elementos;				*falta
+-Posicionação de elementos filho.		*falta
 
 ---------------------------------------
 
