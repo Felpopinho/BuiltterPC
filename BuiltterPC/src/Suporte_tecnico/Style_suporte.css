@@ -81,7 +81,6 @@
 }
 .videos_container{
     width: 100%;
-
     overflow-y: scroll;
     padding: 0 0 0 4vw;
     display: grid;
@@ -90,12 +89,17 @@
 .divisor_video{
     grid-column: 1/3;
 }
+.videoimagem_container{
+    position: relative;
+}
 .videoimagem_container img{
     width: 90%;
     height: auto;
 }
 .videodesc_container{
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .videodesc_container h2{
     font-size: 1.7rem;
@@ -107,6 +111,32 @@
     font-weight: 300;
     overflow: hidden;
     height: 70%;
+}
+.video_estatistic_container{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: space-between;
+    align-self: center;
+} .video_estatistic_container p{
+    display: flex;
+    align-items: center;
+    color: var(--lightgray);
+    font-weight: 500;
+}
+.favoritar{
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+}
+.favoritar:hover {
+    background-color: var(--ultralightblue);
+    color: white;
+}
+.favoritar:active{
+    color: gold;
 }
 
 .alert_favorite{

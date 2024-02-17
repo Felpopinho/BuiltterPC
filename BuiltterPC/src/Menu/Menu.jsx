@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import logo from '../assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
-import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista } from '../script.js';
+import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista} from '../script.js';
 import { CriarLogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
-import { Button } from '@mui/material';
+import { Button, Divider } from '@mui/material';
 import { linkNav } from '../object-styles.js'; 
 
-export function Menu(){
+export function Menu(props){
 
     const previewSessao = [suporteLista,simulacaoLista,promocaoLista,comentarioLista];
     const linkSessao = ['#Suporte', '#Simulacao', '#Promocao', '#Forum']
@@ -20,10 +20,6 @@ export function Menu(){
                 <img src={logo} className='Logo'/>
                 <div></div>
                 <h1>BuillterPC</h1>
-            </div>
-
-            <div className="conta_container">
-                <img src=""/>
             </div>
         </div>
 
@@ -46,7 +42,7 @@ export function Menu(){
 
                     <div className='nav_esquerdo_container'>
                         <NavEsquerdo refreshSection={refreshSection}/>
-
+                        <Divider orientation='vertical'/>
                         <div className='display_container_esquerdo'>
 
                             {previewSessao[sessaoSelecionada].slice(0, 1).map( sessao => 
