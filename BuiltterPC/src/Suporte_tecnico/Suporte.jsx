@@ -29,14 +29,6 @@ export function Suporte(){
         setOpenModal(false)
     }
 
-    const [openDrawer, setOpenDrawer] = useState(false);
-    const handleOpenDrawer = () =>{
-        setOpenDrawer(true)
-    }
-    const handleCloseDrawer = () =>{
-        setOpenDrawer(false)
-    }
-
     let [sessao, setSessao] = useState(0);
 
     const handleTopVideos = () =>{
