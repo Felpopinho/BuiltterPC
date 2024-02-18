@@ -136,7 +136,7 @@ a{
 .btn_create:active,.btn_enter:active{
     transform: scale(0.95);
 }
-.modal_criar_conta{
+.modal{
     border-radius: 20px;
     display: flex;
     flex-direction: column;

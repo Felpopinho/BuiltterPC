@@ -8,11 +8,34 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 import BugReportIcon from '@mui/icons-material/BugReport';
-import { Divider, List, Input, Box, Button } from "@mui/material" 
+import MenuIcon from '@mui/icons-material/Menu';
+import { Divider, List, Input, Box, Button, Modal, Typography, ThemeProvider } from "@mui/material" 
 import { SessaoUm, SessaoDois, SessaoTres, SessaoQuatro, SessaoFavorito } from "./Sessoes_suporte" 
 import { Fragment, useState } from "react" 
+import { modal } from '../object-styles';
+import { suporteLista } from '../script';
+import { VideoHistorico } from './Video-historico';
+import { darkTheme } from '../App';
+
 
 export function Suporte(){
+
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpenModal = () =>{
+        setOpenModal(true)
+        
+    }
+    const handleCloseModal = () =>{
+        setOpenModal(false)
+    }
+
+    const [openDrawer, setOpenDrawer] = useState(false);
+    const handleOpenDrawer = () =>{
+        setOpenDrawer(true)
+    }
+    const handleCloseDrawer = () =>{
+        setOpenDrawer(false)
+    }
 
     let [sessao, setSessao] = useState(0);
 
@@ -34,37 +57,41 @@ export function Suporte(){
 
     return <div className="suporte_container" id="Suporte">
 
-        <div className="nav_suporte_container">
-            <h1>Videos buillterPC</h1>
+    <ThemeProvider theme={darkTheme}>
+        <Box className="nav_suporte_container"> 
+            <h1>Explore</h1>
+            <Divider sx={{margin: 1}}/>
             <List sx={{display: "flex", flexDirection: "column", justifyContent: "space-around", marginLeft: 2}} className="nav_list">
-                <Box sx={{display: "flex", alignItems: "center", width: '100%'}}>
-                    <Input className="barra_pesquisa" type="text" placeholder="Pesquise algum vídeo" sx={{color: '#a3a3a3', width: '100%'}}></Input>
-                    <Button>
-                        <SearchIcon/>
-                    </Button>
-                </Box>
-                <Divider sx={{margin: 2}}/>
-                <h2>Suporte</h2>
+                <h2>BuillterPC</h2>
                 <a href="#Menu"><HomeIcon/> Menu</a>
-                <button onClick={handleFavoritos}><StarIcon/> Favoritos</button>
-                <Divider sx={{margin: 2}}/>
+                <Divider sx={{margin: 1}}/>
                 <h2>Usuário</h2>
-                <a href=""><PersonIcon/> Perfil</a>
-                <a href=""><HistoryIcon/> Histórico</a>
-                <a href=""><OndemandVideoIcon/> Seus vídeos</a>
-                <Divider sx={{margin: 2}}/>
+                <button onClick={handleFavoritos}><StarIcon/> Favoritos</button>
+                <button onClick={handleOpenModal}><HistoryIcon/> Histórico</button>
+                <Divider sx={{margin: 1}}/>
                 <h2>Descubra</h2>
                 <button onClick={handleTopVideos}><BarChartIcon/> Top videos</button>
                 <button onClick={handleHardware}><DeveloperBoardIcon/> Hardware</button>
                 <button onClick={handleSoftware}><WysiwygIcon/> Software</button>
                 <button onClick={handleTestes}><BugReportIcon/>Testes</button>
-                <Divider sx={{margin: 2}}/>
+                <Divider sx={{margin: 1}}/>
                 <h2>Veja também</h2>
                 <a href="#Simulacao">Simulaçao</a>
                 <a href="#Promocao">Promoções</a>
                 <a href="#Forum">Forum</a>
             </List>
-        </div>
+        </Box>
+    </ThemeProvider>
+
+        <Modal open={openModal} onClose={handleCloseModal}>
+            <Box sx={modal} className="modal">
+                <Typography variant='h3' sx={{fontWeight: '600', width:'90%'}}>Historico</Typography>
+                <Divider sx={{margin: 3, width:'90%'}}/>
+                <div className='historico_container'>
+                    {suporteLista.map(video => video.video_view === 'view' ? (<VideoHistorico video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>) : (console.log('a')))}
+                </div>
+            </Box>
+        </Modal>
 
         <div className="titulo_sessao_container">
             <h1>Suporte Técnico</h1>

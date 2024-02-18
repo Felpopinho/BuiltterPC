@@ -42,7 +42,7 @@ export function Menu(props){
 
                     <div className='nav_esquerdo_container'>
                         <NavEsquerdo refreshSection={refreshSection}/>
-                        <Divider orientation='vertical'/>
+                        <Divider variant='middle' orientation='vertical'/>
                         <div className='display_container_esquerdo'>
 
                             {previewSessao[sessaoSelecionada].slice(0, 1).map( sessao => 

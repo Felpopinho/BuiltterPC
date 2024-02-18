@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import { Button, Modal, Box, Typography, Stepper, Step, StepButton} from "@mui/material";
-import { btnCriarConta, btnLogarConta, modalCriarConta, modalEntrarConta } from '../object-styles'
+import { btnCriarConta, btnLogarConta, modal } from '../object-styles'
 import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta"; 
 import { PreviewPerfil } from "./Preview-Perfil";
 import { previewUser } from "../script";
@@ -60,7 +60,7 @@ export function CriarLogarConta(){
         onClose={fecharModalCC}
         aria-labelledby="modal-criarconta"
       >
-        <Box sx={modalCriarConta} className="modal_criar_conta">
+        <Box sx={modal} className="modal">
             <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
               Criar conta
             </Typography>
@@ -110,7 +110,7 @@ export function CriarLogarConta(){
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={modalEntrarConta} className="modal_criar_conta">
+        <Box sx={modal} className="modal">
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
           </Typography>

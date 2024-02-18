@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Divider } from '@mui/material'; 
+import { Divider, ThemeProvider, createTheme } from '@mui/material'; 
 
 import './Menu/Style_menu.css';
 import { Menu } from './Menu/Menu.jsx';
@@ -17,10 +17,15 @@ import { Promocoes } from './Promocoes_pecas/Promocoes.jsx';
 import './Simulacao_pecas/Style_simulacao.css'
 import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 function App() {
 
   return <>
-
       <Menu/>
       <Divider sx={{margin: 3}}/>
       <Suporte />
@@ -30,7 +35,6 @@ function App() {
       <Promocoes />
       <Divider sx={{margin: 3}}/>
       <Forum />
-      
   </>
 
 };

@@ -33,6 +33,10 @@ import produto1 from './assets/imagens/produto1.png';
 import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
 import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
+import video from './assets/video.mp4'
+
+export const videos = video;
+
 export const previewUser ={
     usuario: '',
     email: '',
@@ -71,7 +75,8 @@ const video0 = {
     video_class2: 'display_suporte_container',
     video_id: 'hardware',
     video_favorite: '',
-    video_estatisticas: '544.503'
+    video_estatisticas: '544.503',
+    video_view: '',
 }
 const video1 = {
     video_nome: 'Como formatar um computador PASSO a PASSO',
@@ -79,7 +84,8 @@ const video1 = {
     video_imagem: thumbnail1,
     video_id: 'software',
     video_favorite: '',
-    video_estatisticas: '487.387'
+    video_estatisticas: '487.387',
+    video_view: '',
 }
 const video2 = {
     video_nome: 'Configurando uma placa da NVIDIA + dicas',
@@ -87,7 +93,8 @@ const video2 = {
     video_imagem: thumbnail2,
     video_id: 'software',
     video_favorite: '',
-    video_estatisticas: '467.204'
+    video_estatisticas: '467.204',
+    video_view: '',
 }
 const video3 = {
     video_nome: 'Testando até onde um Ryzen 3 consegue aguentar',
@@ -95,7 +102,8 @@ const video3 = {
     video_imagem: thumbnail3,
     video_id: 'testes',
     video_favorite: '',
-    video_estatisticas: '395.817'
+    video_estatisticas: '395.817',
+    video_view: '',
 }
 const video4 = {
     video_nome: 'Instalando placa memoria ram dual channel',
@@ -103,7 +111,8 @@ const video4 = {
     video_imagem: thumbnail4,
     video_id: 'hardware',
     video_favorite: '',
-    video_estatisticas: '211.098'
+    video_estatisticas: '211.098',
+    video_view: '',
 }
 const video5 = {
     video_nome: 'Otimazando o windows para um melhor desempenho',
@@ -111,7 +120,8 @@ const video5 = {
     video_imagem: thumbnail4,
     video_id: 'software',
     video_favorite: '',
-    video_estatisticas: '210.323'
+    video_estatisticas: '210.323',
+    video_view: '',
 }
 const video6 = {
     video_nome: 'Testando o novo modem ULTRA potente',
@@ -119,7 +129,8 @@ const video6 = {
     video_imagem: thumbnail4,
     video_id: 'testes',
     video_favorite: '',
-    video_estatisticas: '134.503'
+    video_estatisticas: '134.503',
+    video_view: '',
 }
 
 const simulacao0 ={
