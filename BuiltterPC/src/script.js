@@ -134,28 +134,40 @@ const video6 = {
 }
 
 const simulacao0 ={
-    simulacao_nome: 'Moldes feitos',
-    simulacao_imagem: molde0,
+    simulacao_nome: 'Molde 1',
+    simulacao_imagem: molde1,
     simulacao_class1: 'display_simulacao',
     simulacao_class2: 'display_simulacao_container',
 }
 const simulacao1 ={
-    simulacao_nome: 'Moldes feitos',
+    simulacao_nome: 'Molde 2',
     simulacao_imagem: molde1,
-    simulacao_class1: 'display_simulacao',
-    simulacao_class2: 'display_simulacao_container',
 }
 const simulacao2 ={
-    simulacao_nome: 'Moldes feitos',
+    simulacao_nome: 'Molde 3',
+    simulacao_imagem: molde1,
+}
+const simulacao3 ={
+    simulacao_nome: 'Molde 4',
+    simulacao_imagem: molde1,
+}
+const simulacao4 ={
+    simulacao_nome: 'Molde 5',
     simulacao_imagem: molde1,
     simulacao_class1: 'display_simulacao',
     simulacao_class2: 'display_simulacao_container',
 }
-const simulacao3 ={
-    simulacao_nome: 'Moldes feitos',
+const simulacao5 ={
+    simulacao_nome: 'Molde 6',
     simulacao_imagem: molde1,
-    simulacao_class1: 'display_simulacao',
-    simulacao_class2: 'display_simulacao_container',
+}
+const simulacao6 ={
+    simulacao_nome: 'Molde 7',
+    simulacao_imagem: molde1,
+}
+const simulacao7 ={
+    simulacao_nome: 'Molde 8',
+    simulacao_imagem: molde1,
 }
 
 const promo0 ={
@@ -203,7 +215,7 @@ const comentario2 ={
 }
 
 export const suporteLista = [video0,video1,video2,video3,video4,video5,video6];
-export const simulacaoLista = [simulacao0,simulacao1,simulacao2];
+export const simulacaoLista = [simulacao0,simulacao1,simulacao2,simulacao3,simulacao4,simulacao5,simulacao6,simulacao7];
 export const promocaoLista = [promo0,promo1,promo2];
 export const comentarioLista = [comentario0,comentario1,comentario2];
 

@@ -141,7 +141,7 @@
 .video_estatistic_container{
     display: flex;
     align-items: center;
-    width: 90%;
+    width: 95%;
     justify-content: space-between;
     align-self: center;
 } .video_estatistic_container p{
