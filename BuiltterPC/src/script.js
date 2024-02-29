@@ -25,8 +25,59 @@ import thumbnail2 from './assets/imagens/thumbnail-2.png';
 import thumbnail3 from './assets/imagens/thumbnail-3.jpg';
 import thumbnail4 from './assets/imagens/thumbnail-deleted.jpg'
 
-import molde0 from './assets/imagens/molde-0.png';
-import molde1 from './assets/imagens/molde-1.png';
+import processador0 from './assets/imagens/produtos/1-processador.png'
+import processador1 from './assets/imagens/produtos/2-processador.png'
+import processador2 from './assets/imagens/produtos/3-processador.png'
+import processador3 from './assets/imagens/produtos/4-processador.png'
+import processador4 from './assets/imagens/produtos/5-processador.png'
+import processador5 from './assets/imagens/produtos/6-processador.png'
+import processador6 from './assets/imagens/produtos/7-processador.png'
+import processador7 from './assets/imagens/produtos/8-processador.png'
+
+import memoria0 from './assets/imagens/produtos/1-memoria.png'
+import memoria1 from './assets/imagens/produtos/2-memoria.png'
+import memoria2 from './assets/imagens/produtos/3-memoria.png'
+import memoria3 from './assets/imagens/produtos/4-memoria.png'
+import memoria4 from './assets/imagens/produtos/5-memoria.png'
+import memoria5 from './assets/imagens/produtos/6-memoria.png'
+import memoria6 from './assets/imagens/produtos/7-memoria.png'
+import memoria7 from './assets/imagens/produtos/8-memoria.png'
+
+import pvideo0 from './assets/imagens/produtos/1-video.png'
+import pvideo1 from './assets/imagens/produtos/2-video.png'
+import pvideo2 from './assets/imagens/produtos/3-video.png'
+import pvideo3 from './assets/imagens/produtos/4-video.png'
+import pvideo4 from './assets/imagens/produtos/5-video.png'
+import pvideo5 from './assets/imagens/produtos/6-video.png'
+import pvideo6 from './assets/imagens/produtos/7-video.png'
+import pvideo7 from './assets/imagens/produtos/8-video.png'
+
+import mae0 from './assets/imagens/produtos/1-mae.png'
+import mae1 from './assets/imagens/produtos/2-mae.png'
+import mae2 from './assets/imagens/produtos/3-mae.png'
+import mae3 from './assets/imagens/produtos/4-mae.png'
+import mae4 from './assets/imagens/produtos/5-mae.png'
+import mae5 from './assets/imagens/produtos/6-mae.png'
+import mae6 from './assets/imagens/produtos/7-mae.png'
+import mae7 from './assets/imagens/produtos/8-mae.png'
+
+import armazem0 from './assets/imagens/produtos/1-armazem.png'
+import armazem1 from './assets/imagens/produtos/2-armazem.png'
+import armazem2 from './assets/imagens/produtos/3-armazem.png'
+import armazem3 from './assets/imagens/produtos/4-armazem.png'
+import armazem4 from './assets/imagens/produtos/5-armazem.png'
+import armazem5 from './assets/imagens/produtos/6-armazem.png'
+import armazem6 from './assets/imagens/produtos/7-armazem.png'
+import armazem7 from './assets/imagens/produtos/8-armazem.png'
+
+import fonte0 from './assets/imagens/produtos/1-fonte.png'
+import fonte1 from './assets/imagens/produtos/2-fonte.png'
+import fonte2 from './assets/imagens/produtos/3-fonte.png'
+import fonte3 from './assets/imagens/produtos/4-fonte.png'
+import fonte4 from './assets/imagens/produtos/5-fonte.png'
+import fonte5 from './assets/imagens/produtos/6-fonte.png'
+import fonte6 from './assets/imagens/produtos/7-fonte.png'
+import fonte7 from './assets/imagens/produtos/8-fonte.png'
 
 import produto1 from './assets/imagens/produto1.png';
 
@@ -135,39 +186,45 @@ const video6 = {
 
 const simulacao0 ={
     simulacao_nome: 'Molde 1',
-    simulacao_imagem: molde1,
     simulacao_class1: 'display_simulacao',
     simulacao_class2: 'display_simulacao_container',
+    simulacao_status: 'vazio',
+    simulacao_id: '0',
 }
 const simulacao1 ={
     simulacao_nome: 'Molde 2',
-    simulacao_imagem: molde1,
+    simulacao_status: 'vazio',
+    simulacao_id: '1',
 }
 const simulacao2 ={
     simulacao_nome: 'Molde 3',
-    simulacao_imagem: molde1,
+    simulacao_status: 'vazio',
+    simulacao_id: '2',
 }
 const simulacao3 ={
     simulacao_nome: 'Molde 4',
-    simulacao_imagem: molde1,
+    simulacao_status: 'vazio',
+    simulacao_id: '3',
 }
 const simulacao4 ={
     simulacao_nome: 'Molde 5',
-    simulacao_imagem: molde1,
-    simulacao_class1: 'display_simulacao',
-    simulacao_class2: 'display_simulacao_container',
+    simulacao_status: 'vazio',
+    simulacao_id: '4',
 }
 const simulacao5 ={
     simulacao_nome: 'Molde 6',
-    simulacao_imagem: molde1,
+    simulacao_status: 'vazio',
+    simulacao_id: '5',
 }
 const simulacao6 ={
     simulacao_nome: 'Molde 7',
-    simulacao_imagem: molde1,
+    simulacao_status: 'vazio',
+    simulacao_id: '6',
 }
 const simulacao7 ={
     simulacao_nome: 'Molde 8',
-    simulacao_imagem: molde1,
+    simulacao_status: 'vazio',
+    simulacao_id: '7',
 }
 
 const promo0 ={
@@ -220,5 +277,70 @@ export const promocaoLista = [promo0,promo1,promo2];
 export const comentarioLista = [comentario0,comentario1,comentario2];
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
+
+export const maeObject ={
+    image1: mae0, produtoChecked1: '', preco1:'', nome1: 'Placa Mãe Asus Prime A320M-K/BR, Chipset A320, AMD AM4, mATX, DDR4',
+    image2: mae1, produtoChecked2: '', preco2:'', nome2: 'Placa Mãe Gigabyte GA-H170-Gaming 3, DDR4 chipset H170, LGA 1151',
+    image3: mae2, produtoChecked3: '', preco3:'', nome3: 'Placa Mãe Gigabyte B450M Gaming, Chipset B450, AMD AM4, mATX, DDR4',
+    image4: mae3, produtoChecked4: '', preco4:'', nome4: 'Placa-Mãe ASUS TUF Gaming - H310M-Plus Gaming/BR, Intel LGA 1151, mATX, DDR4',
+    image5: mae4, produtoChecked5: '', preco5:'', nome5: 'Placa Mãe Gigabyte B550M AORUS Elite, Chipset B550, AMD AM4, mATX, DDR4',
+    image6: mae5, produtoChecked6: '', preco6:'', nome6: 'Placa Mãe Gigabyte Z390 M GAMING, Chipset Z390, Intel LGA 1151, mATX, DDR4',
+    image7: mae6, produtoChecked7: '', preco7:'', nome7: 'Placa Mãe Asus TUF GAMING B460M-PLUS, Chipset B460, Intel LGA 1200, mATX, DDR4',
+    image8: mae7, produtoChecked8: '', preco8:'', nome8: 'Asus Rog Strix Z590-E Gaming WiFi (LGA 1200 DDR4 5333 O.C) Chipset Intel Z590 RGB Wi-Fi',
+}
+
+export const processadoresObject = {
+    image1: processador0, produtoChecked1: '', preco1:'', nome1: '', 
+    image2: processador1, produtoChecked2: '', preco2:'', nome2: '',
+    image3: processador2, produtoChecked3: '', preco3:'', nome3: '',
+    image4: processador3, produtoChecked4: '', preco4:'', nome4: '',
+    image5: processador4, produtoChecked5: '', preco5:'', nome5: '',
+    image6: processador5, produtoChecked6: '', preco6:'', nome6: '',
+    image7: processador6, produtoChecked7: '', preco7:'', nome7: '',
+    image8: processador7, produtoChecked8: '', preco8:'', nome8: '',
+}
+
+export const memoriasObject = {
+    image1: memoria0,  produtoChecked1: '', preco1:'', nome1: '',
+    image2: memoria1,  produtoChecked2: '', preco2:'', nome2: '',
+    image3: memoria2,  produtoChecked3: '', preco3:'', nome3: '',
+    image4: memoria3,  produtoChecked4: '', preco4:'', nome4: '',
+    image5: memoria4,  produtoChecked5: '', preco5:'', nome5: '',
+    image6: memoria5,  produtoChecked6: '', preco6:'', nome6: '',
+    image7: memoria6,  produtoChecked7: '', preco7:'', nome7: '',
+    image8: memoria7,  produtoChecked8: '', preco8:'', nome8: '',
+}
+export const pvideosObject = {
+    image1: pvideo0,  produtoChecked1: '', preco1:'', nome1: '',
+    image2: pvideo1,  produtoChecked2: '', preco2:'', nome2: '',
+    image3: pvideo2,  produtoChecked3: '', preco3:'', nome3: '',
+    image4: pvideo3,  produtoChecked4: '', preco4:'', nome4: '',
+    image5: pvideo4,  produtoChecked5: '', preco5:'', nome5: '',
+    image6: pvideo5,  produtoChecked6: '', preco6:'', nome6: '',
+    image7: pvideo6,  produtoChecked7: '', preco7:'', nome7: '',
+    image8: pvideo7,  produtoChecked8: '', preco8:'', nome8: '',
+}
+
+export const armazensObject = {
+    image1: armazem0,  produtoChecked1: '', preco1:'', nome1: '',
+    image2: armazem1,  produtoChecked2: '', preco2:'', nome2: '',
+    image3: armazem2,  produtoChecked3: '', preco3:'', nome3: '',
+    image4: armazem3,  produtoChecked4: '', preco4:'', nome4: '',
+    image5: armazem4,  produtoChecked5: '', preco5:'', nome5: '',
+    image6: armazem5,  produtoChecked6: '', preco6:'', nome6: '',
+    image7: armazem6,  produtoChecked7: '', preco7:'', nome7: '',
+    image8: armazem7,  produtoChecked8: '', preco8:'', nome8: '',
+}
+
+export const fontesObject = {
+    image1: fonte0,  produtoChecked1: '', preco1:'', nome1: '',
+    image2: fonte1,  produtoChecked2: '', preco2:'', nome2: '',
+    image3: fonte2,  produtoChecked3: '', preco3:'', nome3: '',
+    image4: fonte3,  produtoChecked4: '', preco4:'', nome4: '',
+    image5: fonte4,  produtoChecked5: '', preco5:'', nome5: '',
+    image6: fonte5,  produtoChecked6: '', preco6:'', nome6: '',
+    image7: fonte6,  produtoChecked7: '', preco7:'', nome7: '',
+    image8: fonte7,  produtoChecked8: '', preco8:'', nome8: '',
+}
 
 

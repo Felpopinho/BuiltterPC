@@ -60,7 +60,7 @@ export function CriarLogarConta(){
         onClose={fecharModalCC}
         aria-labelledby="modal-criarconta"
       >
-        <Box sx={modal} className="modal">
+        <Box className="Modal" sx={modal} >
             <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
               Criar conta
             </Typography>

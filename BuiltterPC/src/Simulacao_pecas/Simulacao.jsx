@@ -2,11 +2,11 @@ import { Box, Button, Divider, Typography } from "@mui/material"
 import { Fragment, useState } from "react"
 import { simulacaoLista } from "../script"
 import { Molde } from "./Molde"
-
+import { SectionDois } from "./Section-Simulacao"
 
 export function Simulacao(){
 
-    let [section, setSection] = useState(0)
+    let section = 0;
 
     return <div className="simulacao_container" id="Simulacao">
         <Box sx={{display:'flex', height: '15vh', width: '100%', justifyContent: "space-around", alignItems: 'center'}}>
@@ -19,7 +19,7 @@ export function Simulacao(){
         {section === 0 ? (
             <Fragment>
                 <Box sx={{display:'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gridTemplateRows: '1fr 1fr', margin: '0 auto', width: '80%',height: '60vh' , justifyItems: 'center', alignItems: 'center'}}>
-                    {simulacaoLista.map(molde => (<Molde simulacao_nome={molde.simulacao_nome} simulacao_imagem={molde.simulacao_imagem} />))}
+                    {simulacaoLista.map(molde => (<Molde simulacao_nome={molde.simulacao_nome} simulacao_status={molde.simulacao_status} simulacao_id={molde.simulacao_id}/>))}
                 </Box>
             </Fragment>) :
         section === 1 ? (

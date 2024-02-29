@@ -1,3 +1,15 @@
+:root{
+    --black: #131313;
+    --darkgray: #292929;
+    --gray: #494949;
+    --lightgray: #707070;
+    --ultralightgray: #a3a3a3;
+    --blue: #0030cc;
+    --lightblue: #3053c7;
+    --ultralightblue: #627ac9;
+    --fundo: #f7fbff;
+}
+
 .simulacao_container{
     width: 100%;
     height: 100vh;
@@ -8,4 +20,43 @@
 
 .molde_image{
     width: 150px;
+}
+
+.moldeModal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.produto_input{
+    width: 150px;
+    height: 150px;
+}
+.produto_input input{
+    opacity: 0;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    border-radius: 20px;
+}
+.produto_input input:checked + label{
+    border: 2px solid var(--ultralightblue);
+}
+.produto_input label{
+    width: inherit;
+    height: inherit;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.produto_input img{
+    width: 135px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
 }

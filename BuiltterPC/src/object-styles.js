@@ -15,6 +15,7 @@ export const modal = {
     bgcolor: '#f7fbff',
     boxShadow: 24,
     p: 4,
+    borderRadius: '20px',
 };
 
 export const areaTextoCriarConta ={

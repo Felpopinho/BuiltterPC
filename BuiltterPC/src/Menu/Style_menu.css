@@ -81,6 +81,14 @@ a{
     align-items: center;
     justify-content: space-evenly;
 }
+
+.Modal{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .menu_esquerdo_container,.menu_direito_container{
     display: flex;
     align-items: center;
@@ -135,13 +143,6 @@ a{
 }
 .btn_create:active,.btn_enter:active{
     transform: scale(0.95);
-}
-.modal{
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
 }
 .form_criarconta{
     display: flex;
