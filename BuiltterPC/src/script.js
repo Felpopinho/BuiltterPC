@@ -86,6 +86,15 @@ import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
 import video from './assets/video.mp4'
 
+import t_processador from './assets/imagens/processador_template.png'
+import t_memoria from './assets/imagens/memoria_template.webp'
+import t_armazem from './assets/imagens/armazem_template.jpeg'
+import t_pvideo from './assets/imagens/pvideo_template.webp'
+import t_fonte from './assets/imagens/fonte_template.webp'
+import t_mae from './assets/imagens/mae_template.png'
+
+export const templateImagens= [t_processador, t_armazem, t_fonte, t_mae, t_memoria, t_pvideo]
+
 export const videos = video;
 
 export const previewUser ={

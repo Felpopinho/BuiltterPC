@@ -24,8 +24,41 @@
 
 .moldeModal{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    width: auto;
+}
+
+.selectSection{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 50px;
+}
+.section_container{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    border: 1px solid var(--blue);
+    border-radius: 15px;
+}
+.section_container div{
+    width: 180px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}
+.section_container div img{
+    width: 300px;
+    height: auto;
+    
 }
 
 .produto_input{

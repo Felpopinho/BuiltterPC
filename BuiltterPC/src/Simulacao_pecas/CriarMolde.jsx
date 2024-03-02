@@ -3,7 +3,6 @@ import { maeObject, processadoresObject, memoriasObject, armazensObject, pvideos
 
 export function ProdutosMolde(props){
 
-
     return <Box sx={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '50%'}}>
         <div className="produto_input">         
             <input type="radio" name="produto" id="Produto1" onChange={() => {maeObject.produtoChecked1 = 'checked'}}/>
