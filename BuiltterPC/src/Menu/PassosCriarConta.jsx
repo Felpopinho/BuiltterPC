@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Button, Typography, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
+import { Button, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import { areaTextoCriarConta, buttonCriarConta } from '../object-styles'
 import { previewUser, proxPasso } from "../script";
-import { PreviewPerfil } from "./Preview-Perfil"; 
 export const arrPreview = [previewUser];
 
 export function PassoUm() {

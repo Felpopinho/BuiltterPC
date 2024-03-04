@@ -27,38 +27,56 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: auto;
+    width: 60%;
 }
 
 .selectSection{
+    margin-top: 50px;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     gap: 50px;
 }
 .section_container{
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
+    justify-content: end;
     align-items: center;
-    border: 1px solid var(--blue);
     border-radius: 15px;
+    position: relative;
+    box-shadow: 0 4px 15px var(--darkgray);
 }
-.section_container div{
+.section_container section{
     width: 180px;
+    height: 180px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 7px;
+    position: relative;
 }
-.section_container div img{
-    width: 300px;
-    height: auto;
-    
+.section_container section img{
+    width: auto;
+    height: 180px;
+    position: absolute;
+}
+.section_container section div{
+    background: linear-gradient(white,white,transparent);
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+    height: 200px;
+    transform: rotate(180deg);
+}
+.section_container p{
+    margin:0 0 20px 0;
+    position: absolute;
+    z-index: 2;
+    font-weight: 300;
+    font-size: 1.1rem;
 }
 
 .produto_input{
@@ -92,4 +110,8 @@
     height: auto;
     object-fit: cover;
     border-radius: 20px;
+}
+
+.icons_section{
+    width: 40px;
 }

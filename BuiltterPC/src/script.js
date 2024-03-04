@@ -93,6 +93,13 @@ import t_pvideo from './assets/imagens/pvideo_template.webp'
 import t_fonte from './assets/imagens/fonte_template.webp'
 import t_mae from './assets/imagens/mae_template.png'
 
+import i_processador from './assets/imagens/processador.png'
+import i_mae from './assets/imagens/placa-mae.png'
+import i_memoria from './assets/imagens/memoria-ram.png'
+import i_pvideo from './assets/imagens/placa-grafica.png'
+import i_armazem from './assets/imagens/ssd.png'
+import i_fonte from './assets/imagens/fonte-de-energia.png'
+
 export const templateImagens= [t_processador, t_armazem, t_fonte, t_mae, t_memoria, t_pvideo]
 
 export const videos = video;
@@ -350,6 +357,15 @@ export const fontesObject = {
     image6: fonte5,  produtoChecked6: '', preco6:'', nome6: '',
     image7: fonte6,  produtoChecked7: '', preco7:'', nome7: '',
     image8: fonte7,  produtoChecked8: '', preco8:'', nome8: '',
+}
+
+export const iconSection = {
+    mae: i_mae,
+    processador: i_processador,
+    memoria: i_memoria,
+    armazem: i_armazem,
+    pvideo: i_pvideo,
+    fonte: i_fonte,
 }
 
 

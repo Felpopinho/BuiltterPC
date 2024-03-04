@@ -5,7 +5,7 @@ export function ProdutosMolde(props){
 
     return <Box sx={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '50%'}}>
         <div className="produto_input">         
-            <input type="radio" name="produto" id="Produto1" onChange={() => {maeObject.produtoChecked1 = 'checked'}}/>
+            <input type="radio" name="produto" id="Produto1" />
             <label htmlFor="Produto1"><img src={props.image1}/></label>
         </div>
         <div className="produto_input">
@@ -42,6 +42,6 @@ export function ProdutosMolde(props){
 
 export function DescMolde(props){
     return <Box>
-        <Typography sx={{color:'white'}}>{maeObject.produtoChecked1 === 'checked' ? props.nome1 : 'a'}</Typography>
+        <Typography>a</Typography>
     </Box>
 }
