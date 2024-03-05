@@ -67,6 +67,8 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
+    min-width: 50%;
+    max-height: 80vh;
 }
 .historico_container{
     width: 90%;

@@ -1,6 +1,6 @@
 import { Typography, Box, Modal, Stepper, Step, StepButton, Button } from "@mui/material";
 import { useState, Fragment } from "react";
-import { DescMolde, ProdutosMolde } from "./CriarMolde";
+import { ProdutosMolde } from "./CriarMolde";
 import { modal } from "../object-styles";
 import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject, templateImagens, iconSection } from "../script";
 
@@ -23,11 +23,14 @@ export function Molde(props){
     const totalPasso = () =>{
         return passoSessao.length;
     }
+    const completedSteps = () => {
+        return Object.keys(completed).length;
+    };
     const ultimoPasso = () =>{
         return activeStep === totalPasso() - 1;
     }
     const todosPassosCompletos = () =>{
-        return activeStep === totalPasso();
+        return completedSteps() === totalPasso();
     }
     const acaoProxPasso = (n) =>{
         const novoPasso =
@@ -41,6 +44,16 @@ export function Molde(props){
         const antePasso = passar - 1;
         setPassar(antePasso)
         setSection(section-1)
+    }
+    const handleStep = (step) => () => {
+        setPassar(step);
+        setSection(step+1);
+    };    
+    const handleComplete = () =>{
+        const newCompleted = completed;
+        newCompleted[passar] = true;
+        setCompleted(newCompleted);
+        acaoProxPasso();
     }
     const handleSection = (n) =>{
         setSection(n)
@@ -59,14 +72,14 @@ export function Molde(props){
         <Modal open={moldeOpen} onClose={handleCloseModal}>
             <Box sx={modal} className="moldeModal">
 
-                <Stepper activeStep={passar} sx={{display: 'flex', alignItems: 'center'}}>
-                  {passoSessao.map((label, index) => (
+                <Stepper nonLinear activeStep={passar} sx={{display: 'flex', alignItems: 'center', margin: '0 0 50px 0'}}>
+                    {passoSessao.map((label, index) => (
                     <Step key={label} completed={completed[index]}>
-                    <StepButton>
-                      <img src={label} className="icons_section"/>
-                    </StepButton>
-                  </Step>
-                  ))}
+                        <StepButton onClick={handleStep(index)} disabled={false} className="stepbutton" sx={{margin: '0 2px 0 2px'}}>
+                            <img src={label} className="icons_section"/>
+                        </StepButton>
+                    </Step>
+                    ))}
                 </Stepper>
 
                 {section === 0 ? 
@@ -119,19 +132,20 @@ export function Molde(props){
                 </Fragment> :
     
                 <Fragment>
-                    <Box sx={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
+                    <Box sx={{width: '100%', display: 'flex', justifyContent: 'center'}}>
                         {Array.from(produtosObject).slice(section, section+1).map(produto =>(<ProdutosMolde image1={produto.image1} image2={produto.image2} image3={produto.image3} image4={produto.image4} image5={produto.image5} image6={produto.image6} image7={produto.image7} image8={produto.image8}/>))}
-                        <Box sx={{width:'50%', height:'100%', backgroundColor: '#292929', borderRadius: '20px'}}>
-                            {Array.from(produtosObject).slice(section, section+1).map(desc => (<DescMolde nome1={desc.nome1}/>))}
-                        </Box>
                     </Box>
                 </Fragment>
                 }
-                <Button variant="text" onClick={acaoAntePasso}>Voltar</Button>
+                <Box sx={{width: '50%', margin: '50px 0 10px 0', display: 'flex', justifyContent: 'space-between'}}>
+                    <Button variant="text" disabled={passar === -1} onClick={acaoAntePasso}>Voltar</Button>
 
-                <Button variant="outlined" onClick={acaoProxPasso} disabled={passar === totalPasso() } id="proxPassoBtn">
-                    {passar === totalPasso() - 1 ? 'Finalizar' : passar <= totalPasso() - 2 ? 'Proximo' : 'Finalizado'}
-                </Button>   
+                    <Button variant="contained" disabled={passar === -1} onClick={handleComplete}>Completar</Button>
+
+                    <Button variant="outlined" onClick={acaoProxPasso} disabled={passar === totalPasso() } id="proxPassoBtn">
+                        {passar === totalPasso() - 1 ? 'Finalizar' : passar <= totalPasso() - 2 ? 'Proximo' : 'Finalizado'}
+                    </Button>
+                </Box>
             </Box>
             
 
