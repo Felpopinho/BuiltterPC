@@ -12,7 +12,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Divider, List, Input, Box, Button, Modal, Typography, ThemeProvider } from "@mui/material" 
 import { SessaoUm, SessaoDois, SessaoTres, SessaoQuatro, SessaoFavorito } from "./Sessoes_suporte" 
 import { Fragment, useState } from "react" 
-import { modal } from '../object-styles';
 import { suporteLista } from '../script';
 import { VideoHistorico } from './Video-historico';
 import { darkTheme } from '../App';
@@ -76,7 +75,7 @@ export function Suporte(){
     </ThemeProvider>
 
         <Modal open={openModal} onClose={handleCloseModal}>
-            <Box sx={modal} className="modal">
+            <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
                 <Typography variant='h3' sx={{fontWeight: '600', width:'90%'}}>Historico</Typography>
                 <Divider sx={{margin: 3, width:'90%'}}/>
                 <div className='historico_container'>

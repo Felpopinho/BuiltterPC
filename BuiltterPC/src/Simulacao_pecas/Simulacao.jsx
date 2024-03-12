@@ -1,5 +1,4 @@
 import { Box, Button, Divider, Typography } from "@mui/material"
-import { Fragment, useState, createContext } from "react"
 import { simulacaoLista } from "../script"
 import { Molde } from "./Molde"
     

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
-import { areaTextoCriarConta, buttonCriarConta } from '../object-styles'
 import { previewUser, proxPasso } from "../script";
 export const arrPreview = [previewUser];
 
@@ -47,16 +46,16 @@ export function PassoUm() {
     return <>
       <div className="criarConta_container">
         <div className="inputCriarConta">
-          <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={areaTextoCriarConta} onChange={mudarName}></Input>
+          <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={{width: '100%'}} onChange={mudarName}></Input>
         </div>
         <div className="inputCriarConta">  
-          <Input id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={areaTextoCriarConta} onChange={mudarEmail}></Input>
+          <Input id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={{width: '100%'}} onChange={mudarEmail}></Input>
         </div>
         <div className="inputCriarConta">
-          <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={areaTextoCriarConta} onChange={mudarSenha}></Input>
+          <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={{width: '100%'}} onChange={mudarSenha}></Input>
         </div>
         <div className="fotoperfil_container">
-          <Button component="label" variant="contained" sx={buttonCriarConta}>
+          <Button component="label" variant="contained" sx={{width: '100%'}}>
             Foto de perfil
             <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil}/>
           </Button>

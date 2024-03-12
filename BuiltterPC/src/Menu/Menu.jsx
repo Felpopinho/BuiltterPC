@@ -5,7 +5,6 @@ import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLi
 import { CriarLogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
 import { Button, Divider } from '@mui/material';
-import { linkNav } from '../object-styles.js'; 
 
 export function Menu(props){
 
@@ -53,7 +52,7 @@ export function Menu(props){
                             />)}
 
                             <div className='link_nav_container'>
-                                <Button variant='contained' className="link_nav" sx={linkNav}>
+                                <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}}>
                                     <a href={linkSessao[sessaoSelecionada]}>Selecionar sessão</a>
                                 </Button>
                             </div>

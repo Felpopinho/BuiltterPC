@@ -2,7 +2,6 @@ import { Divider, Box, Input, Modal } from "@mui/material"
 import { suporteLista, videos } from "../script"
 import StarIcon from '@mui/icons-material/Star'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { modal } from "../object-styles";
 import { useState } from "react";
 
 export function Videos(props){

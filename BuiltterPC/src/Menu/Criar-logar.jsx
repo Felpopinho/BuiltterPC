@@ -1,9 +1,7 @@
 import { Fragment, useState } from "react";
 import { Button, Modal, Box, Typography, Stepper, Step, StepButton} from "@mui/material";
-import { btnCriarConta, btnLogarConta, modal } from '../object-styles'
 import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta"; 
 import { PreviewPerfil } from "./Preview-Perfil";
-import { previewUser } from "../script";
 
 export function CriarLogarConta(){
 
@@ -54,13 +52,13 @@ export function CriarLogarConta(){
 
   return <>
   
-      <Button variant="contained" color="primary" className="btn_create" onClick={abrirModalCC} sx={btnCriarConta}>Criar conta</Button>
+      <Button variant="contained" color="primary" className="btn_create" onClick={abrirModalCC} sx={{transition: 'all 0.2s ease'}}>Criar conta</Button>
       <Modal
         open={abrirCC}
         onClose={fecharModalCC}
         aria-labelledby="modal-criarconta"
       >
-        <Box className="Modal" sx={modal} >
+        <Box className="Modal" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} >
             <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
               Criar conta
             </Typography>
@@ -103,14 +101,14 @@ export function CriarLogarConta(){
       </Modal>
       
 
-      <Button variant="outlined" className="btn_enter" onClick={abrirModalLC} sx={btnLogarConta}>Logar conta</Button>
+      <Button variant="outlined" className="btn_enter" onClick={abrirModalLC} sx={{transition: 'all 0.2s ease'}}>Logar conta</Button>
       <Modal
         open={abrirLC}
         onClose={fecharModalLC}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={modal} className="modal">
+        <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
           </Typography>
