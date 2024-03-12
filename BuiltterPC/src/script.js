@@ -367,5 +367,3 @@ export const iconSection = {
     pvideo: i_pvideo,
     fonte: i_fonte,
 }
-
-

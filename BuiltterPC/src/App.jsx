@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { Divider, ThemeProvider, createTheme } from '@mui/material'; 
 
 import './Menu/Style_menu.css';

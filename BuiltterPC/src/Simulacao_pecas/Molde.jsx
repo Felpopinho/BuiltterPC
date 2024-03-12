@@ -96,6 +96,7 @@ export function Molde(props){
                                 <img src={passoSessao[0]} />
                                 <p>Placa-mãe</p>
                             </div>
+                            {completed[0] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                         <Box className='section_container' onClick={() => {handleSection(2)}}>
                             <section>
@@ -106,6 +107,7 @@ export function Molde(props){
                                 <img src={passoSessao[1]} />
                                 <p >Processador</p>
                             </div>
+                            {completed[1] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                         <Box className='section_container' onClick={() => {handleSection(3)}}>
                             <section>
@@ -116,6 +118,7 @@ export function Molde(props){
                                 <img src={passoSessao[2]} />
                                 <p>Memória</p>
                             </div>
+                            {completed[2] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                         <Box className='section_container' onClick={() => {handleSection(4)}}>
                             <section>
@@ -126,6 +129,7 @@ export function Molde(props){
                                 <img src={passoSessao[3]} />
                                 <p>Armazenamento</p>
                             </div>
+                            {completed[3] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                         <Box className='section_container' onClick={() => {handleSection(5)}}>
                             <section>
@@ -136,6 +140,7 @@ export function Molde(props){
                                 <img src={passoSessao[4]}/>
                                 <p>Placa de Vídeo</p>
                             </div>
+                            {completed[4] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                         <Box className='section_container' onClick={() => {handleSection(6)}}>
                             <section>
@@ -146,6 +151,7 @@ export function Molde(props){
                                 <img src={passoSessao[5]} />
                                 <p>Fonte</p>
                             </div>
+                            {completed[5] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                     </Box>
                 </Fragment> :
@@ -163,7 +169,7 @@ export function Molde(props){
                 <Box sx={{width: '50%', margin: '50px 0 10px 0', display: 'flex', justifyContent: 'space-between'}}>
                     <Button variant="text" disabled={passar === -1} onClick={acaoAntePasso}>Voltar</Button>
 
-                    <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso())} onClick={handleComplete}>Completar</Button>
+                    <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso()) || (completed[passar] === true)} onClick={handleComplete}>Completar</Button>
 
                     <Button variant="outlined" onClick={acaoProxPasso} disabled={passar === totalPasso() || (passar === totalPasso() - 1 && todosPassosCompletos() === false)} id="proxPassoBtn">
                         {passar === totalPasso() - 1 ? 'Finalizar' : passar <= totalPasso() - 2 ? 'Proximo' : 'Finalizado'}
