@@ -16,6 +16,10 @@ export function Molde(props){
 
     let [section, setSection] = useState(0);
 
+    let sectionObject = {
+        sessao: section,
+    }
+
     const passoSessao = [iconSection.mae, iconSection.processador, iconSection.memoria, iconSection.armazem, iconSection.pvideo, iconSection.fonte];
     const [passar, setPassar] = useState(-1);
     const [completed, setCompleted] = useState({})
@@ -41,8 +45,8 @@ export function Molde(props){
     }
     const acaoAntePasso = () =>{
         const antePasso = passar - 1;
-        setPassar(antePasso)
-        setSection(section-1)
+        setPassar(antePasso);
+        setSection(section-1);
     }
     const handleStep = (step) => () => {
         setPassar(step);
@@ -61,7 +65,7 @@ export function Molde(props){
         setPassar(n-1)
     }
 
-    const produtosObject = ['', maeObject, processadoresObject, memoriasObject, armazensObject, pvideosObject, fontesObject];
+    const produtosObject = ['', maeObject, processadoresObject, memoriasObject, armazensObject, pvideosObject, fontesObject, ''];
 
     return <Box sx={{cursor: 'pointer'}} >
 
@@ -154,12 +158,12 @@ export function Molde(props){
                             {completed[5] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                     </Box>
-                </Fragment> :
-    
+                </Fragment> : 
+
                 <Fragment>
                     <Box sx={{width: '100%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center',}}>
-                        {Array.from(produtosObject).slice(section, section+1).map(produto =>(
-                            <ProdutosMolde image1={produto.image1} image2={produto.image2} image3={produto.image3} image4={produto.image4} image5={produto.image5} image6={produto.image6} image7={produto.image7} image8={produto.image8} 
+                        {Array.from(produtosObject).slice(section, section+1).map(produto => (
+                            <ProdutosMolde sessao={sectionObject.sessao} image1={produto.image1} image2={produto.image2} image3={produto.image3} image4={produto.image4} image5={produto.image5} image6={produto.image6} image7={produto.image7} image8={produto.image8} 
                             nome1={produto.nome1} nome2={produto.nome2} nome3={produto.nome3} nome4={produto.nome4} nome5={produto.nome5} nome6={produto.nome6} nome7={produto.nome7} nome8={produto.nome8}
                             preco1={produto.preco1} preco2={produto.preco2} preco3={produto.preco3} preco4={produto.preco4} preco5={produto.preco5} preco6={produto.preco6} preco7={produto.preco7} preco8={produto.preco8} />
                         ))}

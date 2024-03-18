@@ -142,3 +142,14 @@
     background-color: rgba(0, 48, 204, 0.459);
     z-index: 3;
 }
+
+.sel_prod_container{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    height: 150px;
+    align-items: center;
+    text-align: end;
+}
+.sel_prod_container img{
+    justify-self: center;
+}
