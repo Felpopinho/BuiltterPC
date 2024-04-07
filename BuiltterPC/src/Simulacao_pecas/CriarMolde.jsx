@@ -38,16 +38,17 @@ export function ProdutosMolde(props){
     const iVid = [pvideosObject.image1, pvideosObject.image2, pvideosObject.image3, pvideosObject.image4, pvideosObject.image5, pvideosObject.image6, pvideosObject.image7, pvideosObject.image8];
     const iFon = [fontesObject.image1, fontesObject.image2, fontesObject.image3, fontesObject.image4, fontesObject.image5, fontesObject.image6, fontesObject.image7, fontesObject.image8];
 
-    const [pTotal, setPtotal] = useState(0)
+    const [pTotalSoma, setPtotalSoma] = useState(0);
+    const pTotal = [0, 0, 0, 0, 0, 0];
 
     const selectProduct = (nome) =>{
-        section === 1 ? (setNmae(nome), setPmae(precoLista[selected]), setSrcMae(iMae[selected]), setPMediamae(Number(pMedia))):
-        section === 2 ? (setNpro(nome), setPpro(precoLista[selected]), setSrcPro(iPro[selected]), setPMediapro(Number(pMedia))):
-        section === 3 ? (setNmem(nome), setPmem(precoLista[selected]), setSrcMem(iMem[selected]), setPMediamem(Number(pMedia))):
-        section === 4 ? (setNarm(nome), setParm(precoLista[selected]), setSrcArm(iArm[selected]), setPMediaarm(Number(pMedia))):
-        section === 5 ? (setNvid(nome), setPvid(precoLista[selected]), setSrcVid(iVid[selected]), setPMediavid(Number(pMedia))):
-        (setNfon(nome), setPfon(precoLista[selected]), setSrcFon(iFon[selected]), setPMediafon(Number(pMedia)));
-        setPtotal(pMediaMae + pMediaPro + pMediaMem + pMediaArm + pMediaVid + pMediaFon);
+        section === 1 ? (setNmae(nome), setPmae(precoLista[selected]), setSrcMae(iMae[selected]), setPMediamae(Number(pMedia)), pTotal[0] = pMediaMae):
+        section === 2 ? (setNpro(nome), setPpro(precoLista[selected]), setSrcPro(iPro[selected]), setPMediapro(Number(pMedia)), pTotal[1] = pMediaPro):
+        section === 3 ? (setNmem(nome), setPmem(precoLista[selected]), setSrcMem(iMem[selected]), setPMediamem(Number(pMedia)), pTotal[2] = pMediaMem):
+        section === 4 ? (setNarm(nome), setParm(precoLista[selected]), setSrcArm(iArm[selected]), setPMediaarm(Number(pMedia)), pTotal[3] = pMediaArm):
+        section === 5 ? (setNvid(nome), setPvid(precoLista[selected]), setSrcVid(iVid[selected]), setPMediavid(Number(pMedia)), pTotal[4] = pMediaVid):
+        (setNfon(nome), setPfon(precoLista[selected]), setSrcFon(iFon[selected]), setPMediafon(Number(pMedia)), pTotal[5] = pMediaFon);
+        setPtotalSoma(pTotal[0] + pTotal[1] + pTotal[2] + pTotal[3] + pTotal[4] + pTotal[5]);
     }
 
 
@@ -106,7 +107,7 @@ export function ProdutosMolde(props){
                 </Box>
             </Box>
             <Box>
-                <p>{pTotal}</p>
+                <p>{pTotalSoma}</p>
             </Box>
         </Box>
         <Box id='produtosContainer' sx={section === 7 ? {display: "none"} : {display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '40%', alignContent: 'center', justifyItems: 'center'}} onChange={() => {handleProduct(nomeLista[selected], precoLista[selected])}}>
