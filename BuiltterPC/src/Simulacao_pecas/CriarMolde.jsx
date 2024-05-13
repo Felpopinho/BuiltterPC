@@ -56,13 +56,16 @@ export function ProdutosMolde(props){
     const iVid = [pvideosObject.image1, pvideosObject.image2, pvideosObject.image3, pvideosObject.image4, pvideosObject.image5, pvideosObject.image6, pvideosObject.image7, pvideosObject.image8];
     const iFon = [fontesObject.image1, fontesObject.image2, fontesObject.image3, fontesObject.image4, fontesObject.image5, fontesObject.image6, fontesObject.image7, fontesObject.image8];
 
+    const [pTotal, setPtotal] = useState(0)
+
     const selectProduct = (nome) =>{
-        section === 1 ? (setNmae(nome), setPmae(precoLista[selected]), setSrcMae(iMae[selected])):
-        section === 2 ? (setNpro(nome), setPpro(precoLista[selected]), setSrcPro(iPro[selected])):
-        section === 3 ? (setNmem(nome), setPmem(precoLista[selected]), setSrcMem(iMem[selected])):
-        section === 4 ? (setNarm(nome), setParm(precoLista[selected]), setSrcArm(iArm[selected])):
-        section === 5 ? (setNvid(nome), setPvid(precoLista[selected]), setSrcVid(iVid[selected])):
-        (setNfon(nome), setPfon(precoLista[selected]), setSrcFon(iFon[selected]));
+        section === 1 ? (setNmae(nome), setPmae(precoLista[selected]), setSrcMae(iMae[selected]), setPMediamae(Number(pMedia))):
+        section === 2 ? (setNpro(nome), setPpro(precoLista[selected]), setSrcPro(iPro[selected]), setPMediapro(Number(pMedia))):
+        section === 3 ? (setNmem(nome), setPmem(precoLista[selected]), setSrcMem(iMem[selected]), setPMediamem(Number(pMedia))):
+        section === 4 ? (setNarm(nome), setParm(precoLista[selected]), setSrcArm(iArm[selected]), setPMediaarm(Number(pMedia))):
+        section === 5 ? (setNvid(nome), setPvid(precoLista[selected]), setSrcVid(iVid[selected]), setPMediavid(Number(pMedia))):
+        (setNfon(nome), setPfon(precoLista[selected]), setSrcFon(iFon[selected]), setPMediafon(Number(pMedia)));
+        setPtotal(pMediaMae + pMediaPro + pMediaMem + pMediaArm + pMediaVid + pMediaFon);
     }
 
 
@@ -120,8 +123,8 @@ export function ProdutosMolde(props){
                     </div>
                 </Box>
             </Box>
-            <Box sx={{}}>
-                <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>Preço total: {vMae + vPro + vMem + vArm + vVid + vFon}</h1>
+            <Box>
+                <p>{pTotal}</p>
             </Box>
         </Box>
         <Box id='produtosContainer' sx={section === 7 ? {display: "none"} : {display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '40%', alignContent: 'center', justifyItems: 'center'}} onChange={() => {handleProduct(nomeLista[selected], precoLista[selected])}}>
