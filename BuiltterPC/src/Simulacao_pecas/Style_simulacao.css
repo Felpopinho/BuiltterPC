@@ -153,3 +153,7 @@
 .sel_prod_container img{
     justify-self: center;
 }
+
+.resultadoSimulacao_container{
+    flex-direction: column;
+}

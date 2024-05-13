@@ -1,14 +1,17 @@
 import { Typography, Box, Modal, Stepper, Step, StepButton, Button } from "@mui/material";
 import { useState, Fragment } from "react";
 import { ProdutosMolde } from "./CriarMolde";
-import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject, templateImagens, iconSection } from "../script";
+import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject, templateImagens, iconSection, simulacaoLista } from "../script";
 
 export function Molde(props){
 
     const [moldeOpen, setMoldeOpen] = useState(false);
 
-    const handleOpenModal = () =>{
+    let moldeN
+
+    const handleOpenModal = (name) =>{
         setMoldeOpen(true);
+        moldeN = name.slice(5,7)
     }
     const handleCloseModal = () =>{
         setMoldeOpen(false)
@@ -41,12 +44,14 @@ export function Molde(props){
             passoSessao.findIndex((step, i) => !(i in completed)) :
             passar + 1;
         setPassar(novoPasso);
-        setSection(section+1)
+        setSection(section+1);
+        setPselected('');
     }
     const acaoAntePasso = () =>{
         const antePasso = passar - 1;
         setPassar(antePasso);
         setSection(section-1);
+        setPselected('');
     }
     const handleStep = (step) => () => {
         setPassar(step);
@@ -56,6 +61,7 @@ export function Molde(props){
         const newCompleted = completed;
         newCompleted[passar] = true;
         setCompleted(newCompleted);
+        setPselected('');
         passar === totalPasso()-1 && todosPassosCompletos() === false ?
         acaoAntePasso() :
         acaoProxPasso();
@@ -67,9 +73,20 @@ export function Molde(props){
 
     const produtosObject = ['', maeObject, processadoresObject, memoriasObject, armazensObject, pvideosObject, fontesObject, ''];
 
+    const [productS, setPselected] = useState('')
+
+    const updateSelected = (s) =>{
+        setPselected(s)
+    }
+
+    const finalizarModal = () =>{
+        setMoldeOpen(false);
+        simulacaoLista[moldeN].simulacao_status = "Completo";
+    }
+
     return <Box sx={{cursor: 'pointer'}} >
 
-        <Box sx={{width: '230px', height: '230px', border: 'solid 2px', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}} onClick={handleOpenModal}> 
+        <Box sx={{width: '230px', height: '230px', border: 'solid 2px', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}} onClick={() => {handleOpenModal(props.simulacao_nome)}}> 
             <Typography id="sim_desc" variant="h4" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</Typography>
             <Typography textAlign={'center'}>{props.simulacao_status}</Typography>
         </Box>
@@ -165,7 +182,8 @@ export function Molde(props){
                         {Array.from(produtosObject).slice(section, section+1).map(produto => (
                             <ProdutosMolde sessao={sectionObject.sessao} image1={produto.image1} image2={produto.image2} image3={produto.image3} image4={produto.image4} image5={produto.image5} image6={produto.image6} image7={produto.image7} image8={produto.image8} 
                             nome1={produto.nome1} nome2={produto.nome2} nome3={produto.nome3} nome4={produto.nome4} nome5={produto.nome5} nome6={produto.nome6} nome7={produto.nome7} nome8={produto.nome8}
-                            preco1={produto.preco1} preco2={produto.preco2} preco3={produto.preco3} preco4={produto.preco4} preco5={produto.preco5} preco6={produto.preco6} preco7={produto.preco7} preco8={produto.preco8} />
+                            preco1={produto.preco1} preco2={produto.preco2} preco3={produto.preco3} preco4={produto.preco4} preco5={produto.preco5} preco6={produto.preco6} preco7={produto.preco7} preco8={produto.preco8} 
+                            productSelected={updateSelected} updatePselected={productS}/>
                         ))}
                     </Box>
                 </Fragment>
@@ -173,10 +191,10 @@ export function Molde(props){
                 <Box sx={{width: '50%', margin: '50px 0 10px 0', display: 'flex', justifyContent: 'space-between'}}>
                     <Button variant="text" disabled={passar === -1} onClick={acaoAntePasso}>Voltar</Button>
 
-                    <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso()) || (completed[passar] === true)} onClick={handleComplete}>Completar</Button>
+                    <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso()) || (completed[passar] === true) || (productS === '')} onClick={handleComplete}>Completar</Button>
 
-                    <Button variant="outlined" onClick={acaoProxPasso} disabled={passar === totalPasso() || (passar === totalPasso() - 1 && todosPassosCompletos() === false)} id="proxPassoBtn">
-                        {passar === totalPasso() - 1 ? 'Finalizar' : passar <= totalPasso() - 2 ? 'Proximo' : 'Finalizado'}
+                    <Button variant="outlined" onClick={passar <= totalPasso() - 1 ? acaoProxPasso : finalizarModal} disabled={(passar === totalPasso() - 1 && todosPassosCompletos() === false)} id="proxPassoBtn">
+                        {passar <= totalPasso() - 1 ? 'Proximo' : 'Finalizar'}
                     </Button>
                 </Box>
             </Box>

@@ -164,7 +164,7 @@
     color: white;
 }
 .favoritar:active{
-    color: gold;
+    color: #ffd700;
 }
 
 .alert_favorite{
