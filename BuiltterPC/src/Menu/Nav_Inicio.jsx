@@ -5,7 +5,7 @@ import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLi
 export function NavEsquerdo(props){
 
     return <div className='navegacao_esquerdo'> 
-        <ul>
+        <div>
 
             <input type='radio' name="input-nav" id='nav_sup' onClick={() => {props.refreshSection(0)}} defaultChecked/>
             <label htmlFor='nav_sup'>Suporte</label>
@@ -19,7 +19,7 @@ export function NavEsquerdo(props){
             <input type='radio' name="input-nav" id='nav_for' onClick={() => {props.refreshSection(3);}}/>
             <label htmlFor='nav_for'>Forum</label> 
 
-        </ul>
+        </div>
     </div>
         
 }
@@ -34,6 +34,7 @@ export function NavDisplay(props){
                 <div className="display_sup_titulo">
                     <h3>{props.video_nome}</h3>
                 </div>
+                <h2 style={{alignSelf: "start", marginTop: "15px"}}>Principais moldes</h2>
             </div>
         </div>
 

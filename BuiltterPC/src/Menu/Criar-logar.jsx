@@ -43,11 +43,18 @@ export function CriarLogarConta(){
       passos.findIndex((step, i) => !(i in completed)) :
       ativarPasso + 1;
     setAtivarPasso(novoPasso);
+    setIprenchido(false);
   }
 
   const acaoAntePasso = () =>{
     const antePasso = ativarPasso - 1;
     setAtivarPasso(antePasso)
+    setIprenchido(false);
+  }
+
+  const [inputPrenchido, setIprenchido] = useState(false);
+  const updateInput = (set) =>{
+    setIprenchido(set);
   }
 
   return <>
@@ -82,18 +89,18 @@ export function CriarLogarConta(){
               </Button>
             </div> ) : ativarPasso === 0 ? (
             <Fragment>
-              <PassoUm />
+              <PassoUm inputPrenchido={updateInput}/>
             </Fragment> ) : ativarPasso === 1 ? (
             <Fragment>
-              <PassoDois />
+              <PassoDois formPrenchido={updateInput}/>
             </Fragment>) : (
             <Fragment>
-              <PassoTres />
+              <PassoTres termosPrenchido={updateInput}/>
             </Fragment> )}
             <div className="btn_passos_container">
               <Button variant="text" disabled={ativarPasso === 0 || ativarPasso === totalPassos()} onClick={acaoAntePasso}>Voltar</Button>
 
-              <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() } id="proxPassoBtn">
+              <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() || inputPrenchido === false } id="proxPassoBtn">
                     {ativarPasso === totalPassos() - 1 ? 'Finalizar' : ativarPasso <= totalPassos() - 2 ? 'Proximo' : 'Finalizado'}
               </Button>
             </div>

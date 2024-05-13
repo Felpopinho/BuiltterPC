@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
-import { previewUser, proxPasso } from "../script";
+import { previewUser } from "../script";
 export const arrPreview = [previewUser];
 
-export function PassoUm() {
+export function PassoUm(props) {
   
     const VisuallyHiddenInput = styled('input')({
       clip: 'rect(0 0 0 0)',
@@ -43,8 +43,21 @@ export function PassoUm() {
     previewUser.senha = valorSenha;
     previewUser.perfil = valorPerfil;
 
+    const verificarInput = () =>{
+      if ((valorName !== '') && 
+        (valorEmail !== '') && 
+        (valorSenha !== '') && 
+        ((valorSenha.includes(' ') === false) && (valorSenha.length > 5)) && 
+        ((valorEmail.includes('@') === true) && (valorEmail.includes('.') === true)))
+      {
+        props.inputPrenchido(true)
+      } else {
+        props.inputPrenchido(false)
+      };
+    }
+
     return <>
-      <div className="criarConta_container">
+      <div className="criarConta_container" onKeyUp={verificarInput}>
         <div className="inputCriarConta">
           <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={{width: '100%'}} onChange={mudarName}></Input>
         </div>
@@ -53,6 +66,7 @@ export function PassoUm() {
         </div>
         <div className="inputCriarConta">
           <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={{width: '100%'}} onChange={mudarSenha}></Input>
+          <p style={{fontSize: '0.9rem', padding: '3px 0px 3px 0px'}}>A senha deve conter 5 caracteres, exceto espaço</p>
         </div>
         <div className="fotoperfil_container">
           <Button component="label" variant="contained" sx={{width: '100%'}}>
@@ -64,7 +78,7 @@ export function PassoUm() {
     </>
 }
 
-export function PassoDois(){
+export function PassoDois(props){
 
   const [titulo, setTitulo] = useState('');
   const mudarSelecao = (event) =>{
@@ -76,12 +90,20 @@ export function PassoDois(){
     setDesc(event.target.value);
   }
 
+  const verificarForm = () =>{
+    if (titulo != "" && desc != ""){
+      props.formPrenchido(true);
+    } else{
+      props.formPrenchido(false)
+    }
+  }
+
   previewUser.titulo = titulo;
   previewUser.descricao = desc;
 
   return <div className="passoDois_container">
 
-    <div className="descricaoContainer">
+    <div className="descricaoContainer" onChange={verificarForm}>
       <h2>Deixe seu perfil completo!</h2>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Titulo</InputLabel>
@@ -100,14 +122,16 @@ export function PassoDois(){
   </div>
 }
 
-export function PassoTres(){
+export function PassoTres(props){
 
-  const acaoMudar = (event) => {
-    if (event.target.checked) {
-      proxPasso.setAttribute('disabled','disabled');
-    } else{
-      proxPasso.removeAttribute('disabled')
-    }
+  const [termos, setTermos] = useState(false)
+
+  const acaoMudar = () => {
+      if (termos === true){
+        props.termosPrenchido(true);
+      } else{
+        props.termosPrenchido(false)
+      }
   }
 
   return <div className="passotres_container">
@@ -118,13 +142,13 @@ export function PassoTres(){
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quis dicta quos praesentium atque sequi vel voluptas ut aperiam tempore rem aspernatur, delectus excepturi dolorem corrupti corporis numquam voluptate fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, veniam. Nostrum debitis expedita aut recusandae aperiam velit ut illum tempora illo. Odio porro reprehenderit id dignissimos, suscipit at nemo praesentium! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem similique sint quae modi tempore obcaecati temporibus necessitatibus corrupti, provident ipsum ab officiis laboriosam saepe optio tempora maiores nam illum vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi aliquam expedita nihil aspernatur accusantium esse praesentium cum maiores ex illo earum obcaecati sunt illum, quas quam accusamus hic inventore totam.</p>
       </div>
       <div className="escolha_termos">
-        <div>
-          <input type="radio" name="opcao-termos" id="negar-termos" onChange={acaoMudar}></input>
+        <div onClick={acaoMudar}>
+          <input type="radio" name="opcao-termos" id="negar-termos" onClick={() => {setTermos(true)}}></input>
           <label htmlFor="negar-termos">Discordo dos termos</label>
         </div>
 
-        <div>
-          <input type="radio" name="opcao-termos" id="aceitar-termos"></input>
+        <div onClick={acaoMudar}>
+          <input type="radio" name="opcao-termos" id="aceitar-termos" onClick={() => {setTermos(false)}}></input>
           <label htmlFor="aceitar-termos">Eu li, e concordo com os termos</label>
         </div>
       </div>
