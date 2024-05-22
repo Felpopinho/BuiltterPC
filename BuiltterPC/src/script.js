@@ -3,8 +3,6 @@ export const emailUsuario = document.getElementById('UserEmail');
 export const nomeUsuario = document.getElementById('UserName');
 export const senhaUsuario = document.getElementById('UserPassword');
 
-export const proxPasso = document.getElementById('proxPassoBtn');
-
 export const tituloSobre = document.getElementById('Titulo_sobre');
 export const descSobre = document.getElementById('Desc_sobre');
 export const imageSobre = document.getElementById('Image_sobre');
@@ -138,8 +136,6 @@ const video0 = {
     video_nome: 'Montando um computador do zero',
     video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail0,
-    video_class1: 'display_suporte',
-    video_class2: 'display_suporte_container',
     video_id: 'hardware',
     video_favorite: '',
     video_estatisticas: '544.503',
@@ -202,8 +198,6 @@ const video6 = {
 
 const simulacao0 ={
     simulacao_nome: 'Molde 1',
-    simulacao_class1: 'display_simulacao',
-    simulacao_class2: 'display_simulacao_container',
     simulacao_status: 'vazio',
     simulacao_id: '0',
 }
@@ -247,44 +241,32 @@ const promo0 ={
     promocao_nome: 'ASUS TUF Gaming GeForce® GTX 1660 Ti EVO OC Edition 6GB GDDR6',
     promocao_descricao: 'A PARTIR DE R$2460,00 40%Off',
     promocao_imagem: produto1,
-    promocao_class1: 'display_promo',
-    promocao_class2: 'display_promo_container',
 }
 const promo1 ={
     promocao_nome: 'a',
     promocao_descricao: 'a',
     promocao_imagem:'a',
-    promocao_class1: 'display_promo',
-    promocao_class2: 'display_promo_container',
 }
 const promo2 ={
     promocao_nome: 'a',
     promocao_descricao: 'a',
     promocao_imagem: 'a',
-    promocao_class1: 'display_promo',
-    promocao_class2: 'display_promo_container',
 }
 
 const comentario0 ={
     forum_nome: 'Kuribuh',
     forum_descricao: 'Eu abro muitos jogos porém quando abro vários PW e a memória atinge 61% de uso e tenro abrir navegador ou ate mais PW"S o Pc trava, e as vezes desinstala sozinho o softwaree da placa devídeo. Alguem sabe como resolver ?',
     forum_imagem: imageKuribuh,
-    forum_class1: 'display_forum',
-    forum_class2: 'display_forum_container',
 }
 const comentario1 ={
     forum_nome: 'Usuario_Secreto',
     forum_descricao: 'é minha primeira vez com uma GTX, e a minha é GTX 1050, ela é usada, a minha dúvida é, posso  colocar thermal pads nos chips que ficam perto  do chip gráfico ? (não sei se é esse o nome kkkk) irei colocar só para poder ajudar na temperatura,  ela não está com alta temperatura nem nada, pretendo mais para manter a vida dela ainda.',
     forum_imagem: imageUnknown,
-    forum_class1: 'display_forum',
-    forum_class2: 'display_forum_container',
 }
 const comentario2 ={
     forum_nome: 'Caroline Macedo Costa Silva',
     forum_descricao: 'não sei se uma Fonte Atx Gamer Semi-modular 600w Real 80plus Pfc Ativo Nf seria bom para esse processador e placa de Vídeo ou procuro outra melhor',
     forum_imagem: imageUnknown,
-    forum_class1: 'display_forum',
-    forum_class2: 'display_forum_container',
 }
 
 export const suporteLista = [video0,video1,video2,video3,video4,video5,video6];

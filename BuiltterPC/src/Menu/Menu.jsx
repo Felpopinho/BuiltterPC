@@ -8,9 +8,10 @@ import { Button, Divider } from '@mui/material';
 
 export function Menu(props){
 
-    const previewSessao = [suporteLista,simulacaoLista,promocaoLista,comentarioLista];
-    const linkSessao = ['#Suporte', '#Simulacao', '#Promocao', '#Forum']
     const [sessaoSelecionada, refreshSection] = useState(0);
+    let objetoSessao = {
+        section: sessaoSelecionada,
+    }
 
     return <>
 
@@ -36,8 +37,12 @@ export function Menu(props){
                 </div>
 
                 <div className='after_esquerdo'>
-
-                    <h2>Já está logado? Navegue por ai</h2>
+                    <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+                        <h2>Já está logado? Navegue por ai</h2>
+                        <div style={{backgroundColor: "#292929", padding: "3px", borderRadius: "5px"}}>
+                            <p style={{color: "white", fontWeight: "600"}}>novos</p>
+                        </div>
+                    </div>
 
                     <div className='nav_esquerdo_container'>
                         <NavEsquerdo refreshSection={refreshSection}/>
