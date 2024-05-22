@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { suporteLista, simulacaoLista, promocaoLista, comentarioLista, sessoesLista, inputSup, inputFor, inputSim, inputPro } from '../script.js';
+import { suporteLista, simulacaoLista, promocaoLista, comentarioLista } from '../script.js';
 
 export function NavEsquerdo(props){
 
@@ -27,43 +27,46 @@ export function NavEsquerdo(props){
 export function NavDisplay(props){
 
     return <div className="display_esquerdo_content">
-        
-        <div className={props.video_class1} id="suporteDisplay">
-            <div className={props.video_class2}>
-                <img src={props.video_imagem} className="display_sup_image"/>
-                <div className="display_sup_titulo">
-                    <h3>{props.video_nome}</h3>
-                </div>
-                <h2 style={{alignSelf: "start", marginTop: "15px"}}>Principais moldes</h2>
-            </div>
-        </div>
 
-        <div className={props.simulacao_class1} id="simulacaoDisplay">
-            <div className={props.simulacao_class2}>
-                <h3>{props.simulacao_nome}</h3>
-                <img src={props.simulacao_imagem} className="display_sim_image"/>
-            </div>
-        </div>
-
-        <div className={props.promocao_class1} id="promoDisplay">
-            <div className={props.promocao_class2}>
-                <img src={props.promocao_imagem} className="display_pro_image"/>
+        {props.selectedSection === 0 ?
+            <div id="suporteDisplay" style={{display: "grid", gridTemplateColumns: "40% 55%", gridTemplateRows: "auto", width: "100%", columnGap: "20px"}}>
                 <div>
-                    <p>{props.promocao_nome}</p>
-                    <h3>{props.promocao_descricao}</h3>
+                    <img src={suporteLista[0].video_imagem} style={{width: "300px", placeSelf: "center"}}/>
                 </div>
-            </div>
-        </div>
-
-        <div className={props.forum_class1} id="forumDisplay">
-            <div className={props.forum_class2}>
-                <img src={props.forum_imagem} className="display_for_image"/>
+                <div style={{height: "70%", overflowY: "scroll"}}>
+                    <h2 style={{textAlign: "left", textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap", width: "95%"}}>{suporteLista[0].video_nome}</h2>
+                    <p style={{textAlign: "left"}}>{suporteLista[0].video_descricao}</p>
+                </div>
+            </div> :
+        props.selectedSection === 1 ?
+            <div id="simulacaoDisplay" style={{display: "flex", justifyContent: "space-evenly", width: "100%", marginTop: "3vh"}}>
+                <div className="molde"><h3>{simulacaoLista[0].simulacao_nome}</h3><p>{simulacaoLista[0].simulacao_status}</p></div>
+                <div className="molde"><h3>{simulacaoLista[1].simulacao_nome}</h3><p>{simulacaoLista[1].simulacao_status}</p></div>
+                <div className="molde"><h3>{simulacaoLista[2].simulacao_nome}</h3><p>{simulacaoLista[2].simulacao_status}</p></div>
+                <div className="molde"><h3>{simulacaoLista[3].simulacao_nome}</h3><p>{simulacaoLista[3].simulacao_status}</p></div>
+            </div> :
+        props.selectedSection === 2 ?
+            <div id="promoDisplay" style={{display: "grid", gridTemplateColumns: "30% 65%", width: "100%", columnGap: "20px", placeItems: "center"}}>
                 <div>
-                    <h3>{props.forum_nome}</h3>
-                    <p>{props.forum_descricao}</p>
+                    <img src={promocaoLista[0].promocao_imagem} style={{width: "200px", }}/>
+                </div>
+                <div style={{height: "70%"}}>
+                    <p>{promocaoLista[0].promocao_nome}</p>
+                    <h2 style={{color: "red", textAlign: "left"}}>{promocaoLista[0].promocao_descricao}</h2>
+                </div>
+            </div> :
+
+            <div id="forumDisplay" style={{display: "grid", gridTemplateColumns: "70% 30%"}}>
+                <div style={{backgroundColor: "#292929", margin: "10px", padding: "10px", borderRadius: "10px"}}>
+                    <p style={{color: "white"}}>{comentarioLista[0].forum_descricao}</p>
+                </div>
+                <div style={{justifySelf: "center", display: "flex", flexDirection: "column", alignItems: "center"}}>
+                    <h3>Comentario de:</h3>
+                    <img src={comentarioLista[0].forum_imagem}/>
+                    <h2>{comentarioLista[0].forum_nome}</h2>
                 </div>
             </div>
-        </div>
+        }
     
     </div>
 
