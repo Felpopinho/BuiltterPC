@@ -8,10 +8,14 @@ import { Button, Divider } from '@mui/material';
 
 export function Menu(props){
 
+    const previewSessao = [suporteLista, simulacaoLista, promocaoLista, comentarioLista];
+
     const [sessaoSelecionada, refreshSection] = useState(0);
     let objetoSessao = {
         section: sessaoSelecionada,
     }
+
+    const linkSessao = ["#Menu", "#Suporte", "#Simulacao", "#Promocao", "#Forum"]
 
     return <>
 
