@@ -128,7 +128,7 @@ const promocaoPecas ={
 };
 const forum ={
     nome: 'Forum de Reviews e Dicas',
-    descricao: 'Catalogo de promoções das lojas mais conhecidas do Brasil e do exterior, opção de notificações das promoções e filtragem e busca para peças específicas ',
+    descricao: 'Converse com diversas pessoas interessadas nos diversos assuntos de hardware, tire duvidas, responda duvidas e se divirta com o forum de review e dicas',
     imagem: imageForum,
 };
 
