@@ -1,3 +1,4 @@
+//Variaveis de elementos
 export const perfilUsuario = document.getElementById('UserPerfil');
 export const emailUsuario = document.getElementById('UserEmail');
 export const nomeUsuario = document.getElementById('UserName');
@@ -12,17 +13,22 @@ export const inputSim = document.getElementById('nav_sim');
 export const inputPro = document.getElementById('nav_pro');
 export const inputFor = document.getElementById('nav_for');
 
+//IMPORTAÇÕES DE IMAGENS
+
+//Imagens sessoes
 import imageSuporte from './assets/imagens/ImageSuporte.png';
 import imageSimulacao from './assets/imagens/ImageSimulacao.png';
 import imagePromocao from './assets/imagens/ImagePromocao.png';
 import imageForum from './assets/imagens/ImageForum.png';
 
+//Imagens thumbnails dos videos
 import thumbnail0 from './assets/imagens/thumbnail-0.png';
 import thumbnail1 from './assets/imagens/thumbnail-1.png';
 import thumbnail2 from './assets/imagens/thumbnail-2.png';
 import thumbnail3 from './assets/imagens/thumbnail-3.jpg';
 import thumbnail4 from './assets/imagens/thumbnail-deleted.jpg'
 
+//Imagens dos processadores
 import processador0 from './assets/imagens/produtos/1-processador.png'
 import processador1 from './assets/imagens/produtos/2-processador.png'
 import processador2 from './assets/imagens/produtos/3-processador.png'
@@ -32,6 +38,7 @@ import processador5 from './assets/imagens/produtos/6-processador.png'
 import processador6 from './assets/imagens/produtos/7-processador.png'
 import processador7 from './assets/imagens/produtos/8-processador.png'
 
+//Imagens das memorias ram
 import memoria0 from './assets/imagens/produtos/1-memoria.png'
 import memoria1 from './assets/imagens/produtos/2-memoria.png'
 import memoria2 from './assets/imagens/produtos/3-memoria.png'
@@ -41,6 +48,7 @@ import memoria5 from './assets/imagens/produtos/6-memoria.png'
 import memoria6 from './assets/imagens/produtos/7-memoria.png'
 import memoria7 from './assets/imagens/produtos/8-memoria.png'
 
+//Imagens das placas de video
 import pvideo0 from './assets/imagens/produtos/1-video.png'
 import pvideo1 from './assets/imagens/produtos/2-video.png'
 import pvideo2 from './assets/imagens/produtos/3-video.png'
@@ -50,6 +58,7 @@ import pvideo5 from './assets/imagens/produtos/6-video.png'
 import pvideo6 from './assets/imagens/produtos/7-video.png'
 import pvideo7 from './assets/imagens/produtos/8-video.png'
 
+//Imagens das placas-mães
 import mae0 from './assets/imagens/produtos/1-mae.png'
 import mae1 from './assets/imagens/produtos/2-mae.png'
 import mae2 from './assets/imagens/produtos/3-mae.png'
@@ -59,6 +68,7 @@ import mae5 from './assets/imagens/produtos/6-mae.png'
 import mae6 from './assets/imagens/produtos/7-mae.png'
 import mae7 from './assets/imagens/produtos/8-mae.png'
 
+//Imagens dos armazenamentos
 import armazem0 from './assets/imagens/produtos/1-armazem.png'
 import armazem1 from './assets/imagens/produtos/2-armazem.png'
 import armazem2 from './assets/imagens/produtos/3-armazem.png'
@@ -68,6 +78,7 @@ import armazem5 from './assets/imagens/produtos/6-armazem.png'
 import armazem6 from './assets/imagens/produtos/7-armazem.png'
 import armazem7 from './assets/imagens/produtos/8-armazem.png'
 
+//Imagens das fontes
 import fonte0 from './assets/imagens/produtos/1-fonte.png'
 import fonte1 from './assets/imagens/produtos/2-fonte.png'
 import fonte2 from './assets/imagens/produtos/3-fonte.png'
@@ -79,11 +90,14 @@ import fonte7 from './assets/imagens/produtos/8-fonte.png'
 
 import produto1 from './assets/imagens/produto1.png';
 
+//Imagens fotos de perfil
 import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
 import imageUnknown from './assets/imagens/perfil-desconhecido.png';
 
+//Video
 import video from './assets/video.mp4'
 
+//Imagens dos templates dos produtos
 import t_processador from './assets/imagens/processador_template.png'
 import t_memoria from './assets/imagens/memoria_template.webp'
 import t_armazem from './assets/imagens/armazem_template.jpeg'
@@ -91,6 +105,7 @@ import t_pvideo from './assets/imagens/pvideo_template.webp'
 import t_fonte from './assets/imagens/fonte_template.webp'
 import t_mae from './assets/imagens/mae_template.png'
 
+//Imagens dos icones dos produtos
 import i_processador from './assets/imagens/processador.png'
 import i_mae from './assets/imagens/placa-mae.png'
 import i_memoria from './assets/imagens/memoria-ram.png'
@@ -98,10 +113,13 @@ import i_pvideo from './assets/imagens/placa-grafica.png'
 import i_armazem from './assets/imagens/ssd.png'
 import i_fonte from './assets/imagens/fonte-de-energia.png'
 
+//Array das imagens de templates dos produtos
 export const templateImagens= [t_processador, t_armazem, t_fonte, t_mae, t_memoria, t_pvideo]
 
+//Variavel do video
 export const videos = video;
 
+//Objeto da conta do usuario
 export const previewUser ={
     usuario: '',
     email: '',
@@ -111,6 +129,7 @@ export const previewUser ={
     descricao: '',
 }
 
+//Objeto da descrição das sessoes:
 const suporteTecnico ={
     nome: 'Suporte Técnico',
     descricao: 'Disponibilizamos diversos videos de suporte técnico para resolução de problemas envolvendo computação',
@@ -132,6 +151,9 @@ const forum ={
     imagem: imageForum,
 };
 
+//OBJETOS DE DADOS DAS SESSÕES:
+
+//Objetos dos videos
 const video0 = {
     video_nome: 'Montando um computador do zero',
     video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
@@ -196,6 +218,7 @@ const video6 = {
     video_view: '',
 }
 
+//Objetos das simulações
 const simulacao0 ={
     simulacao_nome: 'Molde 1',
     simulacao_status: 'vazio',
@@ -237,6 +260,7 @@ const simulacao7 ={
     simulacao_id: '7',
 }
 
+//Objetos das promoções
 const promo0 ={
     promocao_nome: 'ASUS TUF Gaming GeForce® GTX 1660 Ti EVO OC Edition 6GB GDDR6',
     promocao_descricao: 'A PARTIR DE R$2460,00 40%Off',
@@ -253,6 +277,7 @@ const promo2 ={
     promocao_imagem: 'a',
 }
 
+//Objetos dos comentarios
 const comentario0 ={
     forum_nome: 'Kuribuh',
     forum_descricao: 'Eu abro muitos jogos porém quando abro vários PW e a memória atinge 61% de uso e tenro abrir navegador ou ate mais PW"S o Pc trava, e as vezes desinstala sozinho o softwaree da placa devídeo. Alguem sabe como resolver ?',
@@ -269,6 +294,7 @@ const comentario2 ={
     forum_imagem: imageUnknown,
 }
 
+//Array dos objetos de dados das sessões
 export const suporteLista = [video0,video1,video2,video3,video4,video5,video6];
 export const simulacaoLista = [simulacao0,simulacao1,simulacao2,simulacao3,simulacao4,simulacao5,simulacao6,simulacao7];
 export const promocaoLista = [promo0,promo1,promo2];
@@ -276,6 +302,9 @@ export const comentarioLista = [comentario0,comentario1,comentario2];
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
 
+//OBJETOS DE DADOS DOS PRODUTOS:
+
+//Objeto das placas mães
 export const maeObject ={
     image1: mae0, produtoChecked1: '', preco1:'R$350,00 - 650,00', nome1: 'Placa Mãe Asus Prime A320M-K/BR, Chipset A320, AMD AM4, mATX, DDR4',
     image2: mae1, produtoChecked2: '', preco2:'R$300,00 - 550,00', nome2: 'Placa Mãe Gigabyte GA-H170-Gaming 3, DDR4 chipset H170, LGA 1151',
@@ -287,6 +316,7 @@ export const maeObject ={
     image8: mae7, produtoChecked8: '', preco8:'R$3500,00 - 4500,00', nome8: 'Asus Rog Strix Z590-E Gaming WiFi (LGA 1200 DDR4 5333 O.C) Chipset Intel Z590 RGB Wi-Fi',
 }
 
+//Objeto dos processadores
 export const processadoresObject = {
     image1: processador0, produtoChecked1: '', preco1:'R$550,00 - 1250,00', nome1: 'Processador Ryzen 3 2200G 3.5GHz 6MB AM4, AMD, Ryzen 3 2200G', 
     image2: processador1, produtoChecked2: '', preco2:'R$450,00 - 950,00', nome2: 'Processador Intel Core i3-10100 3,6GHz - FCLGA 1200',
@@ -298,6 +328,7 @@ export const processadoresObject = {
     image8: processador7, produtoChecked8: '', preco8:'R$2150,00 - 4250,00', nome8: 'Processador AMD Ryzen 9 7900X3D (AM5/12 Cores/24 Threads/5.6GHz/140MB Cache)',
 }
 
+//Objeto das memorias rams
 export const memoriasObject = {
     image1: memoria0,  produtoChecked1: '', preco1:'R$100,00 - 300,00', nome1: 'Memória Gamer Husky Gaming, 4GB, 2666Mhz',
     image2: memoria1,  produtoChecked2: '', preco2:'R$150,00 - 300,00', nome2: 'Memoria Team Group T-Force Vulcan Pichau, 8GB (1x8GB), DDR4, 3000Mhz, Vermelha',
@@ -308,6 +339,8 @@ export const memoriasObject = {
     image7: memoria6,  produtoChecked7: '', preco7:'R$1300,00 - 1550,00', nome7: 'Memória Ram Gamer 64gb (2x32gb) 3600mhz Cl18 Corsair Rgb Pro - Memória RAM',
     image8: memoria7,  produtoChecked8: '', preco8:'R$1050,00 - 1300,00', nome8: 'Memória Kingston Fury Beast, RGB, 32GB (4x8GB), 3600MHz, DDR4, CL17, Preto',
 }
+
+//Objeto das placas de video
 export const pvideosObject = {
     image1: pvideo0,  produtoChecked1: '', preco1:'R$1000,00 - 1900,00', nome1: 'Placa de video RX 570 4GB Powercolor Red Dragon',
     image2: pvideo1,  produtoChecked2: '', preco2:'R$750,00 - 850,00', nome2: 'Placa de Video Gigabyte GeForce GTX 1650 D6 OC 4GB 128-bit, GV-N1656OC-4GD',
@@ -319,6 +352,7 @@ export const pvideosObject = {
     image8: pvideo7,  produtoChecked8: '', preco8:'R$5700,00 - 6600,00', nome8: 'Placa de Vídeo RTX 4070 Ti Gaming Gigabyte NVIDIA GeForce, 12 GB GDDR6X, DLSS 3, Ray Tracing',
 }
 
+//Objeto dos armazenamentos
 export const armazensObject = {
     image1: armazem0,  produtoChecked1: '', preco1:'R$100,00 - 200,00', nome1: 'Disco Rígido Interno Desktop HDD 500gb ST500DM002 Seagate HD-500GB',
     image2: armazem1,  produtoChecked2: '', preco2:'R$200,00 - 500,00', nome2: 'Hd 1tb Seagate Barracuda Interno 3.5 Sata3',
@@ -330,6 +364,7 @@ export const armazensObject = {
     image8: armazem7,  produtoChecked8: '', preco8:'R$300,00 - 850,00', nome8: 'HD Seagate 2TB BarraCuda, 3.5, SATA - ST2000DM008',
 }
 
+//Objeto das fontes
 export const fontesObject = {
     image1: fonte0,  produtoChecked1: '', preco1:'R$250,00 - 350,00', nome1: 'Fonte Aerocool KCAS, 400W, 80 Plus White, Full Range, PFC Ativo, 64901',
     image2: fonte1,  produtoChecked2: '', preco2:'R$500,00 - 850,00', nome2: 'Fonte Gamer Corsair VS500 500W 80 Plus White c/ Cabo',
@@ -341,6 +376,7 @@ export const fontesObject = {
     image8: fonte7,  produtoChecked8: '', preco8:'R$1400,00 - 1600,00', nome8: 'Fonte 1050w Cooler Master 80 Plus Gold Full Modular - MPE-A501-AFCAG-WO',
 }
 
+//Objeto dos icones de produtos
 export const iconSection = {
     mae: i_mae,
     processador: i_processador,
