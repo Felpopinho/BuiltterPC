@@ -27,9 +27,9 @@ function App() {
       <Menu/>
       <Divider sx={{margin: 3}}/>
       <Suporte />
-      <Divider sx={{margin: 3}}/>
+      <Divider sx={{margin: 3, marginBottom: 10}}/>
       <Simulacao />
-      <Divider sx={{margin: 3}}/>
+      <Divider sx={{margin: 3, marginTop: 10}}/>
       <Promocoes />
       <Divider sx={{margin: 3}}/>
       <Forum />

@@ -30,7 +30,7 @@ export function ProdutosMolde(props){
         let PrecoMax = parseInt(preco.slice(11,16));
         let PrecoMedia = (PrecoMin + PrecoMax) / 2;
         setPMedia(PrecoMedia);
-        {
+    {
             section === 1 ? setVmae(PrecoMedia) :
             section === 2 ? setVpro(PrecoMedia) :
             section === 3 ? setVmem(PrecoMedia) :
@@ -56,16 +56,13 @@ export function ProdutosMolde(props){
     const iVid = [pvideosObject.image1, pvideosObject.image2, pvideosObject.image3, pvideosObject.image4, pvideosObject.image5, pvideosObject.image6, pvideosObject.image7, pvideosObject.image8];
     const iFon = [fontesObject.image1, fontesObject.image2, fontesObject.image3, fontesObject.image4, fontesObject.image5, fontesObject.image6, fontesObject.image7, fontesObject.image8];
 
-    const [pTotal, setPtotal] = useState(0)
-
-    const selectProduct = (nome) =>{
-        section === 1 ? (setNmae(nome), setPmae(precoLista[selected]), setSrcMae(iMae[selected]), setPMediamae(Number(pMedia))):
-        section === 2 ? (setNpro(nome), setPpro(precoLista[selected]), setSrcPro(iPro[selected]), setPMediapro(Number(pMedia))):
-        section === 3 ? (setNmem(nome), setPmem(precoLista[selected]), setSrcMem(iMem[selected]), setPMediamem(Number(pMedia))):
-        section === 4 ? (setNarm(nome), setParm(precoLista[selected]), setSrcArm(iArm[selected]), setPMediaarm(Number(pMedia))):
-        section === 5 ? (setNvid(nome), setPvid(precoLista[selected]), setSrcVid(iVid[selected]), setPMediavid(Number(pMedia))):
-        (setNfon(nome), setPfon(precoLista[selected]), setSrcFon(iFon[selected]), setPMediafon(Number(pMedia)));
-        setPtotal(pMediaMae + pMediaPro + pMediaMem + pMediaArm + pMediaVid + pMediaFon);
+    const selectProduct = () =>{
+        section === 1 ? (setNmae(nomeLista[selected]), setPmae(precoLista[selected]), setSrcMae(iMae[selected])):
+        section === 2 ? (setNpro(nomeLista[selected]), setPpro(precoLista[selected]), setSrcPro(iPro[selected])):
+        section === 3 ? (setNmem(nomeLista[selected]), setPmem(precoLista[selected]), setSrcMem(iMem[selected])):
+        section === 4 ? (setNarm(nomeLista[selected]), setParm(precoLista[selected]), setSrcArm(iArm[selected])):
+        section === 5 ? (setNvid(nomeLista[selected]), setPvid(precoLista[selected]), setSrcVid(iVid[selected])):
+        (setNfon(nomeLista[selected]), setPfon(precoLista[selected]), setSrcFon(iFon[selected]));
     }
 
 
@@ -124,40 +121,40 @@ export function ProdutosMolde(props){
                 </Box>
             </Box>
             <Box>
-                <p>{pTotal}</p>
+                <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>Preço total: {vMae + vPro + vMem + vArm + vVid + vFon}</h1>
             </Box>
         </Box>
-        <Box id='produtosContainer' sx={section === 7 ? {display: "none"} : {display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '40%', alignContent: 'center', justifyItems: 'center'}} onChange={() => {handleProduct(nomeLista[selected], precoLista[selected])}}>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}>         
-                <input type="radio" name="produto" id="Produto1" className="product" onClick={selected = 0} checked={props.updatePselected === '' ? false : console.log()}/>
+        <Box id='produtosContainer' sx={section === 7 ? {display: "none"} : {display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '40%', alignContent: 'center', justifyItems: 'center'}} onChange={() => {handleProduct(nomeLista[selected],precoLista[selected])}}>
+            <div className="produto_input" onClick={selectProduct}>         
+                <input type="radio" name="produto" id="Produto1" className="product" onClick={()=>{selected = 0}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto1"><img src={props.image1}/></label>
             </div>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}>
-                <input type="radio" name="produto" id="Produto2" className="product" onClick={selected = 1} checked={props.updatePselected === '' ? false : console.log()}/>
+            <div className="produto_input" onClick={selectProduct}>
+                <input type="radio" name="produto" id="Produto2" className="product" onClick={()=>{selected = 1}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto2"><img src={props.image2}/></label>
             </div>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}>
-                <input type="radio" name="produto" id="Produto3" className="product" checked={props.updatePselected === '' ? false : console.log()}/>
+            <div className="produto_input" onClick={selectProduct}>
+                <input type="radio" name="produto" id="Produto3" className="product" onClick={()=>{selected = 2}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto3"><img src={props.image3}/></label>
             </div>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}> 
-                <input type="radio" name="produto" id="Produto4" className="product" checked={props.updatePselected === '' ? false : console.log()}/>
+            <div className="produto_input" onClick={selectProduct}> 
+                <input type="radio" name="produto" id="Produto4" className="product" onClick={()=>{selected = 3}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto4"><img src={props.image4}/></label>
             </div>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}>
-                <input type="radio" name="produto" id="Produto5" className="product" checked={props.updatePselected === '' ? false : console.log()}/>
+            <div className="produto_input" onClick={selectProduct}>
+                <input type="radio" name="produto" id="Produto5" className="product" onClick={()=>{selected = 4}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto5"><img src={props.image5}/></label>
             </div>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}>
-                <input type="radio" name="produto" id="Produto6" className="product" checked={props.updatePselected === '' ? false : console.log()}/>
+            <div className="produto_input" onClick={selectProduct}>
+                <input type="radio" name="produto" id="Produto6" className="product" onClick={()=>{selected = 5}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto6"><img src={props.image6}/></label>
             </div>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}>
-                <input type="radio" name="produto" id="Produto7" className="product" checked={props.updatePselected === '' ? false : console.log()}/>
+            <div className="produto_input" onClick={selectProduct}>
+                <input type="radio" name="produto" id="Produto7" className="product" onClick={()=>{selected = 6}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto7"><img src={props.image7}/></label>
             </div>
-            <div className="produto_input" onClick={() => {selectProduct(nomeLista[selected])}}> 
-                <input type="radio" name="produto" id="Produto8" className="product" checked={props.updatePselected === '' ? false : console.log()}/>
+            <div className="produto_input" onClick={selectProduct}> 
+                <input type="radio" name="produto" id="Produto8" className="product" onClick={()=>{selected = 7}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto8"><img src={props.image8}/></label>
             </div>
         </Box>

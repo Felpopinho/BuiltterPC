@@ -56,6 +56,7 @@ export function Molde(props){
     const handleStep = (step) => () => {
         setPassar(step);
         setSection(step+1);
+        setPselected('');
     };    
     const handleComplete = () =>{
         const newCompleted = completed;
@@ -86,7 +87,7 @@ export function Molde(props){
 
     return <Box sx={{cursor: 'pointer'}} >
 
-        <Box sx={{width: '230px', height: '230px', border: 'solid 2px', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}} onClick={() => {handleOpenModal(props.simulacao_nome)}}> 
+        <Box sx={{width: '230px', height: '230px', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: "0 60px 0 60px"}} onClick={() => {handleOpenModal(props.simulacao_nome)}}> 
             <Typography id="sim_desc" variant="h4" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</Typography>
             <Typography textAlign={'center'}>{props.simulacao_status}</Typography>
         </Box>
