@@ -85,9 +85,9 @@ export function Molde(props){
         simulacaoLista[moldeN].simulacao_status = "Completo";
     }
 
-    return <Box sx={{cursor: 'pointer'}} >
+    return <Box>
 
-        <Box sx={{width: '230px', height: '230px', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: "0 60px 0 60px"}} onClick={() => {handleOpenModal(props.simulacao_nome)}}> 
+        <Box sx={{cursor: 'pointer', width: '230px', height: '230px', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: "0 60px 0 60px", backgroundColor: 'var(--fundo)', boxShadow: '0 5px 30px'}} onClick={() => {handleOpenModal(props.simulacao_nome)}}> 
             <Typography id="sim_desc" variant="h4" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</Typography>
             <Typography textAlign={'center'}>{props.simulacao_status}</Typography>
         </Box>

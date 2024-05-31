@@ -160,7 +160,7 @@
 }
 
 .moldeBox{
-    background-color: var(--fundo);
+    background: linear-gradient(0.3turn,var(--ultralightblue), var(--blue));
 }
 .moldeBox::-webkit-scrollbar{
     height: 20px;
@@ -170,7 +170,7 @@
     overflow: hidden;
 }
 .moldeBox::-webkit-scrollbar-thumb{
-    background-color: #131313;
+    background-color: rgb(168, 168, 168);
     border-radius: 15px;
-    border: 3px solid lightgray;
+    border: solid 5px var(--lightgray);
 }
