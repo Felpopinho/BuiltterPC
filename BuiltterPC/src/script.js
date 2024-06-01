@@ -89,6 +89,7 @@ import fonte6 from './assets/imagens/produtos/7-fonte.png'
 import fonte7 from './assets/imagens/produtos/8-fonte.png'
 
 import produto1 from './assets/imagens/produto1.png';
+import produto2 from './assets/imagens/produto2.png';
 
 //Imagens fotos de perfil
 import imageKuribuh from './assets/imagens/perfil-kuribuh.png';
@@ -263,18 +264,147 @@ const simulacao7 ={
 //Objetos das promoções
 const promo0 ={
     promocao_nome: 'ASUS TUF Gaming GeForce® GTX 1660 Ti EVO OC Edition 6GB GDDR6',
-    promocao_descricao: 'A PARTIR DE R$2460,00 40%Off',
+    promocao_descricao: 'R$2460,00 40%Off',
     promocao_imagem: produto1,
+    promocao_id: "pvideo"
 }
 const promo1 ={
-    promocao_nome: 'a',
-    promocao_descricao: 'a',
-    promocao_imagem:'a',
+    promocao_nome: 'Memória PNY 32GB 3200Mhz DDR4 2X16GB XLR8 GAMING',
+    promocao_descricao: 'R$456,25 45%Off',
+    promocao_imagem: memoria5,
+    promocao_id: "memoria"
 }
 const promo2 ={
-    promocao_nome: 'a',
-    promocao_descricao: 'a',
-    promocao_imagem: 'a',
+    promocao_nome: 'Placa Mãe Gigabyte B450M Gaming, Chipset B450, AMD AM4, mATX, DDR4',
+    promocao_descricao: 'R$683,50 35%Off',
+    promocao_imagem: mae2,
+    promocao_id: "mae"
+}
+const promo3 ={
+    promocao_nome: 'Processador Ryzen 3 2200G 3.5GHz 6MB AM4, AMD, Ryzen 3 2200G',
+    promocao_descricao: 'R$720,00 20%Off',
+    promocao_imagem: processador0,
+    promocao_id: "processador"
+}
+const promo4 ={
+    promocao_nome: 'SSD 480 GB Kingston A400, SATA, Leitura: 500MB/s ',
+    promocao_descricao: 'R$179,99 10%Off',
+    promocao_imagem: armazem4,
+    promocao_id: "armazem"
+}
+const promo5 ={
+    promocao_nome: 'Placa de Video Gigabyte Radeon RX 6500 XT Gaming OC, 4GB, GDDR6, 64-Bit',
+    promocao_descricao: 'R$2210,00 15%Off',
+    promocao_imagem: pvideo4,
+    promocao_id: "pvideo"
+}
+const promo6 ={
+    promocao_nome: 'FONTE CORSAIR CV SERIES CV650 80 PLUS BRONZE 650W',
+    promocao_descricao: 'R$549,00 15%Off',
+    promocao_imagem: produto2,
+    promocao_id: "fonte"
+}
+const promo7 ={
+    promocao_nome: "HD Seagate 2TB BarraCuda, 3.5', SATA - ST2000DM008",
+    promocao_descricao: 'R$683,50 35%Off',
+    promocao_imagem: mae2,
+    promocao_id: "armazem"
+}
+const promo8 = {
+    promocao_nome: "Placa Mãe Gigabyte Z390 M GAMING, Chipset Z390, Intel LGA 1151, mATX, DDR4",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "mae"
+}
+const promo9 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "mae"
+}
+const promo10 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "mae"
+}
+const promo11 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "fonte"
+}
+const promo12 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "fonte"
+}
+const promo13 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "fonte"
+}
+const promo14 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "pvideo"
+}
+const promo15 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "pvideo"
+}
+const promo16 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "armazem"
+}
+const promo17 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "armazem"
+}
+const promo18 = {
+    promocao_nome: "A",
+    promocao_descricao: 'R$1.235 35%Off',
+    promocao_imagem: mae5,
+    promocao_id: "memoria"
+}
+const promo19 = {
+    promocao_nome: "A",
+    promocao_descricao: 'A',
+    promocao_imagem: mae5,
+    promocao_id: "memoria"
+}
+const promo20 = {
+    promocao_nome: "A",
+    promocao_descricao: 'A',
+    promocao_imagem: mae5,
+    promocao_id: "memoria"
+}
+const promo21 = {
+    promocao_nome: "A",
+    promocao_descricao: 'A',
+    promocao_imagem: mae5,
+    promocao_id: "processador"
+}
+const promo22 = {
+    promocao_nome: "A",
+    promocao_descricao: 'A',
+    promocao_imagem: mae5,
+    promocao_id: "processador"
+}
+const promo23 = {
+    promocao_nome: "A",
+    promocao_descricao: 'A',
+    promocao_imagem: mae5,
+    promocao_id: "processador"
 }
 
 //Objetos dos comentarios
@@ -297,7 +427,7 @@ const comentario2 ={
 //Array dos objetos de dados das sessões
 export const suporteLista = [video0,video1,video2,video3,video4,video5,video6];
 export const simulacaoLista = [simulacao0,simulacao1,simulacao2,simulacao3,simulacao4,simulacao5,simulacao6,simulacao7];
-export const promocaoLista = [promo0,promo1,promo2];
+export const promocaoLista = [promo0,promo1,promo2,promo3,promo4,promo5,promo6,promo7,promo8,promo9,promo10,promo11,promo12,promo13,promo14,promo15,promo16,promo17,promo18,promo19,promo20,promo21,promo22,promo23];
 export const comentarioLista = [comentario0,comentario1,comentario2];
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
