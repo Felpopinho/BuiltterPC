@@ -1,6 +1,6 @@
 import { Box, Divider, Typography } from "@mui/material";
 import { useState } from "react";
-import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject } from "../script";
+import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject, iMae, iMem, iPro, iVid, iFon, iArm } from "../script";
 
 export function ProdutosMolde(props){
 
@@ -49,20 +49,15 @@ export function ProdutosMolde(props){
     const [nVid, setNvid] = useState(''); const [srcVid, setSrcVid] = useState(''); const [pVid , setPvid] = useState('');
     const [nFon, setNfon] = useState(''); const [srcFon, setSrcFon] = useState(''); const [pFon , setPfon] = useState('');
 
-    const iMae = [maeObject.image1, maeObject.image2, maeObject.image3, maeObject.image4, maeObject.image5, maeObject.image6, maeObject.image7, maeObject.image8];
-    const iPro = [processadoresObject.image1, processadoresObject.image2, processadoresObject.image3, processadoresObject.image4, processadoresObject.image5, processadoresObject.image6, processadoresObject.image7, processadoresObject.image8];
-    const iMem = [memoriasObject.image1, memoriasObject.image2, memoriasObject.image3, memoriasObject.image4, memoriasObject.image5, memoriasObject.image6, memoriasObject.image7, memoriasObject.image8];
-    const iArm = [armazensObject.image1, armazensObject.image2, armazensObject.image3, armazensObject.image4, armazensObject.image5, armazensObject.image6, armazensObject.image7, armazensObject.image8];
-    const iVid = [pvideosObject.image1, pvideosObject.image2, pvideosObject.image3, pvideosObject.image4, pvideosObject.image5, pvideosObject.image6, pvideosObject.image7, pvideosObject.image8];
-    const iFon = [fontesObject.image1, fontesObject.image2, fontesObject.image3, fontesObject.image4, fontesObject.image5, fontesObject.image6, fontesObject.image7, fontesObject.image8];
+    
 
     const selectProduct = () =>{
-        section === 1 ? (setNmae(nomeLista[selected]), setPmae(precoLista[selected]), setSrcMae(iMae[selected])):
-        section === 2 ? (setNpro(nomeLista[selected]), setPpro(precoLista[selected]), setSrcPro(iPro[selected])):
-        section === 3 ? (setNmem(nomeLista[selected]), setPmem(precoLista[selected]), setSrcMem(iMem[selected])):
-        section === 4 ? (setNarm(nomeLista[selected]), setParm(precoLista[selected]), setSrcArm(iArm[selected])):
-        section === 5 ? (setNvid(nomeLista[selected]), setPvid(precoLista[selected]), setSrcVid(iVid[selected])):
-        (setNfon(nomeLista[selected]), setPfon(precoLista[selected]), setSrcFon(iFon[selected]));
+        section === 1 ? (setNmae(nomeLista[selected]), setPmae(precoLista[selected]), setSrcMae(iMae[selected]), props.mae(selected)):
+        section === 2 ? (setNpro(nomeLista[selected]), setPpro(precoLista[selected]), setSrcPro(iPro[selected]), props.processador(selected)):
+        section === 3 ? (setNmem(nomeLista[selected]), setPmem(precoLista[selected]), setSrcMem(iMem[selected]), props.memoria(selected)):
+        section === 4 ? (setNarm(nomeLista[selected]), setParm(precoLista[selected]), setSrcArm(iArm[selected]), props.armazem(selected)):
+        section === 5 ? (setNvid(nomeLista[selected]), setPvid(precoLista[selected]), setSrcVid(iVid[selected]), props.fonte(selected)):
+        (setNfon(nomeLista[selected]), setPfon(precoLista[selected]), setSrcFon(iFon[selected])), props.pvideo(selected);
     }
 
 

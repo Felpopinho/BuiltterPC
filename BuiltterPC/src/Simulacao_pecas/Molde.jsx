@@ -1,20 +1,28 @@
-import { Typography, Box, Modal, Stepper, Step, StepButton, Button } from "@mui/material";
+import { Typography, Box, Modal, Stepper, Step, StepButton, Button, Divider } from "@mui/material";
 import { useState, Fragment } from "react";
 import { ProdutosMolde } from "./CriarMolde";
 import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject, templateImagens, iconSection, simulacaoLista } from "../script";
 
 export function Molde(props){
 
+    const objeto = simulacaoLista.findIndex((element) => element === props.molde);
+
+    const [moldeStatus, setStatus] = useState(simulacaoLista[objeto].simulacao_status);
+
     const [moldeOpen, setMoldeOpen] = useState(false);
+    const [resultOpen, setResultOpen] = useState(false);
 
-    let moldeN
-
-    const handleOpenModal = (name) =>{
+    const handleOpenModal = () =>{
         setMoldeOpen(true);
-        moldeN = name.slice(5,7)
+    }
+    const handleOpenResult = () =>{
+        setResultOpen(true);
     }
     const handleCloseModal = () =>{
         setMoldeOpen(false)
+    }
+    const handleCloseResult = () =>{
+        setResultOpen(false)
     }
 
     let [section, setSection] = useState(0);
@@ -82,14 +90,25 @@ export function Molde(props){
 
     const finalizarModal = () =>{
         setMoldeOpen(false);
-        simulacaoLista[moldeN].simulacao_status = "Completo";
+        setStatus("Completo"); 
+        alert(idMae);
+        alert(idPro);
     }
+
+    const [idMae, setIdMae] = useState(Number);
+    const [idPro, setIdPro] = useState(Number);
+    const [idMem, setIdMem] = useState(Number);
+    const [idArm, setIdArm] = useState(Number);
+    const [idVid, setIdVid] = useState(Number);
+    const [idFon, setIdFon] = useState(Number);
 
     return <Box>
 
-        <Box sx={{cursor: 'pointer', width: '230px', height: '230px', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', margin: "0 60px 0 60px", backgroundColor: 'var(--fundo)', boxShadow: '0 5px 30px'}} onClick={() => {handleOpenModal(props.simulacao_nome)}}> 
+        <Box sx={{cursor: 'pointer', width: '230px', height: '230px', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', 
+        alignItems: 'center', flexDirection: 'column', margin: "0 60px 0 60px", backgroundColor: 'var(--fundo)', boxShadow: '0 5px 30px'}} 
+        onClick={moldeStatus === simulacaoLista[objeto].simulacao_status ? handleOpenModal : handleOpenResult}> 
             <Typography id="sim_desc" variant="h4" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</Typography>
-            <Typography textAlign={'center'}>{props.simulacao_status}</Typography>
+            <Typography textAlign={'center'}>{moldeStatus}</Typography>
         </Box>
 
         <Modal open={moldeOpen} onClose={handleCloseModal}>
@@ -184,7 +203,8 @@ export function Molde(props){
                             <ProdutosMolde sessao={sectionObject.sessao} image1={produto.image1} image2={produto.image2} image3={produto.image3} image4={produto.image4} image5={produto.image5} image6={produto.image6} image7={produto.image7} image8={produto.image8} 
                             nome1={produto.nome1} nome2={produto.nome2} nome3={produto.nome3} nome4={produto.nome4} nome5={produto.nome5} nome6={produto.nome6} nome7={produto.nome7} nome8={produto.nome8}
                             preco1={produto.preco1} preco2={produto.preco2} preco3={produto.preco3} preco4={produto.preco4} preco5={produto.preco5} preco6={produto.preco6} preco7={produto.preco7} preco8={produto.preco8} 
-                            productSelected={updateSelected} updatePselected={productS}/>
+                            productSelected={updateSelected} updatePselected={productS} 
+                            mae={setIdMae} processador={setIdPro} memoria={setIdMem} armazem={setIdArm} fonte={setIdFon} pvideo={setIdVid}/>
                         ))}
                     </Box>
                 </Fragment>
@@ -194,13 +214,79 @@ export function Molde(props){
 
                     <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso()) || (completed[passar] === true) || (productS === '')} onClick={handleComplete}>Completar</Button>
 
-                    <Button variant="outlined" onClick={passar <= totalPasso() - 1 ? acaoProxPasso : finalizarModal} disabled={(passar === totalPasso() - 1 && todosPassosCompletos() === false)} id="proxPassoBtn">
-                        {passar <= totalPasso() - 1 ? 'Proximo' : 'Finalizar'}
+                    {passar <= totalPasso() - 1 ? 
+                    <Button variant="outlined" onClick={acaoProxPasso} disabled={(passar === totalPasso() - 1 && todosPassosCompletos() === false)} id="proxPassoBtn">
+                        Proximo
+                    </Button> :
+                    <Button variant="outlined" onClick={finalizarModal}>
+                        Finalizar
                     </Button>
+                    }  
                 </Box>
             </Box>
             
 
+        </Modal>
+        <Modal open={resultOpen} onClose={handleCloseResult}>
+           <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}}>
+                <Box sx={section === 7 ? {display: "flex"} : {display: "none"}} className="resultadoSimulacao_container">
+                    <Typography variant="h3" fontWeight={700} sx={{display: "flex", justifyContent: "center", marginBottom: "15px"}}>
+                        Produtos selecionados
+                    </Typography>
+                    <Box sx={{height: "30vh", overflowY: "scroll"}}>
+                        <Box className="sel_prod_container">
+                            <img/>
+                            <div>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </Box>
+                        <Divider sx={{margin: "10px 0 10px 0"}}/>
+                        <Box className="sel_prod_container">
+                            <img />
+                            <div>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </Box>
+                        <Divider sx={{margin: "10px 0 10px 0"}}/>
+                        <Box className="sel_prod_container">
+                            <img />
+                            <div>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </Box>
+                        <Divider sx={{margin: "10px 0 10px 0"}}/>
+                        <Box className="sel_prod_container">
+                            <img />
+                            <div>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </Box>
+                        <Divider sx={{margin: "10px 0 10px 0"}}/>
+                        <Box className="sel_prod_container">
+                            <img />
+                            <div>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </Box>
+                        <Divider sx={{margin: "10px 0 10px 0"}}/>
+                        <Box className="sel_prod_container">
+                            <img />
+                            <div>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </Box>
+                    </Box>
+                <Box>
+                    <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}></h1>
+                </Box>
+                </Box>
+           </Box>
         </Modal>
 
     </Box>

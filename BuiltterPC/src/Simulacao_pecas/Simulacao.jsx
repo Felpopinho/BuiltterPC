@@ -14,7 +14,7 @@ export function Simulacao(){
         <Divider sx={{margin: 3, backgroundColor: "gray"}} variant="middle"/>
         <Box className="moldeBox" sx={{display: "flex", alignItems: "center", height: "40vh", width: "75%", overflowX: 'scroll', alignSelf:"center", borderRadius: "10px"}}>
             <Box sx={{display: 'flex', width: "500px"}}>
-                {simulacaoLista.map(molde => (<Molde simulacao_nome={molde.simulacao_nome} simulacao_status={molde.simulacao_status} simulacao_id={molde.simulacao_id}/>))}
+                {simulacaoLista.map(molde => (<Molde simulacao_nome={molde.simulacao_nome} molde={molde} simulacao_status={molde.simulacao_status} simulacao_id={molde.simulacao_id}/>))}
             </Box>
         </Box>
     </div>

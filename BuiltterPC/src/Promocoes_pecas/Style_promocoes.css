@@ -1,22 +1,35 @@
+:root{
+    --black: #131313;
+    --darkgray: #292929;
+    --gray: #494949;
+    --lightgray: #707070;
+    --ultralightgray: #a3a3a3;
+    --blue: #0030cc;
+    --lightblue: #3053c7;
+    --ultralightblue: #627ac9;
+    --fundo: #f7fbff;
+}
+
 .promocoes_container{
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .produto{
-    width: 250px;
-    height: 300px;
+    width: 270px;
+    height: 310px;
     background-color: white;
-    box-shadow: 0 5px 20px;
+    box-shadow: 0 8px 18px rgb(80, 80, 80);
     border-radius: 10px;
     margin: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 15px;
 }
 .produto img{
     width: 170px;
@@ -34,11 +47,42 @@
     width: 100%;
     height: 57px;
 }
-.productPrice{
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+.preco{
     width: 100%;
-    height: 50px;
+    text-decoration:line-through ;
+    color: gray;
+}
+.productPrice{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+}
+.productPrice h2{
+    color: red;
+} .productPrice p{
+    font-size: 1.1rem;
+    color: var(--blue);
+}
+.catalogoContainer{
+    width: 70%;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1450px) and (min-width: 0px){
+    .catalogoContainer{
+        width: 100%;
+    }
+    .produto{
+        margin: 12px;
+    }
+}
+@media screen and (max-width: 700px) and (min-width: 0px){
+    .produto{
+        width: 240px;
+        margin: 8px;
+    }
 }

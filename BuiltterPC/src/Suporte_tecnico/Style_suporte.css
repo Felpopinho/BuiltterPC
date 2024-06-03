@@ -114,6 +114,9 @@
     display: grid;
     grid-template-columns: 40% 60%;
 }
+.videos_container hr:last-of-type{
+    display: none;
+}
 .divisor_video{
     grid-column: 1/3;
 }
