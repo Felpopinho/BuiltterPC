@@ -79,7 +79,7 @@ export function Suporte(){
                 <Typography variant='h3' sx={{fontWeight: '600', width:'90%'}}>Historico</Typography>
                 <Divider sx={{margin: 3, width:'90%'}}/>
                 <div className='historico_container'>
-                    {suporteLista.map(video => video.video_view === 'view' ? (<VideoHistorico video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>) : (console.log('a')))}
+                    {suporteLista.map(video => video.video_view === 'view' ? (<VideoHistorico video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>) : (console.log()))}
                 </div>
             </Box>
         </Modal>

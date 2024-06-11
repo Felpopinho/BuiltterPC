@@ -3,7 +3,7 @@ import { Button, Modal, Box, Typography, Stepper, Step, StepButton} from "@mui/m
 import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta"; 
 import { PreviewPerfil } from "./Preview-Perfil";
 
-export function CriarLogarConta(){
+export function CriarLogarConta(props){
 
 
   const [abrirCC, setAbrirCC] = useState(false)
@@ -84,8 +84,8 @@ export function CriarLogarConta(){
               <div className="previewPerfil_container">
                 {arrPreview.map(inputs =>(<PreviewPerfil perfil={inputs.perfil} usuario={inputs.usuario} email={inputs.email} titulo={inputs.titulo} descricao={inputs.descricao}/>))}
               </div>
-              <Button>
-                <a href="">visitar perfil</a>
+              <Button onClick={() => {props.abrirConta(true)}}>
+                Visitar perfil
               </Button>
             </div> ) : ativarPasso === 0 ? (
             <Fragment>

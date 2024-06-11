@@ -41,7 +41,7 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     height: 15vh;
     background-color: var(--black);
@@ -256,9 +256,10 @@ a{
     font-weight: 600;
     margin-bottom: 2px;
 } .previewStatus p{
-    width: 90%;
+    width: 85%;
     overflow-y: scroll;
     font-size: 0.9rem;
+    word-wrap: break-word;
 }
 
 .after_esquerdo h2{

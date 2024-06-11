@@ -124,14 +124,11 @@ export function PassoDois(props){
 
 export function PassoTres(props){
 
-  const [termos, setTermos] = useState(false)
-
-  const acaoMudar = () => {
-      if (termos === true){
-        props.termosPrenchido(true);
-      } else{
-        props.termosPrenchido(false)
-      }
+  const setTermosTrue = () =>{
+    props.termosPrenchido(true);
+  } 
+  const setTermosFalse = () =>{
+    props.termosPrenchido(false);
   }
 
   return <div className="passotres_container">
@@ -142,13 +139,13 @@ export function PassoTres(props){
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quis dicta quos praesentium atque sequi vel voluptas ut aperiam tempore rem aspernatur, delectus excepturi dolorem corrupti corporis numquam voluptate fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, veniam. Nostrum debitis expedita aut recusandae aperiam velit ut illum tempora illo. Odio porro reprehenderit id dignissimos, suscipit at nemo praesentium! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem similique sint quae modi tempore obcaecati temporibus necessitatibus corrupti, provident ipsum ab officiis laboriosam saepe optio tempora maiores nam illum vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi aliquam expedita nihil aspernatur accusantium esse praesentium cum maiores ex illo earum obcaecati sunt illum, quas quam accusamus hic inventore totam.</p>
       </div>
       <div className="escolha_termos">
-        <div onClick={acaoMudar}>
-          <input type="radio" name="opcao-termos" id="negar-termos" onClick={() => {setTermos(true)}}></input>
+        <div onClick={setTermosFalse}>
+          <input type="radio" name="opcao-termos" id="negar-termos"></input>
           <label htmlFor="negar-termos">Discordo dos termos</label>
         </div>
 
-        <div onClick={acaoMudar}>
-          <input type="radio" name="opcao-termos" id="aceitar-termos" onClick={() => {setTermos(false)}}></input>
+        <div onClick={setTermosTrue}>
+          <input type="radio" name="opcao-termos" id="aceitar-termos"></input>
           <label htmlFor="aceitar-termos">Eu li, e concordo com os termos</label>
         </div>
       </div>

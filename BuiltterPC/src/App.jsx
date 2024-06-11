@@ -15,6 +15,9 @@ import { Promocoes } from './Promocoes_pecas/Promocoes.jsx';
 import './Simulacao_pecas/Style_simulacao.css'
 import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
+import { Conta } from './Conta.jsx';
+import { useState } from 'react';
+
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -23,8 +26,10 @@ export const darkTheme = createTheme({
 
 function App() {
 
+  const [modalConta, setModalConta] = useState(false)
+
   return <>
-      <Menu/>
+      <Menu abrirConta={setModalConta}/>
       <Divider sx={{margin: 3}}/>
       <Suporte />
       <Divider sx={{margin: 3, marginBottom: 10}}/>
@@ -33,6 +38,7 @@ function App() {
       <Promocoes />
       <Divider sx={{margin: 3}}/>
       <Forum />
+      {modalConta === true ? <Conta fecharModal={setModalConta}/> : console.log}
   </>
 
 };
