@@ -1,7 +1,7 @@
 import { Modal, Box, Button } from "@mui/material";
 import { useState } from "react";
 import { PreviewPerfil } from "./Menu/Preview-Perfil";
-import { previewUser } from "./script";
+import { perfilDesconhecido, previewUser } from "./script";
 
 export function Conta(props){
 
@@ -23,7 +23,7 @@ export function Conta(props){
             display: "grid", gridTemplateColumns: "30% 70%", gridTemplateRows: "30vh 30vh", placeItems: "center"
         }}>
             <div style={{width: "200px",height: "200px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "200px", overflow: "hidden", background: "white"}} >
-                <img src={previewUser.perfil === "" ? "/src/assets/imagens/perfil-desconhecido.png" : previewUser.perfil} style={{objectFit: "cover"}} width={"200px"}/>
+                <img src={previewUser.perfil === "" ? perfilDesconhecido : previewUser.perfil} style={{objectFit: "cover"}} width={"200px"}/>
             </div>
             <div style={{gridColumn: "2/3", gridRow: "1/3", width: "90%", height: "90%"}}>
                 <h1 style={{fontSize: "2.3rem", margin: "0vh 0 3vh 0"}}>Titulo: {previewUser.titulo}</h1>

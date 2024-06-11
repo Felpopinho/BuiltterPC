@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import logo from '../assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
-import { previewUser, sessoesLista} from '../script.js';
+import { previewUser, sessoesLista, perfilDesconhecido} from '../script.js';
 import { CriarLogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
 import { Button, Divider } from '@mui/material';
@@ -24,7 +24,7 @@ export function Menu(props){
                 <h1>BuillterPC</h1>
             </div>
             <div style={{position: "absolute", left: "90%", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => {props.abrirConta(true)}}>
-                <img src={previewUser.perfil === "" ? "/src/assets/imagens/perfil-desconhecido.png" : previewUser.perfil} width={"80px"} style={{objectFit: "cover"}}/>
+                <img src={previewUser.perfil === "" ? perfilDesconhecido : previewUser.perfil} width={"80px"} style={{objectFit: "cover"}}/>
             </div>
         </div>
 

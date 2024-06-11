@@ -114,6 +114,9 @@ import i_pvideo from './assets/imagens/placa-grafica.png'
 import i_armazem from './assets/imagens/ssd.png'
 import i_fonte from './assets/imagens/fonte-de-energia.png'
 
+//imagem perfil desconhecido em uma const
+export  const perfilDesconhecido = imageUnknown
+
 //Array das imagens de templates dos produtos
 export const templateImagens= [t_processador, t_armazem, t_fonte, t_mae, t_memoria, t_pvideo]
 
