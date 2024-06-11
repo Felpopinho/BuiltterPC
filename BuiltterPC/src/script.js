@@ -326,7 +326,7 @@ const promo7 ={
     promocao_nome: "HD Seagate 2TB BarraCuda, 3.5', SATA - ST2000DM008",
     promocao_porcentagem: '35%Off',
     promocao_oferta: 'R$683,50',
-    promocao_imagem: mae2,
+    promocao_imagem: armazem7,
     promocao_id: "armazem"
 }
 const promo8 = {
