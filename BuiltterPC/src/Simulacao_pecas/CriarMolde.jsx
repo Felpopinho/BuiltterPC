@@ -52,12 +52,12 @@ export function ProdutosMolde(props){
     
 
     const selectProduct = () =>{
-        section === 1 ? (setNmae(nomeLista[selected]), setPmae(precoLista[selected]), setSrcMae(iMae[selected]), props.mae(selected)):
-        section === 2 ? (setNpro(nomeLista[selected]), setPpro(precoLista[selected]), setSrcPro(iPro[selected]), props.processador(selected)):
-        section === 3 ? (setNmem(nomeLista[selected]), setPmem(precoLista[selected]), setSrcMem(iMem[selected]), props.memoria(selected)):
-        section === 4 ? (setNarm(nomeLista[selected]), setParm(precoLista[selected]), setSrcArm(iArm[selected]), props.armazem(selected)):
-        section === 5 ? (setNvid(nomeLista[selected]), setPvid(precoLista[selected]), setSrcVid(iVid[selected]), props.fonte(selected)):
-        (setNfon(nomeLista[selected]), setPfon(precoLista[selected]), setSrcFon(iFon[selected])), props.pvideo(selected);
+        section === 1 ? (setNmae(nomeLista[selected]), setPmae(precoLista[selected]), setSrcMae(iMae[selected]), props.mae([iMae[selected], nomeLista[selected], precoLista[selected]])):
+        section === 2 ? (setNpro(nomeLista[selected]), setPpro(precoLista[selected]), setSrcPro(iPro[selected]), props.processador([iPro[selected], nomeLista[selected], precoLista[selected]])):
+        section === 3 ? (setNmem(nomeLista[selected]), setPmem(precoLista[selected]), setSrcMem(iMem[selected]), props.memoria([iMem[selected], nomeLista[selected], precoLista[selected]])):
+        section === 4 ? (setNarm(nomeLista[selected]), setParm(precoLista[selected]), setSrcArm(iArm[selected]), props.armazem([iArm[selected], nomeLista[selected], precoLista[selected]])):
+        section === 5 ? (setNvid(nomeLista[selected]), setPvid(precoLista[selected]), setSrcVid(iVid[selected]), props.pvideo([iVid[selected], nomeLista[selected], precoLista[selected]])):
+        (setNfon(nomeLista[selected]), setPfon(precoLista[selected]), setSrcFon(iFon[selected])), props.fonte([iFon[selected], nomeLista[selected], precoLista[selected]]);
     }
 
 
