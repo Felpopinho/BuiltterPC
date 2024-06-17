@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 
-app.get("/src", (_, res) => {
+app.get("/", (_, res) => {
     const q = 'SELECT * FROM usuarios';
 
     db.query(q, (err, data) =>{
