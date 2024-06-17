@@ -125,6 +125,7 @@ export const videos = video;
 
 //Objeto da conta do usuario
 export const previewUser ={
+    idUser: '',
     usuario: '',
     email: '',
     perfil: '',

@@ -1,6 +1,3 @@
-import { sessoesLista } from "../script";
-import { tituloSobre, descSobre, imageSobre } from "../script";
-
 export function ItensSobre(props){
     return <div className="section_content">
 

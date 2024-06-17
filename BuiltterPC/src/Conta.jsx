@@ -1,7 +1,8 @@
 import { Modal, Box, Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PreviewPerfil } from "./Menu/Preview-Perfil";
 import { perfilDesconhecido, previewUser } from "./script";
+import axios from "axios";
 
 export function Conta(props){
 
@@ -12,8 +13,29 @@ export function Conta(props){
         props.fecharModal(false)
     }
 
+    const sairConta = () =>{
+        previewUser.usuario = '';
+        previewUser.email = '';
+        previewUser.senha = '';
+        previewUser.perfil = '';
+        previewUser.titulo = '';
+        previewUser.descricao = '';
+        setModalOpen(false)
+        props.fecharModal(false)
+    }
+    const deletarConta = async () =>{
+        previewUser.usuario = '';
+        previewUser.email = '';
+        previewUser.senha = '';
+        previewUser.perfil = '';
+        previewUser.titulo = '';
+        previewUser.descricao = '';
+        setModalOpen(false)
+        props.fecharModal(false)
+    }
+
     return <Modal open={modalOpen} onClose={modalClose} aria-labelledby="modal-criarconta">
-        {previewUser.usuario === "" ?
+        {previewUser.usuario === "" || previewUser.email === "" || previewUser.titulo === "" || previewUser.descricao === "" ?
         <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px', width: "20%", height: "20vh",
             display: "flex", alignItems: "center",  justifyContent: "space-evenly"
         }}>
@@ -23,15 +45,22 @@ export function Conta(props){
             display: "grid", gridTemplateColumns: "30% 70%", gridTemplateRows: "30vh 30vh", placeItems: "center"
         }}>
             <div style={{width: "200px",height: "200px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "200px", overflow: "hidden", background: "white"}} >
-                <img src={previewUser.perfil === "" ? perfilDesconhecido : previewUser.perfil} style={{objectFit: "cover"}} width={"200px"}/>
+                <img src={previewUser.perfil} style={{objectFit: "cover"}} width={"200px"}/>
             </div>
-            <div style={{gridColumn: "2/3", gridRow: "1/3", width: "90%", height: "90%"}}>
+            <div style={{gridColumn: "2/3", gridRow: "1/3", width: "90%", height: "90%", justifySelf: "flex-end"}}>
                 <h1 style={{fontSize: "2.3rem", margin: "0vh 0 3vh 0"}}>Titulo: {previewUser.titulo}</h1>
-                <p style={{fontSize: "1.5rem", wordWrap: "break-word"}}>{previewUser.descricao}</p>
+                <div style={{width: "100%", height: "80%", backgroundColor: "var(--darkgray)", padding: "20px", borderRadius: "20px"}}>
+                    <p style={{fontSize: "1rem", color: "gray"}}>Sobre mim</p>
+                    <p style={{fontSize: "1.5rem", wordWrap: "break-word", color: "white"}}>{previewUser.descricao}</p>
+                </div>
             </div>
             <div style={{width: "90%", height: "90%", display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <h1 style={{fontSize: "2.5rem", margin: "0vh 0 3vh 0"}}>{previewUser.usuario}</h1>
-                <p>{previewUser.email}</p>
+                <p style={{margin: "0vh 0 3vh 0"}}>{previewUser.email}</p>
+                <div>
+                    <Button onClick={sairConta}>Log out</Button>
+                    <Button onClick={deletarConta}>Deletar conta</Button>
+                </div>
             </div>
         </Box>
         }

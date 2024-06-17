@@ -16,7 +16,9 @@ import './Simulacao_pecas/Style_simulacao.css'
 import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
 import { Conta } from './Conta.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import axios from 'axios';
 
 export const darkTheme = createTheme({
   palette: {
@@ -24,12 +26,31 @@ export const darkTheme = createTheme({
   },
 });
 
+const baseURL = "http://localhost:3000/src"
+
 function App() {
+
+  const [users, setUsers] = useState([]);
+  const [onEdit, setOnEdit] = useState(null);
+
+  const getUsers = async () =>{
+    try {
+      const res = await axios.get(baseURL);
+      setUsers(res.data);
+    } catch (error) {
+      console.log(error);
+    };
+  }
+
+  useEffect(() =>{
+    getUsers();
+  }, [setUsers]);
+
 
   const [modalConta, setModalConta] = useState(false)
 
   return <>
-      <Menu abrirConta={setModalConta}/>
+      <Menu abrirConta={setModalConta} getUsers={getUsers} users={users.length}/>
       <Divider sx={{margin: 3}}/>
       <Suporte />
       <Divider sx={{margin: 3, marginBottom: 10}}/>
@@ -38,7 +59,7 @@ function App() {
       <Promocoes />
       <Divider sx={{margin: 3}}/>
       <Forum />
-      {modalConta === true ? <Conta fecharModal={setModalConta}/> : console.log}
+      {modalConta === true ? <Conta fecharModal={setModalConta} users={users}/> : console.log}
   </>
 
 };

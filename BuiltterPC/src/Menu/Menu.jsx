@@ -37,13 +37,16 @@ export function Menu(props){
                     <p>diversas funcionalidades disponiveis para facilitar suas experiências com hardware!</p>
 
                     <div className="btn_accountainer">
-                        <CriarLogarConta abrirConta={props.abrirConta}/>
+                        <CriarLogarConta abrirConta={props.abrirConta} getUsers={props.getUsers} user={props.users}/>
                     </div>
                 </div>
 
                 <div className='after_esquerdo'>
                     <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                        <h2>Já está logado? Navegue por ai</h2>
+                        <div style={{display: "flex"}}>
+                            <h2>Já está logado?&nbsp;</h2>
+                            <h2 className='naveguePorAi'>Navegue por ai</h2>
+                        </div>
                         <div style={{backgroundColor: "#292929", padding: "3px", borderRadius: "5px"}}>
                             <p style={{color: "white", fontWeight: "600"}}>novos</p>
                         </div>
@@ -58,7 +61,7 @@ export function Menu(props){
 
                             <div className='link_nav_container'>
                                 <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}}>
-                                    <a href={linkSessao[sessaoSelecionada]}>Selecionar sessão</a>
+                                    <a href={linkSessao[sessaoSelecionada]}>Selecionar</a>
                                 </Button>
                             </div>
                         </div>

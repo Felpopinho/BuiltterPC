@@ -59,19 +59,19 @@ export function PassoUm(props) {
     return <>
       <div className="criarConta_container" onKeyUp={verificarInput}>
         <div className="inputCriarConta">
-          <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={{width: '100%'}} onChange={mudarName}></Input>
+          <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={{width: '100%'}} onChange={mudarName} name="nome"></Input>
         </div>
         <div className="inputCriarConta">  
-          <Input id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={{width: '100%'}} onChange={mudarEmail}></Input>
+          <Input id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={{width: '100%'}} onChange={mudarEmail} name="email"></Input>
         </div>
         <div className="inputCriarConta">
-          <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={{width: '100%'}} onChange={mudarSenha}></Input>
+          <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={{width: '100%'}} onChange={mudarSenha} name="senha"></Input>
           <p style={{fontSize: '0.9rem', padding: '3px 0px 3px 0px'}}>A senha deve conter 5 caracteres, exceto espaço</p>
         </div>
         <div className="fotoperfil_container">
           <Button component="label" variant="contained" sx={{width: '100%'}}>
             Foto de perfil
-            <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil}/>
+            <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil} name="perfil"/>
           </Button>
         </div>
       </div>
@@ -107,7 +107,7 @@ export function PassoDois(props){
       <h2>Deixe seu perfil completo!</h2>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Titulo</InputLabel>
-        <Select label="Titulo" value={titulo} onChange={mudarSelecao} labelId="demo-simple-select-label" id="SelectTitulo">
+        <Select label="Titulo" value={titulo} onChange={mudarSelecao} labelId="demo-simple-select-label" id="SelectTitulo" name="titulo">
           <MenuItem value={'Programador'}>Programador</MenuItem>
           <MenuItem value={'Técnico de informática'}>Técnico de informática</MenuItem>
           <MenuItem value={'Leigo'}>Leigo</MenuItem>
@@ -117,7 +117,7 @@ export function PassoDois(props){
         </Select>
       </FormControl>
 
-      <TextField label="Descrição" rows={4} multiline fullWidth onChange={mudarDesc}></TextField>
+      <TextField label="Descrição" rows={4} multiline fullWidth onChange={mudarDesc} name="descricao"></TextField>
     </div>
   </div>
 }
