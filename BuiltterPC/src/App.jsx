@@ -26,7 +26,7 @@ export const darkTheme = createTheme({
   },
 });
 
-const baseURL = "https://builtterpc.vercel.app/src"
+const baseURL = "https://builtterpc.vercel.app"
 
 function App() {
 

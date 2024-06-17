@@ -28,7 +28,7 @@ app.post("/log", (req, res) =>{
     })
 })
 
-app.post("/src", (req, res) => {
+app.post("/", (req, res) => {
     const q = "INSERT INTO usuarios (`nome`, `email`, `senha`, `perfil`, `titulo`, `descricao`) VALUES(?)";
 
     const values = [
@@ -47,7 +47,7 @@ app.post("/src", (req, res) => {
     });
 });
 
-app.put("/src", (req, res) =>{
+app.put("/", (req, res) =>{
     const q = "UPTADE usuarios SET `nome` = ?, `email` = ?, `senha` = ?, `perfil` = ?, `titulo` = ?, `descricao` = ? WHERE `id` = ?";
 
     const values = [
@@ -66,7 +66,7 @@ app.put("/src", (req, res) =>{
     });
 });
 
-app.delete("/src", (req, res) =>{
+app.delete("/", (req, res) =>{
     const q = "DELETE FROM usuarios WHERE `id` = ?";
 
     db.query(q, [req.body.id], (err) =>{
