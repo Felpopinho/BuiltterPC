@@ -18,7 +18,7 @@ app.get("/", (_, res) => {
         return res.status(200).json(data)
     });
 });
-app.post("/log", (req, res) =>{
+app.post("/", (req, res) =>{
     const q = "SELECT * FROM usuarios WHERE `email` = ? AND `senha` = ?"
 
     db.query(q, [req.body.email, req.body.senha], (err, data) =>{

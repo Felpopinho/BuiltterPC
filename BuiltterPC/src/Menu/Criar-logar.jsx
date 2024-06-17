@@ -89,7 +89,7 @@ export function CriarLogarConta(props){
 
     try{
 
-      const res = await axios.post("https://builtterpc.vercel.app/log",{
+      const res = await axios.post("https://builtterpc.vercel.app",{
         email: user.email.value,
         senha: user.senha.value
       })
