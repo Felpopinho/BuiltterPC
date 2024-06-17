@@ -65,7 +65,7 @@ export function CriarLogarConta(props){
 
   const submitUser = async () => {
     try{
-      const res = await axios.post("http://localhost:3000/src", {
+      const res = await axios.post("https://builtterpc.vercel.app/src", {
         nome: previewUser.usuario,
         email: previewUser.email,
         senha: previewUser.senha,
@@ -89,7 +89,7 @@ export function CriarLogarConta(props){
 
     try{
 
-      const res = await axios.post("http://localhost:3000/log",{
+      const res = await axios.post("https://builtterpc.vercel.app/log",{
         email: user.email.value,
         senha: user.senha.value
       })
