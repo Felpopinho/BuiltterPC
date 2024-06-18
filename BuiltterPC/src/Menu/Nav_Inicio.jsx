@@ -31,11 +31,11 @@ export function NavDisplay(props){
         {props.selectedSection === 0 ?
             <div id="suporteDisplay">
                 <div>
-                    <img src={suporteLista[0].video_imagem} style={{width: "300px", placeSelf: "center"}}/>
-                </div>
-                <div>
                     <h2 style={{textAlign: "left", textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap", width: "95%"}}>{suporteLista[0].video_nome}</h2>
                     <p className="suporteDescVid">{suporteLista[0].video_descricao}</p>
+                </div>
+                <div className="vidImg">
+                    <img src={suporteLista[0].video_imagem}/>
                 </div>
             </div> :
         props.selectedSection === 1 ?

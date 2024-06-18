@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import { previewUser } from "../script";
+import axios from "axios";
+import { baseURL } from "../App";
 export const arrPreview = [previewUser];
 
 export function PassoUm(props) {
@@ -35,7 +37,7 @@ export function PassoUm(props) {
 
     const [valorPerfil, setValorPerfil] = useState('')
     const mudarPerfil = (event) =>{
-      setValorPerfil(URL.createObjectURL(event.target.files[0]));
+      setValorPerfil(event.target.files[0]);
     };
 
     previewUser.usuario = valorName;
@@ -57,24 +59,26 @@ export function PassoUm(props) {
     }
 
     return <>
+    <form action="">
       <div className="criarConta_container" onKeyUp={verificarInput}>
         <div className="inputCriarConta">
-          <Input id="UserName" placeholder="Nome" required variant="standard" type="text" sx={{width: '100%'}} onChange={mudarName} name="nome"></Input>
+          <Input autoComplete="off" id="UserName" placeholder="Nome" required variant="standard" type="text" sx={{width: '100%'}} onChange={mudarName} name="nome"></Input>
         </div>
         <div className="inputCriarConta">  
-          <Input id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={{width: '100%'}} onChange={mudarEmail} name="email"></Input>
+          <Input autoComplete="off" id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={{width: '100%'}} onChange={mudarEmail} name="email"></Input>
         </div>
         <div className="inputCriarConta">
-          <Input id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={{width: '100%'}} onChange={mudarSenha} name="senha"></Input>
+          <Input autoComplete="off" id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={{width: '100%'}} onChange={mudarSenha} name="senha"></Input>
           <p style={{fontSize: '0.9rem', padding: '3px 0px 3px 0px'}}>A senha deve conter 5 caracteres, exceto espaço</p>
         </div>
         <div className="fotoperfil_container">
           <Button component="label" variant="contained" sx={{width: '100%'}}>
-            Foto de perfil
-            <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil} name="perfil"/>
+              Foto de perfil
+              <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil} name="perfil" />
           </Button>
         </div>
       </div>
+    </form>
     </>
 }
 

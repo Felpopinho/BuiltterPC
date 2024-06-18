@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { PreviewPerfil } from "./Menu/Preview-Perfil";
 import { perfilDesconhecido, previewUser } from "./script";
 import axios from "axios";
+import { baseURL } from "./App";
 
 export function Conta(props){
 
@@ -14,24 +15,26 @@ export function Conta(props){
     }
 
     const sairConta = () =>{
+        previewUser.idUser = ''
         previewUser.usuario = '';
         previewUser.email = '';
         previewUser.senha = '';
         previewUser.perfil = '';
         previewUser.titulo = '';
         previewUser.descricao = '';
+        props.setLogado(false)
         setModalOpen(false)
         props.fecharModal(false)
     }
     const deletarConta = async () =>{
-        previewUser.usuario = '';
-        previewUser.email = '';
-        previewUser.senha = '';
-        previewUser.perfil = '';
-        previewUser.titulo = '';
-        previewUser.descricao = '';
-        setModalOpen(false)
-        props.fecharModal(false)
+        try{
+            const res = await axios.post(baseURL+"/del", {
+                id: previewUser.idUser
+            })
+        }catch(error){
+            console.log(error)
+        }
+        sairConta()
     }
 
     return <Modal open={modalOpen} onClose={modalClose} aria-labelledby="modal-criarconta">

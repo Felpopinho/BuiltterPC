@@ -37,7 +37,7 @@ export function Menu(props){
                     <p>diversas funcionalidades disponiveis para facilitar suas experiências com hardware!</p>
 
                     <div className="btn_accountainer">
-                        <CriarLogarConta abrirConta={props.abrirConta} getUsers={props.getUsers} user={props.users}/>
+                        <CriarLogarConta abrirConta={props.abrirConta} getUsers={props.getUsers} user={props.users} logado={props.logado} setLogado={props.setLogado}/>
                     </div>
                 </div>
 

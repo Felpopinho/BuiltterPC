@@ -2,14 +2,15 @@ import express from "express";
 import ViteExpress from "vite-express";
 import cors from 'cors';
 import { db } from "./api/db.js";
+import fileUpload from "express-fileupload";
 
 
 const app = express();
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
-app.get("/", (_, res) => {
+app.get("/src", (_, res) => {
     const q = 'SELECT * FROM usuarios';
 
     db.query(q, (err, data) =>{
@@ -18,7 +19,7 @@ app.get("/", (_, res) => {
         return res.status(200).json(data)
     });
 });
-app.post("/", (req, res) =>{
+app.post("/log", (req, res) =>{
     const q = "SELECT * FROM usuarios WHERE `email` = ? AND `senha` = ?"
 
     db.query(q, [req.body.email, req.body.senha], (err, data) =>{
@@ -28,7 +29,7 @@ app.post("/", (req, res) =>{
     })
 })
 
-app.post("/", (req, res) => {
+app.post("/src", (req, res) => {
     const q = "INSERT INTO usuarios (`nome`, `email`, `senha`, `perfil`, `titulo`, `descricao`) VALUES(?)";
 
     const values = [
@@ -47,7 +48,7 @@ app.post("/", (req, res) => {
     });
 });
 
-app.put("/", (req, res) =>{
+app.put("/src", (req, res) =>{
     const q = "UPTADE usuarios SET `nome` = ?, `email` = ?, `senha` = ?, `perfil` = ?, `titulo` = ?, `descricao` = ? WHERE `id` = ?";
 
     const values = [
@@ -66,13 +67,13 @@ app.put("/", (req, res) =>{
     });
 });
 
-app.delete("/", (req, res) =>{
+app.post("/del", (req, res) =>{
     const q = "DELETE FROM usuarios WHERE `id` = ?";
 
     db.query(q, [req.body.id], (err) =>{
         if (err) return res.json(err);
 
-        return res.status(200).json("usuario deletado com sucesso.")
+        return res.status(200).json(req.body.id)
     });
 });
 

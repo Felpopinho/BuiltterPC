@@ -26,16 +26,17 @@ export const darkTheme = createTheme({
   },
 });
 
-const baseURL = "https://builtterpc.vercel.app"
+export const baseURL = "http://localhost:3000"
 
 function App() {
 
   const [users, setUsers] = useState([]);
+  const [logado, setLogado] = useState(false)
   const [onEdit, setOnEdit] = useState(null);
 
   const getUsers = async () =>{
     try {
-      const res = await axios.get(baseURL);
+      const res = await axios.get(baseURL+"/src");
       setUsers(res.data);
     } catch (error) {
       console.log(error);
@@ -50,7 +51,7 @@ function App() {
   const [modalConta, setModalConta] = useState(false)
 
   return <>
-      <Menu abrirConta={setModalConta} getUsers={getUsers} users={users.length}/>
+      <Menu abrirConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado}/>
       <Divider sx={{margin: 3}}/>
       <Suporte />
       <Divider sx={{margin: 3, marginBottom: 10}}/>
@@ -59,7 +60,7 @@ function App() {
       <Promocoes />
       <Divider sx={{margin: 3}}/>
       <Forum />
-      {modalConta === true ? <Conta fecharModal={setModalConta} users={users}/> : console.log}
+      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado}/> : console.log}
   </>
 
 };

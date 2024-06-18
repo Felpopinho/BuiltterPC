@@ -4,6 +4,8 @@ import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta";
 import { PreviewPerfil } from "./Preview-Perfil";
 import { previewUser } from "../script";
 import axios from "axios";
+import { baseURL } from "../App";
+import { Close } from "@mui/icons-material";
 
 export function CriarLogarConta(props){
 
@@ -15,7 +17,18 @@ export function CriarLogarConta(props){
     setAtivarPasso(0)
     setAbrirCC(true)
   }
-  const fecharModalCC = () => setAbrirCC(false)
+  const fecharModalCC = (condicao) => {
+    if (condicao === 2){
+      previewUser.idUser = "";
+      previewUser.usuario = "";
+      previewUser.email = "";
+      previewUser.senha = "";
+      previewUser.perfil = "";
+      previewUser.titulo = "";
+      previewUser.descricao = "";
+    }
+    setAbrirCC(false)
+  }
 
   const [abrirLC, setAbrirLC] = useState(false)
 
@@ -65,7 +78,7 @@ export function CriarLogarConta(props){
 
   const submitUser = async () => {
     try{
-      const res = await axios.post("https://builtterpc.vercel.app", {
+      const res = await axios.post(baseURL+"/src", {
         nome: previewUser.usuario,
         email: previewUser.email,
         senha: previewUser.senha,
@@ -73,23 +86,22 @@ export function CriarLogarConta(props){
         titulo: previewUser.titulo,
         descricao: previewUser.descricao
       })
-      console.log(res.data)
       previewUser.idUser = res.data.insertId
+      props.setLogado(true)
     } catch(error){
       console.log(error)
     }
-    props.getUsers();
-    fecharModalCC()
+    fecharModalCC(1)
   };
 
   const logarConta = async (e) => {
     e.preventDefault()
 
     const user = ref.current;
-
+    
     try{
 
-      const res = await axios.post("https://builtterpc.vercel.app",{
+      const res = await axios.post(baseURL+"/log",{
         email: user.email.value,
         senha: user.senha.value
       })
@@ -100,21 +112,24 @@ export function CriarLogarConta(props){
       previewUser.perfil = res.data[0].perfil;
       previewUser.titulo = res.data[0].titulo;
       previewUser.descricao = res.data[0].descricao;
+      props.setLogado(true)
     } catch(error){
       console.log(error)
     }
-    fecharModalLC()
+    fecharModalLC(1)
   };
 
   return <>
 
-      <Button variant="contained" color="primary" className="btn_create" onClick={abrirModalCC} sx={{transition: 'all 0.2s ease'}} disabled={previewUser.descricao != "" && previewUser.senha != ""}>Criar conta</Button>
+      <Button variant="contained" color="primary" className="btn_create" onClick={abrirModalCC} sx={{transition: 'all 0.2s ease'}} disabled={props.logado === true}>Criar conta</Button>
       <Modal
         open={abrirCC}
-        onClose={fecharModalCC}
         aria-labelledby="modal-criarconta"
       >
           <Box className="Modal" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} >
+            <Button sx={{position: "absolute", top: "4%", left: "90%"}} onClick={() => {fecharModalCC(2)}}>
+              <Close/>
+            </Button>
             <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
               Criar conta
             </Typography>
@@ -161,7 +176,7 @@ export function CriarLogarConta(props){
         </Modal>
 
 
-        <Button variant="outlined" className="btn_enter" onClick={abrirModalLC} sx={{transition: 'all 0.2s ease'}} disabled={previewUser.descricao != "" && previewUser.senha != ""}>Logar conta</Button>
+        <Button variant="outlined" className="btn_enter" onClick={abrirModalLC} sx={{transition: 'all 0.2s ease'}} disabled={props.logado === true}>Logar conta</Button>
         <Modal
           open={abrirLC}
           onClose={fecharModalLC}
@@ -169,17 +184,20 @@ export function CriarLogarConta(props){
           aria-describedby="modal-modal-description"
         >
           <Box className="Modal" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} >
+            <Button sx={{position: "absolute", top: "4%", left: "90%"}} onClick={() => {fecharModalLC()}}>
+              <Close />
+            </Button>
               <Typography variant="h2" component="h1" fontWeight={600} width={'80%'}>
                 Logar conta
               </Typography>
-              <form className="criarConta_container" onSubmit={logarConta} ref={ref}>
+              <form className="criarConta_container" onSubmit={logarConta} ref={ref} autoComplete="off">
                 <div className="inputCriarConta">  
                   <TextField id="UserEmail" label={"digite seu email"} required variant="standard" type="email" sx={{width: '100%'}} name="email"></TextField>
                 </div>
                 <div className="inputCriarConta">
                   <TextField id="UserPassword" variant="standard" label={"digite sua senha"} required type="password" sx={{width: '100%'}} name="senha"></TextField>
                 </div>
-                <Button type="submit">
+                <Button type="submit" variant="contained">
                   Logar
                 </Button>
               </form>

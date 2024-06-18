@@ -409,28 +409,39 @@ a{
 }
 
 #suporteDisplay{
-    display: grid; 
-    grid-template-columns: 40% 55%; 
-    grid-template-rows: auto; 
     width: 100%; 
-    column-gap: 20px;
+    display: flex;
+    height: 100%;
+    justify-content: start;
+    overflow-y: scroll;
+    flex-direction: column;
 }
 .suporteDescVid{
     text-align: left;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
     width: 100%;
+    -webkit-line-clamp: 3;
+    margin-bottom: 2vh;
+}
+.vidImg{
+    width: 100%;
+    height: 100%;
+}
+.vidImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 #simulacaoDisplay{
     display: grid; 
     justify-content: space-evenly; 
     width: 100%; 
-    height: 90%; 
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 100% 100%; 
-    overflow-y: scroll; 
+    height: 80%; 
+    grid-template-columns: 25% 25% 25% 25% 25% 25% 25% 25%; 
+    grid-template-rows: 100%; 
+    overflow-x: scroll; 
     place-items: center;
 }
 
@@ -488,21 +499,6 @@ a{
     #Image_sobre{
         width: 125%;
     }
-
-    .display_esquerdo_content{
-        overflow-y: scroll;
-    }
-    #suporteDisplay{
-        display: flex;
-        flex-direction: column-reverse;
-        height: auto;
-        justify-content: start;
-    }
-    .suporteDescVid{
-        -webkit-line-clamp: 3;
-        margin-bottom: 2vh;
-    }
-    
     .after_esquerdo h2{
         font-size: 1.5rem;
     }
@@ -510,11 +506,38 @@ a{
         display: none;
     }
     #simulacaoDisplay{
-        overflow: visible;
+        grid-template-columns: 125px 125px 125px 125px 125px 125px 125px 125px; 
+        grid-template-rows: 100%; 
     }
 
 }
 
-@media screen and (max-width: 900px) {
-
+@media screen and (max-width: 960px) {
+    .menu_container{
+        height: 120vh;
+        flex-direction: column-reverse;
+    }
+    .menu_esquerdo_container{
+        flex-direction: column;
+        height: 70vh;
+        justify-content: space-between;
+    }
+    .inicio_esquerdo{
+        margin-right: 0;
+    }
+    .after_esquerdo{
+        margin-left: 0;
+    }
+    .inicio_esquerdo, .after_esquerdo{
+        width: 80%;
+    }
+    .sobre_container{
+        height: 25vh;
+        grid-template-rows: 1fr;
+        grid-template-columns: 100% 100% 100% 100%;
+        width: 100%;
+        justify-items: center;
+        align-items: center;
+        overflow-x: scroll;
+    }
 }
