@@ -5,7 +5,7 @@ import { Molde } from "./Molde"
 export function Simulacao(){
 
     return <div className="simulacao_container" id="Simulacao">
-        <Box sx={{display:'flex', height: '15vh', width: '100%', justifyContent: "space-around", alignItems: 'center'}}>
+        <Box className="inicioSim">
             <Typography variant="h2" fontFamily={'Work Sans'} fontWeight={700} color={"white"}>Simulação de Montagem</Typography>
             <Button variant="contained" sx={{height: '5vh', fontSize: '1.1rem'}}>
                 Clique em um dos moldes para começar!

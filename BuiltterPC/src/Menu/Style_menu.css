@@ -24,17 +24,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 a{
     text-decoration: none;
     color: unset;
-}
-
-#root{
-    width: 100%;
-    height: 100vh;
-    position: relative;
 }
 
 .nav_container{
@@ -539,5 +534,25 @@ a{
         justify-items: center;
         align-items: center;
         overflow-x: scroll;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .logo_container, .account{
+
+    }
+    .menu_container{
+
+    }
+    .menu_esquerdo_container{
+
+    }
+    .inicio_esquerdo{
+
+    } .after_esquerdo{
+
+    }
+    .menu_direito_container{
+
     }
 }

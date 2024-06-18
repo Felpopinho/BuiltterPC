@@ -12,9 +12,9 @@ export function Promocoes(){
     }
 
     return <div className="promocoes_container" id="Promocao">
-        <Box display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} flexWrap={"wrap"} width={"80%"}>
-            <Typography variant="h2" fontFamily={'Work Sans'} fontWeight={700} sx={{textWrap: "nowrap"}}>Catalogo de promoções</Typography>
-            <Box sx={{width: "600px"}}>
+        <Box display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} flexWrap={"wrap"} width={"90%"}>
+            <h1 fontFamily={'Work Sans'} fontWeight={700} className="tituloPromo">Catalogo de promoções</h1>
+            <Box className="navPromo">
                 <Tabs value={tabValue} onChange={handleTab} variant="scrollable">
                     <Tab value="1" label="Tudo" variant="outlined"/>
                     <Tab value="2" label="Placa-mãe"/>

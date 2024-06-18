@@ -33,8 +33,10 @@ export function Videos(props){
             <img src={props.video_imagem} onClick={setView}/>
         </div>
         <div className="videodesc_container">
-            <h2>{props.video_nome}</h2>
-            <p>{props.video_descricao}</p>
+            <div>
+                <h2>{props.video_nome}</h2>
+                <p className="videoDescricao">{props.video_descricao}</p>
+            </div>
             <div className="video_estatistic_container">
                 <p>{props.video_estatisticas} <RemoveRedEyeIcon/></p>
                 <p onClick={setFavorite} className="favoritar">Favoritar <StarIcon /></p>
