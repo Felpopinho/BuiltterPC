@@ -23,7 +23,7 @@ export function Menu(props){
                 <div></div>
                 <h1>BuillterPC</h1>
             </div>
-            <div style={{position: "absolute",left: "3%", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => {props.abrirConta(true)}} className='account'>
+            <div style={{position: "absolute",right: "3%", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => {props.abrirConta(true)}} className='account'>
                 <img src={previewUser.perfil === "" ? perfilDesconhecido : previewUser.perfil} width={"80px"} style={{objectFit: "cover"}}/>
             </div>
         </div>

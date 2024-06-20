@@ -1,4 +1,4 @@
-import { Divider, ThemeProvider, createTheme } from '@mui/material'; 
+import { Divider, ThemeProvider, createTheme, Modal, Box, Typography, Button } from '@mui/material'; 
 
 import './Menu/Style_menu.css';
 import { Menu } from './Menu/Menu.jsx';
@@ -47,20 +47,38 @@ function App() {
     getUsers();
   }, [setUsers]);
 
+  const [openAviso, setOpenAviso] = useState(false)
+  const handleCloseAviso = () =>{
+      setOpenAviso(false)
+  }
+
 
   const [modalConta, setModalConta] = useState(false)
 
   return <>
       <Menu abrirConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado}/>
       <Divider sx={{margin: 3}}/>
-      <Suporte />
+      <Suporte logado={logado} setOpenAviso={setOpenAviso}/>
       <Divider sx={{margin: 3, marginBottom: 10}}/>
-      <Simulacao />
+      <Simulacao logado={logado}/>
       <Divider sx={{margin: 3, marginTop: 10}}/>
-      <Promocoes />
+      <Promocoes logado={logado}/>
       <Divider sx={{margin: 3}}/>
-      <Forum />
-      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado}/> : console.log}
+      <Forum logado={logado}/>
+      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso}/> : console.log}
+
+      <Modal open={openAviso} onClose={handleCloseAviso}>
+        <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
+            <Typography variant='h3' sx={{fontWeight: '600', width:'90%'}}>Aviso!</Typography>
+            <Divider sx={{margin: 3, width:'90%'}}/>
+            <div style={{display: "flex", width: "100%", justifyContent: "space-evenly", alignItems: "center"}}>
+                <p style={{fontSize: "1.5rem"}}>Crie uma conta para acessar esta sessão</p>
+                <a href="#Menu" onClick={handleCloseAviso}>
+                    <Button variant='outlined' sx={{fontSize: "1.2rem"}}>Criar conta</Button>
+                </a>
+            </div>
+        </Box>
+      </Modal>
   </>
 
 };

@@ -59,18 +59,19 @@ export function PassoUm(props) {
     }
 
     return <>
-    <form action="">
       <div className="criarConta_container" onKeyUp={verificarInput}>
         <div className="inputCriarConta">
-          <Input autoComplete="off" id="UserName" placeholder="Nome" required variant="standard" type="text" sx={{width: '100%'}} onChange={mudarName} name="nome"></Input>
+          <TextField id="UserName" label="Nome" variant="outlined" required sx={{width: '100%'}} onChange={mudarName} name="nome"></TextField>
         </div>
-        <div className="inputCriarConta">  
-          <Input autoComplete="off" id="UserEmail" placeholder="Email" required variant="standard" type="email" sx={{width: '100%'}} onChange={mudarEmail} name="email"></Input>
-        </div>
-        <div className="inputCriarConta">
-          <Input autoComplete="off" id="UserPassword" placeholder="Senha" variant="standard" required type="password" sx={{width: '100%'}} onChange={mudarSenha} name="senha"></Input>
-          <p style={{fontSize: '0.9rem', padding: '3px 0px 3px 0px'}}>A senha deve conter 5 caracteres, exceto espaço</p>
-        </div>
+        <form  className="criarConta_container" style={{width: "100%", height: "20vh"}}>
+          <div className="inputCriarConta">  
+            <TextField id="UserEmail" label="Email" required variant="standard" size="normal" type="email" sx={{width: '100%'}} onChange={mudarEmail} name="email"></TextField>
+          </div>
+          <div className="inputCriarConta">
+            <TextField autoComplete="current-password" id="UserPassword" label="Senha" variant="standard" size="normal" required type="password" sx={{width: '100%'}} onChange={mudarSenha} name="senha"></TextField>
+            <p style={{fontSize: '0.9rem', padding: '3px 0px 3px 0px'}}>A senha deve conter 5 caracteres, exceto espaço</p>
+          </div>
+        </form>
         <div className="fotoperfil_container">
           <Button component="label" variant="contained" sx={{width: '100%'}}>
               Foto de perfil
@@ -78,7 +79,6 @@ export function PassoUm(props) {
           </Button>
         </div>
       </div>
-    </form>
     </>
 }
 

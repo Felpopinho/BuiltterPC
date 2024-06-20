@@ -17,12 +17,11 @@ import { VideoHistorico } from './Video-historico';
 import { darkTheme } from '../App';
 
 
-export function Suporte(){
+export function Suporte(props){
 
     const [openModal, setOpenModal] = useState(false);
     const handleOpenModal = () =>{
-        setOpenModal(true)
-        
+        {props.logado === true ? setOpenModal(true) : props.setOpenAviso(true) }
     }
     const handleCloseModal = () =>{
         setOpenModal(false)
@@ -43,7 +42,7 @@ export function Suporte(){
         setSessao(sessao = 3);
     }
     const handleFavoritos = () =>{
-        setSessao(sessao = 4)
+        {props.logado === true ? setSessao(sessao = 4) : props.setOpenAviso(true) }
     }
 
     return <div className="suporte_container" id="Suporte">
@@ -84,6 +83,8 @@ export function Suporte(){
             </Box>
         </Modal>
 
+        
+
         <div className="titulo_sessao_container">
             <h1>Suporte Técnico</h1>
             <Divider className="divisor_video" sx={{margin: 1}}/>
@@ -92,22 +93,22 @@ export function Suporte(){
         <Box className="sessao_videos_container">
             {sessao === 0 ? (
             <Fragment>
-                <SessaoUm/>
+                <SessaoUm setOpenAviso={props.setOpenAviso} logado={props.logado}/>
             </Fragment> ) :
             sessao === 1 ? (
             <Fragment>
-                <SessaoDois/>
+                <SessaoDois setOpenAviso={props.setOpenAviso} logado={props.logado}/>
             </Fragment>) :
             sessao === 2 ? (
             <Fragment>
-                <SessaoTres/>
+                <SessaoTres setOpenAviso={props.setOpenAviso} logado={props.logado}/>
             </Fragment>) :
             sessao === 3 ?(
             <Fragment>
-                <SessaoQuatro/>
+                <SessaoQuatro setOpenAviso={props.setOpenAviso} logado={props.logado}/>
             </Fragment>) :
             <Fragment>
-                <SessaoFavorito/>
+                <SessaoFavorito setOpenAviso={props.setOpenAviso} logado={props.logado}/>
             </Fragment>}
         </Box>
 

@@ -11,10 +11,10 @@ export function Videos(props){
     const objeto = suporteLista.findIndex((element) => element === props.video);
 
     const setFavorite = () =>{
-        suporteLista[objeto].video_favorite = 'favorito';
+        {props.logado === true ? suporteLista[objeto].video_favorite = 'favorito' : props.setOpenAviso(true) }
     }
     const setView = () =>{
-        suporteLista[objeto].video_view = 'view';
+        if (props.logado === true) suporteLista[objeto].video_view = 'view';
         setOpenVideo(true)
     }
     const handleCloseVideo = () =>{

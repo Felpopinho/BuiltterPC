@@ -173,7 +173,7 @@ export function CriarLogarConta(props){
               }
             </div>
           </Box>
-        </Modal>
+      </Modal>
 
 
         <Button variant="outlined" className="btn_enter" onClick={abrirModalLC} sx={{transition: 'all 0.2s ease'}} disabled={props.logado === true}>Logar conta</Button>
@@ -190,12 +190,12 @@ export function CriarLogarConta(props){
               <Typography variant="h2" component="h1" fontWeight={600} width={'80%'}>
                 Logar conta
               </Typography>
-              <form className="criarConta_container" onSubmit={logarConta} ref={ref} autoComplete="off">
+              <form className="criarConta_container" onSubmit={logarConta} ref={ref}>
                 <div className="inputCriarConta">  
-                  <TextField id="UserEmail" label={"digite seu email"} required variant="standard" type="email" sx={{width: '100%'}} name="email"></TextField>
+                  <TextField id="UserEmail" label={"digite seu email"} required variant="filled" type="email" sx={{width: '100%', fontSize: "1.5rem"}} name="email"></TextField>
                 </div>
                 <div className="inputCriarConta">
-                  <TextField id="UserPassword" variant="standard" label={"digite sua senha"} required type="password" sx={{width: '100%'}} name="senha"></TextField>
+                  <TextField id="UserPassword" variant="filled" label={"digite sua senha"} required type="password" sx={{width: '100%', fontSize: "1.5rem"}} name="senha"></TextField>
                 </div>
                 <Button type="submit" variant="contained">
                   Logar

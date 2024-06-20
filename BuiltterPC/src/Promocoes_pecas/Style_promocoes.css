@@ -123,4 +123,7 @@
     .tituloPromo{
         font-size: 2.5rem;
     }
+    .navPromo{
+        display: none;
+    }
 }

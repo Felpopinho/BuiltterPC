@@ -52,7 +52,7 @@ export function NavDisplay(props){
         props.selectedSection === 2 ?
             <div id="promoDisplay" style={{display: "grid", gridTemplateColumns: "30% 65%", width: "100%", columnGap: "20px", placeItems: "center"}}>
                 <div>
-                    <img src={promocaoLista[0].promocao_imagem} style={{width: "150px", }}/>
+                    <img src={promocaoLista[0].promocao_imagem}/>
                 </div>
                 <div style={{height: "80%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignSelf: "start"}}>
                     <p>{promocaoLista[0].promocao_nome}</p>

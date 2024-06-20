@@ -73,7 +73,7 @@ app.post("/del", (req, res) =>{
     db.query(q, [req.body.id], (err) =>{
         if (err) return res.json(err);
 
-        return res.status(200).json(req.body.id)
+        return res.status(200).json("usuario deletado com sucesso!")
     });
 });
 
