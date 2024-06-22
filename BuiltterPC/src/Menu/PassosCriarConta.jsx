@@ -65,7 +65,7 @@ export function PassoUm(props) {
         </div>
         <form  className="criarConta_container" style={{width: "100%", height: "20vh"}}>
           <div className="inputCriarConta">  
-            <TextField id="UserEmail" label="Email" required variant="standard" size="normal" type="email" sx={{width: '100%'}} onChange={mudarEmail} name="email"></TextField>
+            <TextField autoComplete="username" id="UserEmail" label="Email" required variant="standard" size="normal" type="email" sx={{width: '100%'}} onChange={mudarEmail} name="email"></TextField>
           </div>
           <div className="inputCriarConta">
             <TextField autoComplete="current-password" id="UserPassword" label="Senha" variant="standard" size="normal" required type="password" sx={{width: '100%'}} onChange={mudarSenha} name="senha"></TextField>

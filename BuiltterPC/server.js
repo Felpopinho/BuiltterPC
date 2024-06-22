@@ -63,7 +63,7 @@ app.put("/src", (req, res) =>{
     db.query(q, [...values, req.params.id], (err) =>{
         if (err) return res.json(err);
 
-        return res.status(200).json("usuario deletado com sucesso")
+        return res.status(200).json("Usuário editado com sucesso")
     });
 });
 
@@ -73,7 +73,7 @@ app.post("/del", (req, res) =>{
     db.query(q, [req.body.id], (err) =>{
         if (err) return res.json(err);
 
-        return res.status(200).json("usuario deletado com sucesso!")
+        return res.status(200).json("Usuário deletado com sucesso!")
     });
 });
 

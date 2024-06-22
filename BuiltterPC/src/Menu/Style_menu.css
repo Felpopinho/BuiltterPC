@@ -88,6 +88,7 @@ a{
     align-items: center;
     width: 50%;
     height: 80vh;
+    border-radius: 20px;
 }
 
 .menu_esquerdo_container,.menu_direito_container{
@@ -446,6 +447,13 @@ a{
 #promoDisplay img{
     width: 150px;
 }
+.h1modal{
+    font-size: 3.5rem;
+}
+.closemodal{
+    align-self: flex-end;
+    top: 2.5vh;
+}
 
 @media screen and (max-width: 1500px) {
     .menu_container{
@@ -511,10 +519,16 @@ a{
         grid-template-columns: 125px 125px 125px 125px 125px 125px 125px 125px; 
         grid-template-rows: 100%; 
     }
+    .Modal{
+        width: 60%;
+    }
 
 }
 
 @media screen and (max-width: 960px) {
+    .Modal{
+        width: 85%;
+    }
     .nav_container{
         justify-content: start;
     }
@@ -565,9 +579,20 @@ a{
     .image_sobre_container{
         height: 85%;
     }
+    .h1modal{
+        font-size: 3rem;
+    }
+    .stepper span{
+        font-size: 0.8rem;
+    }
 }
 
 @media screen and (max-width: 500px) {
+    .Modal{
+        width: 100%;
+        height: 100vh;
+        border-radius: 0px;
+    }
     .menu_container{
         width: 100%;
         height: 135vh;
@@ -621,5 +646,33 @@ a{
         font-size: 0.9rem;
     } #promoDisplay img{
         width: 100px;
+    }
+    .closemodal{
+        position: absolute; 
+        align-self: flex-end;
+        top: 4vh;
+    }
+    .criarConta_container{
+        width: 90%;
+    }
+    .passoDois_container, .passotres_container{
+        width: 100%;
+    } .descricaoContainer, .termos_container{
+        width: 90%;
+    } .descricaoContainer h2, .passotres_container h2{
+        font-size: 1.3rem;
+        text-align: center;
+    } .termos_container{
+        height: 40vh;
+    } .termos_servico{
+        height: 28vh;
+    } .escolha_termos{
+        height: 10vh;
+    } .escolha_termos div{
+        flex-direction: column-reverse;
+        text-align: center;
+        width: 40%;
+    } .escolha_termos div label{
+        font-size: 0.8rem;
     }
 }

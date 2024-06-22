@@ -1,4 +1,4 @@
-import { Divider, ThemeProvider, createTheme, Modal, Box, Typography, Button } from '@mui/material'; 
+import { Divider, ThemeProvider, createTheme, Modal, Box, Typography, Button, Snackbar, IconButton, Alert } from '@mui/material'; 
 
 import './Menu/Style_menu.css';
 import { Menu } from './Menu/Menu.jsx';
@@ -16,9 +16,10 @@ import './Simulacao_pecas/Style_simulacao.css'
 import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
 import { Conta } from './Conta.jsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 
 import axios from 'axios';
+import { Close } from '@mui/icons-material';
 
 export const darkTheme = createTheme({
   palette: {
@@ -52,11 +53,46 @@ function App() {
       setOpenAviso(false)
   }
 
+  const [messageLogOff, setMessageLogOff] = useState('')
+  const [openLogOff, setOpenLogOff] = useState(false);
+  const handleOpenLogOff = (m) =>{
+    setMessageLogOff(m)
+    setOpenLogOff(true)
+  }
+  const handleCloseLogOff = () =>{
+    setOpenLogOff(false)
+  }
+
+  const [messageLogin, setMessageLogin] = useState('')
+  const [openLogin, setOpenLogin] = useState(false);
+  const handleOpenLogin = (m) =>{
+    setMessageLogin(m)
+    setOpenLogin(true)
+  }
+  const handleCloseLogin = () =>{
+    setOpenLogin(false)
+  }
+
+  const action = (
+    <Fragment>
+      <IconButton color="secondary" size="small" onClick={handleCloseLogOff}>
+        <Close/>
+      </IconButton>
+    </Fragment>
+  );
+  const actionLogin = (
+    <Fragment>
+      <IconButton color="secondary" size="small" onClick={handleCloseLogin}>
+        <Close/>
+      </IconButton>
+    </Fragment>
+  );
+
 
   const [modalConta, setModalConta] = useState(false)
 
   return <>
-      <Menu abrirConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado}/>
+      <Menu abrirConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} openLogin={handleOpenLogin}/>
       <Divider sx={{margin: 3}}/>
       <Suporte logado={logado} setOpenAviso={setOpenAviso}/>
       <Divider sx={{margin: 3, marginBottom: 10}}/>
@@ -65,7 +101,7 @@ function App() {
       <Promocoes logado={logado}/>
       <Divider sx={{margin: 3}}/>
       <Forum logado={logado}/>
-      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso}/> : console.log}
+      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} openLogOff={handleOpenLogOff}/> : console.log}
 
       <Modal open={openAviso} onClose={handleCloseAviso}>
         <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
@@ -79,6 +115,17 @@ function App() {
             </div>
         </Box>
       </Modal>
+
+      <Snackbar open={openLogOff} autoHideDuration={2500} onClose={handleCloseLogOff} action={action}>
+        <Alert onClose={handleCloseLogOff} severity="success" variant="filled" sx={{ width: '100%' }}> 
+          {messageLogOff}
+        </Alert>
+      </Snackbar>
+      <Snackbar open={openLogin} autoHideDuration={4000} onClose={handleCloseLogin} action={actionLogin}>
+        <Alert onClose={handleCloseLogin} severity="error" variant="filled" sx={{ width: '100%' }}> 
+          {messageLogin}
+        </Alert>
+      </Snackbar>
   </>
 
 };

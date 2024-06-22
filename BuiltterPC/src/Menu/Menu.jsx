@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import logo from '../assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
 import { previewUser, sessoesLista, perfilDesconhecido} from '../script.js';
 import { CriarLogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
-import { Button, Divider } from '@mui/material';
+import { Button, Divider, Snackbar } from '@mui/material';
 
 export function Menu(props){
 
@@ -15,6 +15,8 @@ export function Menu(props){
 
     const linkSessao = ["#Suporte", "#Simulacao", "#Promocao", "#Forum"]
 
+    
+
     return <>
 
         <div className="nav_container" id='Menu'>
@@ -23,7 +25,7 @@ export function Menu(props){
                 <div></div>
                 <h1>BuillterPC</h1>
             </div>
-            <div style={{position: "absolute",right: "3%", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => {props.abrirConta(true)}} className='account'>
+            <div style={{position: "absolute",right: "3vw", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => {props.abrirConta(true)}} className='account'>
                 <img src={previewUser.perfil === "" ? perfilDesconhecido : previewUser.perfil} width={"80px"} style={{objectFit: "cover"}}/>
             </div>
         </div>
@@ -37,7 +39,7 @@ export function Menu(props){
                     <p>diversas funcionalidades disponiveis para facilitar suas experiências com hardware!</p>
 
                     <div className="btn_accountainer">
-                        <CriarLogarConta abrirConta={props.abrirConta} getUsers={props.getUsers} user={props.users} logado={props.logado} setLogado={props.setLogado}/>
+                        <CriarLogarConta abrirConta={props.abrirConta} getUsers={props.getUsers} user={props.users} logado={props.logado} setLogado={props.setLogado} openLogin={props.openLogin}/>
                     </div>
                 </div>
 
@@ -60,7 +62,7 @@ export function Menu(props){
                             <NavDisplay selectedSection={objetoSessao.section}/>
 
                             <div className='link_nav_container'>
-                                <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}}>
+                                <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}} onClick={() =>{setOpen(true)}}>
                                     <a href={linkSessao[sessaoSelecionada]}>Selecionar</a>
                                 </Button>
                             </div>

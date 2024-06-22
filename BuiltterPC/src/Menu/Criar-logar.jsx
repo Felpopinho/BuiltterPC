@@ -1,5 +1,5 @@
 import { Fragment, useState, useRef } from "react";
-import { Button, Modal, Box, Typography, Stepper, Step, StepButton, Input, TextField} from "@mui/material";
+import { Button, Modal, Box, Typography, Stepper, Step, StepButton, Input, TextField, IconButton} from "@mui/material";
 import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta"; 
 import { PreviewPerfil } from "./Preview-Perfil";
 import { previewUser } from "../script";
@@ -114,6 +114,7 @@ export function CriarLogarConta(props){
       previewUser.descricao = res.data[0].descricao;
       props.setLogado(true)
     } catch(error){
+      props.openLogin("Não foi possivel fazer login");
       console.log(error)
     }
     fecharModalLC(1)
@@ -126,53 +127,53 @@ export function CriarLogarConta(props){
         open={abrirCC}
         aria-labelledby="modal-criarconta"
       >
-          <Box className="Modal" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} >
-            <Button sx={{position: "absolute", top: "4%", left: "90%"}} onClick={() => {fecharModalCC(2)}}>
-              <Close/>
-            </Button>
-            <Typography id="modal-modal-title" variant="h2" component="h1" fontWeight={600} width={'80%'}>
-              Criar conta
-            </Typography>
-            <Stepper activeStep={ativarPasso}>
-              {passos.map((label, index) => (
-                <Step key={label} completed={completed[index]}>
-                <StepButton>
-                  {label}
-                </StepButton>
-              </Step>
-              ))}
-            </Stepper>
-            {ativarPasso === totalPassos() ? (
-            <div className="passosFinalizados_container">
-              <h1>Sua conta foi criada com sucesso</h1>
-              <div className="previewPerfil_container">
-                {arrPreview.map(inputs =>(<PreviewPerfil perfil={inputs.perfil} usuario={inputs.usuario} email={inputs.email} titulo={inputs.titulo} descricao={inputs.descricao}/>))}
-              </div>
-              <Button onClick={() => {props.abrirConta(true)}}>
-                Visitar perfil
-              </Button>
-            </div> ) : ativarPasso === 0 ? (
-            <Fragment>
-              <PassoUm inputPrenchido={updateInput}/>
-            </Fragment> ) : ativarPasso === 1 ? (
-            <Fragment>
-              <PassoDois formPrenchido={updateInput}/>
-            </Fragment>) : (
-            <Fragment>
-              <PassoTres termosPrenchido={updateInput}/>
-            </Fragment> )}
-            <div className="btn_passos_container">
-              <Button variant="text" disabled={ativarPasso === 0 || ativarPasso === totalPassos()} onClick={acaoAntePasso}>Voltar</Button>
-              {ativarPasso === totalPassos()?
-                <Button variant="outlined" onClick={submitUser} id="proxPassoBtn">
-                  Finalizar
-                </Button> :
-                <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() || inputPrenchido === false } id="proxPassoBtn">
-                  Proximo
-                </Button> 
-              }
+        <Box className="Modal" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4}} >
+          <IconButton sx={{position: "absolute"}} className="closemodal" color="primary" onClick={() => {fecharModalCC(2)}}>
+            <Close/>
+          </IconButton>
+          <h1 fontWeight={600} width={'80%'} className="h1modal">
+            Criar conta
+          </h1>
+          <Stepper activeStep={ativarPasso} className="stepper">
+            {passos.map((label, index) => (
+              <Step key={label} completed={completed[index]}>
+              <StepButton>
+                {label}
+              </StepButton>
+            </Step>
+            ))}
+          </Stepper>
+          {ativarPasso === totalPassos() ? (
+          <div className="passosFinalizados_container">
+            <h1>Sua conta foi criada com sucesso</h1>
+            <div className="previewPerfil_container">
+              {arrPreview.map(inputs =>(<PreviewPerfil perfil={inputs.perfil} usuario={inputs.usuario} email={inputs.email} titulo={inputs.titulo} descricao={inputs.descricao}/>))}
             </div>
-          </Box>
+            <Button onClick={() => {props.abrirConta(true)}}>
+              Visitar perfil
+            </Button>
+          </div> ) : ativarPasso === 0 ? (
+          <Fragment>
+            <PassoUm inputPrenchido={updateInput}/>
+          </Fragment> ) : ativarPasso === 1 ? (
+          <Fragment>
+            <PassoDois formPrenchido={updateInput}/>
+          </Fragment>) : (
+          <Fragment>
+            <PassoTres termosPrenchido={updateInput}/>
+          </Fragment> )}
+          <div className="btn_passos_container">
+            <Button variant="text" disabled={ativarPasso === 0 || ativarPasso === totalPassos()} onClick={acaoAntePasso}>Voltar</Button>
+            {ativarPasso === totalPassos()?
+              <Button variant="outlined" onClick={submitUser} id="proxPassoBtn">
+                Finalizar
+              </Button> :
+              <Button variant="outlined" onClick={acaoProxPasso} disabled={ativarPasso === totalPassos() || inputPrenchido === false } id="proxPassoBtn">
+                Proximo
+              </Button> 
+            }
+          </div>
+        </Box>
       </Modal>
 
 
@@ -192,10 +193,10 @@ export function CriarLogarConta(props){
               </Typography>
               <form className="criarConta_container" onSubmit={logarConta} ref={ref}>
                 <div className="inputCriarConta">  
-                  <TextField id="UserEmail" label={"digite seu email"} required variant="filled" type="email" sx={{width: '100%', fontSize: "1.5rem"}} name="email"></TextField>
+                  <TextField autoComplete="username" id="UserEmail" label={"digite seu email"} required variant="filled" type="email" sx={{width: '100%', fontSize: "1.5rem"}} name="email"></TextField>
                 </div>
                 <div className="inputCriarConta">
-                  <TextField id="UserPassword" variant="filled" label={"digite sua senha"} required type="password" sx={{width: '100%', fontSize: "1.5rem"}} name="senha"></TextField>
+                  <TextField autoComplete="current-password" id="UserPassword" variant="filled" label={"digite sua senha"} required type="password" sx={{width: '100%', fontSize: "1.5rem"}} name="senha"></TextField>
                 </div>
                 <Button type="submit" variant="contained">
                   Logar

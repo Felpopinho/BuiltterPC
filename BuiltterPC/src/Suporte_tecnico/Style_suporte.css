@@ -96,7 +96,7 @@
     align-self: flex-end;
 }
 .sessao_videos_container{
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -111,7 +111,6 @@
 .videos_container{
     width: 100%;
     overflow-y: scroll;
-    padding: 0 0 0 4vw;
     display: grid;
     grid-template-columns: 40% 60%;
 }
@@ -194,14 +193,21 @@
 }
 
 @media screen and (max-width:1290px){
-    .sessao_videos_container{
-        width: 100%;
-    }
     .videos_container{
         display: flex;
         flex-direction: column;
         height: auto;
         align-items: center;
+    }
+    .videoimagem_container{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+    }
+    .videoimagem_container img{
+        width: 450px
     }
     .videoDescricao{
         -webkit-line-clamp: 2;
@@ -218,16 +224,39 @@
         display: none;
     }
 }
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 800px) {
     .suporte_container{
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
     .titulo_sessao_container{
         display: flex;
         flex-direction: column;
+        height: 10%;
+        align-items: center;
+    } .titulo_sessao_container h1{
+        text-align: center;
+        margin: 0;
+        width: 100%;
     }
     .nav_suporte_container{
-        display: none;
+        display: flex;
     }
+    .sessao_videos_container{
+        height: 80%;
+    }
+    .navSuporteQuery{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:center;
+        width: 90%;
+        background-color: var(--darkgray);
+        position: absolute;
+        top: 9vh;
+        z-index: 5;
+        height: 100%;
+        border-radius: 10px;
+    } 
 }
