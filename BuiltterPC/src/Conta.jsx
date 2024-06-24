@@ -27,19 +27,27 @@ export function Conta(props){
         previewUser.perfil = '';
         previewUser.titulo = '';
         previewUser.descricao = '';
-        props.openLogOff(m)
+        props.handleOpenAlert("Usuário deslogado", 1)
         setModalOpen(false)
         props.setLogado(false)
         props.fecharModal(false)
     }
     const deletarConta = async () =>{
         try{
-            const res = await axios.post(baseURL+"/del", {
+            const res = await axios.post(baseURL+"/user/delete", {
                 id: previewUser.idUser
             })
-            sairConta("Usuário deletado com sucesso!")
+            previewUser.idUser = ''
+            previewUser.usuario = '';
+            previewUser.email = '';
+            previewUser.senha = '';
+            previewUser.perfil = '';
+            previewUser.titulo = '';
+            previewUser.descricao = '';
+            props.handleOpenAlert("Usuário deletado", 1)
         }catch(error){
             console.log(error)
+            props.handleOpenAlert("Algo deu errado", 2)
         }
     }
 

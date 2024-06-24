@@ -1,21 +1,25 @@
 import { Divider, Box, Input, Modal } from "@mui/material"
-import { suporteLista, videos } from "../script"
+import { videos } from "../script"
 import StarIcon from '@mui/icons-material/Star'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useState } from "react";
+import axios from "axios";
+import { baseURL } from "../App";
 
 export function Videos(props){
 
     const [openVideo, setOpenVideo] = useState(false)
 
-    const objeto = suporteLista.findIndex((element) => element === props.video);
+    const setFavorite = (n) =>{
+        if (props.logado === true) return props.favoritar(props.idVid, props.video_view, props.video_estatisticas, n)
 
-    const setFavorite = () =>{
-        {props.logado === true ? suporteLista[objeto].video_favorite = 'favorito' : props.setOpenAviso(true) }
+        return props.setOpenAviso(true)
     }
     const setView = () =>{
-        if (props.logado === true) suporteLista[objeto].video_view = 'view';
-        setOpenVideo(true)
+        if (props.logado === true){
+            setOpenVideo(true)
+            props.visualizar(props.idVid, props.video_favorite, props.video_estatisticas+1, 1)
+        }
     }
     const handleCloseVideo = () =>{
         setOpenVideo(false)
@@ -38,10 +42,10 @@ export function Videos(props){
                 <p className="videoDescricao">{props.video_descricao}</p>
             </div>
             <div className="video_estatistic_container">
-                <p>{props.video_estatisticas} <RemoveRedEyeIcon/></p>
-                <p onClick={setFavorite} className="favoritar">Favoritar <StarIcon /></p>
+                <p>{props.video_estatisticas}&nbsp;<RemoveRedEyeIcon/></p>
+                {props.sessao !== 4 ? <p onClick={() => setFavorite(1)} className="favoritar">Favoritar&nbsp;<StarIcon /></p> : <p onClick={() => setFavorite(2)} className="desfavoritar">Desfavoritar&nbsp;<StarIcon /></p>}
             </div>
         </div>
-        <Divider className="divisor_video" sx={{margin: 3}}/>
+        <Divider className="divisor_video" sx={{margin: "2vh 0 2vh 0"}}/>
     </>
 }

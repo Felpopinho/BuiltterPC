@@ -78,7 +78,7 @@ export function CriarLogarConta(props){
 
   const submitUser = async () => {
     try{
-      const res = await axios.post(baseURL+"/src", {
+      const res = await axios.post(baseURL+"/user", {
         nome: previewUser.usuario,
         email: previewUser.email,
         senha: previewUser.senha,
@@ -88,8 +88,10 @@ export function CriarLogarConta(props){
       })
       previewUser.idUser = res.data.insertId
       props.setLogado(true)
+      props.handleOpenAlert("Conta criada", 1);
     } catch(error){
       console.log(error)
+      props.handleOpenAlert("Erro ao criar conta", 2);
     }
     fecharModalCC(1)
   };
@@ -101,7 +103,7 @@ export function CriarLogarConta(props){
     
     try{
 
-      const res = await axios.post(baseURL+"/log",{
+      const res = await axios.post(baseURL+"/user/log",{
         email: user.email.value,
         senha: user.senha.value
       })
@@ -113,9 +115,10 @@ export function CriarLogarConta(props){
       previewUser.titulo = res.data[0].titulo;
       previewUser.descricao = res.data[0].descricao;
       props.setLogado(true)
+      props.handleOpenAlert("Login realizado", 1);
     } catch(error){
-      props.openLogin("Não foi possivel fazer login");
       console.log(error)
+      props.handleOpenAlert("Login falhou", 2);
     }
     fecharModalLC(1)
   };
@@ -185,10 +188,10 @@ export function CriarLogarConta(props){
           aria-describedby="modal-modal-description"
         >
           <Box className="Modal" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} >
-            <Button sx={{position: "absolute", top: "4%", left: "90%"}} onClick={() => {fecharModalLC()}}>
+            <Button sx={{position: "absolute", top: "4%", right: "4%"}} onClick={() => {fecharModalLC()}}>
               <Close />
             </Button>
-              <Typography variant="h2" component="h1" fontWeight={600} width={'80%'}>
+              <Typography variant="h3" component="h1" fontWeight={600} width={'100%'} textAlign={'center'}>
                 Logar conta
               </Typography>
               <form className="criarConta_container" onSubmit={logarConta} ref={ref}>

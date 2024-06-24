@@ -455,6 +455,10 @@ a{
     top: 2.5vh;
 }
 
+.alertContainer{
+    width: 240px;
+}
+
 @media screen and (max-width: 1500px) {
     .menu_container{
         flex-direction: column;
@@ -585,6 +589,9 @@ a{
     .stepper span{
         font-size: 0.8rem;
     }
+    .alertContainer{
+        width: 90vw;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -644,8 +651,11 @@ a{
     }
     #promoDisplay{
         font-size: 0.9rem;
+        
     } #promoDisplay img{
         width: 100px;
+    }.promoDescCont div h2,.promoDescCont div h3{
+        font-size: 1rem;
     }
     .closemodal{
         position: absolute; 
@@ -654,6 +664,7 @@ a{
     }
     .criarConta_container{
         width: 90%;
+        height: 55vh;
     }
     .passoDois_container, .passotres_container{
         width: 100%;

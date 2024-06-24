@@ -104,10 +104,10 @@ export function Molde(props){
 
     return <Box>
 
-        <Box sx={{cursor: 'pointer', width: '230px', height: '230px', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', 
-        alignItems: 'center', flexDirection: 'column', margin: "0 60px 0 60px", backgroundColor: 'var(--fundo)', boxShadow: '0 5px 30px'}} 
+        <Box className="boxCont" sx={{cursor: 'pointer', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', 
+        alignItems: 'center', flexDirection: 'column', backgroundColor: 'var(--fundo)', boxShadow: '0 5px 30px'}} 
         onClick={moldeStatus === 'vazio' ? handleOpenModal : handleOpenResult}> 
-            <Typography id="sim_desc" variant="h4" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</Typography>
+            <h1 className="sim_desc" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</h1>
             <Typography textAlign={'center'}>{moldeStatus}</Typography>
         </Box>
 

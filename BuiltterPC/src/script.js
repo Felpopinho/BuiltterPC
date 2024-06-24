@@ -1,4 +1,6 @@
 //Variaveis de elementos
+import axios from 'axios';
+
 export const perfilUsuario = document.getElementById('UserPerfil');
 export const emailUsuario = document.getElementById('UserEmail');
 export const nomeUsuario = document.getElementById('UserName');
@@ -163,63 +165,63 @@ const video0 = {
     video_nome: 'Montando um computador do zero',
     video_descricao: 'Neste video mostraremos o passo a passo de como montar um PC. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail0,
+    video_estatisticas: '544.503',
     video_id: 'hardware',
     video_favorite: '',
-    video_estatisticas: '544.503',
     video_view: '',
 }
 const video1 = {
     video_nome: 'Como formatar um computador PASSO a PASSO',
     video_descricao: 'Neste video mostraremos o passo a passo de como formatar um PC no windows 10. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail1,
+    video_estatisticas: '487.387',
     video_id: 'software',
     video_favorite: '',
-    video_estatisticas: '487.387',
     video_view: '',
 }
 const video2 = {
     video_nome: 'Configurando uma placa da NVIDIA + dicas',
     video_descricao: 'Neste video mostraremos o passo a passo de como configurar uma placa de video, usando o software da NVIDIA.  Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail2,
+    video_estatisticas: '467.204',
     video_id: 'software',
     video_favorite: '',
-    video_estatisticas: '467.204',
     video_view: '',
 }
 const video3 = {
     video_nome: 'Testando até onde um Ryzen 3 consegue aguentar',
     video_descricao: 'Neste video vamos testar todo o pontêncial que o ryzen 3 pode ter. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail3,
+    video_estatisticas: '395.817',
     video_id: 'testes',
     video_favorite: '',
-    video_estatisticas: '395.817',
     video_view: '',
 }
 const video4 = {
     video_nome: 'Instalando placa memoria ram dual channel',
     video_descricao: 'Neste video instalamos a memoria ram dual channel. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail4,
+    video_estatisticas: '211.098',
     video_id: 'hardware',
     video_favorite: '',
-    video_estatisticas: '211.098',
     video_view: '',
 }
 const video5 = {
     video_nome: 'Otimazando o windows para um melhor desempenho',
     video_descricao: 'Neste video nós mexemos nas config do windows. Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail4,
+    video_estatisticas: '210.323',
     video_id: 'software',
     video_favorite: '',
-    video_estatisticas: '210.323',
     video_view: '',
 }
 const video6 = {
     video_nome: 'Testando o novo modem ULTRA potente',
     video_descricao: 'Neste video mostraremos o novo modem Gamer super potente.  Não se esqueça de deixar o like caso tenha gostado e se inscrever no canal galera. Aproveitem e sigam a gente nas redes socias, e fiquem também por dentro do site da Builtter pc',
     video_imagem: thumbnail4,
+    video_estatisticas: '134.503',
     video_id: 'testes',
     video_favorite: '',
-    video_estatisticas: '134.503',
     video_view: '',
 }
 
@@ -479,6 +481,7 @@ const comentario2 ={
 //Array dos objetos de dados das sessões
 export const suporteLista = [video0,video1,video2,video3,video4,video5,video6];
 export const simulacaoLista = [simulacao0,simulacao1,simulacao2,simulacao3,simulacao4,simulacao5,simulacao6,simulacao7];
+
 export const promocaoLista = [promo0,promo1,promo2,promo3,promo4,promo5,promo6,promo7,promo8,promo9,promo10,promo11,promo12,promo13,promo14,promo15,promo16,promo17,promo18,promo19,promo20,promo21,promo22,promo23];
 export const comentarioLista = [comentario0,comentario1,comentario2];
 
@@ -574,3 +577,6 @@ export const iMem = [memoriasObject.image1, memoriasObject.image2, memoriasObjec
 export const iArm = [armazensObject.image1, armazensObject.image2, armazensObject.image3, armazensObject.image4, armazensObject.image5, armazensObject.image6, armazensObject.image7, armazensObject.image8];
 export const iVid = [pvideosObject.image1, pvideosObject.image2, pvideosObject.image3, pvideosObject.image4, pvideosObject.image5, pvideosObject.image6, pvideosObject.image7, pvideosObject.image8];
 export const iFon = [fontesObject.image1, fontesObject.image2, fontesObject.image3, fontesObject.image4, fontesObject.image5, fontesObject.image6, fontesObject.image7, fontesObject.image8];
+
+const produtosObject = [maeObject, processadoresObject, memoriasObject, armazensObject, pvideosObject, fontesObject]
+

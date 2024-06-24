@@ -39,7 +39,7 @@ export function Menu(props){
                     <p>diversas funcionalidades disponiveis para facilitar suas experiências com hardware!</p>
 
                     <div className="btn_accountainer">
-                        <CriarLogarConta abrirConta={props.abrirConta} getUsers={props.getUsers} user={props.users} logado={props.logado} setLogado={props.setLogado} openLogin={props.openLogin}/>
+                        <CriarLogarConta abrirConta={props.abrirConta} getUsers={props.getUsers} user={props.users} logado={props.logado} setLogado={props.setLogado} handleOpenAlert={props.handleOpenAlert}/>
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@ export function Menu(props){
                 <p className='desc_direito'>Sessoes disponiveis da BuiltterPC:</p>
 
                 <div className="sobre_container">
-                    {sessoesLista.map(item => <ItensSobre nome={item.nome} descricao={item.descricao} imagem={item.imagem}/>)}
+                    {sessoesLista.map(item => <ItensSobre key={item.nome} nome={item.nome} descricao={item.descricao} imagem={item.imagem}/>)}
                 </div>
             </div>
 

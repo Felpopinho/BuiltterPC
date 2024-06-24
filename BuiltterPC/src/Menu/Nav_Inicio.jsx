@@ -50,16 +50,16 @@ export function NavDisplay(props){
                 <div className="molde"><h3>{simulacaoLista[7].simulacao_nome}</h3><p>{simulacaoLista[7].simulacao_status}</p></div>
             </div> :
         props.selectedSection === 2 ?
-            <div id="promoDisplay" style={{display: "grid", gridTemplateColumns: "30% 65%", width: "100%", columnGap: "20px", placeItems: "center"}}>
+            <div id="promoDisplay" style={{display: "grid", gridTemplateColumns: "30% 63%", width: "100%", columnGap: "20px", placeItems: "center"}}>
                 <div>
                     <img src={promocaoLista[0].promocao_imagem}/>
                 </div>
-                <div style={{height: "80%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignSelf: "start"}}>
+                <div className="promoDescCont" style={{height: "80%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignSelf: "start"}}>
                     <p>{promocaoLista[0].promocao_nome}</p>
                     <p style={{textDecoration: "line-through", color: "gray"}}>{promocaoLista[0].promocao_preco}</p>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
                         <h2 style={{color: "red", textAlign: "left"}}>{promocaoLista[0].promocao_oferta}</h2>
-                        <p style={{alignSelf: "center", color: "blue", fontSize: "1.3rem"}}>{promocaoLista[0].promocao_porcentagem}</p>
+                        <h3 style={{alignSelf: "center", color: "blue"}}>{promocaoLista[0].promocao_porcentagem}</h3>
                     </div>
                 </div>
             </div> :

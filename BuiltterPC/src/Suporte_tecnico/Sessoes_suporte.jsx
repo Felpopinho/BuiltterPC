@@ -1,11 +1,15 @@
-import { suporteLista } from "../script"
+import { useEffect, useState } from "react"
 import { Videos } from "./Videos"
 
 export function SessaoUm(props){
+
     return <>
+        
         <h2 className="sessaoname">Top Videos</h2>
         <div className="videos_container" id="Videos">
-            {suporteLista.map(video => (<Videos setOpenAviso={props.setOpenAviso} logado={props.logado}  video={video} video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>))}
+            {props.videos.map(video => (<Videos video_view={video.video_view} video_favorite={video.video_favorite} sessao={props.sessao} visualizar={props.visualizar} 
+            favoritar={props.favoritar} key={video.id} idVid={video.id} setOpenAviso={props.setOpenAviso} logado={props.logado} video_imagem={video.video_imagem} 
+            video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>))}
         </div>
     
     </>
@@ -16,7 +20,9 @@ export function SessaoDois(props){
     
         <h2 className="sessaoname">Hardware</h2>
         <div className="videos_container">
-            {suporteLista.map(video => video.video_id === 'hardware' ? (<Videos setOpenAviso={props.setOpenAviso} logado={props.logado} video={video} video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>): console.log())}
+            {props.videos.map(video => video.video_tipo === 'hardware' ? (<Videos video_view={video.video_view} video_favorite={video.video_favorite} sessao={props.sessao} 
+            visualizar={props.visualizar} favoritar={props.favoritar}  key={video.id} idVid={video.id} setOpenAviso={props.setOpenAviso} logado={props.logado} 
+            video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>): console.log())}
         </div>
     </>
 }
@@ -26,7 +32,9 @@ export function SessaoTres(props){
     
         <h2 className="sessaoname">Software</h2>
         <div className="videos_container">
-            {suporteLista.map(video => video.video_id === 'software' ? (<Videos setOpenAviso={props.setOpenAviso} logado={props.logado} video={video} video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>): console.log())}
+            {props.videos.map(video => video.video_tipo === 'software' ? (<Videos video_view={video.video_view} video_favorite={video.video_favorite} sessao={props.sessao} 
+            visualizar={props.visualizar} favoritar={props.favoritar} key={video.id} idVid={video.id} setOpenAviso={props.setOpenAviso} logado={props.logado} 
+            video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>): console.log())}
         </div>
     </>
 }
@@ -36,7 +44,9 @@ export function SessaoQuatro(props){
     
         <h2 className="sessaoname">Testes</h2>
         <div className="videos_container">
-            {suporteLista.map(video => video.video_id === 'testes' ? (<Videos setOpenAviso={props.setOpenAviso} logado={props.logado} video={video} video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>): console.log())}
+            {props.videos.map(video => video.video_tipo === 'teste' ? (<Videos video_view={video.video_view} video_favorite={video.video_favorite} sessao={props.sessao} 
+            visualizar={props.visualizar} favoritar={props.favoritar} key={video.id} idVid={video.id} setOpenAviso={props.setOpenAviso} logado={props.logado} 
+            video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>): console.log())}
         </div>
     
     </>
@@ -48,7 +58,9 @@ export function SessaoFavorito(props){
         <h2 className="sessaoname">Favoritos</h2>
 
         <div className="videos_container">
-            {suporteLista.map(video => video.video_favorite === 'favorito' ? (<Videos video={video} video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>) : console.log())}
+            {props.videos.map(video => video.video_favorite === 'favorite' ? (<Videos video_view={video.video_view} video_favorite={video.video_favorite} sessao={props.sessao} 
+            visualizar={props.visualizar} favoritar={props.favoritar} setOpenAviso={props.setOpenAviso} key={video.id} logado={props.logado} idVid={video.id} 
+            video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>) : console.log())}
         </div>
     </>
 }

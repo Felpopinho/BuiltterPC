@@ -1,4 +1,7 @@
-import { Divider, ThemeProvider, createTheme, Modal, Box, Typography, Button, Snackbar, IconButton, Alert } from '@mui/material'; 
+import { Divider, ThemeProvider, createTheme, Modal, Box, Typography, Button, Snackbar, IconButton } from '@mui/material'; 
+import { Close } from '@mui/icons-material';
+import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
+import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 
 import './Menu/Style_menu.css';
 import { Menu } from './Menu/Menu.jsx';
@@ -16,92 +19,91 @@ import './Simulacao_pecas/Style_simulacao.css'
 import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
 import { Conta } from './Conta.jsx';
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState } from 'react';
 
 import axios from 'axios';
-import { Close } from '@mui/icons-material';
 
-export const darkTheme = createTheme({
+export const baseURL = "http://localhost:3000"
+
+const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
 });
 
-export const baseURL = "http://localhost:3000"
-
 function App() {
 
   const [users, setUsers] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [simulacoes, setSimulacoes] = useState([]);
+  const [produto, setProdutos] = useState([]);
+  const [promocoes, setPromocoes] = useState([]);
+  const [comentarios, setComentarios] = useState([])
+
+
   const [logado, setLogado] = useState(false)
   const [onEdit, setOnEdit] = useState(null);
 
-  const getUsers = async () =>{
-    try {
-      const res = await axios.get(baseURL+"/src");
-      setUsers(res.data);
-    } catch (error) {
-      console.log(error);
-    };
+  const getData = async () =>{
+    await axios.get(baseURL+"/user").then(res =>{
+      setUsers(res.data)
+    });
+    await axios.get(baseURL+"/videos").then(res =>{
+      setVideos(res.data)
+    });
+    await axios.get(baseURL+"/simulacoes").then(res =>{
+      setSimulacoes(res.data)
+    });
+    await axios.get(baseURL+"/produtos").then(res =>{
+      setProdutos(res.data)
+    });
+    await axios.get(baseURL+"/promocoes").then(res =>{
+      setPromocoes(res.data)
+    });
+    await axios.get(baseURL+"/comentarios").then(res =>{
+      setComentarios(res.data)
+    });
   }
 
-  useEffect(() =>{
-    getUsers();
-  }, [setUsers]);
+  useEffect(()=>{
+    getData();
+  }, [setUsers, setVideos, setSimulacoes, setProdutos, setPromocoes, setComentarios])
 
   const [openAviso, setOpenAviso] = useState(false)
   const handleCloseAviso = () =>{
       setOpenAviso(false)
   }
 
-  const [messageLogOff, setMessageLogOff] = useState('')
-  const [openLogOff, setOpenLogOff] = useState(false);
-  const handleOpenLogOff = (m) =>{
-    setMessageLogOff(m)
-    setOpenLogOff(true)
-  }
-  const handleCloseLogOff = () =>{
-    setOpenLogOff(false)
-  }
+  const [openAlert, setOpenAlert] = useState(false)
+  const [severityAlert, setSeverityAlert] = useState("")
+  const [messageAlert, setMessageAlert] = useState("")
 
-  const [messageLogin, setMessageLogin] = useState('')
-  const [openLogin, setOpenLogin] = useState(false);
-  const handleOpenLogin = (m) =>{
-    setMessageLogin(m)
-    setOpenLogin(true)
+  const handleOpenAlert = (mensagem, severidade) =>{
+    setMessageAlert(mensagem)
+    if (severidade === 1){
+      setSeverityAlert("#689f38")
+    } else{
+      setSeverityAlert("#ff5252")
+    }
+    setOpenAlert(true)
   }
-  const handleCloseLogin = () =>{
-    setOpenLogin(false)
+  const handleCloseAlert = () =>{
+    setOpenAlert(false)
   }
-
-  const action = (
-    <Fragment>
-      <IconButton color="secondary" size="small" onClick={handleCloseLogOff}>
-        <Close/>
-      </IconButton>
-    </Fragment>
-  );
-  const actionLogin = (
-    <Fragment>
-      <IconButton color="secondary" size="small" onClick={handleCloseLogin}>
-        <Close/>
-      </IconButton>
-    </Fragment>
-  );
-
 
   const [modalConta, setModalConta] = useState(false)
 
   return <>
-      <Menu abrirConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} openLogin={handleOpenLogin}/>
+      <Menu abrirConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3}}/>
-      <Suporte logado={logado} setOpenAviso={setOpenAviso}/>
+      <Suporte logado={logado} setOpenAviso={setOpenAviso} videos={videos} getData={getData} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3, marginBottom: 10}}/>
       <Simulacao logado={logado}/>
       <Divider sx={{margin: 3, marginTop: 10}}/>
       <Promocoes logado={logado}/>
       <Divider sx={{margin: 3}}/>
       <Forum logado={logado}/>
-      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} openLogOff={handleOpenLogOff}/> : console.log}
+      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert}/> : console.log}
 
       <Modal open={openAviso} onClose={handleCloseAviso}>
         <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
@@ -116,16 +118,20 @@ function App() {
         </Box>
       </Modal>
 
-      <Snackbar open={openLogOff} autoHideDuration={2500} onClose={handleCloseLogOff} action={action}>
-        <Alert onClose={handleCloseLogOff} severity="success" variant="filled" sx={{ width: '100%' }}> 
-          {messageLogOff}
-        </Alert>
-      </Snackbar>
-      <Snackbar open={openLogin} autoHideDuration={4000} onClose={handleCloseLogin} action={actionLogin}>
-        <Alert onClose={handleCloseLogin} severity="error" variant="filled" sx={{ width: '100%' }}> 
-          {messageLogin}
-        </Alert>
-      </Snackbar>
+      <ThemeProvider theme={darkTheme}>
+        <Snackbar sx={{bgcolor: severityAlert, borderRadius: "10px"}} autoHideDuration={4000} open={openAlert} onClose={handleCloseAlert}>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: "7px 16px 7px 16px"}} className="alertContainer">
+            <Box sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+              {severityAlert === "#689f38" ? <CheckCircleOutlineRoundedIcon fontSize='small' color='action'/> : <ErrorOutlineRoundedIcon fontSize='small' color='action'/>}
+              <Typography sx={{paddingLeft: "10px"}} color={'white'}>{messageAlert}</Typography>
+            </Box>
+            <IconButton size='small'>
+              <Close fontSize='small' onClick={handleCloseAlert}/>
+            </IconButton>
+          </Box>
+        </Snackbar>
+      </ThemeProvider>
+
   </>
 
 };
