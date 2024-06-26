@@ -15,4 +15,4 @@ db.getConnection((err, conn) =>{
     console.log("conexão sucedida")
 })
 
-export default db
+export default db.promise()
