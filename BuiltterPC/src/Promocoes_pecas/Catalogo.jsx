@@ -12,6 +12,8 @@ export function Catalogo(props){
         setModal(false)
     }
 
+    
+
     return <>
         <div className="produto" onClick={openModal}>
             <img src={props.imagem}/> 

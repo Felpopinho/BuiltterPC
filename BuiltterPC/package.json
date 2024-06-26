@@ -16,6 +16,7 @@
     "@mui/material": "^5.15.7",
     "@mui/styled-engine-sc": "^6.0.0-alpha.14",
     "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
     "bootstrap-icons": "^1.11.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

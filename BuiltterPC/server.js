@@ -6,11 +6,10 @@ import videoRoutes from "./api/routes/videos.js";
 import produtoRoutes from "./api/routes/produtos.js";
 import simulacaoRoutes from "./api/routes/simulacoes.js";
 import forumRoutes from "./api/routes/comentarios.js";
-import 'dotenv/config'
 
 const app = express();
 
-const port = process.env.PORT || 3000
+const port = 3000
 
 app.use(express.json());
 app.use(cors());

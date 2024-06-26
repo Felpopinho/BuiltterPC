@@ -88,7 +88,7 @@ export function CriarLogarConta(props){
       })
       previewUser.idUser = res.data.insertId
       props.setLogado(true)
-      props.handleOpenAlert("Conta criada", 1);
+      props.handleOpenAlert(res.data, 1);
     } catch(error){
       console.log(error)
       props.handleOpenAlert("Erro ao criar conta", 2);
