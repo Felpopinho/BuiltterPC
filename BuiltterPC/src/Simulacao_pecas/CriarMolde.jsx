@@ -119,7 +119,7 @@ export function ProdutosMolde(props){
                 <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>Preço total: {vMae + vPro + vMem + vArm + vVid + vFon}</h1>
             </Box>
         </Box>
-        <Box id='produtosContainer' sx={section === 7 ? {display: "none"} : {display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, width: '40%', alignContent: 'center', justifyItems: 'center'}} onChange={() => {handleProduct(nomeLista[selected],precoLista[selected])}}>
+        <Box id='produtosContainer' sx={section === 7 ? {display: "none"} : {display: 'grid'}} onChange={() => {handleProduct(nomeLista[selected],precoLista[selected])}}>
             <div className="produto_input" onClick={selectProduct}>         
                 <input type="radio" name="produto" id="Produto1" className="product" onClick={()=>{selected = 0}} checked={props.updatePselected === '' ? false : console.log()}/>
                 <label htmlFor="Produto1"><img src={props.image1}/></label>
@@ -154,23 +154,23 @@ export function ProdutosMolde(props){
             </div>
         </Box>
 
-        <Box sx={section === 7 ? {display: "none"} : {width: '40%', height: 'auto', backgroundColor: '#292929', borderRadius: '20px', padding: '20px'}}>
+        <Box className="outputProd" sx={section === 7 ? {display: "none"} : {padding: '20px'}}>
             <section style={{overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Typography sx={{color: 'white'}} variant="h5" id='produtoNome'>
+                <Typography sx={{color: 'white'}} className='produtoNome'>
                     <p style={{color:'gray', textAlign: 'center'}}>Nome do produto</p>
                     {pText === '' ? <p style={{textAlign: 'center', color: 'gray'}}>...</p> : pText}
                 </Typography>
             </section>
-            <Divider color="gray" sx={{margin: '15px 0'}}/>
+            <Divider color="gray" sx={{margin: '10px 0'}}/>
             <section style={{overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Typography sx={{color: 'white'}} variant="h5" id='produtoNome'>
+                <Typography sx={{color: 'white'}} className='produtoNome'>
                     <p style={{color:'gray', textAlign: 'center'}}>Preços entre</p>
                     {pPreco === '' ? <p style={{textAlign: 'center', color: 'gray'}}>...</p> : <p style={{textAlign: 'center'}}>{pPreco}</p>}
                 </Typography>
             </section>
-            <Divider color="gray" sx={{margin: '15px 0'}}/>
+            <Divider color="gray" sx={{margin: '10px 0'}}/>
             <section style={{overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <Typography sx={{color: 'white'}} variant="h5" id='produtoNome'>
+                <Typography sx={{color: 'white'}} className='produtoNome'>
                     <p style={{color:'gray'}}>Preço em media</p>
                     {pMedia === '' ? <p style={{textAlign: 'center', color: 'gray'}}>...</p> : <p style={{textAlign: 'center'}}>R${pMedia},00</p>}
                 </Typography>

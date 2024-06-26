@@ -1,8 +1,9 @@
-import { Typography, Box, Modal, Stepper, Step, StepButton, Button, Divider } from "@mui/material";
+import { Typography, Box, Modal, Stepper, Step, StepButton, Button, Divider, IconButton } from "@mui/material";
 import { useState, Fragment } from "react";
 import { ProdutosMolde } from "./CriarMolde";
 import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject, templateImagens, iconSection, simulacaoLista } from "../script";
 import { MoldeResult } from "./MoldeResult";
+import { Close } from "@mui/icons-material";
 
 export function Molde(props){
 
@@ -111,10 +112,13 @@ export function Molde(props){
             <Typography textAlign={'center'}>{moldeStatus}</Typography>
         </Box>
 
-        <Modal open={moldeOpen} onClose={handleCloseModal}>
+        <Modal open={moldeOpen}>
             <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24}} className="moldeModal">
+                <IconButton sx={{position: "absolute"}} className="closemodal" color="primary" onClick={handleCloseModal}>
+                    <Close/>
+                </IconButton>
 
-                <Stepper className="stepper" nonLinear activeStep={passar} sx={{display: 'flex', alignItems: 'center', margin: '0 0 20px 0'}}>
+                <Stepper className="stepper" nonLinear activeStep={passar} sx={{display: 'flex', alignItems: 'center'}}>
                     {passoSessao.map((label, index) => (
                     <Step key={label} completed={completed[index]} className="step" sx={{padding: 0, display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <StepButton onClick={handleStep(index)} disabled={false} className="stepbutton" sx={{margin: '0 2px 0 2px'}}>
@@ -198,7 +202,7 @@ export function Molde(props){
                 </Fragment> : 
 
                 <Fragment>
-                    <Box sx={{width: '100%', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center',}}>
+                    <Box className="contProd">
                         {Array.from(produtosObject).slice(section, section+1).map(produto => (
                             <ProdutosMolde sessao={sectionObject.sessao} image1={produto.image1} image2={produto.image2} image3={produto.image3} image4={produto.image4} image5={produto.image5} image6={produto.image6} image7={produto.image7} image8={produto.image8} 
                             nome1={produto.nome1} nome2={produto.nome2} nome3={produto.nome3} nome4={produto.nome4} nome5={produto.nome5} nome6={produto.nome6} nome7={produto.nome7} nome8={produto.nome8}
