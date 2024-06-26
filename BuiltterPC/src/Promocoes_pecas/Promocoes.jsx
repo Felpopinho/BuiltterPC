@@ -67,7 +67,7 @@ export function Promocoes(){
                         <Button onClick={handleMenu} variant="contained">
                               Filtrar
                         </Button>
-                        <Menu open={open} onClose={handleCloseMenu} anchorEl={anchorEl} sx={{textAlign: "center"}}>
+                        <Menu open={open} onClose={handleCloseMenu} anchorEl={anchorEl} sx={{textAlign: "center", width: "100%"}}>
                             <MenuItem onClick={()=>{handleTabValue("1")}}>Todos</MenuItem> 
                             <MenuItem onClick={()=>{handleTabValue("2")}} sx={{gap: "10px", display: "flex"}}><img style={{width: "20px"}} src={passoSessao[0]}/>Placa-mãe</MenuItem> 
                             <MenuItem onClick={()=>{handleTabValue("3")}} sx={{gap: "10px", display: "flex"}}><img style={{width: "20px"}} src={passoSessao[1]}/>Processador</MenuItem>

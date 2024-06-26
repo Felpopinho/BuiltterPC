@@ -39,6 +39,8 @@
     justify-content: space-between;
     width: 60%;
     transition: all 0.5s ease;
+    padding: 50px;
+    border-radius: 20px;
 }
 
 .selectSection{
@@ -199,7 +201,18 @@
 .boxCont{
     width: 230px;
     height: 230px;
-    margin: 0 60px 0 60px
+    margin: 0 60px 0 60px;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px;
+}
+.stepper{
+    margin: 0 0 30px 0;
+}
+.containerBtn{
+    width: 50%; 
+    margin: 50px 0 10px 0; 
+    display: flex; 
+    justify-content: space-between;
 }
 
 @media screen and (max-width:1400px){
@@ -223,9 +236,21 @@
         width: 170px;
         height: 170px;
         margin: 0 40px 0 40px;
+        border-radius: 18px;
+        box-shadow: 0 5px 25px;
     }
+    .selectSection{
+        margin: 0 50px 0 50px;
+    }
+    .moldeModal{
+        width: auto;
+    }
+    .stepper{
+        margin: 0 0 20px 0;
+    }
+
 }
-@media screen and (max-width:700px){
+@media screen and (max-width:950px){
 
     .inicioSim h2{
         font-size: 2.3rem;
@@ -243,7 +268,30 @@
     .boxCont{
         width: 150px;
         height: 150px;
-        margin: 0 40px 0 40px
+        margin: 0 40px 0 40px;
+        border-radius: 16px;
+        box-shadow: 0 5px 20px;
+    }
+    .selectSection{
+        grid-template-columns: auto auto;
+        gap: 30px;
+        margin: 0 10px 0 10px;
+    }
+    .section_container{
+        width: 180px;
+        height: 130px;
+    }
+    .section_container img{
+        width: 80px;
+    }
+    .moldeModal{
+        padding: 10px;
+    }
+    .stepper{
+        margin: 0 0 5px 0;
+    }
+    .containerBtn{
+        width: 80%; 
     }
 }
 @media screen and (max-width:500px){
@@ -268,9 +316,39 @@
         width: 110px;
         height: 110px;
         margin: 0 30px 0 30px;
+        border-radius: 14px;
+        box-shadow: 0 5px 15px;
     }
     .sim_desc{
         font-size: 1.3rem;
     }
-
+    .moldeModal{
+        width: 100%;
+        height: 100vh;
+        border-radius: 0px;
+        justify-content: space-evenly;
+    }
+    .selectSection{
+        gap: 20px;
+        margin: 0 5px 0 5px;
+    }
+    .section_container{
+        width: 150px;
+        height: 130px;
+    }
+    .section_container img{
+        width: 70px;
+    }
+    .moldeModal{
+        padding: 10px;
+    }
+    .stepper{
+        margin: 0 0 5px 0;
+    }
+    .icones{
+        height: 90px;
+    }
+    .icones p{
+        font-size: 1.1rem;
+    }
 }

@@ -104,19 +104,19 @@ export function Molde(props){
 
     return <Box>
 
-        <Box className="boxCont" sx={{cursor: 'pointer', border: 'solid 3px', borderRadius: '20px', display: 'flex', justifyContent: 'center', 
-        alignItems: 'center', flexDirection: 'column', backgroundColor: 'var(--fundo)', boxShadow: '0 5px 30px'}} 
+        <Box className="boxCont" sx={{cursor: 'pointer', border: 'solid 3px', display: 'flex', justifyContent: 'center', 
+        alignItems: 'center', flexDirection: 'column', backgroundColor: 'var(--fundo)'}} 
         onClick={moldeStatus === 'vazio' ? handleOpenModal : handleOpenResult}> 
             <h1 className="sim_desc" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</h1>
             <Typography textAlign={'center'}>{moldeStatus}</Typography>
         </Box>
 
         <Modal open={moldeOpen} onClose={handleCloseModal}>
-            <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="moldeModal">
+            <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24}} className="moldeModal">
 
-                <Stepper nonLinear activeStep={passar} sx={{display: 'flex', alignItems: 'center', margin: '0 0 50px 0'}}>
+                <Stepper className="stepper" nonLinear activeStep={passar} sx={{display: 'flex', alignItems: 'center', margin: '0 0 20px 0'}}>
                     {passoSessao.map((label, index) => (
-                    <Step key={label} completed={completed[index]}>
+                    <Step key={label} completed={completed[index]} className="step" sx={{padding: 0, display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <StepButton onClick={handleStep(index)} disabled={false} className="stepbutton" sx={{margin: '0 2px 0 2px'}}>
                             <img src={label} className="icons_section"/>
                         </StepButton>
@@ -209,7 +209,7 @@ export function Molde(props){
                     </Box>
                 </Fragment>
                 }
-                <Box sx={{width: '50%', margin: '50px 0 10px 0', display: 'flex', justifyContent: 'space-between'}}>
+                <Box className="containerBtn" >
                     <Button variant="text" disabled={passar === -1} onClick={acaoAntePasso}>Voltar</Button>
 
                     <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso()) || (completed[passar] === true) || (productS === '')} onClick={handleComplete}>Completar</Button>
