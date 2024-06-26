@@ -6,6 +6,7 @@ import videoRoutes from "./api/routes/videos.js";
 import produtoRoutes from "./api/routes/produtos.js";
 import simulacaoRoutes from "./api/routes/simulacoes.js";
 import forumRoutes from "./api/routes/comentarios.js";
+import { configDotenv } from "dotenv";
 
 const app = express();
 

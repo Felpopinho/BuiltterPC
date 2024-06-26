@@ -1,4 +1,4 @@
-import mysql from "mysql2";
+import mysql from "mysql";
 
 export const db = mysql.createPool({
     host: process.env.DB_HOST,
@@ -12,5 +12,5 @@ export const db = mysql.createPool({
 
 db.getConnection((err, conn) =>{
     if(err) console.log(err)
-    console.log("conexão sucedida")
+    console.log(conn)
 })
