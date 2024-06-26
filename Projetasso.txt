@@ -1,35 +1,35 @@
-Projeto do que eu aprendo no intensivão js;
+Projeto utilizando React
 
 Um site que tenha:
 			
--Resgate de elemento em variaveis;              *check
--Variaveis de controle;              	        *check
--Estrutura de condição e repetição;		*chck
--Trocar elementos de texto e imagens;           *check
--Objetos e Arrays;			        *check
--Vite e React;					*check
--elementos HTML dinamicos;			*check
--import/export de variaveis/funções e imagens;	*check
--Servidor com Express e Socket;			*falta
--Arrow function;				*check
--criação elementos;				*falta
--Posicionação de elementos filho.		*falta
+-Resgate de elemento em variaveis;
+-Variaveis de controle;
+-Estrutura de condição e repetição;
+-Trocar elementos de texto e imagens;
+-Objetos e Arrays;
+-Vite e React;	
+-elementos HTML dinamicos;
+-import/export de variaveis/funções e imagens;
+-Servidor com Express;
+-Funçoes assíncronas;
+-criação de elementos;
+-Posicionamento de elementos filho;
+-Banco de dados mySQL;
 
 ---------------------------------------
 
-Talvez tudo isso se encaixe em...
 
-BuiltterPC (Projeto de forum sobre computador)
+CONTA --> Utilizar o express.js, react e mySQL para criação de contas
 
----------------------------------------
+MENU: Introdução do site com o "sobre", botoes de criar e logar conta e uma navegação para todas as sessões do site;
 
-CONTA --> Talvez utilzar um servidor para guardar informações novas em variveis;
+SUPORTE: Navegação de sessoes que classificam os videos de suporte técnico ou historico e favoritos, videos de suporte tecnico com vizualição e favoritar;
 
-SOBRE, CATALOGO, SUPORTE, SIMULAÇÃO, PROMOÇÕES, FORUM: --> utilizar react para organizar um padrão de elementos;
+SIMULAÇÃO: 8 moldes de simulaçoes de montagem de computador, com a escolha das peças verificando preços e somando o total;
 
-PESQUISA --> utilizar js para transitar pelo site;
+PROMOÇÕES: Catalogo de promoçoes com diversos produtos em ofertas, classificação por tipo de peças (ex: processador, fonte e etc), classificação por preço e etc;
 
-FORUM --> Utilizar um Servidor para criar novos comentarios
+FORUM: Forum de comentarios sobre diveros assuntos de tecnologia, com respostas likes e contas;
 
 
 
