@@ -7,8 +7,9 @@ import produtoRoutes from "./api/routes/produtos.js";
 import simulacaoRoutes from "./api/routes/simulacoes.js";
 import forumRoutes from "./api/routes/comentarios.js";
 
-
 const app = express();
+
+const port = env.port
 
 app.use(express.json());
 app.use(cors());
