@@ -10,7 +10,11 @@ import 'dotenv/config'
 
 const app = express();
 
+<<<<<<< HEAD
 const port = process.env.PORT || 3000
+=======
+export const port = process.env.PORT || 3000
+>>>>>>> 5c2938f359f90d18fd10a631896c065481bcfd93
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
