@@ -11,16 +11,12 @@ export const getUsers = (_, res) => {
     });
 };
 export const loginUser = (req, res) =>{
-    const q = "SELECT * FROM usuarios WHERE `email` = ?"
+    const q = "SELECT * FROM usuarios WHERE `email` = ? AND `senha` = ?"
 
-    db.query(q, [req.body.email], (err, data) =>{
+    db.query(q, [req.body.email, req.body.senha], (err, data) =>{
         if (err) return res.status(500).json(err);
-        if (data.lenght === 0) return res.status(404).json("Email não encontrado")
-
-        const checkSenha = bcrypt.compareSync(req.body.senha, data[0].password)
-
-        if (!checkSenha) return res.status(400).json("Email ou senha incorreta!")
-
+        if (data.lenght === 0) return res.status(404).json("Usuário não encontrado!")
+        
         return res.status(200).json(data)
     })
 };
@@ -33,15 +29,12 @@ export const addUser = (req, res) => {
 
         if (data.lenght) return res.status(409).json("Este email já está sendo utilizado!")
 
-        const salt = bcrypt.genSaltSync(10);
-        const hashedSenha = bcrypt.hashSync(req.body.senha, salt)
-
         const q = "INSERT INTO usuarios (`nome`, `email`, `senha`, `perfil`, `titulo`, `descricao`) VALUES(?)";
 
         const values = [
             req.body.nome,
             req.body.email,
-            hashedSenha,
+            req.body.senha,
             req.body.perfil,
             req.body.titulo,
             req.body.descricao,

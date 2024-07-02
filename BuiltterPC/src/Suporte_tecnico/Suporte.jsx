@@ -11,6 +11,7 @@ import { Fragment, useState, useEffect } from "react"
 import { VideoHistorico } from './Video-historico';
 import { baseURL } from '../App';
 import axios from 'axios';
+import { previewUser } from '../script';
 
 
 export function Suporte(props){
@@ -68,11 +69,9 @@ export function Suporte(props){
     const favoritar = async (id, view, views, n) =>{
         if (n===1){
             try{
-                const res = await axios.post(baseURL+"/videos/update", {
-                    video_favorite: "favorite",
-                    video_view: view,
-                    video_estatisticas: views,
-                    id: id
+                const res = await axios.post(baseURL+"/videos/favorite", {
+                    user_id: previewUser.idUser,
+                    video_id: id
                 })
                 props.getData()
                 props.handleOpenAlert("Video favoritado", 1)

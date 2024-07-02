@@ -1,15 +1,15 @@
 import { Typography, Box, Modal, Stepper, Step, StepButton, Button, Divider, IconButton } from "@mui/material";
 import { useState, Fragment } from "react";
 import { ProdutosMolde } from "./CriarMolde";
-import { processadoresObject, memoriasObject, pvideosObject, armazensObject, fontesObject, maeObject, templateImagens, iconSection, simulacaoLista } from "../script";
+import { templateImagens, iconSection, simulacaoLista } from "../script";
 import { MoldeResult } from "./MoldeResult";
 import { Close } from "@mui/icons-material";
+import axios from "axios";
+import { baseURL } from "../App.jsx"
 
 export function Molde(props){
 
-    const objeto = simulacaoLista.findIndex((element) => element === props.molde);
-
-    const [moldeStatus, setStatus] = useState(simulacaoLista[objeto].simulacao_status);
+    const prod = props.produtos
 
     const [moldeOpen, setMoldeOpen] = useState(false);
     const [resultOpen, setResultOpen] = useState(false);
@@ -27,11 +27,7 @@ export function Molde(props){
         setResultOpen(false)
     }
 
-    let [section, setSection] = useState(0);
-
-    let sectionObject = {
-        sessao: section,
-    }
+    const [section, setSection] = useState(0);
 
     const passoSessao = [iconSection.mae, iconSection.processador, iconSection.memoria, iconSection.armazem, iconSection.pvideo, iconSection.fonte];
     const [passar, setPassar] = useState(-1);
@@ -82,34 +78,49 @@ export function Molde(props){
         setPassar(n-1)
     }
 
-    const produtosObject = ['', maeObject, processadoresObject, memoriasObject, armazensObject, pvideosObject, fontesObject, ''];
-
     const [productS, setPselected] = useState('')
 
     const updateSelected = (s) =>{
         setPselected(s)
     }
 
-    const finalizarModal = () =>{
-        setMoldeOpen(false);
-        setStatus("Completo");
-        simulacaoLista[objeto].simulacao_status = "Completo";
-    }
-
+    const [idNome, setIdNome] = useState("")
     const [idMae, setIdMae] = useState([]);
     const [idPro, setIdPro] = useState([]);
     const [idMem, setIdMem] = useState([]);
     const [idArm, setIdArm] = useState([]);
     const [idVid, setIdVid] = useState([]);
     const [idFon, setIdFon] = useState([]);
+    
+    const finalizarModal = async () =>{
+        try {
+            const res = axios.post(baseURL+"/simulacoes", {
+                simulacao_nome: idNome,
+                simulacao_status: "Completo",
+                simulacao_mae: idMae[1],
+                simulacao_pro: idPro[1],
+                simulacao_mem: idMem[1],
+                simulacao_arm: idArm[1],
+                simulacao_vid: idVid[1],
+                simulacao_fon: idFon[1],
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
+
+        setMoldeOpen(false);
+        setStatus("Completo");
+    }
+
 
     return <Box>
 
         <Box className="boxCont" sx={{cursor: 'pointer', border: 'solid 3px', display: 'flex', justifyContent: 'center', 
         alignItems: 'center', flexDirection: 'column', backgroundColor: 'var(--fundo)'}} 
-        onClick={moldeStatus === 'vazio' ? handleOpenModal : handleOpenResult}> 
-            <h1 className="sim_desc" fontWeight={600} textAlign={'center'}>{props.simulacao_nome}</h1>
-            <Typography textAlign={'center'}>{moldeStatus}</Typography>
+        onClick={props.simulacao_status === 'vazio' ? handleOpenModal : handleOpenResult}> 
+            <h1 className="sim_desc" fontWeight={600} style={{textalign:'center'}}>{props.simulacao_nome}</h1>
+            <Typography sx={{textalign:'center'}}>{props.simulacao_status}</Typography>
         </Box>
 
         <Modal open={moldeOpen}>
@@ -118,7 +129,7 @@ export function Molde(props){
                     <Close/>
                 </IconButton>
 
-                <Stepper className="stepper" nonLinear activeStep={passar} sx={{display: 'flex', alignItems: 'center'}}>
+                <Stepper nonLinear activeStep={passar} className="stepper">
                     {passoSessao.map((label, index) => (
                     <Step key={label} completed={completed[index]} className="step" sx={{padding: 0, display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <StepButton onClick={handleStep(index)} disabled={false} className="stepbutton" sx={{margin: '0 2px 0 2px'}}>
@@ -199,16 +210,20 @@ export function Molde(props){
                             {completed[5] === true ? <div className="Completed"/> : <div/>}
                         </Box>
                     </Box>
-                </Fragment> : 
-
+                </Fragment> : section === 7 ? 
+                <Fragment>
+                    <MoldeResult sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid} setIdNome={setIdNome} idNome={idNome}/>
+                </Fragment> :
                 <Fragment>
                     <Box className="contProd">
-                        {Array.from(produtosObject).slice(section, section+1).map(produto => (
-                            <ProdutosMolde sessao={sectionObject.sessao} image1={produto.image1} image2={produto.image2} image3={produto.image3} image4={produto.image4} image5={produto.image5} image6={produto.image6} image7={produto.image7} image8={produto.image8} 
-                            nome1={produto.nome1} nome2={produto.nome2} nome3={produto.nome3} nome4={produto.nome4} nome5={produto.nome5} nome6={produto.nome6} nome7={produto.nome7} nome8={produto.nome8}
-                            preco1={produto.preco1} preco2={produto.preco2} preco3={produto.preco3} preco4={produto.preco4} preco5={produto.preco5} preco6={produto.preco6} preco7={produto.preco7} preco8={produto.preco8} 
-                            productSelected={updateSelected} updatePselected={productS} 
-                            mae={setIdMae} processador={setIdPro} memoria={setIdMem} armazem={setIdArm} fonte={setIdFon} pvideo={setIdVid}/>
+                        {prod.slice(section-1, section).map(produto => (
+                            <ProdutosMolde sessao={section} productSelected={updateSelected} updatePselected={productS} key={produto[0].id}
+                            image1={produto[0].imagem_produto} image2={produto[1].imagem_produto} image3={produto[2].imagem_produto} image4={produto[3].imagem_produto} image5={produto[4].imagem_produto} image6={produto[5].imagem_produto} image7={produto[6].imagem_produto} image8={produto[7].imagem_produto} 
+                            nome1={produto[0].nome_produto} nome2={produto[1].nome_produto} nome3={produto[2].nome_produto} nome4={produto[3].nome_produto} nome5={produto[4].nome_produto} nome6={produto[5].nome_produto} nome7={produto[6].nome_produto} nome8={produto[7].nome_produto}
+                            preco1={produto[0].preco_produto} preco2={produto[1].preco_produto} preco3={produto[2].preco_produto} preco4={produto[3].preco_produto} preco5={produto[4].preco_produto} preco6={produto[5].preco_produto} preco7={produto[6].preco_produto} preco8={produto[7].preco_produto} 
+                            
+                            mae={setIdMae} processador={setIdPro} memoria={setIdMem} armazem={setIdArm} fonte={setIdFon} pvideo={setIdVid} prod={prod}
+                            />
                         ))}
                     </Box>
                 </Fragment>
@@ -232,7 +247,9 @@ export function Molde(props){
 
         </Modal>
         <Modal open={resultOpen} onClose={handleCloseResult}>
-           <MoldeResult sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid}/>
+            <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}}>
+                <MoldeResult sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid}/>
+            </Box>
         </Modal>
 
     </Box>

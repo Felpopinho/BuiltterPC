@@ -74,19 +74,25 @@
     justify-content: center;
 }
 
-.previewProduto{
-    display: grid;
-    grid-template-columns: 40% 60%;
+.previewProdutoCont{
+    display: flex;
+    flex-direction: column;
     place-items: center;
     height: 100%;
+    overflow-y: scroll;
+    padding: 40px;
+}.previewProduto{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
 } .previewProduto img{
-    width: 400px;
+    width: 350px;
     object-fit: contain;
     overflow: hidden;
 }
 .previewEsquerda{
-    width: 90%;
-    height: 80%;
+    width: 100%;
+    height: auto;
 }
 .tituloPromo{
     font-size: 3.5rem;

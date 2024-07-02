@@ -1,12 +1,37 @@
 import { db } from "../db.js";
 
 export const getProdutos = (_, res) =>{
-    const q = 'SELECT * FROM produtos';
-
+    const arrData = []
+    const q = "SELECT * FROM produtos WHERE `tipo_produto` = 'mae'";
     db.query(q, (err, data) =>{
         if (err) return res.json(err);
-        
-        return res.status(200).json(data)
+        arrData.push(data)
+        const q = "SELECT * FROM produtos WHERE `tipo_produto` = 'processador'";
+        db.query(q, (err, data) =>{
+            if (err) return res.json(err);
+            arrData.push(data)
+            const q = "SELECT * FROM produtos WHERE `tipo_produto` = 'memoria'";
+            db.query(q, (err, data) =>{
+                if (err) return res.json(err);
+                arrData.push(data)
+                const q = "SELECT * FROM produtos WHERE `tipo_produto` = 'armazem'";
+                db.query(q, (err, data) =>{
+                    if (err) return res.json(err);
+                    arrData.push(data)
+                    const q = "SELECT * FROM produtos WHERE `tipo_produto` = 'pvideo'";
+                    db.query(q, (err, data) =>{
+                        if (err) return res.json(err);
+                        arrData.push(data)
+                        const q = "SELECT * FROM produtos WHERE `tipo_produto` = 'fonte'";
+                        db.query(q, (err, data) =>{
+                            if (err) return res.json(err);
+                            arrData.push(data)
+                            return res.status(200).send(arrData)
+                        });
+                    });
+                });
+            });
+        });
     });
 }
 

@@ -236,6 +236,7 @@
     font-size: 1.5rem;
 }
 
+
 @media screen and (max-width:1400px){
     .inicioSim{
         flex-direction: column;
@@ -361,6 +362,7 @@
     }
     .selectSection{
         margin: 0 5px 0 5px;
+        
     }
     .section_container{
         width: 150px;
@@ -378,11 +380,13 @@
     .icones p{
         font-size: 1.1rem;
     }
-    .stepper{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
     .containerBtn{
         width: 95%; 
+    }
+    .stepper{
+        transform: scale(0.8);
+    }
+    .contProd{
+        transform: scale(0.8);
     }
 }

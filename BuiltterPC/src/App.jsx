@@ -36,13 +36,12 @@ function App() {
   const [users, setUsers] = useState([]);
   const [videos, setVideos] = useState([]);
   const [simulacoes, setSimulacoes] = useState([]);
-  const [produto, setProdutos] = useState([]);
+  const [produtos, setProdutos] = useState([]);
   const [promocoes, setPromocoes] = useState([]);
   const [comentarios, setComentarios] = useState([])
 
 
   const [logado, setLogado] = useState(false)
-  const [onEdit, setOnEdit] = useState(null);
 
   const getData = async () =>{
     await axios.get(baseURL+"/user").then(res =>{
@@ -94,16 +93,23 @@ function App() {
   const [modalConta, setModalConta] = useState(false)
 
   return <>
-      <Menu abrirConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} handleOpenAlert={handleOpenAlert}/>
+      <Menu  setModalConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} handleOpenAlert={handleOpenAlert} setOpenAviso={setOpenAviso}/>
       <Divider sx={{margin: 3}}/>
+
       <Suporte logado={logado} setOpenAviso={setOpenAviso} videos={videos} getData={getData} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3, marginBottom: 10}}/>
-      <Simulacao logado={logado}/>
+
+      <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes}/>
       <Divider sx={{margin: 3, marginTop: 10}}/>
+
       <Promocoes logado={logado}/>
       <Divider sx={{margin: 3}}/>
+
       <Forum logado={logado}/>
-      {modalConta === true ? <Conta fecharModal={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert}/> : console.log}
+
+      <Modal  open={modalConta} onClose={() => {setModalConta(false)}}>
+        <Conta setModalConta={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert}/>
+      </Modal>
 
       <Modal open={openAviso} onClose={handleCloseAviso}>
         <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
@@ -125,8 +131,8 @@ function App() {
               {severityAlert === "#689f38" ? <CheckCircleOutlineRoundedIcon fontSize='small' color='action'/> : <ErrorOutlineRoundedIcon fontSize='small' color='action'/>}
               <Typography sx={{paddingLeft: "10px"}} color={'white'}>{messageAlert}</Typography>
             </Box>
-            <IconButton size='small'>
-              <Close fontSize='small' onClick={handleCloseAlert}/>
+            <IconButton size='small' onClick={handleCloseAlert}>
+              <Close fontSize='small'/>
             </IconButton>
           </Box>
         </Snackbar>

@@ -25,7 +25,8 @@ export function Menu(props){
                 <div></div>
                 <h1>BuillterPC</h1>
             </div>
-            <div style={{position: "absolute",right: "3vw", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => {props.abrirConta(true)}} className='account'>
+            <div style={{position: "absolute",right: "3vw", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} 
+            onClick={() => {props.logado === true ? props.setModalConta(true) : props.setOpenAviso(true)}} className='account'>
                 <img src={previewUser.perfil === "" ? perfilDesconhecido : previewUser.perfil} width={"80px"} style={{objectFit: "cover"}}/>
             </div>
         </div>
@@ -62,8 +63,8 @@ export function Menu(props){
                             <NavDisplay selectedSection={objetoSessao.section}/>
 
                             <div className='link_nav_container'>
-                                <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}} onClick={() =>{setOpen(true)}}>
-                                    <a href={linkSessao[sessaoSelecionada]}>Selecionar</a>
+                                <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}} onClick={props.logado === true ? console.log : () => {props.setOpenAviso(true)}}>
+                                    <a href={linkSessao[sessaoSelecionada]} >Selecionar</a>
                                 </Button>
                             </div>
                         </div>
