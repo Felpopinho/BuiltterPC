@@ -1,1 +1,1 @@
-<h1>BuiltterPC</h1>
+<h1 style="text-align: center">BuiltterPC</h1>
