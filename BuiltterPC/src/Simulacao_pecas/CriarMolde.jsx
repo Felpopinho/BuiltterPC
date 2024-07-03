@@ -13,44 +13,28 @@ export function ProdutosMolde(props){
     
     const [pText, setPText] = useState('');
     const [pPreco, setPPreco] = useState('');
-    const [pMedia, setPMedia] = useState('');
-
-    const [vMae, setVmae] = useState(0);
-    const [vPro, setVpro] = useState(0);
-    const [vMem, setVmem] = useState(0);
-    const [vArm, setVarm] = useState(0);
-    const [vVid, setVvid] = useState(0);
-    const [vFon, setVfon] = useState(0);
-
-    const handleProduct = (nome, preco) =>{
-        props.productSelected(selected);
-        setPText(nome);
-        setPPreco(preco);
-        let PrecoMin = parseInt(preco.slice(2,6));
-        let PrecoMax = parseInt(preco.slice(11,16));
-        let PrecoMedia = (PrecoMin + PrecoMax) / 2;
-        setPMedia(PrecoMedia);
-        section === 1 ? setVmae(PrecoMedia) :
-        section === 2 ? setVpro(PrecoMedia) :
-        section === 3 ? setVmem(PrecoMedia) :
-        section === 4 ? setVarm(PrecoMedia) :
-        section === 5 ? setVvid(PrecoMedia) :
-        section === 6 ? setVfon(PrecoMedia) :
-        console.log
-    }
+    const [pMedia, setPMedia] = useState(0);
 
     const selectProduct = () =>{
-        section === 1 ? props.mae([imageLista[selected], nomeLista[selected], precoLista[selected], vMae]):
-        section === 2 ? props.processador([imageLista[selected], nomeLista[selected], precoLista[selected], vPro]):
-        section === 3 ? props.memoria([imageLista[selected], nomeLista[selected], precoLista[selected], vMem]):
-        section === 4 ? props.armazem([imageLista[selected], nomeLista[selected], precoLista[selected], vArm]):
-        section === 5 ? props.pvideo([imageLista[selected], nomeLista[selected], precoLista[selected], vVid]):
-        props.fonte([imageLista[selected], nomeLista[selected], precoLista[selected], vFon]);
+        props.productSelected(selected);
+        setPText(nomeLista[selected]);
+        setPPreco(precoLista[selected]);
+        const preco = String(precoLista[selected]);
+        let PrecoMin = preco.slice(2,6);
+        let PrecoMax = preco.slice(11,16);
+        let PrecoMedia = (parseFloat(PrecoMin) + parseFloat(PrecoMax)) / 2;
+        setPMedia(PrecoMedia);
+        section === 1 ? props.mae([imageLista[selected], nomeLista[selected], precoLista[selected], PrecoMedia]):
+        section === 2 ? props.processador([imageLista[selected], nomeLista[selected], precoLista[selected], PrecoMedia]):
+        section === 3 ? props.memoria([imageLista[selected], nomeLista[selected], precoLista[selected], PrecoMedia]):
+        section === 4 ? props.armazem([imageLista[selected], nomeLista[selected], precoLista[selected], PrecoMedia]):
+        section === 5 ? props.pvideo([imageLista[selected], nomeLista[selected], precoLista[selected], PrecoMedia]):
+                        props.fonte([imageLista[selected], nomeLista[selected], precoLista[selected], PrecoMedia]);
     }
 
 
     return <>
-        <Box id='produtosContainer' sx={{display: "grid"}} onChange={() => {handleProduct(nomeLista[selected],precoLista[selected])}}>
+        <Box id='produtosContainer' sx={{display: "grid"}}>
             <div className="produto_input" onClick={selectProduct}>         
                 <input type="radio" name="produto" id="Produto1" className="product" onClick={()=>{selected = 0}} />
                 <label htmlFor="Produto1"><img src={props.image1}/></label>
@@ -103,7 +87,7 @@ export function ProdutosMolde(props){
             <section style={{overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <Box sx={{color: 'white'}} className='produtoNome'>
                     <p style={{color:'gray', textAlign: 'center', padding: "5px"}}>Preço em media</p>
-                    {pMedia === '' ? <p style={{textAlign: 'center', color: 'gray'}}>...</p> : <p style={{textAlign: 'center'}}>R${pMedia},00</p>}
+                    {pMedia === 0 ? <p style={{textAlign: 'center', color: 'gray'}}>...</p> : <p style={{textAlign: 'center'}}>R${pMedia},00</p>}
                 </Box>
             </section>
         </Box>

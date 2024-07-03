@@ -99,7 +99,7 @@ function App() {
       <Suporte logado={logado} setOpenAviso={setOpenAviso} videos={videos} getData={getData} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3, marginBottom: 10}}/>
 
-      <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes}/>
+      <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes} getData={getData}/>
       <Divider sx={{margin: 3, marginTop: 10}}/>
 
       <Promocoes logado={logado}/>
