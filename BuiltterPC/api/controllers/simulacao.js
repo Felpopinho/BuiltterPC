@@ -40,7 +40,7 @@ export const getProdSimulacoes = (req, res) =>{
 
 }
 
-export const updateSimulacao = (req, res) => {
+export const addSimulacao = (req, res) => {
     const q = "UPDATE simulacoes SET `simulacao_nome` = ?, `simulacao_status` = ?, `simulacao_mae` = ?, `simulacao_pro` = ?, `simulacao_mem` = ?, `simulacao_arm` = ?, `simulacao_vid` = ?, `simulacao_fon` = ? WHERE `id` = ?"
 
     const values = [
@@ -59,6 +59,78 @@ export const updateSimulacao = (req, res) => {
         if (err) return res.status(500).json(err);
 
         return res.status(200).json(data);
+    })
+}
+
+export const updateSimulacao = (req, res) => {
+    const q = "SELECT tipo_produto FROM produtos WHERE `nome_produto` = ?"
+
+    db.query(q, [req.body.pNome], (err, data)=>{
+        if (err) return res.status(500).json(err)
+
+        if (data.lenght){
+
+            if (data[0].tipo_produto === "mae") {
+                const q = "UPDATE simulacoes SET `simulacao_mae` = ? WHERE `id` = ?"
+    
+                db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
+                    if (err) return res.status(500).json(err);
+    
+                    return res.status(200).json(data);
+                })
+            } else if (data[0].tipo_produto === "processador") {
+                const q = "UPDATE simulacoes SET `simulacao_pro` = ? WHERE `id` = ?"
+    
+                db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
+                    if (err) return res.status(500).json(err);
+    
+                    return res.status(200).json(data);
+                })
+            } else if (data[0].tipo_produto === "memoria") {
+                const q = "UPDATE simulacoes SET `simulacao_mem` = ? WHERE `id` = ?"
+    
+                db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
+                    if (err) return res.status(500).json(err);
+    
+                    return res.status(200).json(data);
+                })
+            } else if (data[0].tipo_produto === "armazem") {
+                const q = "UPDATE simulacoes SET `simulacao_arm` = ? WHERE `id` = ?"
+    
+                db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
+                    if (err) return res.status(500).json(err);
+    
+                    return res.status(200).json(data);
+                })
+            } else if (data[0].tipo_produto === "pvideo") {
+                const q = "UPDATE simulacoes SET `simulacao_vid` = ? WHERE `id` = ?"
+    
+                db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
+                    if (err) return res.status(500).json(err);
+    
+                    return res.status(200).json(data);
+                })
+            } else if (data[0].tipo_produto === "fonte") {
+                const q = "UPDATE simulacoes SET `simulacao_fon` = ? WHERE `id` = ?"
+    
+                db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
+                    if (err) return res.status(500).json(err);
+    
+                    return res.status(200).json(data);
+                })
+            } else{
+                return res.status(404).json("tipo não encontrado")
+            }
+            
+        } else{
+            const q = "UPDATE simulacoes SET `simulacao_nome` = ? WHERE `id` = ?"
+
+            db.query(q, [req.body.nome, req.body.id] ,(err,data)=>{
+                if (err) return res.status(500).json(err);
+
+                return res.status(200).json(data);
+            })
+        }
     })
 }
 

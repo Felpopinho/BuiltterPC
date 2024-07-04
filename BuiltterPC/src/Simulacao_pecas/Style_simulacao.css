@@ -167,7 +167,7 @@
     justify-self: center;
 }
 
-.resultadoSimulacao_container{
+.resultadoSimulacao_container, .resultadoSimulacaoDois_container{
     flex-direction: column;
 }
 

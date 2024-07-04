@@ -128,11 +128,6 @@ export function Molde(props){
 
     const editarMolde = () =>{
         setEditMolde(true)
-        setSection(0);
-        setPassar(-1);
-        setMoldeOpen(true)
-        setResultOpen(false)
-        props.getData()
     }
 
     const deleteMolde = async () =>{
@@ -144,11 +139,10 @@ export function Molde(props){
             await axios.post(baseURL+"/simulacoes/del", {
                 id: props.simulacao_id
             })
+            getProdSimulacoes()
         } catch (error) {
             console.log(error)
         }
-        getProdSimulacoes()
-        props.getData()
     }
 
     const getProdSimulacoes = async () =>{
@@ -167,6 +161,37 @@ export function Molde(props){
                 setIdArm(res.data[3])
                 setIdVid(res.data[4])
                 setIdFon(res.data[5])
+                props.getData()
+            })
+        } catch(error){
+            console.log(error)
+        }
+    }
+
+    const finalizarEdicao = async () =>{
+        try{
+            await axios.post(baseURL+"/simulacoes/update", section === 1 ?{
+                pNome: idMae[1],
+                id: props.simulacao_id
+            } : section === 2 ?{
+                pNome: idPro[1],
+                id: props.simulacao_id
+            } : section === 3 ?{
+                pNome: idMem[1],
+                id: props.simulacao_id
+            } : section === 4 ?{
+                pNome: idArm[1],
+                id: props.simulacao_id
+            } : section === 5 ?{
+                pNome: idVid[1],
+                id: props.simulacao_id
+            } : {
+                pNome: idFon[1],
+                id: props.simulacao_id
+            }).then(res =>{
+                setMoldeOpen(false)
+                setResultOpen(true)
+                getProdSimulacoes()
             })
         } catch(error){
             console.log(error)
@@ -203,7 +228,8 @@ export function Molde(props){
                     <Close/>
                 </IconButton>
 
-                <Stepper nonLinear activeStep={passar} className="stepper">
+                {editMolde === false ?
+                    <Stepper nonLinear activeStep={passar} className="stepper">
                     {passoSessao.map((label, index) => (
                     <Step key={label} completed={completed[index]} className="step" sx={{padding: 0, display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <StepButton onClick={handleStep(index)} disabled={false} className="stepbutton" sx={{margin: '0 2px 0 2px'}}>
@@ -211,7 +237,9 @@ export function Molde(props){
                         </StepButton>
                     </Step>
                     ))}
-                </Stepper>
+                    </Stepper> : console.log
+                }
+                
 
                 {section === 0 ? 
     
@@ -287,7 +315,7 @@ export function Molde(props){
                 </Fragment> : section === 7 ? 
                 <Fragment>
                     <MoldeResultUm sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid} setIdNome={setIdNome} idNome={idNome} 
-                    editarMolde={editarMolde} edit={editMolde} setCriando={setCriandoMolde} criando={criandoMolde}/>
+                    editarMolde={editarMolde} edit={editMolde} setCriando={setCriandoMolde} criando={criandoMolde} simulacao_id={props.simulacao_id}/>
                 </Fragment> :
                 <Fragment>
                     <Box className="contProd">
@@ -298,24 +326,31 @@ export function Molde(props){
                             preco1={produto[0].preco_produto} preco2={produto[1].preco_produto} preco3={produto[2].preco_produto} preco4={produto[3].preco_produto} preco5={produto[4].preco_produto} preco6={produto[5].preco_produto} preco7={produto[6].preco_produto} preco8={produto[7].preco_produto} 
                             
                             mae={setIdMae} processador={setIdPro} memoria={setIdMem} armazem={setIdArm} fonte={setIdFon} pvideo={setIdVid} prod={prod}
+                            editMolde={editMolde}
                             />
                         ))}
                     </Box>
                 </Fragment>
                 }
                 <Box className="containerBtn" >
-                    <Button variant="text" disabled={passar === -1} onClick={acaoAntePasso}>Voltar</Button>
+                    {editMolde === true ? 
+                        <Button variant="contained" fullWidth disabled={productS === ''} onClick={finalizarEdicao}>Editar</Button> :
+                        <Fragment>
+                            <Button variant="text" disabled={passar === -1} onClick={acaoAntePasso}>Voltar</Button>
 
-                    <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso()) || (completed[passar] === true) || (productS === '')} onClick={handleComplete}>Completar</Button>
-
-                    {passar <= totalPasso() - 1 ? 
-                    <Button variant="outlined" onClick={acaoProxPasso} disabled={(passar === totalPasso() - 1 && todosPassosCompletos() === false)} id="proxPassoBtn">
-                        Proximo
-                    </Button> :
-                    <Button variant="outlined" onClick={finalizarModal}>
-                        Finalizar
-                    </Button>
-                    }  
+                            <Button variant="contained" disabled={(passar === -1) || (passar === totalPasso()) || (completed[passar] === true) || (productS === '')} onClick={handleComplete}>Completar</Button>
+                        
+                            {passar <= totalPasso() - 1 ? 
+                                <Button variant="outlined" onClick={acaoProxPasso} disabled={(passar === totalPasso() - 1 && todosPassosCompletos() === false)} id="proxPassoBtn">
+                                    Proximo
+                                </Button> :
+                                <Button variant="outlined" onClick={finalizarModal}>
+                                    Finalizar
+                                </Button>
+                            }
+                        </Fragment>
+                    }
+                    
                 </Box>
             </Box>
             
@@ -324,7 +359,8 @@ export function Molde(props){
         <Modal open={resultOpen} onClose={handleCloseResult}>
             <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}}>
                 <MoldeResultDois sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid} idNome={idNome} 
-                editarMolde={editarMolde} edit={editMolde}/>
+                editarMolde={editarMolde} edit={editMolde} simulacao_nome={props.simulacao_nome} setCompleted={setCompleted} setSection={setSection} setPassar={setPassar} 
+                setMoldeOpen={setMoldeOpen} setResultOpen={setResultOpen} resultOpen={resultOpen} simulacao_id={props.simulacao_id} getProdSimulacoes={getProdSimulacoes}/>
             </Box>
         </Modal>
 
