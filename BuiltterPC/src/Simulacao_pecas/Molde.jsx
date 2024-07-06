@@ -1,7 +1,7 @@
-import { Typography, Box, Modal, Stepper, Step, StepButton, Button, Divider, IconButton } from "@mui/material";
+import { Typography, Box, Modal, Stepper, Step, StepButton, Button, Divider, IconButton, CircularProgress } from "@mui/material";
 import { useState, Fragment, useEffect } from "react";
 import { ProdutosMolde } from "./CriarMolde";
-import { templateImagens, iconSection, simulacaoLista } from "../script";
+import { templateImagens, iconSection } from "../script";
 import { MoldeResultUm, MoldeResultDois } from "./MoldeResult";
 import { Close } from "@mui/icons-material";
 import axios from "axios";
@@ -117,8 +117,10 @@ export function Molde(props){
                 id: props.simulacao_id
             })
             props.getData()
+            props.handleOpenAlert("Molde criado!", 1)
         } catch (error) {
             console.log(error)
+            props.handleOpenAlert("Criação de molde falhou!", 2)
         }
         setMoldeOpen(false);
     }
@@ -135,13 +137,16 @@ export function Molde(props){
         setSection(0);
         setPassar(-1);
         setCompleted([])
+        setIdNome("Molde "+ props.simulacao_id)
         try {
             await axios.post(baseURL+"/simulacoes/del", {
                 id: props.simulacao_id
             })
             getProdSimulacoes()
+            props.handleOpenAlert("Molde deletado!", 1)
         } catch (error) {
             console.log(error)
+            props.handleOpenAlert("Deletar molde falhou!", 2)
         }
     }
 
@@ -188,13 +193,15 @@ export function Molde(props){
             } : {
                 pNome: idFon[1],
                 id: props.simulacao_id
-            }).then(res =>{
+            }).then(async () =>{
                 setMoldeOpen(false)
-                setResultOpen(true)
                 getProdSimulacoes()
+                setResultOpen(true)
+                props.handleOpenAlert("Peça trocada!", 1);
             })
         } catch(error){
             console.log(error)
+            props.handleOpenAlert("Trocar peça falhou!", 2);
         }
     }
 
@@ -203,13 +210,15 @@ export function Molde(props){
     }, [])
 
     return <Box>
-
+        
         <Box className="boxCont" sx={{cursor: 'pointer', border: 'solid 3px', display: 'flex', justifyContent: 'center', 
         alignItems: 'center', flexDirection: 'column', backgroundColor: 'var(--fundo)', position: "relative"}} 
         onMouseUp={props.simulacao_status === 'vazio' ? handleOpenModal : handleOpenResult}> 
-            <h1 className="sim_desc" fontWeight={600} style={{textalign:'center'}}>{props.simulacao_nome}</h1>
+        {idNome !== props.simulacao_nome ? <CircularProgress/> : <Fragment>
+            <h2 className="sim_desc" fontWeight={600}>{props.simulacao_nome}</h2>
             <Typography sx={{textalign:'center'}}>{props.simulacao_status}</Typography>
             {props.simulacao_status === 'Completo' ?
+            <Fragment>
                 <Box sx={{width: "100%", display: "flex", justifyContent: "space-between", position: "absolute", bottom: "0px", padding: "10px", zIndex: "4"}}>
                     <IconButton onClick={editarMolde}>
                         <EditRoundedIcon/>
@@ -217,9 +226,11 @@ export function Molde(props){
                     <IconButton onClick={deleteMolde}>
                         <DeleteForeverRoundedIcon/>
                     </IconButton>
-                </Box> :
-                console.log
-            }
+                </Box> 
+            </Fragment>:
+            <Fragment/>
+        }
+        </Fragment>}
         </Box>
 
         <Modal open={moldeOpen}>
@@ -315,7 +326,7 @@ export function Molde(props){
                 </Fragment> : section === 7 ? 
                 <Fragment>
                     <MoldeResultUm sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid} setIdNome={setIdNome} idNome={idNome} 
-                    editarMolde={editarMolde} edit={editMolde} setCriando={setCriandoMolde} criando={criandoMolde} simulacao_id={props.simulacao_id}/>
+                    editarMolde={editarMolde} edit={editMolde} setCriando={setCriandoMolde} criando={criandoMolde} simulacao_id={props.simulacao_id} setResultOpen={setResultOpen}/>
                 </Fragment> :
                 <Fragment>
                     <Box className="contProd">
@@ -333,8 +344,8 @@ export function Molde(props){
                 </Fragment>
                 }
                 <Box className="containerBtn" >
-                    {editMolde === true ? 
-                        <Button variant="contained" fullWidth disabled={productS === ''} onClick={finalizarEdicao}>Editar</Button> :
+                    {editMolde === true ? (
+                        <Button variant="contained" fullWidth disabled={productS === ''} onClick={finalizarEdicao}>Editar</Button>) :
                         <Fragment>
                             <Button variant="text" disabled={passar === -1} onClick={acaoAntePasso}>Voltar</Button>
 
@@ -356,11 +367,12 @@ export function Molde(props){
             
 
         </Modal>
-        <Modal open={resultOpen} onClose={handleCloseResult}>
+        <Modal open={resultOpen}>
             <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}}>
-                <MoldeResultDois sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid} idNome={idNome} 
-                editarMolde={editarMolde} edit={editMolde} simulacao_nome={props.simulacao_nome} setCompleted={setCompleted} setSection={setSection} setPassar={setPassar} 
-                setMoldeOpen={setMoldeOpen} setResultOpen={setResultOpen} resultOpen={resultOpen} simulacao_id={props.simulacao_id} getProdSimulacoes={getProdSimulacoes}/>
+                <MoldeResultDois sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid} idNome={idNome} setIdNome={setIdNome}
+                setEditMolde={setEditMolde} edit={editMolde} simulacao_nome={props.simulacao_nome} setCompleted={setCompleted} setSection={setSection} setPassar={setPassar} 
+                setMoldeOpen={setMoldeOpen} setResultOpen={setResultOpen} resultOpen={resultOpen} simulacao_id={props.simulacao_id} getProdSimulacoes={getProdSimulacoes} 
+                finalizarEdicao={finalizarEdicao} handleOpenAlert={props.handleOpenAlert}/>
             </Box>
         </Modal>
 

@@ -19,7 +19,7 @@ import './Simulacao_pecas/Style_simulacao.css'
 import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
 import { Conta } from './Conta.jsx';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -38,12 +38,12 @@ function App() {
   const [simulacoes, setSimulacoes] = useState([]);
   const [produtos, setProdutos] = useState([]);
   const [promocoes, setPromocoes] = useState([]);
-  const [comentarios, setComentarios] = useState([])
+  const [comentarios, setComentarios] = useState("")
 
 
   const [logado, setLogado] = useState(false)
 
-  const getData = async () =>{
+  const getData = useCallback(async () =>{
     await axios.get(baseURL+"/user").then(res =>{
       setUsers(res.data)
     });
@@ -62,11 +62,11 @@ function App() {
     await axios.get(baseURL+"/comentarios").then(res =>{
       setComentarios(res.data)
     });
-  }
+  }, [])
 
   useEffect(()=>{
     getData();
-  }, [setUsers, setVideos, setSimulacoes, setProdutos, setPromocoes, setComentarios])
+  },[])
 
   const [openAviso, setOpenAviso] = useState(false)
   const handleCloseAviso = () =>{
@@ -93,13 +93,14 @@ function App() {
   const [modalConta, setModalConta] = useState(false)
 
   return <>
-      <Menu  setModalConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} handleOpenAlert={handleOpenAlert} setOpenAviso={setOpenAviso}/>
+      <Menu  setModalConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} handleOpenAlert={handleOpenAlert} setOpenAviso={setOpenAviso} 
+      videos={videos} simulacoes={simulacoes} promocoes={promocoes} comentarios={comentarios} getData={getData}/>
       <Divider sx={{margin: 3}}/>
 
       <Suporte logado={logado} setOpenAviso={setOpenAviso} videos={videos} getData={getData} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3, marginBottom: 10}}/>
 
-      <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes} getData={getData}/>
+      <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes} getData={getData} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3, marginTop: 10}}/>
 
       <Promocoes logado={logado}/>

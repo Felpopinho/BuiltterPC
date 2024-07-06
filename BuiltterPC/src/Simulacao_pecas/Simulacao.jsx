@@ -16,7 +16,7 @@ export function Simulacao(props){
                 <Box className="boxs" sx={{display: 'flex'}}>
                     {props.simulacoes.map(molde => (<Molde getData={props.getData} produtos={props.produtos} key={molde.id} simulacao_nome={molde.simulacao_nome} molde={molde} 
                     simulacao_status={molde.simulacao_status} simulacao_id={molde.id} simulacao_mae={molde.simulacao_mae} simulacao_pro={molde.simulacao_pro} simulacao_mem={molde.simulacao_mem}
-                    simulacao_arm={molde.simulacao_arm} simulacao_vid={molde.simulacao_vid} simulacao_fon={molde.simulacao_fon}/>))}
+                    simulacao_arm={molde.simulacao_arm} simulacao_vid={molde.simulacao_vid} simulacao_fon={molde.simulacao_fon} handleOpenAlert={props.handleOpenAlert}/>))}
                 </Box>
             </Box>
         </Box>

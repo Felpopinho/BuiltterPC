@@ -1,6 +1,7 @@
 import { Typography, Box, Divider, TextField, Input, IconButton, Button } from "@mui/material";
 import { useState, Fragment, useEffect } from "react";
 import { previewUser } from "../script";
+import { Close } from "@mui/icons-material";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import EditOffRoundedIcon from '@mui/icons-material/EditOffRounded';
 import SendIcon from '@mui/icons-material/Send';
@@ -15,7 +16,6 @@ export function MoldeResultUm(props){
 
     return<>
         <Box sx={{display: "flex", alignItems: "center", justifyContent: "space-evenly", height: "100%"}} className="resultadoSimulacao_container">
-
             <Typography fontWeight={700} sx={{display: "flex", justifyContent: "center", marginBottom: "15px", fontSize: "2rem"}}>
                 Produtos selecionados
             </Typography>
@@ -70,7 +70,7 @@ export function MoldeResultUm(props){
             </Box>
             <Box sx={{display: "flex", width: "100%", justifyContent: "space-evenly"}}>
                 <TextField onChange={(e)=>{setNome(e)}} label="Nome do molde" value={props.idNome} sx={{width: "40%"}}/>
-                <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>{props.mae[3]+props.processador[3]+props.memoria[3]+props.armazem[3]+props.pvideo[3]+props.fonte[3]}</h1>
+                <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>Preço total: {props.mae[3]+props.processador[3]+props.memoria[3]+props.armazem[3]+props.pvideo[3]+props.fonte[3]}</h1>
             </Box>
         </Box>
     </>
@@ -96,12 +96,18 @@ export function MoldeResultDois(props){
     }
 
     const editNome = async () =>{
-        await axios.post(baseURL+"/simulacoes/update", {
-            nome: nome,
-            id: props.simulacao_id
-        }).then(res=>{
-            props.getProdSimulacoes
-        })
+        try{
+            await axios.post(baseURL+"/simulacoes/update/nome", {
+                nome: nome,
+                id: props.simulacao_id
+            }).then(res=>{
+                props.getProdSimulacoes()
+                props.handleOpenAlert("Nome do molde alterado!", 1)
+            })
+        }catch(error){
+            console.log(error)
+            props.handleOpenAlert("Alterar nome do molde falhou!", 2)
+        }
     }
     const editMae = () =>{
         props.setMoldeOpen(true)
@@ -135,13 +141,15 @@ export function MoldeResultDois(props){
     }
 
     const fecharEdit = () =>{
-        props.editarMolde(false)
+        props.setEditMolde(false)
         props.setResultOpen(false)
+        props.setIdNome(props.simulacao_nome)
     }
 
     useEffect (()=>{
-        precoMedia()
-    })
+        precoMedia();
+        props.getProdSimulacoes()
+    }, [props.mae,props.processador,props.memoria,props.pvideo,props.fonte,props.armazem])
 
     const [nome, setNome] = useState(props.simulacao_nome)
 
@@ -151,6 +159,11 @@ export function MoldeResultDois(props){
 
     return<>
         <Box sx={{display: "flex", alignItems: "center", justifyContent: "space-evenly", height: "80vh"}} className="resultadoSimulacaoDois_container">
+        {props.edit === false ?
+            <IconButton sx={{position: "absolute"}} className="closemodal" color="primary" onClick={()=>{props.setResultOpen(false)}}>
+                <Close/>
+            </IconButton> :
+        console.log }
             <Box sx={{width: "80%", display: "flex", justifyContent: "center"}}>
                 {props.edit === false ?
                 <Typography sx={{display: "flex", justifyContent: "center", marginBottom: "15px", fontSize: "2.5rem", fontWeight: "700"}}>

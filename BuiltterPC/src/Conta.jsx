@@ -45,7 +45,7 @@ export function Conta(props){
         <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4, width: "100%", height: "100vh",
             display: "grid", gridTemplateColumns: "30% 70%", gridTemplateRows: "30vh 30vh", placeItems: "center"
         }}>
-            <IconButton sx={{position: "absolute"}} className="closemodal" color="primary" onClick={() => {props.setModalConta(false)}}>
+            <IconButton sx={{position: "absolute", top: "5%", right: "5%"}} color="primary" onClick={() => {props.setModalConta(false)}}>
                 <Close/>
             </IconButton>
             <div style={{width: "200px",height: "200px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "200px", overflow: "hidden", background: "white"}} >

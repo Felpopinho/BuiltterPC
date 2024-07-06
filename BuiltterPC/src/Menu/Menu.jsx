@@ -9,9 +9,6 @@ import { Button, Divider, Snackbar } from '@mui/material';
 export function Menu(props){
 
     const [sessaoSelecionada, refreshSection] = useState(0);
-    let objetoSessao = {
-        section: sessaoSelecionada,
-    }
 
     const linkSessao = ["#Suporte", "#Simulacao", "#Promocao", "#Forum"]
 
@@ -60,7 +57,7 @@ export function Menu(props){
                         <Divider variant='middle' sx={{marginTop: "1vh", marginBottom: "1vh", }}/>
                         <div className='display_container_esquerdo'>
 
-                            <NavDisplay selectedSection={objetoSessao.section}/>
+                            <NavDisplay sessaoSelecionada={sessaoSelecionada} videos={props.videos} simulacoes={props.simulacoes} promocoes={props.promocoes} comentarios={props.comentarios} getData={props.getData}/>
 
                             <div className='link_nav_container'>
                                 <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}} onClick={props.logado === true ? console.log : () => {props.setOpenAviso(true)}}>
