@@ -1,10 +1,11 @@
-import { Box, Typography, Tab, Tabs, Divider, Menu, MenuItem, Button } from "@mui/material";
+import { Box, Typography, Tab, Tabs, Divider, Menu, MenuItem, Button, CircularProgress } from "@mui/material";
 import { Fragment, useState, useEffect } from "react";
 import { promocaoLista } from "../script";
 import { Catalogo } from "./Catalogo";
 import { iconSection } from "../script"
+import { PropaneSharp } from "@mui/icons-material";
 
-export function Promocoes(){
+export function Promocoes(props){
 
     const [tabValue, setTabValue] = useState('1')
 
@@ -81,36 +82,39 @@ export function Promocoes(){
             </Box>
         </Box>
         <Divider sx={{margin: "1vh 0 1vh 0", width: "90%"}}/>
+        {props.promocoes === "" ? <Box sx={{minHeight: "50vh", display: "flex", placeItems: "center"}}><CircularProgress/></Box> :
         <Box className="catalogoContainer">
             {tabValue === "1" ?
                 <Fragment>
-                    {promocaoLista.map(item => <Catalogo key={item.promocao_nome} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>)}
+                    {Array.from(props.promocoes).map(item => <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>)}
                 </Fragment> :
             tabValue === "2" ?
                 <Fragment>
-                    {promocaoLista.map(item => item.promocao_id === "mae" ? <Catalogo key={item.promocao_nome} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "mae" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
                 </Fragment> :
             tabValue === "3" ?
                 <Fragment>
-                    {promocaoLista.map(item => item.promocao_id === "processador" ? <Catalogo key={item.promocao_nome} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "processador" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
                 </Fragment> :
             tabValue === "4" ?
                 <Fragment>
-                    {promocaoLista.map(item => item.promocao_id === "memoria" ? <Catalogo key={item.promocao_nome} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "memoria" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
                 </Fragment> :
             tabValue === "5" ?
                 <Fragment>
-                    {promocaoLista.map(item => item.promocao_id === "armazem" ? <Catalogo key={item.promocao_nome} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "armazem" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
                 </Fragment> :
             tabValue === "6" ?
                 <Fragment>
-                    {promocaoLista.map(item => item.promocao_id === "pvideo" ? <Catalogo key={item.promocao_nome} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "pvideo" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
                 </Fragment> :
                 <Fragment>
-                    {promocaoLista.map(item => item.promocao_id === "fonte" ? <Catalogo key={item.promocao_nome} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "fonte" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
                 </Fragment>
             }
         </Box>
+        }
+        
 
     </div>
 }

@@ -5,7 +5,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 import BugReportIcon from '@mui/icons-material/BugReport';
-import { Divider, List, Input, Box, Button, Modal, Typography, ThemeProvider, BottomNavigation, BottomNavigationAction } from "@mui/material" 
+import { Divider, List, Input, Box, Button, Modal, Typography, ThemeProvider, BottomNavigation, BottomNavigationAction, CircularProgress } from "@mui/material" 
 import { SessaoUm, SessaoDois, SessaoTres, SessaoQuatro, SessaoFavorito } from "./Sessoes_suporte" 
 import { Fragment, useState, useEffect } from "react" 
 import { VideoHistorico } from './Video-historico';
@@ -164,7 +164,11 @@ export function Suporte(props){
                     </BottomNavigation>
             </Fragment>
         }
-
+        <div className="titulo_sessao_container">
+            <h1>Suporte Técnico</h1>
+            <Divider className="divisor_video" sx={{margin: 1}}/>
+        </div>
+        {props.videos === "" ? <CircularProgress/> : (<Fragment>
         <Modal open={openModal} onClose={handleCloseModal}>
             <Box sx={{position: 'absolute',top: '50%',left: '50%', transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
                 <Typography variant='h3' sx={{fontWeight: '600', width:'90%'}}>Historico</Typography>
@@ -176,14 +180,7 @@ export function Suporte(props){
                 </div>
             </Box>
         </Modal>
-
         
-
-        <div className="titulo_sessao_container">
-            <h1>Suporte Técnico</h1>
-            <Divider className="divisor_video" sx={{margin: 1}}/>
-        </div>
-
         <Box className="sessao_videos_container">
             {sessao === 0 ? (
             <Fragment>
@@ -205,6 +202,8 @@ export function Suporte(props){
                 <SessaoFavorito setOpenAviso={props.setOpenAviso} logado={props.logado} videos={props.videos} favoritar={favoritar} visualizar={visualizar} sessao={sessao}/>
             </Fragment>}
         </Box>
+        </Fragment>)}
+        
 
     </div>
 }

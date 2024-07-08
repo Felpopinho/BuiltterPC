@@ -33,11 +33,11 @@ const darkTheme = createTheme({
 
 function App() {
 
-  const [users, setUsers] = useState([]);
-  const [videos, setVideos] = useState([]);
+  const [users, setUsers] = useState("");
+  const [videos, setVideos] = useState("");
   const [simulacoes, setSimulacoes] = useState("");
-  const [produtos, setProdutos] = useState([]);
-  const [promocoes, setPromocoes] = useState([]);
+  const [produtos, setProdutos] = useState("");
+  const [promocoes, setPromocoes] = useState("");
   const [comentarios, setComentarios] = useState("")
 
 
@@ -103,7 +103,7 @@ function App() {
       <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes} getData={getData} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3, marginTop: 10}}/>
 
-      <Promocoes logado={logado}/>
+      <Promocoes logado={logado} promocoes={promocoes}/>
       <Divider sx={{margin: 3}}/>
 
       <Forum logado={logado}/>

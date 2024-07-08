@@ -354,6 +354,8 @@ const promo23 = {
     promocao_id: "processador"
 }
 
+
+
 //Objetos dos comentarios
 const comentario0 ={
     forum_nome: 'Kuribuh',
@@ -389,3 +391,18 @@ export const iconSection = {
     fonte: i_fonte,
 }
 
+//async function adicionarPromocoes(obj){
+//    const res = await axios.post("http://localhost:3000/promocoes",{
+//        promocao_nome: obj.promocao_nome,
+//        promocao_preco: obj.promocao_preco,
+//        promocao_porcentagem: obj.promocao_porcentagem,
+//        promocao_oferta: obj.promocao_oferta,
+//        promocao_imagem: obj.promocao_imagem,
+//        promocao_tipo: obj.promocao_id
+//    })
+//    console.log(res.data)
+//}
+//
+//for (let i = 0; i <= promocaoLista.length; i++){
+//    adicionarPromocoes(promocaoLista[i])
+//}

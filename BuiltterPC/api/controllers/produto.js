@@ -61,3 +61,22 @@ export const getPromocoes = (_, res) =>{
         return res.status(200).json(data)
     });
 }
+
+export const addPromocoes = (req, res) =>{
+    const q = 'INSERT INTO promocoes (`promocao_nome`, `promocao_preco`, `promocao_porcentagem`, `promocao_oferta`, `promocao_imagem`, `promocao_tipo`) VALUES (?)'
+
+    const values = [
+        req.body.promocao_nome,
+        req.body.promocao_preco,
+        req.body.promocao_porcentagem,
+        req.body.promocao_oferta,
+        req.body.promocao_imagem,
+        req.body.promocao_tipo
+    ]
+
+    db.query(q, [values], (err, data)=>{
+        if (err) return res.json(err);
+
+        return res.status(200).json(data)
+    })
+}
