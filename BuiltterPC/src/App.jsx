@@ -35,7 +35,7 @@ function App() {
 
   const [users, setUsers] = useState([]);
   const [videos, setVideos] = useState([]);
-  const [simulacoes, setSimulacoes] = useState([]);
+  const [simulacoes, setSimulacoes] = useState("");
   const [produtos, setProdutos] = useState([]);
   const [promocoes, setPromocoes] = useState([]);
   const [comentarios, setComentarios] = useState("")

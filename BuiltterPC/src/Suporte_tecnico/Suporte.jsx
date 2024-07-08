@@ -59,7 +59,7 @@ export function Suporte(props){
 
     mediaQuery.addEventListener('change', ()=>{
         mediaQueryFunction()
-    })
+    }, [mediaQuery])
 
     const [value, setValue] = useState('')
     const handleValue = (event, newValue) =>{
