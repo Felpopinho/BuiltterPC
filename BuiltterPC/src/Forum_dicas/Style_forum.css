@@ -1,4 +1,37 @@
 .forum_container{
     width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.tituloForum{
+    font-size: 3rem;
+    margin: 0 2%;
+}
+
+.mainContainer{
+    display: grid;
+    width: 100%;
+    height: 90vh;
+    grid-template-columns: 300px 1fr 300px;
+    justify-items: center;
+}
+.Postagens,.Pessoas,.Filtros{
+    margin-top: 40px;
+}
+.Postagens{
+    width: 100%;
+}
+.Filtros{
+    width: 100%;
+}
+.criarPostagem{
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

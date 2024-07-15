@@ -1,10 +1,10 @@
-import { useState, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../assets/imagens/Logo.png';
 import { ItensSobre } from './itensSobre.jsx';
 import { previewUser, sessoesLista, perfilDesconhecido} from '../script.js';
 import { CriarLogarConta } from './Criar-logar.jsx';
 import { NavEsquerdo, NavDisplay } from './Nav_Inicio.jsx'; 
-import { Button, Divider, Snackbar } from '@mui/material';
+import { Avatar, Button, Divider, IconButton, Snackbar } from '@mui/material';
 
 export function Menu(props){
 
@@ -12,7 +12,25 @@ export function Menu(props){
 
     const linkSessao = ["#Suporte", "#Simulacao", "#Promocao", "#Forum"]
 
-    
+    const [avatar, setAvatar] = useState(previewUser.perfil)
+    const [color, setColor] = useState()
+
+    const handleAvatar = () =>{
+        if (props.logado === true){
+            if (previewUser.perfil === ""){
+                setAvatar(previewUser.usuario.substr(0,1))
+                let str = '#';
+                while (str.length < 7) {
+                    str += Math.floor(Math.random() * 0x10).toString(16);
+                }
+                setColor(str)
+            }
+        }
+    }
+
+    useEffect(()=>{
+        handleAvatar()
+    }, [avatar, previewUser.idUser])    
 
     return <>
 
@@ -22,10 +40,10 @@ export function Menu(props){
                 <div></div>
                 <h1>BuillterPC</h1>
             </div>
-            <div style={{position: "absolute",right: "3vw", width: "80px",height: "80px", overflow: "hidden", borderRadius: "50%", backgroundColor: "black", display: 'flex', alignItems: 'center', justifyContent: 'center'}} 
+            <IconButton sx={{position: "absolute",right: "3vw"}} 
             onClick={() => {props.logado === true ? props.setModalConta(true) : props.setOpenAviso(true)}} className='account'>
-                <img src={previewUser.perfil === "" ? perfilDesconhecido : previewUser.perfil} width={"80px"} style={{objectFit: "cover"}}/>
-            </div>
+                <Avatar src={props.logado === true ? avatar : perfilDesconhecido} width={"80px"} sx={{bgcolor: color, width: "80px",height: "80px", fontSize: "1.5rem"}}>{avatar}</Avatar>
+            </IconButton>
         </div>
 
         <div className="menu_container">

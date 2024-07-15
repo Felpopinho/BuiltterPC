@@ -1,9 +1,7 @@
 import { Box, Typography, Tab, Tabs, Divider, Menu, MenuItem, Button, CircularProgress } from "@mui/material";
 import { Fragment, useState, useEffect } from "react";
-import { promocaoLista } from "../script";
 import { Catalogo } from "./Catalogo";
 import { iconSection } from "../script"
-import { PropaneSharp } from "@mui/icons-material";
 
 export function Promocoes(props){
 

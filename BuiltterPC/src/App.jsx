@@ -34,18 +34,23 @@ const darkTheme = createTheme({
 function App() {
 
   const [users, setUsers] = useState("");
+  const [amigos, setAmigos] = useState("")
   const [videos, setVideos] = useState("");
   const [simulacoes, setSimulacoes] = useState("");
   const [produtos, setProdutos] = useState("");
   const [promocoes, setPromocoes] = useState("");
-  const [comentarios, setComentarios] = useState("")
+  const [comentarios, setComentarios] = useState("");
 
+  const [valueFiltro, setValueFiltro]= useState("id")
 
   const [logado, setLogado] = useState(false)
 
   const getData = useCallback(async () =>{
     await axios.get(baseURL+"/user").then(res =>{
       setUsers(res.data)
+    });
+    await axios.get(baseURL+"/amigos").then(res =>{
+      setAmigos(res.data)
     });
     await axios.get(baseURL+"/videos").then(res =>{
       setVideos(res.data)
@@ -59,14 +64,16 @@ function App() {
     await axios.get(baseURL+"/promocoes").then(res =>{
       setPromocoes(res.data)
     });
-    await axios.get(baseURL+"/comentarios").then(res =>{
+    await axios.post(baseURL+"/comentarios",{
+      filtro: valueFiltro
+    }).then(res =>{
       setComentarios(res.data)
     });
-  }, [])
+  }, [logado, valueFiltro])
 
   useEffect(()=>{
     getData();
-  },[])
+  },[logado, valueFiltro])
 
   const [openAviso, setOpenAviso] = useState(false)
   const handleCloseAviso = () =>{
@@ -91,6 +98,7 @@ function App() {
   }
 
   const [modalConta, setModalConta] = useState(false)
+  
 
   return <>
       <Menu  setModalConta={setModalConta} users={users.length} logado={logado} setLogado={setLogado} handleOpenAlert={handleOpenAlert} setOpenAviso={setOpenAviso} 
@@ -106,7 +114,7 @@ function App() {
       <Promocoes logado={logado} promocoes={promocoes}/>
       <Divider sx={{margin: 3}}/>
 
-      <Forum logado={logado}/>
+      <Forum getData={getData} logado={logado} users={users} comentarios={comentarios} amigos={amigos} setValueFiltro={setValueFiltro} valueFiltro={valueFiltro}/>
 
       <Modal  open={modalConta} onClose={() => {setModalConta(false)}}>
         <Conta setModalConta={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert}/>

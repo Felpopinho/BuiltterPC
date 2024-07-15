@@ -69,9 +69,11 @@ export function Suporte(props){
     const favoritar = async (id, view, views, n) =>{
         if (n===1){
             try{
-                const res = await axios.post(baseURL+"/videos/favorite", {
-                    user_id: previewUser.idUser,
-                    video_id: id
+                const res = await axios.post(baseURL+"/videos/update", {
+                    video_favorite: "favorite",
+                    video_view: view,
+                    video_estatisticas: views,
+                    id: id
                 })
                 props.getData()
                 props.handleOpenAlert("Video favoritado", 1)

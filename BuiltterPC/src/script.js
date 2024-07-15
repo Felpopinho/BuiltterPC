@@ -158,223 +158,24 @@ const forum ={
     imagem: imageForum,
 };
 
-//OBJETOS DE DADOS DAS SESSÕES:
-
-//Objetos das promoções
-const promo0 ={
-    promocao_nome: 'ASUS TUF Gaming GeForce® GTX 1660 Ti EVO OC Edition 6GB GDDR6',
-    promocao_preco:'R$4100,00',
-    promocao_porcentagem: '40%Off',
-    promocao_oferta: 'R$2460,00',
-    promocao_imagem: produto1,
-    promocao_id: "pvideo"
-}
-const promo1 ={
-    promocao_preco: 'R$725,00',
-    promocao_nome: 'Memória PNY 32GB 3200Mhz DDR4 2X16GB XLR8 GAMING',
-    promocao_porcentagem: '45%Off',
-    promocao_oferta: 'R$456,25',
-    promocao_imagem: memoria5,
-    promocao_id: "memoria"
-}
-const promo2 ={
-    promocao_preco: 'R$1050,00',
-    promocao_nome: 'Placa Mãe Gigabyte B450M Gaming, Chipset B450, AMD AM4, mATX, DDR4',
-    promocao_porcentagem: '35%Off',
-    promocao_oferta: 'R$683,50',
-    promocao_imagem: mae2,
-    promocao_id: "mae"
-}
-const promo3 ={
-    promocao_preco: 'R$900,00',
-    promocao_nome: 'Processador Ryzen 3 2200G 3.5GHz 6MB AM4, AMD, Ryzen 3 2200G',
-    promocao_porcentagem: '20%Off',
-    promocao_oferta: 'R$720,00',
-    promocao_imagem: processador0,
-    promocao_id: "processador"
-}
-const promo4 ={
-    promocao_preco: 'R$375,00',
-    promocao_nome: 'SSD 480 GB Kingston A400, SATA, Leitura: 500MB/s ',
-    promocao_porcentagem: '10%Off',
-    promocao_oferta: 'R$179,99',
-    promocao_imagem: armazem4,
-    promocao_id: "armazem"
-}
-const promo5 ={
-    promocao_preco: 'R$2600,00',
-    promocao_nome: 'Placa de Video Gigabyte Radeon RX 6500 XT Gaming OC, 4GB, GDDR6, 64-Bit',
-    promocao_porcentagem: '15%Off',
-    promocao_oferta: 'R$2210,00',
-    promocao_imagem: pvideo4,
-    promocao_id: "pvideo"
-}
-const promo6 ={
-    promocao_preco: 'R$645,00',
-    promocao_nome: 'FONTE CORSAIR CV SERIES CV650 80 PLUS BRONZE 650W',
-    promocao_porcentagem: '15%Off',
-    promocao_oferta: 'R$549,00',
-    promocao_imagem: produto2,
-    promocao_id: "fonte"
-}
-const promo7 ={
-    promocao_preco: 'R$575,00',
-    promocao_nome: "HD Seagate 2TB BarraCuda, 3.5', SATA - ST2000DM008",
-    promocao_porcentagem: '35%Off',
-    promocao_oferta: 'R$683,50',
-    promocao_imagem: armazem7,
-    promocao_id: "armazem"
-}
-const promo8 = {
-    promocao_preco: 'R$1900,00',
-    promocao_nome: "Placa Mãe Gigabyte Z390 M GAMING, Chipset Z390, Intel LGA 1151, mATX, DDR4",
-    promocao_porcentagem: '35%Off',
-    promocao_oferta: 'R$1.235,00',
-    promocao_imagem: mae5,
-    promocao_id: "mae"
-}
-const promo9 = {
-    promocao_preco: 'R$1125,00',
-    promocao_nome: "Placa Mãe Gigabyte B550M AORUS Elite, Chipset B550, AMD AM4, mATX, DDR4",
-    promocao_porcentagem: '10%Off',
-    promocao_oferta: 'R$1.012,00',
-    promocao_imagem: mae4,
-    promocao_id: "mae"
-}
-const promo10 = {
-    promocao_preco: 'R$425,00',
-    promocao_nome: "Placa Mãe Gigabyte GA-H170-Gaming 3, DDR4 chipset H170, LGA 1151",
-    promocao_porcentagem: '15%Off',
-    promocao_oferta: 'R$361,00',
-    promocao_imagem: mae1,
-    promocao_id: "mae"
-}
-const promo11 = {
-    promocao_preco: 'R$675,00',
-    promocao_nome: "Fonte Gamer Corsair VS500 500W 80 Plus White c/ Cabo",
-    promocao_porcentagem: '35%Off',
-    promocao_oferta: 'R$438,75',
-    promocao_imagem: fonte1,
-    promocao_id: "fonte"
-}
-const promo12 = {
-    promocao_preco: 'R$1500,00',
-    promocao_nome: "Fonte 1050w Cooler Master 80 Plus Gold Full Modular - MPE-A501-AFCAG-WO",
-    promocao_porcentagem: '10%Off',
-    promocao_oferta: 'R$1.350,00',
-    promocao_imagem: fonte7,
-    promocao_id: "fonte"
-}
-const promo13 = {
-    promocao_preco: 'R$475,00',
-    promocao_nome: "Fonte AeroCool KCAS Full Range, 700W, 80 Plus Bronze , KCAS-700W",
-    promocao_porcentagem: '40%Off',
-    promocao_oferta: 'R$285,00',
-    promocao_imagem: fonte4,
-    promocao_id: "fonte"
-}
-const promo14 = {
-    promocao_preco: 'R$1450,00',
-    promocao_nome: "Placa de video RX 570 4GB Powercolor Red Dragon",
-    promocao_porcentagem: '30%Off',
-    promocao_oferta: 'R$1.015,00',
-    promocao_imagem: pvideo0,
-    promocao_id: "pvideo"
-}
-const promo15 = {
-    promocao_preco: 'R$5775,00',
-    promocao_nome: "Placa de Vídeo Palit NVIDIA GeForce RTX 3080 Ti GameRock, LHR, 12GB",
-    promocao_porcentagem: '10%Off',
-    promocao_oferta: 'R$5.197,50',
-    promocao_imagem: pvideo6,
-    promocao_id: "pvideo"
-}
-const promo16 = {
-    promocao_preco: 'R$1000,00',
-    promocao_nome: "Ssd Intel 320 Series 600gb",
-    promocao_porcentagem: '25%Off',
-    promocao_oferta: 'R$750,00',
-    promocao_imagem: armazem3,
-    promocao_id: "armazem"
-}
-const promo17 = {
-    promocao_preco: 'R$675,00',
-    promocao_nome: "HD Interno WD Purple 3TB Surveillance SATA III 6GB/s 5400 RPM WD30PURZ",
-    promocao_porcentagem: '30%Off',
-    promocao_oferta: 'R$472,5',
-    promocao_imagem: armazem5,
-    promocao_id: "armazem"
-}
-const promo18 = {
-    promocao_preco: 'R$200,00',
-    promocao_nome: "Memória Gamer Husky Gaming, 4GB, 2666Mhz",
-    promocao_porcentagem: '50%Off',
-    promocao_oferta: 'R$100,00',
-    promocao_imagem: memoria0,
-    promocao_id: "memoria"
-}
-const promo19 = {
-    promocao_preco: 'R$1175,00',
-    promocao_nome: "Memória Kingston Fury Beast, RGB, 32GB (4x8GB), 3600MHz, DDR4, CL17, Preto",
-    promocao_porcentagem: '25%Off',
-    promocao_oferta: 'R$881,25',
-    promocao_imagem: memoria7,
-    promocao_id: "memoria"
-}
-const promo20 = {
-    promocao_preco: 'R$400,00',
-    promocao_nome: "Memoria Ram Gamer Ddr4 Gloway 2x8gb 16gb 3200mhz Branca Rgb",
-    promocao_porcentagem: '20%Off',
-    promocao_oferta: 'R$320,00',
-    promocao_imagem: memoria3,
-    promocao_id: "memoria"
-}
-const promo21 = {
-    promocao_preco: 'R$3200,00',
-    promocao_nome: "Processador AMD Ryzen 9 7900X3D (AM5/12 Cores/24 Threads/5.6GHz/140MB Cache)",
-    promocao_porcentagem: '15%Off',
-    promocao_oferta: 'R$2.720,00',
-    promocao_imagem: processador7,
-    promocao_id: "processador"
-}
-const promo22 = {
-    promocao_preco: 'R$825,00',
-    promocao_nome: "Processador Intel Core i5 10400F 2.90GHz (4.30GHz Turbo), 10ª Geração, 6-Cores 12-Threads",
-    promocao_porcentagem: '5%Off',
-    promocao_oferta: 'R$783,75',
-    promocao_imagem: processador2,
-    promocao_id: "processador"
-}
-const promo23 = {
-    promocao_preco: 'R$2050,00',
-    promocao_nome: "Processador Intel Core i7 10700 2.90GHz (4.70GHz Turbo), 10ª Geração, 8-Cores 16-Thread",
-    promocao_porcentagem: '20%Off',
-    promocao_oferta: 'R$1.640,00',
-    promocao_imagem: processador5,
-    promocao_id: "processador"
-}
-
-
-
 //Objetos dos comentarios
 const comentario0 ={
-    forum_nome: 'Kuribuh',
+    forum_id: 4,
     forum_descricao: 'Eu abro muitos jogos porém quando abro vários PW e a memória atinge 61% de uso e tenro abrir navegador ou ate mais PW"S o Pc trava, e as vezes desinstala sozinho o softwaree da placa devídeo. Alguem sabe como resolver ?',
-    forum_imagem: imageKuribuh,
+    forum_tipo: "Software",
 }
 const comentario1 ={
-    forum_nome: 'Usuario_Secreto',
+    forum_id: 5,
     forum_descricao: 'é minha primeira vez com uma GTX, e a minha é GTX 1050, ela é usada, a minha dúvida é, posso  colocar thermal pads nos chips que ficam perto  do chip gráfico ? (não sei se é esse o nome kkkk) irei colocar só para poder ajudar na temperatura,  ela não está com alta temperatura nem nada, pretendo mais para manter a vida dela ainda.',
-    forum_imagem: imageUnknown,
+    forum_tipo: "Hardware",
 }
 const comentario2 ={
-    forum_nome: 'Caroline Macedo Costa Silva',
+    forum_id: 6,
     forum_descricao: 'não sei se uma Fonte Atx Gamer Semi-modular 600w Real 80plus Pfc Ativo Nf seria bom para esse processador e placa de Vídeo ou procuro outra melhor',
-    forum_imagem: imageUnknown,
+    forum_tipo: "Hardware",
 }
 
 //Array dos objetos de dados das sessões
-export const promocaoLista = [promo0,promo1,promo2,promo3,promo4,promo5,promo6,promo7,promo8,promo9,promo10,promo11,promo12,promo13,promo14,promo15,promo16,promo17,promo18,promo19,promo20,promo21,promo22,promo23];
 export const comentarioLista = [comentario0,comentario1,comentario2];
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
@@ -390,19 +191,3 @@ export const iconSection = {
     pvideo: i_pvideo,
     fonte: i_fonte,
 }
-
-//async function adicionarPromocoes(obj){
-//    const res = await axios.post("http://localhost:3000/promocoes",{
-//        promocao_nome: obj.promocao_nome,
-//        promocao_preco: obj.promocao_preco,
-//        promocao_porcentagem: obj.promocao_porcentagem,
-//        promocao_oferta: obj.promocao_oferta,
-//        promocao_imagem: obj.promocao_imagem,
-//        promocao_tipo: obj.promocao_id
-//    })
-//    console.log(res.data)
-//}
-//
-//for (let i = 0; i <= promocaoLista.length; i++){
-//    adicionarPromocoes(promocaoLista[i])
-//}
