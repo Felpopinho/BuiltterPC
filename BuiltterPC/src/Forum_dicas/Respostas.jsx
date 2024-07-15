@@ -6,16 +6,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 export function Respostas(props){
        
     const [user, setUser] = useState(props.users[1])
+    const [avatar, setAvatar] = useState("")
+    const [color, setColor] = useState("")
     
     const selectUser = () =>{
         props.users.forEach(user => {
             user.id === props.userId ? setUser(user) : console.log
         });
-    }
-    const [avatar, setAvatar] = useState("")
-    const [color, setColor] = useState("")
-
-    const handleAvatar = () =>{
         if (user.perfil === ""){
             setAvatar(user.nome.substr(0,1))
             let str = '#';
@@ -28,7 +25,6 @@ export function Respostas(props){
 
     useEffect(()=>{
         selectUser();
-        handleAvatar();
     }, [avatar,user])
 
     const handleVoltar = () =>{
