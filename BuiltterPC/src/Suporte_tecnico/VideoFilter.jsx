@@ -1,34 +1,33 @@
-import { Divider, Box, Input, Modal } from "@mui/material"
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { Divider, Box, IconButton, Modal } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useState, useEffect } from 'react';
 import { previewUser, videos } from "../script"
 import StarIcon from '@mui/icons-material/Star'
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { baseURL } from "../App";
+import axios from 'axios';
+import { baseURL } from '../App';
 
-export function Videos(props){
+export function VideoHistorico(props){
+    return <>
+    
+        <Box className="historico_image">
+            <img src={props.video_imagem}/>
+        </Box>
+        <Box sx={{display: "grid", gridTemplateColumns: "auto auto", gridTemplateRows: "auto auto"}}>
+            <h2 style={{gridColumn: "1/3"}}>{props.video_nome}</h2>
+            <div className="video_estatistic_container">
+                <p>{props.video_estatisticas}&nbsp;<RemoveRedEyeIcon/></p>
+            </div>
+            <IconButton sx={{justifySelf: "end"}} onClick={() => {props.visualizar(props.idVid, props.video_favorite, props.video_estatisticas, 2)}}>
+                <DeleteForeverIcon />
+            </IconButton>
+        </Box>
+        <Divider className="divisor_video" sx={{margin: "2vh 0vh 2vh 0vh", width: "90%"}}/>
+    
+    </>
+}
 
-    const [favoritado, setFavoritado] = useState(false)
-
-    const getFavoritos = async () =>{
-        if (props.logado===true){
-            try {
-                await axios.post(baseURL+"/favorite", {
-                    user_id: previewUser.idUser,
-                    video_id: props.idVid
-                }).then(res=>{
-                    res.data.length !== 0 ? setFavoritado(true) : setFavoritado(false);
-                })
-            } catch (error) {
-                console.log(error)
-            }
-        }
-    }
-
-    useEffect(()=>{
-        getFavoritos()
-    }, [props.logado])
-
+export function VideoFavorite(props){
     const setFavorite = (n) =>{
         if (props.logado === true){
             props.favoritar(n, previewUser.idUser, props.idVid);

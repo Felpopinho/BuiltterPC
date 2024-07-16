@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useSyncExternalStore } from "react"
 import { Videos } from "./Videos"
+import { VideoFavorite } from "./VideoFilter"
+import { baseURL } from "../App"
+import { previewUser } from "../script"
 
 export function SessaoUm(props){
 
@@ -53,14 +56,30 @@ export function SessaoQuatro(props){
 }
 
 export function SessaoFavorito(props){
-    return <>
 
+    const [videosFavoritos,setVideosFavoritos] = useState("")
+
+    const getVideosFavoritos = async() =>{
+        if(props.logado === true){
+            try {
+                await axios.post(baseURL+"/favorites/all", {
+                    user_id: previewUser.idUser
+                }).then(res=>{
+                    setVideosFavoritos(res.data);
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
+    return <>
         <h2 className="sessaoname">Favoritos</h2>
 
         <div className="videos_container">
-            {props.videos.map(video => video.video_favorite === 'favorite' ? (<Videos video_view={video.video_view} video_favorite={video.video_favorite} sessao={props.sessao} 
+            {props.videos.map(video => <VideoFavorite video_view={video.video_view} video_favorite={video.video_favorite} sessao={props.sessao} 
             visualizar={props.visualizar} favoritar={props.favoritar} setOpenAviso={props.setOpenAviso} key={video.id} logado={props.logado} idVid={video.id} 
-            video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>) : console.log())}
+            video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} video_estatisticas={video.video_estatisticas}/>)}
         </div>
     </>
 }

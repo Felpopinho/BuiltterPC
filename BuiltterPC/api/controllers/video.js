@@ -29,14 +29,14 @@ export const addVideos = (req, res) =>{
 };
 
 export const favoriteVideo = (req, res) =>{
-        const q = "INSERT INTO videos_favoritos (`user_id`,`video_id`) VALUES(?) "
+        const q = "INSERT INTO videos_favoritos (`user_id`,`video_id`) VALUES (?)"
 
         const values = [
             req.body.user_id, 
             req.body.video_id,
         ]
 
-        db.query(q, [...values], (err, data)=>{
+        db.query(q, [values], (err, data)=>{
             if (err) return res.json(err);
 
             return res.status(200).json(data)
@@ -56,23 +56,73 @@ export const deleteFavorite = (req, res) =>{
 
             return res.status(200).json(data)
         })
-    
 }
 export const viewVideo = (req, res) =>{
-    const q = "UPDATE videos SET `video_favorite` = ?, `video_view` = ?, `video_estatisticas` = ?  WHERE `id` = ?"
+    const q = "INSERT INTO videos_historico (`user_id`,`video_id`) VALUES (?)"
 
     const values = [
-        req.body.video_favorite, 
-        req.body.video_view,
-        req.body.video_estatisticas,
-        req.body.id
+        req.body.user_id, 
+        req.body.video_id,
     ]
 
-    db.query(q, [...values], (err, data)=>{
+    db.query(q, [values], (err, data)=>{
         if (err) return res.json(err);
 
         return res.status(200).json(data)
     })
+}
 
+export const deleteView = (req, res) =>{
+    const q = "DELETE FROM videos_historico WHERE `user_id` = ? AND `video_id` = ?"
+
+    const values = [
+        req.body.user_id, 
+        req.body.video_id,
+    ]
+
+    db.query(q, [values], (err, data)=>{
+        if (err) return res.json(err);
+        
+        return res.status(200).json(data)
+    }) 
+}
+
+export const getFavoritos = (req,res) =>{
+    const q = "SELECT * FROM videos_favoritos WHERE `user_id` = ? AND `video_id` = ?"
+
+    const values = [
+        req.body.user_id,
+        req.body.video_id
+    ]
+
+    db.query(q, [...values], (err, data)=>{
+        if (err) return res.status(404).json(err)
+
+        return res.status(200).json(data)
+    })
+}
+export const getAllFavorios = (req,res) =>{
+    const q = "SELECT * FROM videos_favoritos WHERE `user_id` = ?"
+
+    db.query(q, [req.body.user_id], (err, data)=>{
+        if (err) return res.status(404).json(err)
+
+        return res.status(200).json(data)
+    })
+}
+
+export const getView = (req,res) =>{
+    const q = "SELECT * FROM videos_historico WHERE `user_id` = ?"
+
+    const values = [
+        req.body.user_id,
+        req.body.video_id
+    ]
+
+    db.query(q, [values], (err, data)=>{
+        if (err) return res.status(404).json(err)
+
+        return res.status(200).json(data)
+    })
 }
     

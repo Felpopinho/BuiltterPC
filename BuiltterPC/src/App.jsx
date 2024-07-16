@@ -117,7 +117,7 @@ function App() {
       <Forum getData={getData} logado={logado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert} users={users} comentarios={comentarios} amigos={amigos} setValueFiltro={setValueFiltro} valueFiltro={valueFiltro}/>
 
       <Modal  open={modalConta} onClose={() => {setModalConta(false)}}>
-        <Conta setModalConta={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert}/>
+        <Conta videos={videos} setModalConta={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert}/>
       </Modal>
 
       <Modal open={openAviso} onClose={handleCloseAviso}>

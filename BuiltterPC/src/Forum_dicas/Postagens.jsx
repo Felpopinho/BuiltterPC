@@ -40,16 +40,16 @@ export function Postagens(props){
         }else{
             if(curtido===true){
                 try {
-                    await axios.post(baseURL+"/comentarios/dislike", {
-                        userId: previewUser.idUser,
-                        postId: props.id
+                    await axios.post(baseURL+"/comentarios/updateLikes", {
+                        forum_curtidas: props.curtidas-1,
+                        postId: props.id,
                     }).then(async(res)=>{
-                        setCurtido(false)
-                        await axios.post(baseURL+"/comentarios/updateLikes", {
-                            forum_curtidas: props.curtidas-1,
-                            postId: props.id,
+                        await axios.post(baseURL+"/comentarios/dislike", {
+                            userId: previewUser.idUser,
+                            postId: props.id
                         }).then(res=>{
                             props.getData()
+                            setCurtido(false)
                         })
                     })
                 } catch (error) {
@@ -57,16 +57,16 @@ export function Postagens(props){
                 }
             } else{
                 try {
-                    await axios.post(baseURL+"/comentarios/like", {
-                        userId: previewUser.idUser,
-                        postId: props.id
+                    await axios.post(baseURL+"/comentarios/updateLikes", {
+                        forum_curtidas: props.curtidas+1,
+                        postId: props.id,
                     }).then(async(res)=>{
-                        setCurtido(true)
-                        await axios.post(baseURL+"/comentarios/updateLikes", {
-                            forum_curtidas: props.curtidas+1,
-                            postId: props.id,
-                        }).then(res=>{
+                        await axios.post(baseURL+"/comentarios/like", {
+                            userId: previewUser.idUser,
+                            postId: props.id
+                        }).then((res)=>{
                             props.getData()
+                            setCurtido(true)
                         })
                     })
                 } catch (error) {
