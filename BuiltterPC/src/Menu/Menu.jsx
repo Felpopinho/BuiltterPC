@@ -10,27 +10,7 @@ export function Menu(props){
 
     const [sessaoSelecionada, refreshSection] = useState(0);
 
-    const linkSessao = ["#Suporte", "#Simulacao", "#Promocao", "#Forum"]
-
-    const [avatar, setAvatar] = useState(previewUser.perfil)
-    const [color, setColor] = useState()
-
-    const handleAvatar = () =>{
-        if (props.logado === true){
-            if (previewUser.perfil === ""){
-                setAvatar(previewUser.usuario.substr(0,1))
-                let str = '#';
-                while (str.length < 7) {
-                    str += Math.floor(Math.random() * 0x10).toString(16);
-                }
-                setColor(str)
-            }
-        }
-    }
-
-    useEffect(()=>{
-        handleAvatar()
-    }, [avatar, previewUser.idUser])    
+    const linkSessao = ["#Suporte", "#Simulacao", "#Promocao", "#Forum"] 
 
     return <>
 
@@ -42,7 +22,7 @@ export function Menu(props){
             </div>
             <IconButton sx={{position: "absolute",right: "3vw"}} 
             onClick={() => {props.logado === true ? props.setModalConta(true) : props.setOpenAviso(true)}} className='account'>
-                <Avatar src={props.logado === true ? avatar : perfilDesconhecido} width={"80px"} sx={{bgcolor: color, width: "80px",height: "80px", fontSize: "1.5rem"}}>{avatar}</Avatar>
+                <Avatar width={"80px"} sx={{bgcolor: previewUser.perfil, width: "80px",height: "80px", fontSize: "1.5rem"}}></Avatar>
             </IconButton>
         </div>
 

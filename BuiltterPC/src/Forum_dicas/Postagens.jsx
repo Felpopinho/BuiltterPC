@@ -10,31 +10,71 @@ import { baseURL } from "../App"
 export function Postagens(props){
 
     const [user, setUser] = useState(props.users[1])
+    const [curtidas, setCurtidas] = useState("")
+    const [curtido, setCurtido] = useState(false)
     
-    const selectUser = () =>{
+    const selectUser = async() =>{
         props.users.forEach(user => {
-            user.id === props.userId ? setUser(user) : console.log
+            user.id === props.userId ? setUser(user) : console.log;
         });
-    }
-
-    const [avatar, setAvatar] = useState("")
-    const [color, setColor] = useState("")
-
-    const handleAvatar = () =>{
-        if (user.perfil === ""){
-            setAvatar(user.nome.substr(0,1))
-            let str = '#';
-            while (str.length < 7) {
-                str += Math.floor(Math.random() * 0x10).toString(16);
-            }
-            setColor(str)
+        try {
+            await axios.post(baseURL+"/likes",{
+                userId: previewUser.idUser,
+                postId: props.id
+            }).then(res=>{
+                setCurtidas(res.data)
+                res.data.length !== 0 ? setCurtido(true) : setCurtido(false) 
+            })
+        } catch (error) {
+            console.log(error)
         }
     }
 
     useEffect(()=>{
         selectUser();
-        handleAvatar();
-    }, [avatar])
+    }, [curtido, props.logado]);
+
+    const curtirComentario = async() =>{
+        if (props.logado === false){
+            props.setOpenAviso(true);
+        }else{
+            if(curtido===true){
+                try {
+                    await axios.post(baseURL+"/comentarios/dislike", {
+                        userId: previewUser.idUser,
+                        postId: props.id
+                    }).then(async(res)=>{
+                        setCurtido(false)
+                        await axios.post(baseURL+"/comentarios/updateLikes", {
+                            forum_curtidas: props.curtidas-1,
+                            postId: props.id,
+                        }).then(res=>{
+                            props.getData()
+                        })
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+            } else{
+                try {
+                    await axios.post(baseURL+"/comentarios/like", {
+                        userId: previewUser.idUser,
+                        postId: props.id
+                    }).then(async(res)=>{
+                        setCurtido(true)
+                        await axios.post(baseURL+"/comentarios/updateLikes", {
+                            forum_curtidas: props.curtidas+1,
+                            postId: props.id,
+                        }).then(res=>{
+                            props.getData()
+                        })
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }
+    }
 
     const deleteComentario = async () =>{
         try {
@@ -42,16 +82,18 @@ export function Postagens(props){
                 id: props.id
             }).then(res =>{
                 props.getData()
+                props.handleOpenAlert("Postagem deletada!", 1)
             })
         } catch (error) {
             console.log(error)
+            props.handleOpenAlert("Erro ao deletar postagem!", 2)
         }
     }
 
     return <>
         <ListItem>
             <ListItemAvatar sx={{alignSelf: "start"}}>
-                <Avatar sx={{bgcolor: color}} src={avatar}>{avatar}</Avatar>
+                <Avatar sx={{bgcolor: user.perfil}}></Avatar>
             </ListItemAvatar>
             <Box sx={{display: "flex", flexDirection: "column",width: "100%"}}>
                 <Box sx={{display: "flex", justifyContent: "space-between", width: "100%"}}>
@@ -63,7 +105,9 @@ export function Postagens(props){
                     <Button onClick={()=>{props.handleResposta(props.id)}}>Ver respostas</Button>
                     <Box>
                         {props.curtidas}
-                        <IconButton><FavoriteBorderIcon/></IconButton>
+                        <IconButton onClick={curtirComentario}>
+                            {curtido === true ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+                        </IconButton>
                         {user.id === previewUser.idUser ? 
                             <IconButton onClick={deleteComentario}><DeleteForeverRoundedIcon/></IconButton> : 
                         console.log}

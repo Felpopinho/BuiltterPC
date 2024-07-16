@@ -1,9 +1,11 @@
+import { Avatar } from "@mui/material";
+
 export function PreviewPerfil(props){
     
     return <>
     
         <div className="previewPerfil">
-            <img src={props.perfil}/>
+            <Avatar sx={{width: "100%", height: "100%", bgcolor: props.perfil}}></Avatar>
         </div>
         <div className="previewDados">
             <h3>{props.usuario}</h3>

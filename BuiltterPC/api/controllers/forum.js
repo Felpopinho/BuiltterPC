@@ -38,6 +38,51 @@ export const deleteComment = (req, res) =>{
     });
 };
 
+export const likeComment = (req, res) =>{
+    const q = "INSERT INTO curtidas (`userId`, `postId`) VALUES (?)"
+
+    const values=[
+        req.body.userId, 
+        req.body.postId
+    ]
+
+    db.query(q, [values], (err,data)=>{
+        if (err) return res.status(500).json(err);
+
+        return res.status(200).json(data);
+    })
+}
+
+export const dislikeComment = (req,res) =>{
+    const q = "DELETE FROM curtidas WHERE `userId` = ? AND `postId` = ?"
+
+    db.query(q, [req.body.userId, req.body.postId], (err,data)=>{
+        if (err) return res.status(404).json(err);
+
+        return res.status(200).json(data);
+    })
+}
+
+export const updateLikes = (req,res) =>{
+    const q = "UPDATE comentarios SET `forum_curtidas` = ? WHERE `id` = ?"
+
+    db.query(q, [req.body.forum_curtidas, req.body.postId], (err,data)=>{
+        if (err) return res.status(500).json(err)
+        
+        return res.status(200).json(data)
+    })
+}
+
+export const getLikes = (req, res) =>{
+    const q = "SELECT * FROM curtidas WHERE `userId` = ? AND `postId` = ?"
+
+    db.query(q, [req.body.userId,req.body.postId],(err,data)=>{
+        if (err) return res.status(404).json(err)
+
+        return res.status(200).json(data)
+    })
+}
+
 export const getRespostas = (req, res) =>{
     const q = "SELECT * FROM respostas"
 

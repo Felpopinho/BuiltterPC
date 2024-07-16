@@ -25,7 +25,7 @@ import axios from 'axios';
 
 export const baseURL = "http://localhost:3000"
 
-const darkTheme = createTheme({
+export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
@@ -114,7 +114,7 @@ function App() {
       <Promocoes logado={logado} promocoes={promocoes}/>
       <Divider sx={{margin: 3}}/>
 
-      <Forum getData={getData} logado={logado} users={users} comentarios={comentarios} amigos={amigos} setValueFiltro={setValueFiltro} valueFiltro={valueFiltro}/>
+      <Forum getData={getData} logado={logado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert} users={users} comentarios={comentarios} amigos={amigos} setValueFiltro={setValueFiltro} valueFiltro={valueFiltro}/>
 
       <Modal  open={modalConta} onClose={() => {setModalConta(false)}}>
         <Conta setModalConta={setModalConta} users={users} logado={logado} setLogado={setLogado} setOpenAviso={setOpenAviso} handleOpenAlert={handleOpenAlert}/>

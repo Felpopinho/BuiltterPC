@@ -49,14 +49,18 @@ export function Forum(props){
     const [modalPost, setModalPost] = useState(false)
 
     const handleCriarPostagem = (n) =>{
-        if (n === 1){
-            setModalPost(true)
-        } else{
-            setValueTitulo("")
-            setHelpTitulo(0)
-            setValueDesc("")
-            setHelpDesc(0)
-            setModalPost(false)
+        if (props.logado===false){
+            props.setOpenAviso(true)
+        }else{
+            if (n === 1){
+                setModalPost(true)
+            } else{
+                setValueTitulo("")
+                setHelpTitulo(0)
+                setValueDesc("")
+                setHelpDesc(0)
+                setModalPost(false)
+            }
         }
     }
 
@@ -97,9 +101,11 @@ export function Forum(props){
             }).then(res =>{
                 props.getData()
                 handleCriarPostagem(2)
+                props.handleOpenAlert("Postagem publicada!", 1)
             })
         } catch (error) {
             console.log(error)
+            props.handleOpenAlert("Error ao publicar!", 2)
         }
     }
 
@@ -170,13 +176,13 @@ export function Forum(props){
                         {vendoResposta === true ?
                         Array.from(props.comentarios).map(comment => comment.id === post ? <Respostas key={comment.id} respostas={respostas} post={comment} users={props.users} comentarios={props.comentarios} setVendoResposta={setVendoResposta}/> : console.log) :
                         valueTipo === "1" ?
-                            Array.from(props.comentarios).map(comment => <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/>) :
+                            Array.from(props.comentarios).map(comment => <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/>) :
                         valueTipo === "2" ?
-                            Array.from(props.comentarios).map(comment => comment.forum_tipo === "Hardware" ? <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/> : console.log) :
+                            Array.from(props.comentarios).map(comment => comment.forum_tipo === "Hardware" ? <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/> : console.log) :
                         valueTipo === "3" ?
-                            Array.from(props.comentarios).map(comment => comment.forum_tipo === "Software" ? <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/> : console.log) :
+                            Array.from(props.comentarios).map(comment => comment.forum_tipo === "Software" ? <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/> : console.log) :
                         valueTipo === "4" ?
-                            Array.from(props.comentarios).map(comment => comment.forum_tipo === "Programacao" ? <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/> : console.log) : console.log
+                            Array.from(props.comentarios).map(comment => comment.forum_tipo === "Programacao" ? <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/> : console.log) : console.log
                         } 
                     </List>
                 </Box>

@@ -85,10 +85,11 @@ export function CriarLogarConta(props){
         perfil: previewUser.perfil,
         titulo: previewUser.titulo,
         descricao: previewUser.descricao
+      }).then(res=>{
+        previewUser.idUser = res.data[0].id
       })
-      previewUser.idUser = res.data.insertId
       props.setLogado(true)
-      props.handleOpenAlert(res.data, 1);
+      props.handleOpenAlert("Usuário criado com sucesso!", 1);
     } catch(error){
       console.log(error)
       props.handleOpenAlert("Erro ao criar conta", 2);
@@ -152,9 +153,6 @@ export function CriarLogarConta(props){
             <div className="previewPerfil_container">
               {arrPreview.map(inputs =>(<PreviewPerfil perfil={inputs.perfil} usuario={inputs.usuario} email={inputs.email} titulo={inputs.titulo} descricao={inputs.descricao}/>))}
             </div>
-            <Button onClick={() => {props.abrirConta(true)}}>
-              Visitar perfil
-            </Button>
           </div> ) : ativarPasso === 0 ? (
           <Fragment>
             <PassoUm inputPrenchido={updateInput}/>

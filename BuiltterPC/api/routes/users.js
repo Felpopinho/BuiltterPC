@@ -8,6 +8,7 @@ routerUsers.post("/user/log", loginUser);
 routerUsers.post("/user", addUser);
 routerUsers.put("/user", updateUser);
 routerUsers.post("/user/delete", deleteUser);
+
 routerUsers.get("/amigos", getAmigos);
 routerUsers.post("/amigos", addAmigo);
 

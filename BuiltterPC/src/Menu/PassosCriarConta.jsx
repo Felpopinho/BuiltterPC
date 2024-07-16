@@ -1,23 +1,11 @@
-import { useState } from "react";
-import { Button, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Button, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl, IconButton, ToggleButton, ToggleButtonGroup, Avatar, ThemeProvider } from "@mui/material";
 import { previewUser } from "../script";
 import axios from "axios";
-import { baseURL } from "../App";
+import { baseURL, darkTheme } from "../App";
 export const arrPreview = [previewUser];
 
 export function PassoUm(props) {
-  
-    const VisuallyHiddenInput = styled('input')({
-      clip: 'rect(0 0 0 0)',
-      clipPath: 'inset(50%)',
-      height: 1,
-      overflow: 'hidden',
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      whiteSpace: 'nowrap',
-      width: 1,
-    });
 
     const [valorName, setValorName] = useState('')
     const mudarName = (event) =>{
@@ -35,20 +23,21 @@ export function PassoUm(props) {
       setValorSenha(event.target.value);
     };
 
-    const [valorPerfil, setValorPerfil] = useState('')
-    const mudarPerfil = (event) =>{
-      setValorPerfil(event.target.files[0]);
+    const [color, setColor] = useState("")
+    const handleColor = (e,v) =>{
+      setColor(v);
     };
 
     previewUser.usuario = valorName;
     previewUser.email = valorEmail;
     previewUser.senha = valorSenha;
-    previewUser.perfil = valorPerfil;
+    previewUser.perfil = color;
 
     const verificarInput = () =>{
       if ((valorName !== '') && 
         (valorEmail !== '') && 
         (valorSenha !== '') && 
+        (color !== '') &&
         ((valorSenha.includes(' ') === false) && (valorSenha.length > 5)) && 
         ((valorEmail.includes('@') === true) && (valorEmail.includes('.') === true)))
       {
@@ -58,8 +47,12 @@ export function PassoUm(props) {
       };
     }
 
+    useEffect(()=>{
+      verificarInput();
+    }, [valorName, valorEmail, valorSenha, color])
+
     return <>
-      <div className="criarConta_container" onKeyUp={verificarInput}>
+      <div className="criarConta_container">
         <div className="inputCriarConta">
           <TextField id="UserName" label="Nome" variant="outlined" required sx={{width: '100%'}} onChange={mudarName} name="nome"></TextField>
         </div>
@@ -72,11 +65,25 @@ export function PassoUm(props) {
             <p style={{fontSize: '0.9rem', padding: '3px 0px 3px 0px'}}>A senha deve conter 5 caracteres, exceto espaço</p>
           </div>
         </form>
-        <div className="fotoperfil_container">
-          <Button component="label" variant="contained" sx={{width: '100%'}}>
-              Foto de perfil
-              <VisuallyHiddenInput id="UserPerfil" type="file" accept="image/*" onChange={mudarPerfil} name="perfil" />
-          </Button>
+        <div className="perfil_container">
+          <ToggleButtonGroup className="cores_container" exclusive value={color} onChange={handleColor}>
+            <ToggleButton sx={{padding: "6px"}} value="#1C1C1C"><Avatar sx={{bgcolor: "#1C1C1C", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#C0C0C0"><Avatar sx={{bgcolor: "#C0C0C0", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#6A5ACD"><Avatar sx={{bgcolor: "#6A5ACD", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#191970"><Avatar sx={{bgcolor: "#191970", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#1E90FF"><Avatar sx={{bgcolor: "#1E90FF", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#008080"><Avatar sx={{bgcolor: "#008080", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#2E8B57"><Avatar sx={{bgcolor: "#2E8B57", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#8FBC8F"><Avatar sx={{bgcolor: "#8FBC8F", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#BDB76B"><Avatar sx={{bgcolor: "#BDB76B", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#DAA520"><Avatar sx={{bgcolor: "#DAA520", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#D2B48C"><Avatar sx={{bgcolor: "#D2B48C", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#7B68EE"><Avatar sx={{bgcolor: "#7B68EE", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#9370DB"><Avatar sx={{bgcolor: "#9370DB", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#DB7093"><Avatar sx={{bgcolor: "#DB7093", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#CD5C5C"><Avatar sx={{bgcolor: "#CD5C5C", width: "30px", height: "30px"}}/></ToggleButton>
+            <ToggleButton sx={{padding: "6px"}} value="#FFA500"><Avatar sx={{bgcolor: "#FFA500", width: "30px", height: "30px"}}/></ToggleButton>
+          </ToggleButtonGroup>
         </div>
       </div>
     </>
@@ -105,9 +112,14 @@ export function PassoDois(props){
   previewUser.titulo = titulo;
   previewUser.descricao = desc;
 
+  useEffect(()=>{
+    verificarForm();
+  }, [titulo, desc])
+
+
   return <div className="passoDois_container">
 
-    <div className="descricaoContainer" onChange={verificarForm}>
+    <div className="descricaoContainer">
       <h2>Deixe seu perfil completo!</h2>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Titulo</InputLabel>

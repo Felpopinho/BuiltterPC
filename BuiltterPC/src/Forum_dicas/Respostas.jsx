@@ -6,26 +6,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 export function Respostas(props){
        
     const [user, setUser] = useState(props.users[1])
-    const [avatar, setAvatar] = useState("")
-    const [color, setColor] = useState("")
     
     const selectUser = () =>{
         props.users.forEach(user => {
-            user.id === props.userId ? setUser(user) : console.log
+            user.id === props.post.forum_id ? setUser(user) : console.log
         });
-        if (user.perfil === ""){
-            setAvatar(user.nome.substr(0,1))
-            let str = '#';
-            while (str.length < 7) {
-                str += Math.floor(Math.random() * 0x10).toString(16);
-            }
-            setColor(str)
-        }
     }
 
     useEffect(()=>{
         selectUser();
-    }, [avatar,user])
+    }, [])
 
     const handleVoltar = () =>{
         props.setVendoResposta(false)
@@ -34,7 +24,7 @@ export function Respostas(props){
     return <>
         <ListItem sx={{postion: "relative"}}>
             <ListItemAvatar sx={{alignSelf: "start", width: "100px"}}>
-                <Avatar sx={{bgcolor: color, width: "80px", height: "80px",fontSize: "1.8rem"}} src={avatar}>{avatar}</Avatar>
+                <Avatar sx={{bgcolor: user.perfil, width: "80px", height: "80px",fontSize: "1.8rem"}}/>
             </ListItemAvatar>
             <Box sx={{display: "flex", flexDirection: "column",width: "100%"}}>
                 <Box sx={{display: "flex", justifyContent: "space-between", width: "100%"}}>
@@ -72,28 +62,15 @@ export function RespostaList(props){
             user.id === props.userId ? setUser(user) : console.log
         });
     }
-    const [avatar, setAvatar] = useState("")
-    const [color, setColor] = useState("")
-
-    const handleAvatar = () =>{
-        if (user.perfil === ""){
-            setAvatar(user.nome.substr(0,1))
-            let str = '#';
-            while (str.length < 7) {
-                str += Math.floor(Math.random() * 0x10).toString(16);
-            }
-            setColor(str)
-        }
-    }
 
     useEffect(()=>{
-        handleAvatar()
-    }, [avatar])
+        selectUser();
+    }, [])
 
     return <>
         <ListItem>
             <ListItemAvatar sx={{alignSelf: "start"}}>
-                <Avatar sx={{bgcolor: color}} src={avatar}>{avatar}</Avatar>
+                <Avatar sx={{bgcolor: user.perfil}}/>
             </ListItemAvatar>
             <Box sx={{display: "flex", flexDirection: "column",width: "100%"}}>
                 <Box sx={{display: "flex", justifyContent: "space-between", width: "100%"}}>

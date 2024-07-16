@@ -3,9 +3,10 @@ import { addProdutos, getProdutos, getPromocoes, addPromocoes } from '../control
 
 const routerProdutos = express.Router()
 
-routerProdutos.get("/produtos", getProdutos)
-routerProdutos.post("/produtos", addProdutos)
-routerProdutos.get("/promocoes", getPromocoes)
-routerProdutos.post("/promocoes", addPromocoes)
+routerProdutos.get("/produtos", getProdutos);
+routerProdutos.post("/produtos", addProdutos);
+
+routerProdutos.get("/promocoes", getPromocoes);
+routerProdutos.post("/promocoes", addPromocoes);
 
 export default routerProdutos
