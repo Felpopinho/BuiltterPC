@@ -71,7 +71,7 @@
     max-height: 80vh;
 }
 .historico_container{
-    width: 90%;
+    width: 100%;
     overflow-y: scroll;
     display: grid;
     grid-template-columns: 40% 60%;
@@ -237,7 +237,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
         width: 100%;
     }
     .historico_image{
@@ -278,7 +278,25 @@
         position: absolute;
         top: 9vh;
         z-index: 5;
-    } 
+    }
+    .favoritar, .desfavoritar{
+        padding: 15px;
+        border-radius: 10px;
+        transition: all 0.1s ease;
+        cursor: pointer;
+        user-select: none;
+    }
+    .favoritar:hover, .desfavoritar:hover {
+        background-color: rgba(255, 255, 255, 0);
+        color: var(--lightgray);
+    }
+    .favoritar:active{
+        color: #ffd700;
+        background-color: var(--ultralightblue);
+    } .desfavoritar:active{
+        color: #ffd700;
+        background-color: rgb(255, 87, 87);
+    }
 }
 @media screen and (max-width: 560px) {
     .modal{

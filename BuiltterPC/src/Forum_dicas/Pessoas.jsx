@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 export function Pessoas(props){
 
     return <>
-        <ListItem>
+        <ListItem className="pessoasItem">
             <ListItemAvatar>
                 <Avatar sx={{bgcolor: props.perfil}}></Avatar>
             </ListItemAvatar>
@@ -21,7 +21,7 @@ export function Amigos(props){
 
     return <>
         {props.id === props.amigoId ? (<Fragment>
-            <ListItem>
+            <ListItem className="pessoasItem">
                 <ListItemAvatar>
                     <Avatar sx={{bgcolor: props.perfil}}></Avatar>
                 </ListItemAvatar>

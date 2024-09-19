@@ -22,7 +22,7 @@ export function Conta(props){
     }
     const deletarConta = async () =>{
         try{
-            const res = await axios.post(baseURL+"/user/delete", {
+            await axios.post(baseURL+"/user/delete", {
                 id: previewUser.idUser
             })
             previewUser.idUser = ''
@@ -33,12 +33,28 @@ export function Conta(props){
             previewUser.titulo = '';
             previewUser.descricao = '';
             props.handleOpenAlert("Usuário deletado", 1)
-            setModalOpen(false)
             props.setLogado(false)
             props.setModalConta(false)
         }catch(error){
             console.log(error)
             props.handleOpenAlert("Algo deu errado", 2)
+        }
+    }
+
+    const [assistidos, setAssistidos] = useState(0);
+    const [favoritos, setFavoritos] = useState(0);
+    const [criados, setCriados] = useState(0);
+
+    const getSuporteStats = async() =>{
+        try {
+            await axios.post(baseURL+"/favorite/all",{
+                user_id: previewUser.idUser
+            }).then(res=>{
+                setFavoritos(res.data.length)
+            });
+            await axios.post(baseURL+"/")
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -68,24 +84,41 @@ export function Conta(props){
             </div>
         </Box>
         <Box sx={{display: "grid", gridTemplateColumns: "50% 50%", gridTemplateRows: "10vh 1fr"}}>
-            <h1 style={{gridColumn: "1/3"}}>Suporte técnico</h1>
+            <h1 style={{gridColumn: "1/3"}}>Estasticas</h1>
             <Box>
-                <h2>Favoritos</h2>
-                {props.videos.map(video => video.video_favorite === 'favorite' ? <Box>
-                    <div>
-                        <img src={video.video_imagem}/>
-                    </div>
-                    <div>
-                        <div>
-                            <h2>{video.video_nome}</h2>
-                            <p>{video.video_descricao}</p>
-                        </div>
-                    </div>
-                    <Divider sx={{margin: "2vh 0 2vh 0"}}/>
+                <h2>Suporte</h2>
+                <Box>
+                    <h3>Assistidos: {assistidos}</h3>
+                    <h3>Favoritos: {favoritos}</h3>
+                    <h3>Criados: {criados}</h3>
+                </Box>
+            </Box>
+            <Box>
+                <h2>Simulação</h2>
+                {props.videos.map(video => video.video_view === "visto" ? <Box>
+                    <Box sx={{width: "80%", height: "10vh", overflow: "hidden"}}>
+                        <img src={video.video_imagem} style={{width: "100%"}}/>
+                    </Box>
+                    <Box sx={{display: "grid", gridTemplateColumns: "auto auto", gridTemplateRows: "auto auto"}}>
+                        <h2 style={{gridColumn: "1/3"}}>{video.video_nome}</h2>
+                    </Box>
+                    <Divider sx={{margin: "2vh 0vh 2vh 0vh", width: "90%"}}/>
                 </Box>:console.log)}
             </Box>
             <Box>
-                <h2>Histórico</h2>
+                <h2>Promoções</h2>
+                {props.videos.map(video => video.video_view === "visto" ? <Box>
+                    <Box sx={{width: "80%", height: "10vh", overflow: "hidden"}}>
+                        <img src={video.video_imagem} style={{width: "100%"}}/>
+                    </Box>
+                    <Box sx={{display: "grid", gridTemplateColumns: "auto auto", gridTemplateRows: "auto auto"}}>
+                        <h2 style={{gridColumn: "1/3"}}>{video.video_nome}</h2>
+                    </Box>
+                    <Divider sx={{margin: "2vh 0vh 2vh 0vh", width: "90%"}}/>
+                </Box>:console.log)}
+            </Box>
+            <Box>
+                <h2>Forum</h2>
                 {props.videos.map(video => video.video_view === "visto" ? <Box>
                     <Box sx={{width: "80%", height: "10vh", overflow: "hidden"}}>
                         <img src={video.video_imagem} style={{width: "100%"}}/>

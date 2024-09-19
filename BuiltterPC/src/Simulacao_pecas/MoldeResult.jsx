@@ -1,6 +1,5 @@
-import { Typography, Box, Divider, TextField, Input, IconButton, Button } from "@mui/material";
+import { Typography, Box, Divider, TextField, Input, IconButton, Button, FormControl, FormHelperText } from "@mui/material";
 import { useState, Fragment, useEffect } from "react";
-import { previewUser } from "../script";
 import { Close } from "@mui/icons-material";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import EditOffRoundedIcon from '@mui/icons-material/EditOffRounded';
@@ -12,6 +11,9 @@ export function MoldeResultUm(props){
 
     const setNome = (e) =>{
         props.setIdNome(e.target.value)
+        if ((e.target.value).length >= 16){
+            props.setIdNome(e.target.value.slice(0,(e.target.value).length-1))
+        }
     }
 
     return<>
@@ -69,7 +71,10 @@ export function MoldeResultUm(props){
                 </Box>
             </Box>
             <Box sx={{display: "flex", width: "100%", justifyContent: "space-evenly"}}>
-                <TextField onChange={(e)=>{setNome(e)}} label="Nome do molde" value={props.idNome} sx={{width: "40%"}}/>
+                <FormControl sx={{width: "40%"}}>
+                    <TextField onChange={(e)=>{setNome(e)}} label="Nome do molde" value={props.idNome} fullWidth/>
+                    <FormHelperText>{props.idNome.length}/15</FormHelperText>
+                </FormControl>
                 <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>Preço total: {props.mae[3]+props.processador[3]+props.memoria[3]+props.armazem[3]+props.pvideo[3]+props.fonte[3]}</h1>
             </Box>
         </Box>
@@ -101,7 +106,6 @@ export function MoldeResultDois(props){
                 nome: nome,
                 id: props.simulacao_id
             }).then(res=>{
-                props.getProdSimulacoes()
                 props.handleOpenAlert("Nome do molde alterado!", 1)
             })
         }catch(error){
@@ -148,13 +152,15 @@ export function MoldeResultDois(props){
 
     useEffect (()=>{
         precoMedia();
-        props.getProdSimulacoes()
     }, [props.mae,props.processador,props.memoria,props.pvideo,props.fonte,props.armazem])
 
     const [nome, setNome] = useState(props.simulacao_nome)
 
     const setNomeEdit = (e) =>{
         setNome(e.target.value)
+        if ((e.target.value).length >= 16){
+            setNome(e.target.value.slice(0,(e.target.value).length-1))
+        }
     }
 
     return<>
@@ -170,7 +176,10 @@ export function MoldeResultDois(props){
                     {props.simulacao_nome}
                 </Typography> : 
                 <Box sx={{display:"flex", justifyContent: "space-between"}}>
-                    <Input size="small" onChange={(e)=>{setNomeEdit(e)}} label="Editar nome do molde" value={nome} sx={{width: "90%", fontSize: "2.2rem"}}/>
+                    <FormControl>
+                        <Input size="small" onChange={(e)=>{setNomeEdit(e)}} label="Editar nome do molde" value={nome} sx={{width: "90%", fontSize: "2.2rem"}}/>
+                        <FormHelperText>{nome.length}/15</FormHelperText>
+                    </FormControl>
                     <IconButton disabled={nome === ""} color="primary" onClick={editNome}>
                         <SendIcon/>
                     </IconButton>

@@ -11,17 +11,15 @@ export function Videos(props){
     const [favoritado, setFavoritado] = useState(false)
 
     const getFavoritos = async () =>{
-        if (props.logado===true){
-            try {
-                await axios.post(baseURL+"/favorite", {
-                    user_id: previewUser.idUser,
-                    video_id: props.idVid
-                }).then(res=>{
-                    res.data.length !== 0 ? setFavoritado(true) : setFavoritado(false);
-                })
-            } catch (error) {
-                console.log(error)
-            }
+        try {
+            await axios.post(baseURL+"/favorite", {
+                user_id: previewUser.idUser,
+                video_id: props.idVid
+            }).then(res=>{
+                res.data.length !== 0 ? setFavoritado(true) : setFavoritado(false);
+            })
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -40,7 +38,7 @@ export function Videos(props){
     const setView = () =>{
         if (props.logado === true){
             setOpenVideo(true)
-            props.visualizar(previewUser.idUser, props.idVid)
+            props.visualizar(1, previewUser.idUser, props.idVid, props.video_estatisticas)
         }
     }
 

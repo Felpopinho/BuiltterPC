@@ -55,7 +55,7 @@ export function Menu(props){
                         <Divider variant='middle' sx={{marginTop: "1vh", marginBottom: "1vh", }}/>
                         <div className='display_container_esquerdo'>
 
-                            <NavDisplay sessaoSelecionada={sessaoSelecionada} videos={props.videos} simulacoes={props.simulacoes} promocoes={props.promocoes} comentarios={props.comentarios} getData={props.getData}/>
+                            <NavDisplay sessaoSelecionada={sessaoSelecionada} videos={props.videos} simulacoes={props.simulacoes} promocoes={props.promocoes} comentarios={props.comentarios} getData={props.getData} logado={props.logado}/>
 
                             <div className='link_nav_container'>
                                 <Button variant='contained' className="link_nav" sx={{transition: 'all 0.2s ease',padding: 0}} onClick={props.logado === true ? console.log : () => {props.setOpenAviso(true)}}>

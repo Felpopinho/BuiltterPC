@@ -86,7 +86,8 @@ export function CriarLogarConta(props){
         titulo: previewUser.titulo,
         descricao: previewUser.descricao
       }).then(res=>{
-        previewUser.idUser = res.data[0].id
+        console.log(res.data)
+        previewUser.idUser = res.data.insertId
       })
       props.setLogado(true)
       props.handleOpenAlert("Usuário criado com sucesso!", 1);
@@ -179,12 +180,7 @@ export function CriarLogarConta(props){
 
 
         <Button variant="outlined" className="btn_enter" onClick={abrirModalLC} sx={{transition: 'all 0.2s ease'}} disabled={props.logado === true}>Logar conta</Button>
-        <Modal
-          open={abrirLC}
-          onClose={fecharModalLC}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
+        <Modal open={abrirLC} onClose={fecharModalLC}>
           <Box className="Modal" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} >
             <Button sx={{position: "absolute", top: "4%", right: "4%"}} onClick={() => {fecharModalLC()}}>
               <Close />

@@ -1,0 +1,17 @@
+.aviso{
+    flex-direction: row;
+}
+
+.alertContainer{
+    width: 260px;
+}
+
+@media screen and (max-width: 500px) {
+    .aviso{
+        flex-direction: column;
+    }
+    .btnCriar{
+        margin-top: 2vh;
+        width: 100%;
+    }
+}

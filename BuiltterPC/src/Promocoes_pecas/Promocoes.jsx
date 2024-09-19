@@ -88,26 +88,26 @@ export function Promocoes(props){
                 </Fragment> :
             tabValue === "2" ?
                 <Fragment>
-                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "mae" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "mae" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: "")}
                 </Fragment> :
             tabValue === "3" ?
                 <Fragment>
-                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "processador" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "processador" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: "")}
                 </Fragment> :
             tabValue === "4" ?
                 <Fragment>
-                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "memoria" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "memoria" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: "")}
                 </Fragment> :
             tabValue === "5" ?
                 <Fragment>
-                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "armazem" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "armazem" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: "")}
                 </Fragment> :
             tabValue === "6" ?
                 <Fragment>
-                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "pvideo" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "pvideo" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: "")}
                 </Fragment> :
                 <Fragment>
-                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "fonte" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: console.log())}
+                    {Array.from(props.promocoes).map(item => item.promocao_tipo === "fonte" ? <Catalogo key={item.id} nome={item.promocao_nome} preco={item.promocao_preco} descricao={item.promocao_oferta} porcentagem={item.promocao_porcentagem} imagem={item.promocao_imagem}/>: "")}
                 </Fragment>
             }
         </Box>

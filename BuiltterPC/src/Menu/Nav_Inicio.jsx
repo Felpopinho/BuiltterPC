@@ -1,5 +1,6 @@
 import { CircularProgress } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
+import { previewUser } from "../script";
 
 export function NavEsquerdo(props){
 
@@ -41,15 +42,13 @@ export function NavDisplay(props){
                     </div>
                 </div> :
             props.sessaoSelecionada === 1 ?
-                <div id="simulacaoDisplay">
-                    <div className="molde"><h3>{props.simulacoes[0].simulacao_nome}</h3><p>{props.simulacoes[0].simulacao_status}</p></div>
-                    <div className="molde"><h3>{props.simulacoes[1].simulacao_nome}</h3><p>{props.simulacoes[1].simulacao_status}</p></div>
-                    <div className="molde"><h3>{props.simulacoes[2].simulacao_nome}</h3><p>{props.simulacoes[2].simulacao_status}</p></div>
-                    <div className="molde"><h3>{props.simulacoes[3].simulacao_nome}</h3><p>{props.simulacoes[3].simulacao_status}</p></div>
-                    <div className="molde"><h3>{props.simulacoes[4].simulacao_nome}</h3><p>{props.simulacoes[4].simulacao_status}</p></div>
-                    <div className="molde"><h3>{props.simulacoes[5].simulacao_nome}</h3><p>{props.simulacoes[5].simulacao_status}</p></div>
-                    <div className="molde"><h3>{props.simulacoes[6].simulacao_nome}</h3><p>{props.simulacoes[6].simulacao_status}</p></div>
-                    <div className="molde"><h3>{props.simulacoes[7].simulacao_nome}</h3><p>{props.simulacoes[7].simulacao_status}</p></div>
+                <div style={{overflowY: "scroll"}}>
+                    {props.logado === true ? <h2>Moldes criados:</h2> : ""}
+                    <div style={{display: "flex", flexWrap: "wrap"}}>
+                        {props.logado === true ? Array.from(props.simulacoes).map(molde => molde.userId === previewUser.idUser ? 
+                        <p className="simBox">{molde.nome}</p> : "") : 
+                        <h2>Crie uma conta ou faça login para acessar esta sessão</h2>}
+                    </div>
                 </div> :
             props.sessaoSelecionada === 2 ?
                 <div id="promoDisplay" style={{display: "grid", gridTemplateColumns: "30% 63%", width: "100%", columnGap: "20px", placeItems: "center"}}>
@@ -67,11 +66,11 @@ export function NavDisplay(props){
                 </div> :
     
                 <div id="forumDisplay" style={{display: "grid", gridTemplateColumns: "70% 30%"}}>
-                    <div style={{backgroundColor: "#292929", margin: "10px", padding: "10px", borderRadius: "10px", height: "90%", overflowY: "scroll"}}>
+                    <div style={{backgroundColor: "#292929", margin: "10px", padding: "10px", borderRadius: "10px", height: "90%", overflowY: "scroll", width: "100%"}}>
                         <p style={{color: "white"}}>{props.comentarios[0].forum_descricao}</p>
                     </div>
                     <div style={{justifySelf: "space-evenly", display: "flex", flexDirection: "column", alignItems: "center"}}>
-                        <h4>Por:</h4>
+                        <h4>Por:{props.comentarios[0].forum_nome}</h4>
                         <img src={props.comentarios[0].forum_imagem}/>
                         <h2>{props.comentarios[0].forum_nome}</h2>
                     </div>

@@ -1,5 +1,5 @@
-import { Box, Button, FormControl, IconButton, Tab, Tabs, TextField, InputAdornment, Menu, Divider, List, MenuItem, Modal, FormHelperText, Select, InputLabel } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { Box, Button, FormControl, IconButton, Tab, Tabs, TextField, InputAdornment, Menu, Divider, List, MenuItem, Modal, FormHelperText, Select, InputLabel, BottomNavigation, BottomNavigationAction} from "@mui/material";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Search } from "@mui/icons-material";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Pessoas, Amigos } from "./Pessoas";
@@ -9,7 +9,12 @@ import { baseURL } from "../App";
 import { Respostas } from "./Respostas";
 import Close from '@mui/icons-material/Close'
 import { previewUser } from "../script";
-
+import CodeIcon from '@mui/icons-material/Code';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import WysiwygIcon from '@mui/icons-material/Wysiwyg';
+import BorderAllIcon from '@mui/icons-material/BorderAll';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 export function Forum(props){
 
@@ -109,6 +114,53 @@ export function Forum(props){
         }
     }
 
+    const [match, setMatch] = useState(false)
+    var mediaQuery = window.matchMedia("(max-width: 1040px)")
+
+    const mediaQueryFunction = () =>{
+        if (mediaQuery.matches){
+            setMatch(true)
+        } else{
+            setMatch(false)
+        }
+    }
+
+    useEffect(() => {
+        mediaQueryFunction()
+    })
+
+    mediaQuery.addEventListener('change', ()=>{
+        mediaQueryFunction()
+    }, [mediaQuery])
+
+    const [valueFiltro, setValueFiltro] = useState('tudo')
+    const handleValueFiltro = (event, newValue) =>{
+        setValueFiltro(newValue)
+    }
+    const [valuePeople, setValuePeople] = useState('')
+    const handleValuePeople = (event, newValue) =>{
+        setValuePeople(newValue)
+    }
+    const [amigosModal, setAmigosModal] = useState(false)
+    const [pessoasModal, setPessoasModal] = useState(false)
+
+    const handleOpenAmigos = () =>{
+        setPessoasModal(false)
+        setAmigosModal(true)
+    }
+    const handleOpenPessoas = () =>{
+        setAmigosModal(false)
+        setPessoasModal(true)
+    }
+    const handleCloseAmigos = () =>{
+        setAmigosModal(false)
+        setValuePeople('')
+    }
+    const handleClosePessoas = () =>{
+        setPessoasModal(false)
+        setValuePeople('')
+    }
+
     return <div className="forum_container" id="Forum">
         <Box sx={{display: "flex", alignItems: "center", height: "15vh", justifyContent: "space-between"}}>
 
@@ -138,29 +190,58 @@ export function Forum(props){
         <Box className="mainContainer">
 
             <Box className="Filtros">
-                <Box sx={{width: '100%', height: "70vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
-                    <Box sx={{width: '80%', height: "auto", display: "flex", alignItems: "center", flexDirection: "column"}}>
+                <Box sx={{width: '100%', display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
+                    <Box sx={{width: '80%', height: "100%", display: "flex", alignItems: "center", flexDirection: "column"}}>
 
-                        <h2 style={{height: "5vh", display: "flex", alignItems: "center"}}>Tipos</h2>
-
-                        <Tabs onChange={handleTipo} value={valueTipo} orientation="vertical" sx={{width: '100%'}}>
-                            <Tab value="1" label="Tudo"/>
-                            <Tab value="2" label="Hardware"/>
-                            <Tab value="3" label="Software"/>
-                            <Tab value="4" label="Programaçao"/>
-                        </Tabs>
+                        {match === false ?
+                            <Fragment>
+                                <h2 style={{height: "5vh", display: "flex", alignItems: "center"}}>Tipos</h2>
+                                <Tabs onChange={handleTipo} value={valueTipo} orientation="vertical" sx={{width: '100%'}}>
+                                    <Tab value="1" label="Tudo"/>
+                                    <Tab value="2" label="Hardware"/>
+                                    <Tab value="3" label="Software"/>
+                                    <Tab value="4" label="Programaçao"/>
+                                </Tabs>
+                            </Fragment> :
+                            <BottomNavigation value={valueFiltro} onChange={handleValueFiltro} sx={{display: "flex", flexDirection: "column", height: "30vh"}}>
+                                <BottomNavigationAction onClick={()=>{setValueTipo("1")}} icon={<BorderAllIcon/>} label={"Tudo"} value={"tudo"}/>
+                                <BottomNavigationAction onClick={()=>{setValueTipo("2")}} icon={<DeveloperBoardIcon/>} label={"Hardware"} value={"hardware"}/>
+                                <BottomNavigationAction onClick={()=>{setValueTipo("3")}} icon={<WysiwygIcon/>} label={"Software"} value={"software"}/>
+                                <BottomNavigationAction onClick={()=>{setValueTipo("4")}} icon={<CodeIcon/>} label={"Programaçao"} value={"programacao"}/>
+                            </BottomNavigation>
+                        }
                     </Box>
-
-                    <Box sx={{display: "flex", width: '90%', height: "60%", alignItems: "center", flexDirection: "column"}}>
-
+                    <Divider orientation="horizontal" sx={{margin: 1, width: "90%"}}/>
+                    <Box sx={{display: "flex", width: '80%', alignItems: "center", flexDirection: "column"}}>
+                    {match === false ? <Fragment>
                         <h2 style={{height: "5vh", display: "flex", alignItems: "center"}}>Amigos</h2>
 
                         <Box sx={{display: "flex",overflowY: "scroll", width: '100%'}}>
                             <List>
                                 {props.amigos.lenght ? Array.from(props.users).map(amigo => <Amigos key={amigo.id} id={amigo.id} nome={amigo.nome} perfil={amigo.perfil} titulo={amigo.titulo} amigos={props.amigos}/>) : <p>Você não tem nenhum amigo ainda</p> }
                             </List>
-                        </Box>
-
+                        </Box> </Fragment>: <Fragment>
+                        <BottomNavigation value={valuePeople} onChange={handleValuePeople} sx={{display: "flex", flexDirection: "column", height: "15vh"}}>
+                            <BottomNavigationAction onClick={()=>{handleOpenAmigos()}} icon={<PeopleAltIcon/>} label={"Amigos"} value={"amigos"}/>
+                            <BottomNavigationAction onClick={()=>{handleOpenPessoas()}} icon={<GroupsIcon/>} label={"Pessoas"} value={"pessoas"}/>
+                        </BottomNavigation>
+                        <Modal open={amigosModal} onClose={()=> {handleCloseAmigos()}}>
+                            <Box sx={props.amigos.lenght ? {position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4, height: "90%", overflowY: "scroll"} : {position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4, width: "90%"}}>
+                                <h1 style={{textAlign: "center"}}>Amigos:</h1>
+                                <List sx={props.amigos.lenght ? {} : {display: "flex", alignItems: "center", height: "100%"}}>
+                                    {props.amigos.lenght ? Array.from(props.users).map(amigo => <Amigos key={amigo.id} id={amigo.id} nome={amigo.nome} perfil={amigo.perfil} titulo={amigo.titulo} amigos={props.amigos}/>) : <p style={{textAlign: "center", fontSize: "1.5rem"}}>Você não tem nenhum amigo ainda</p> }
+                                </List>
+                            </Box>
+                        </Modal> 
+                        <Modal open={pessoasModal} onClose={()=> {handleClosePessoas()}}>
+                            <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4, height: "90%", overflowY: "scroll"}}>
+                                <h1 style={{textAlign: "center"}}>Pessoas:</h1>
+                                <List>
+                                    {Array.from(props.users).map(pessoa =><Pessoas key={pessoa.id} nome={pessoa.nome} perfil={pessoa.perfil} titulo={pessoa.titulo}/>)}
+                                </List>
+                            </Box>
+                        </Modal>
+                        </Fragment> }
                     </Box>
                 </Box>
             </Box>

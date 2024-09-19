@@ -321,6 +321,8 @@ a{
     position: relative;
     justify-content: end;
     align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
 }
 .display_esquerdo_content{
     width: 100%;
@@ -452,14 +454,19 @@ a{
     align-self: flex-end;
     top: 2.5vh;
 }
-
-.alertContainer{
-    width: 260px;
-}
 .cores_container button:focus{
     background-color: #3333334f;
 }
-
+.simBox{
+    display: flex;
+    place-items: center;
+    width: auto;
+    height: 20px;
+    padding: 20px;
+    margin: 10px;
+    border: solid 2px black;
+    border-radius: 5px;
+}
 @media screen and (max-width: 1500px) {
     .menu_container{
         flex-direction: column;

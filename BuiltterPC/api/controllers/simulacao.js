@@ -41,21 +41,20 @@ export const getProdSimulacoes = (req, res) =>{
 }
 
 export const addSimulacao = (req, res) => {
-    const q = "UPDATE simulacoes SET `simulacao_nome` = ?, `simulacao_status` = ?, `simulacao_mae` = ?, `simulacao_pro` = ?, `simulacao_mem` = ?, `simulacao_arm` = ?, `simulacao_vid` = ?, `simulacao_fon` = ? WHERE `id` = ?"
+    const q = "INSERT INTO simulacoes (`userId`, `nome`, `mae`, `pro`, `mem`, `arm`, `vid`, `fon`) VALUES (?)"
 
     const values = [
+        req.body.userId,
         req.body.simulacao_nome,
-        req.body.simulacao_status,
         req.body.simulacao_mae,
         req.body.simulacao_pro,
         req.body.simulacao_mem,
         req.body.simulacao_arm,
         req.body.simulacao_vid,
         req.body.simulacao_fon,
-        req.body.id
     ]
 
-    db.query(q, [...values], (err, data)=>{
+    db.query(q, [values], (err, data)=>{
         if (err) return res.status(500).json(err);
 
         return res.status(200).json(data);
@@ -69,7 +68,7 @@ export const updateSimulacao = (req, res) => {
         if (err) return res.status(500).json(err)
 
         if (data[0].tipo_produto === "mae") {
-            const q = "UPDATE simulacoes SET `simulacao_mae` = ? WHERE `id` = ?"
+            const q = "UPDATE simulacoes SET `mae` = ? WHERE `id` = ?"
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
@@ -77,7 +76,7 @@ export const updateSimulacao = (req, res) => {
                 return res.status(200).json(data);
             })
         } else if (data[0].tipo_produto === "processador") {
-            const q = "UPDATE simulacoes SET `simulacao_pro` = ? WHERE `id` = ?"
+            const q = "UPDATE simulacoes SET `pro` = ? WHERE `id` = ?"
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
@@ -85,7 +84,7 @@ export const updateSimulacao = (req, res) => {
                 return res.status(200).json(data);
             })
         } else if (data[0].tipo_produto === "memoria") {
-            const q = "UPDATE simulacoes SET `simulacao_mem` = ? WHERE `id` = ?"
+            const q = "UPDATE simulacoes SET `mem` = ? WHERE `id` = ?"
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
@@ -93,7 +92,7 @@ export const updateSimulacao = (req, res) => {
                 return res.status(200).json(data);
             })
         } else if (data[0].tipo_produto === "armazem") {
-            const q = "UPDATE simulacoes SET `simulacao_arm` = ? WHERE `id` = ?"
+            const q = "UPDATE simulacoes SET `arm` = ? WHERE `id` = ?"
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
@@ -101,7 +100,7 @@ export const updateSimulacao = (req, res) => {
                 return res.status(200).json(data);
             })
         } else if (data[0].tipo_produto === "pvideo") {
-            const q = "UPDATE simulacoes SET `simulacao_vid` = ? WHERE `id` = ?"
+            const q = "UPDATE simulacoes SET `vid` = ? WHERE `id` = ?"
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
@@ -109,7 +108,7 @@ export const updateSimulacao = (req, res) => {
                 return res.status(200).json(data);
             })
         } else if (data[0].tipo_produto === "fonte") {
-            const q = "UPDATE simulacoes SET `simulacao_fon` = ? WHERE `id` = ?"
+            const q = "UPDATE simulacoes SET `fon` = ? WHERE `id` = ?"
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
@@ -122,7 +121,7 @@ export const updateSimulacao = (req, res) => {
     })
 }
 export const updateNomeSimulacao = (req, res) =>{
-    const q = "UPDATE simulacoes SET `simulacao_nome` = ? WHERE `id` = ?"
+    const q = "UPDATE simulacoes SET `nome` = ? WHERE `id` = ?"
 
     db.query(q, [req.body.nome, req.body.id] ,(err,data)=>{
         if (err) return res.status(500).json(err);
@@ -132,7 +131,7 @@ export const updateNomeSimulacao = (req, res) =>{
 }
 
 export const deleteSimulacao = (req, res) => {
-    const q = "UPDATE simulacoes SET `simulacao_nome` = 'Molde ?', `simulacao_status` = 'vazio', `simulacao_mae` = NULL, `simulacao_pro` = NULL, `simulacao_mem` = NULL, `simulacao_arm` = NULL, `simulacao_vid` = NULL, `simulacao_fon` = NULL WHERE `id` = ?"
+    const q = "DELETE FROM simulacoes WHERE `id` = ?"
 
     db.query(q, [req.body.id, req.body.id], (err,data) =>{
         if (err) return res.status(500).json(err);

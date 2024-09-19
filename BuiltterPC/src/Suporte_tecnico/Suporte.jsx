@@ -5,7 +5,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 import BugReportIcon from '@mui/icons-material/BugReport';
-import { Divider, List, Input, Box, Button, Modal, Typography, ThemeProvider, BottomNavigation, BottomNavigationAction, CircularProgress } from "@mui/material" 
+import { Divider, List,  Box, Modal, Typography, BottomNavigation, BottomNavigationAction, CircularProgress } from "@mui/material" 
 import { SessaoUm, SessaoDois, SessaoTres, SessaoQuatro, SessaoFavorito } from "./Sessoes_suporte" 
 import { Fragment, useState, useEffect } from "react" 
 import { VideoHistorico } from './VideoFilter';
@@ -66,11 +66,25 @@ export function Suporte(props){
         setValue(newValue)
     }
 
+    const [videosFavoritados, setVideosFavoritados] = useState("")
     const [videosVistos, setVideosVistos] = useState("")
+    const getAllFavorite = async()=>{
+        if(props.logado === true){
+            try {
+                await axios.post(baseURL+"/favorite/all", {
+                    user_id: previewUser.idUser,
+                }).then(res=>{
+                    setVideosFavoritados(res.data)
+                })
+            }catch (error) {
+                console.log(error)
+            }
+        }
+    }
     const getViews = async() =>{
         if(props.logado === true){
             try {
-                await axios.post(baseURL+"/view", {
+                await axios.post(baseURL+"/view/all", {
                     user_id: previewUser.idUser,
                 }).then(res=>{
                     setVideosVistos(res.data)
@@ -82,8 +96,9 @@ export function Suporte(props){
     }
 
     useEffect(()=>{
-        getViews()
-    },[]);
+        getAllFavorite();
+        getViews();
+    },[props.logado]);
 
     const favoritar = async (n, userId, videoId) =>{
         if (n===1){
@@ -93,6 +108,7 @@ export function Suporte(props){
                     video_id: videoId
                 }).then(res=>{
                     props.getData()
+                    getAllFavorite()
                     props.handleOpenAlert("Video favoritado!", 1)
                 })
             } catch (error) {
@@ -106,29 +122,48 @@ export function Suporte(props){
                     video_id: videoId
                 }).then(res=>{
                     props.getData()
+                    getAllFavorite()
                     props.handleOpenAlert("Video desfavoritado!", 1)
                 })
             } catch (error) {
                 console.log(error)
-                props.handleOpenAlert("Video desfavoritado!", 2)
+                props.handleOpenAlert("Erro ao desfavoritar!", 2)
             }
         }
         
     }
-    const visualizar = async (userId, videoId) =>{
-        try {
-            await axios.post(baseURL+"/videos/view", {
-                user_id: userId,
-                video_id: videoId
-            }).then(res=>{
-                props.getData()
-            })
-        } catch (error) {
-            console.log(error)
+    const visualizar = async (n, userId, videoId, videoEstatisticas) =>{
+        if (n === 1){
+            try {
+                await axios.post(baseURL+"/videos/view", {
+                    user_id: userId,
+                    video_id: videoId
+                }).then(async(res)=>{
+                    await axios.post(baseURL+"/view/viewUpdate", {
+                        video_estatisticas: videoEstatisticas+1,
+                        video_id: videoId
+                    }).then(res=>{
+                        props.getData()
+                        getViews();
+                    })
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        } else{
+            try {
+                await axios.post(baseURL+"/videos/updateView", {
+                    user_id: userId,
+                    video_id: videoId
+                }).then(res=>{
+                    props.getData()
+                    getViews();
+                })
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
-
-    const [cont, setCont] = useState(0)
 
     return <div className="suporte_container" id="Suporte">
 
@@ -179,9 +214,9 @@ export function Suporte(props){
                 <Typography variant='h3' sx={{fontWeight: '600', width:'90%'}}>Historico</Typography>
                 <Divider sx={{margin: 3, width:'90%'}}/>
                 <div className='historico_container'>
-                    {Array.from(videosVistos).map(video => video.video_view === 'visto' ? (<VideoHistorico key={video.id} idVid={video.id} video_favorite={video.video_favorite} 
+                    {Array.from(props.videos).map(video => <VideoHistorico key={video.id} idVid={video.id} vistos={videosVistos} video_favorite={video.video_favorite} 
                     visualizar={visualizar} video_imagem={video.video_imagem} video_nome={video.video_nome} video_descricao={video.video_descricao} 
-                    video_estatisticas={video.video_estatisticas}/>) : console.log)}
+                    video_estatisticas={video.video_estatisticas} videoAtual={video}/>)}
                 </div>
             </Box>
         </Modal>
@@ -204,7 +239,7 @@ export function Suporte(props){
                 <SessaoQuatro setOpenAviso={props.setOpenAviso} logado={props.logado} videos={props.videos} favoritar={favoritar} visualizar={visualizar} sessao={sessao}/>
             </Fragment>) :
             <Fragment>
-                <SessaoFavorito setOpenAviso={props.setOpenAviso} logado={props.logado} videos={props.videos} favoritar={favoritar} visualizar={visualizar} sessao={sessao}/>
+                <SessaoFavorito videosFavoritados={videosFavoritados} setOpenAviso={props.setOpenAviso} logado={props.logado} videos={props.videos} favoritar={favoritar} visualizar={visualizar} sessao={sessao}/>
             </Fragment>}
         </Box>
         </Fragment>)}

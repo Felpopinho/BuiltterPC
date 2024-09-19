@@ -3,6 +3,8 @@ import { Close } from '@mui/icons-material';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 
+import './style_global.css';
+
 import './Menu/Style_menu.css';
 import { Menu } from './Menu/Menu.jsx';
 
@@ -108,7 +110,7 @@ function App() {
       <Suporte logado={logado} setOpenAviso={setOpenAviso} videos={videos} getData={getData} handleOpenAlert={handleOpenAlert}/>
       <Divider sx={{margin: 3, marginBottom: 10}}/>
 
-      <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes} getData={getData} handleOpenAlert={handleOpenAlert}/>
+      <Simulacao logado={logado} produtos={produtos} simulacoes={simulacoes} getData={getData} handleOpenAlert={handleOpenAlert} setOpenAviso={setOpenAviso}/>
       <Divider sx={{margin: 3, marginTop: 10}}/>
 
       <Promocoes logado={logado} promocoes={promocoes}/>
@@ -124,10 +126,10 @@ function App() {
         <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}} className="modal">
             <Typography variant='h3' sx={{fontWeight: '600', width:'90%'}}>Aviso!</Typography>
             <Divider sx={{margin: 3, width:'90%'}}/>
-            <div style={{display: "flex", width: "100%", justifyContent: "space-evenly", alignItems: "center"}}>
+            <div style={{display: "flex", width: "100%", justifyContent: "space-evenly", alignItems: "center"}} className='aviso'>
                 <p style={{fontSize: "1.5rem"}}>Crie uma conta para acessar esta sessão</p>
-                <a href="#Menu" onClick={handleCloseAviso}>
-                    <Button variant='outlined' sx={{fontSize: "1.2rem"}}>Criar conta</Button>
+                <a href="#Menu" onClick={handleCloseAviso} className='btnCriar'>
+                    <Button variant='outlined' sx={{fontSize: "1.2rem", width: "100%"}}>Criar conta</Button>
                 </a>
             </div>
         </Box>
