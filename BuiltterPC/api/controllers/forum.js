@@ -94,13 +94,14 @@ export const getRespostas = (req, res) =>{
 }
 
 export const addRespostas = (req,res) =>{
-    const q = "INSERT INTO respostas (`userId`, `postId`, `resposta_titulo`, `resposta_desc`) VALUES (?)"
+    const q = "INSERT INTO respostas (`userId`, `postId`, `resposta_titulo`, `resposta_desc`, `resposta_curtida`) VALUES (?)"
 
     const values = [
-        req.body.userId,
-        req.body.postId,
-        req.body.resposta_titulo,
-        req.body.resposta_desc,
+        req.body.forum_id,
+        req.body.forum_postId,
+        req.body.forum_titulo,
+        req.body.forum_descricao,
+        req.body.forum_curtidas
     ]
 
     db.query(q, [values], (err,data)=>{

@@ -40,6 +40,9 @@ export function Forum(props){
     const [respostas, setRespostas] = useState(null)
 
     const handleResposta = async (id) =>{
+        if (props.logado === false){
+            return props.setOpenAviso(true)
+        }
         setPost(id)
         try {
             await axios.get(baseURL+"/respostas").then(res=>{
@@ -255,7 +258,7 @@ export function Forum(props){
                 <Box sx={{width: '100%', height: "70vh", overflowY: "scroll"}}>
                     <List sx={{width: '100%'}}>
                         {vendoResposta === true ?
-                        Array.from(props.comentarios).map(comment => comment.id === post ? <Respostas key={comment.id} respostas={respostas} post={comment} users={props.users} comentarios={props.comentarios} setVendoResposta={setVendoResposta}/> : console.log) :
+                        Array.from(props.comentarios).map(comment => comment.id === post ? <Respostas key={comment.id} respostas={respostas} post={comment} users={props.users} comentarios={props.comentarios} setVendoResposta={setVendoResposta} handleOpenAlert={props.handleOpenAlert} getData={props.getData} handleResposta={handleResposta}/> : console.log) :
                         valueTipo === "1" ?
                             Array.from(props.comentarios).map(comment => <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/>) :
                         valueTipo === "2" ?

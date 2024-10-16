@@ -1,9 +1,15 @@
-import { Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Box, Button, IconButton, List } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Box, Button, IconButton, List, Modal, FormControl, TextField, FormHelperText, InputLabel, Select, MenuItem } from "@mui/material";
+import { useEffect, useState, useRef } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Close from '@mui/icons-material/Close'
+import axios from "axios";
+import { previewUser } from "../script";
+import { baseURL } from "../App";
 
 export function Respostas(props){
+
+    const ref = useRef()
        
     const [user, setUser] = useState(props.users[1])
     
@@ -19,6 +25,53 @@ export function Respostas(props){
 
     const handleVoltar = () =>{
         props.setVendoResposta(false)
+    }
+
+    const [modalResposta, setModalResposta] = useState(false)
+
+    const handleCriarResposta = (n) =>{
+        n === 1 ? setModalResposta(true) : setModalResposta(false)
+        
+    }
+
+    const [valueTitulo, setValueTitulo] = useState("");
+    const [helpTitulo, setHelpTitulo] = useState(0);
+    const [valueDesc, setValueDesc] = useState("");
+    const [helpDesc, setHelpDesc] = useState(0);
+
+    const handleTitulo = (e) =>{
+        setValueTitulo(e.target.value)
+        const tempValueTitulo = e.target.value
+        setHelpTitulo(tempValueTitulo.length)
+    }
+    const handleDesc = (e) =>{
+        setValueDesc(e.target.value)
+        const tempValueDesc = e.target.value
+        setHelpDesc(tempValueDesc.length)
+    }
+
+    const publicarResposta = async (e) =>{
+        e.preventDefault()
+
+        const comment = ref.current
+
+        try {
+            await axios.post(baseURL+"/respostas/add", {
+                forum_id: previewUser.idUser,
+                forum_postId: props.post.id,
+                forum_titulo: comment.titulo.value,
+                forum_descricao: comment.descricao.value,
+                forum_curtidas: 0
+            }).then(res =>{
+                props.getData()
+                props.handleResposta(props.post.id)
+                handleCriarResposta(2)
+                props.handleOpenAlert("Resposta publicada!", 1)
+            })
+        } catch (error) {
+            console.log(error)
+            props.handleOpenAlert("Error ao publicar!", 2)
+        }
     }
 
     return <>
@@ -45,11 +98,35 @@ export function Respostas(props){
         <Divider sx={{margin: "1vh 0 2vh 0"}}/>
         <Box sx={{display: "flex", justifyContent: "space-evenly"}}>
             <h2 >Respostas</h2>
-            <Button variant="outlined">Responder comentario</Button>
+            <Button variant="outlined" onClick={()=>{handleCriarResposta(1)}}>Responder comentario</Button>
         </Box>
         <List sx={{padding: "0 10%"}}>
             {Array.from(props.respostas).map(resposta => resposta.postId === props.post.id ? <RespostaList key={resposta.id} users={props.users} userId={resposta.userId} titulo={resposta.resposta_titulo} desc={resposta.resposta_desc}/> : console.log)}
         </List>
+
+        <Modal open={modalResposta}>
+            <Box className="criarPostagem" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4}}>
+                <IconButton onClick={()=>{handleCriarResposta(2)}} sx={{position: "absolute", right: "30px"}}><Close color="primary"/></IconButton>
+                
+                <h1 style={{textAlign: "center", margin: "0 0 3vh 0"}}>Responder postagem</h1>
+
+                <form style={{width: "100%",height: "35vh"}} ref={ref} onSubmit={(e)=>{publicarResposta(e)}}>
+                    <FormControl sx={{width: "100%", height: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column"}}>
+                        <Box sx={{width: "100%", display: "flex", justifyContent: "space-between"}}>
+                            <Box sx={{width: "100%"}}>
+                                <TextField required name="titulo" sx={{width: "100%"}} label="Titulo" value={valueTitulo} onChange={(e)=>{handleTitulo(e)}}/>
+                                <FormHelperText>{helpTitulo}/125</FormHelperText>
+                            </Box>
+                        </Box>
+                        <Box sx={{width: "100%"}}>
+                            <TextField required name="descricao" sx={{width: "100%"}} multiline rows={5} label="Descrição" value={valueDesc} onChange={(e)=>{handleDesc(e)}}/>
+                            <FormHelperText>{helpDesc}/255</FormHelperText>
+                        </Box>
+                        <Button sx={{width: "100%"}} type="submit" variant="contained" disabled={helpDesc >= 256 || helpTitulo >= 126 || helpDesc <= 0|| helpTitulo <= 0}>Postar</Button>
+                    </FormControl>
+                </form>
+            </Box>
+        </Modal>
     </>
 }
 

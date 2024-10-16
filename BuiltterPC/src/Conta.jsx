@@ -77,9 +77,9 @@ export function Conta(props){
             <div style={{width: "90%", height: "90%", display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <h1 style={{fontSize: "2.5rem", margin: "0vh 0 3vh 0"}}>{previewUser.usuario}</h1>
                 <p style={{margin: "0vh 0 3vh 0"}}>{previewUser.email}</p>
-                <div>
-                    <Button onClick={() =>{sairConta("Usuário deslogado")}} disabled={props.logado === false}>Log out</Button>
-                    <Button onClick={deletarConta} disabled={props.logado === false}>Deletar conta</Button>
+                <div style={{display: "flex", justifyContent: "space-between", width: "80%"}}>
+                    <Button color="red" onClick={() =>{sairConta("Usuário deslogado")}} disabled={props.logado === false}>Log out</Button>
+                    <Button variant="outlined" onClick={deletarConta} disabled={props.logado === false}>Deletar conta</Button>
                 </div>
             </div>
         </Box>
