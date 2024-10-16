@@ -1,6 +1,6 @@
 import mysql from "mysql2"
 
-const db = mysql.createPool({
+export const db = mysql.createPool({
     host: "bhkcblgonvrzmbiawbut-mysql.services.clever-cloud.com",
     user: "uzafcrmlhdppkmek",
     password: "AUFoDFchry9QRg7R8OZS",
@@ -15,4 +15,3 @@ db.getConnection((err, conn) => {
     console.log("Connected successfully")
 })
 
-export default db
