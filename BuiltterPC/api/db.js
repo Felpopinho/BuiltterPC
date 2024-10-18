@@ -1,11 +1,11 @@
 import Sequelize from 'sequelize'
 import mysql from 'mysql'
 
-export const bd = mysql.createConnection({
-    host     : process.env.MYSQL_ADDON_HOST,
-    database : process.env.MYSQL_ADDON_DB,
-    user     : process.env.MYSQL_ADDON_USER,
-    password : process.env.MYSQL_ADDON_PASSWORD
+export const db = mysql.createConnection({
+    host     : `bhkcblgonvrzmbiawbut-mysql.services.clever-cloud.com`,
+    database : `bhkcblgonvrzmbiawbut`,
+    user     : `uzafcrmlhdppkmek`,
+    password : `AUFoDFchry9QRg7R8OZS`
 });
 
 //export const db = new Sequelize('mysql://uzafcrmlhdppkmek:AUFoDFchry9QRg7R8OZS@bhkcblgonvrzmbiawbut-mysql.services.clever-cloud.com:3306/bhkcblgonvrzmbiawbutnpm')
