@@ -25,7 +25,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-export const baseURL = "https://builtterpc.vercel.app"
+export const baseURL = "http://localhost:3000"
 
 export const darkTheme = createTheme({
   palette: {
