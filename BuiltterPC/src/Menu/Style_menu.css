@@ -505,10 +505,12 @@ a{
         width: 100%;
         justify-items: center;
         align-items: center;
-        overflow-x: scroll;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
     }
     .section_content{
         height: 100%;
+        scroll-snap-align: center;
     } .section_content:hover{
         transform: scale(0.95);
     }
