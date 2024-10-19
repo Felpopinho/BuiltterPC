@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, IconButton, Tab, Tabs, TextField, InputAdornment, Menu, Divider, List, MenuItem, Modal, FormHelperText, Select, InputLabel, BottomNavigation, BottomNavigationAction} from "@mui/material";
+import { Box, Button, FormControl, IconButton, Tab, Tabs, TextField, InputAdornment, Menu, Divider, List, MenuItem, Modal, FormHelperText, Select, InputLabel, BottomNavigation, BottomNavigationAction, Fab} from "@mui/material";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Search } from "@mui/icons-material";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
@@ -15,6 +15,7 @@ import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 import BorderAllIcon from '@mui/icons-material/BorderAll';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import GroupsIcon from '@mui/icons-material/Groups';
+import AddIcon from '@mui/icons-material/Add';
 
 export function Forum(props){
 
@@ -117,14 +118,21 @@ export function Forum(props){
         }
     }
 
-    const [match, setMatch] = useState(false)
-    var mediaQuery = window.matchMedia("(max-width: 1040px)")
+    const [match1040, setMatch1040] = useState(false)
+    const [match600, setMatch600] = useState(false)
+    var mediaQuery1040 = window.matchMedia("(max-width: 1040px)")
+    var mediaQuery600 = window.matchMedia("(max-width: 600px)")
 
     const mediaQueryFunction = () =>{
-        if (mediaQuery.matches){
-            setMatch(true)
+        if (mediaQuery1040.matches){
+            setMatch1040(true)
         } else{
-            setMatch(false)
+            setMatch1040(false)
+        }
+        if (mediaQuery600.matches){
+            setMatch600(true)
+        } else{
+            setMatch600(false)
         }
     }
 
@@ -132,9 +140,12 @@ export function Forum(props){
         mediaQueryFunction()
     })
 
-    mediaQuery.addEventListener('change', ()=>{
+    mediaQuery1040.addEventListener('change', ()=>{
         mediaQueryFunction()
-    }, [mediaQuery])
+    }, [mediaQuery1040])
+    mediaQuery600.addEventListener('change', ()=>{
+        mediaQueryFunction()
+    }, [mediaQuery600])
 
     const [valueFiltro, setValueFiltro] = useState('tudo')
     const handleValueFiltro = (event, newValue) =>{
@@ -165,15 +176,16 @@ export function Forum(props){
     }
 
     return <div className="forum_container" id="Forum">
-        <Box sx={{display: "flex", alignItems: "center", height: "15vh", justifyContent: "space-between"}}>
+        <Box className="headerForum">
 
             <h1 className="tituloForum">FORUM</h1>
 
-            <Button variant="contained" sx={{height: "50px"}} onClick={()=>{handleCriarPostagem(1)}}>
+            {match600 === false ? 
+            <Button variant="contained" sx={{height: "50px"}} className="btnCriarPostagem" onClick={()=>{handleCriarPostagem(1)}}>
                 Criar postagem
-            </Button>
+            </Button> : ""}
 
-            <TextField label="Pesquisar" sx={{display: "flex", flexGrow: "0.5"}} InputProps={{
+            <TextField className="pesquisa" label="Pesquisar" InputProps={{
             endAdornment: (
             <InputAdornment position="end" >
               <IconButton sx={{padding:"0", margin: "0"}}><Search/></IconButton>
@@ -181,7 +193,7 @@ export function Forum(props){
             ),
             }}/>
 
-            <Box sx={{display: "flex", height: "50px"}}>
+            <Box className="btnFiltro">
                 <Button onClick={handleFiltro}>Filtro <FilterAltIcon/></Button>
                 <Menu anchorEl={anchorEl} open={openFiltro} onClose={()=>{handleCloseFiltro("id")}}>
                     <MenuItem onClick={()=>{handleCloseFiltro("id")}}>Recentes</MenuItem>
@@ -189,14 +201,14 @@ export function Forum(props){
                 </Menu>
             </Box>
         </Box>
-        <Divider/>
+        <Divider sx={{marginTop: "2vh"}}/>
         <Box className="mainContainer">
 
             <Box className="Filtros">
                 <Box sx={{width: '100%', display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                     <Box sx={{width: '80%', height: "100%", display: "flex", alignItems: "center", flexDirection: "column"}}>
 
-                        {match === false ?
+                        {match1040 === false ?
                             <Fragment>
                                 <h2 style={{height: "5vh", display: "flex", alignItems: "center"}}>Tipos</h2>
                                 <Tabs onChange={handleTipo} value={valueTipo} orientation="vertical" sx={{width: '100%'}}>
@@ -206,7 +218,7 @@ export function Forum(props){
                                     <Tab value="4" label="Programaçao"/>
                                 </Tabs>
                             </Fragment> :
-                            <BottomNavigation value={valueFiltro} onChange={handleValueFiltro} sx={{display: "flex", flexDirection: "column", height: "30vh"}}>
+                            <BottomNavigation value={valueFiltro} onChange={handleValueFiltro} sx={{display: "flex", flexDirection: "column", height: "30vh", width: "100%", alignItems: "center"}}>
                                 <BottomNavigationAction onClick={()=>{setValueTipo("1")}} icon={<BorderAllIcon/>} label={"Tudo"} value={"tudo"}/>
                                 <BottomNavigationAction onClick={()=>{setValueTipo("2")}} icon={<DeveloperBoardIcon/>} label={"Hardware"} value={"hardware"}/>
                                 <BottomNavigationAction onClick={()=>{setValueTipo("3")}} icon={<WysiwygIcon/>} label={"Software"} value={"software"}/>
@@ -216,7 +228,7 @@ export function Forum(props){
                     </Box>
                     <Divider orientation="horizontal" sx={{margin: 1, width: "90%"}}/>
                     <Box sx={{display: "flex", width: '80%', alignItems: "center", flexDirection: "column"}}>
-                    {match === false ? <Fragment>
+                    {match1040 === false ? <Fragment>
                         <h2 style={{height: "5vh", display: "flex", alignItems: "center"}}>Amigos</h2>
 
                         <Box sx={{display: "flex",overflowY: "scroll", width: '100%'}}>
@@ -244,13 +256,18 @@ export function Forum(props){
                                 </List>
                             </Box>
                         </Modal>
+                        {match600 === true ? 
+                            <Fab color="primary" aria-label="add" onClick={()=>{handleCriarPostagem(1)}} size="small">
+                                <AddIcon />
+                            </Fab> : ""
+                        }
                         </Fragment> }
                     </Box>
                 </Box>
             </Box>
 
-            <Box className="Postagens">
-                <Box sx={{height: "7vh", display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+            <Box className="Postagens" >
+                <Box className="titlePostagens">
                     <h1>Postagens</h1>
                     <h3>{props.valueFiltro === "id" ? "Recentes" : "Relevantes"}</h3>
                 </Box>
@@ -258,9 +275,9 @@ export function Forum(props){
                 <Box sx={{width: '100%', height: "70vh", overflowY: "scroll"}}>
                     <List sx={{width: '100%'}}>
                         {vendoResposta === true ?
-                        Array.from(props.comentarios).map(comment => comment.id === post ? <Respostas key={comment.id} respostas={respostas} post={comment} users={props.users} comentarios={props.comentarios} setVendoResposta={setVendoResposta} handleOpenAlert={props.handleOpenAlert} getData={props.getData} handleResposta={handleResposta}/> : console.log) :
+                        Array.from(props.comentarios).map(comment => comment.id === post ? <Respostas key={comment.id} respostas={respostas} setRespostas={setRespostas} post={comment} users={props.users} comentarios={props.comentarios} setVendoResposta={setVendoResposta} handleOpenAlert={props.handleOpenAlert} getData={props.getData} handleResposta={handleResposta} curtidas={comment.forum_curtidas}/> : console.log) :
                         valueTipo === "1" ?
-                            Array.from(props.comentarios).map(comment => <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/>) :
+                            Array.from(props.comentarios).map(comment => <Postagens key={comment.id} respostas={respostas} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/>) :
                         valueTipo === "2" ?
                             Array.from(props.comentarios).map(comment => comment.forum_tipo === "Hardware" ? <Postagens key={comment.id} id={comment.id} handleResposta={handleResposta} logado={props.logado} setOpenAviso={props.setOpenAviso} handleOpenAlert={props.handleOpenAlert} userId={comment.forum_id} descricao={comment.forum_descricao} tipo={comment.forum_tipo} titulo={comment.forum_titulo} users={props.users} curtidas={comment.forum_curtidas} getData={props.getData}/> : console.log) :
                         valueTipo === "3" ?
@@ -285,18 +302,18 @@ export function Forum(props){
 
         <Modal open={modalPost}>
             <Box className="criarPostagem" sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4}}>
-                <IconButton onClick={()=>{handleCriarPostagem(2)}} sx={{position: "absolute", right: "30px"}}><Close color="primary"/></IconButton>
+                <IconButton onClick={()=>{handleCriarPostagem(2)}} sx={{position: "absolute", right: "30px", top: "30px", alignSelf: "start"}}><Close color="primary"/></IconButton>
                 
                 <h1 style={{textAlign: "center", margin: "0 0 3vh 0"}}>Criar postagem</h1>
 
                 <form style={{width: "100%",height: "35vh"}} ref={ref} onSubmit={(e)=>{publicarPost(e)}}>
                     <FormControl sx={{width: "100%", height: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column"}}>
-                        <Box sx={{width: "100%", display: "flex", justifyContent: "space-between"}}>
-                            <Box sx={{width: "80%"}}>
+                        <Box sx={match600 === false ? {width: "100%", display: "flex", justifyContent: "space-between"} : {width: "100%", display: "flex", flexDirection: "column"}}>
+                            <Box sx={match600 === false ? {width: "80%"} : {width: "100%"}}>
                                 <TextField required name="titulo" sx={{width: "100%"}} label="Titulo" value={valueTitulo} onChange={(e)=>{handleTitulo(e)}}/>
                                 <FormHelperText>{helpTitulo}/125</FormHelperText>
                             </Box>
-                            <FormControl sx={{width: "17%"}}>
+                            <FormControl sx={match600 === false ? {width: "17%"} : {width: "100%", marginTop: "2vh"}}>
                                 <InputLabel id="type">Tipo</InputLabel>
                                 <Select required name="tipo" labelId="type" label="Tipo" value={valueType} onChange={(e)=>{handleSelectType(e)}}>
                                     <MenuItem value="Hardware">Hardware</MenuItem>
@@ -305,7 +322,7 @@ export function Forum(props){
                                 </Select>
                             </FormControl>
                         </Box>
-                        <Box sx={{width: "100%"}}>
+                        <Box sx={{width: "100%", marginTop: "2vh"}}>
                             <TextField required name="descricao" sx={{width: "100%"}} multiline rows={5} label="Descrição" value={valueDesc} onChange={(e)=>{handleDesc(e)}}/>
                             <FormHelperText>{helpDesc}/255</FormHelperText>
                         </Box>

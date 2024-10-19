@@ -5,16 +5,29 @@
     flex-direction: column;
     overflow: hidden;
 }
-
+.headerForum{
+    display: flex;
+    align-items: center;
+    height: 15vh;
+    justify-content: space-between
+}
 .tituloForum{
     font-size: 3rem;
     margin: 0 2%;
 }
-
+.btnFiltro{
+    display: flex;
+    height: 50px;
+    margin-right: 2%
+}
+.pesquisa{
+    display: flex; 
+    flex-grow: 0.5
+}
 .mainContainer{
     display: grid;
     width: 100%;
-    height: 90vh;
+    height: 85vh;
     grid-template-columns: 300px 1fr 300px;
     justify-items: center;
 }
@@ -35,6 +48,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.titlePostagens{
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
 
 @media screen and (max-width: 1040px) {
     .Pessoas{
@@ -43,5 +62,71 @@
     .mainContainer{
         grid-template-columns: 100px 1fr;
     }
-    
+    .Filtros{
+        width: 80%;
+    }
+    .tituloForum{
+        font-size: 2.3rem;
+    }
+    .criarPostagem{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .headerForum{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        row-gap: 2vh;
+        margin-top: 2vh;
+    }
+    .Postagens{
+        width: 90%;
+    }
+    .tituloForum{
+        font-size: 2rem;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .btnCriarPostagem{
+        width: 80%;
+    }
+    .pesquisa{
+        display: flex; 
+        flex-grow: 0.5;
+        grid-column: 1/6;
+        grid-row: 2/3;
+        width: 90%;
+    }
+    .criarPostagem{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .headerForum{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 2vh;
+        margin-top: 2vh;
+    }
+    .mainContainer{
+        grid-template-columns: 60px 1fr;
+    }
+    .criarPostagem{
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .titlePostagens{
+        flex-direction: column;
+        height: 10vh;
+        justify-content: space-evenly;
+    }
 }

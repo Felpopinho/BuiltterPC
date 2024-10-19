@@ -1,5 +1,5 @@
 import express from 'express'
-import { addComment, getComments, getRespostas, addRespostas, deleteComment, deleteRespostas, likeComment, updateLikes, dislikeComment, getLikes } from '../controllers/forum.js'
+import { addComment, getComments, getRespostas, getActualRespostas, addRespostas, deleteComment, deleteRespostas, likeComment, updateLikes, dislikeComment, getLikes } from '../controllers/forum.js'
 
 const routerForum = express.Router()
 
@@ -13,6 +13,7 @@ routerForum.post("/comentarios/updateLikes", updateLikes);
 routerForum.post("/likes", getLikes);
 
 routerForum.get("/respostas", getRespostas);
+routerForum.post("/respostas/actual", getActualRespostas);
 routerForum.post("/respostas/add", addRespostas);
 routerForum.post("/respostas/del", deleteRespostas);
 

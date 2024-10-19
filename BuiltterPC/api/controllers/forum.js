@@ -92,6 +92,15 @@ export const getRespostas = (req, res) =>{
         return res.status(200).json(data)
     })
 }
+export const getActualRespostas = (req, res) =>{
+    const q = "SELECT * FROM respostas WHERE `postId` = ?"
+
+    db.query(q, [req.body.id], (err,data)=>{
+        if (err) return res.status(404).json(err)
+
+        return res.status(200).json(data)
+    })
+}
 
 export const addRespostas = (req,res) =>{
     const q = "INSERT INTO respostas (`userId`, `postId`, `resposta_titulo`, `resposta_desc`, `resposta_curtida`) VALUES (?)"

@@ -12,6 +12,7 @@ export function Postagens(props){
     const [user, setUser] = useState(props.users[1])
     const [curtidas, setCurtidas] = useState("")
     const [curtido, setCurtido] = useState(false)
+    const [nResposta, setNrespostas] = useState(0)
     
     const selectUser = async() =>{
         props.users.forEach(user => {
@@ -24,6 +25,15 @@ export function Postagens(props){
             }).then(res=>{
                 setCurtidas(res.data)
                 res.data.length !== 0 ? setCurtido(true) : setCurtido(false) 
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        try {
+            await axios.post(baseURL+"/respostas/actual",{
+                id: props.id
+            }).then(res=>{
+                setNrespostas(res.data.length)
             })
         } catch (error) {
             console.log(error)
@@ -91,27 +101,30 @@ export function Postagens(props){
     }
 
     return <>
-        <ListItem>
-            <ListItemAvatar sx={{alignSelf: "start"}}>
-                <Avatar sx={{bgcolor: user.perfil}}></Avatar>
-            </ListItemAvatar>
-            <Box sx={{display: "flex", flexDirection: "column",width: "100%"}}>
+        <ListItem sx={{display: "flex", flexWrap: "wrap"}}>
+            <Box sx={{display: "flex",width: "100%"}}>
+                <ListItemAvatar sx={{alignSelf: "start"}}>
+                    <Avatar sx={{bgcolor: user.perfil}}></Avatar>
+                </ListItemAvatar>
                 <Box sx={{display: "flex", justifyContent: "space-between", width: "100%"}}>
                     <ListItemText primary={user.nome}/>
                     <ListItemText primary={props.tipo} sx={{textAlign: "end"}}/>
                 </Box>
-                <ListItemText primary={props.titulo} secondary={props.descricao}/>
-                <Box sx={{display:"flex", justifyContent: "space-between", alignItems: "center"}}>
+            </Box>
+            <ListItemText primary={props.titulo} secondary={props.descricao}/>
+            <Box sx={{display:"flex", justifyContent: "space-between", alignItems: "center", width: "100%"}}>
+                <Box>
                     <Button onClick={()=>{props.handleResposta(props.id)}}>Ver respostas</Button>
-                    <Box>
-                        {props.curtidas}
-                        <IconButton onClick={curtirComentario}>
-                            {curtido === true ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
-                        </IconButton>
-                        {user.id === previewUser.idUser ? 
-                            <IconButton onClick={deleteComentario}><DeleteForeverRoundedIcon/></IconButton> : 
-                        console.log}
-                    </Box>
+                    {`(${nResposta})`}
+                </Box>
+                <Box>
+                    {props.curtidas}
+                    <IconButton onClick={curtirComentario}>
+                        {curtido === true ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+                    </IconButton>
+                    {user.id === previewUser.idUser ? 
+                        <IconButton onClick={deleteComentario}><DeleteForeverRoundedIcon/></IconButton> : 
+                    console.log}
                 </Box>
             </Box>
         </ListItem>

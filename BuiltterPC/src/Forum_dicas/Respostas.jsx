@@ -6,22 +6,36 @@ import Close from '@mui/icons-material/Close'
 import axios from "axios";
 import { previewUser } from "../script";
 import { baseURL } from "../App";
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
 export function Respostas(props){
 
     const ref = useRef()
        
     const [user, setUser] = useState(props.users[1])
+    const [curtidas, setCurtidas] = useState("")
+    const [curtido, setCurtido] = useState(false)
     
-    const selectUser = () =>{
+    const selectUser = async () =>{
         props.users.forEach(user => {
             user.id === props.post.forum_id ? setUser(user) : console.log
         });
+        try {
+            await axios.post(baseURL+"/likes",{
+                userId: previewUser.idUser,
+                postId: props.post.id
+            }).then(res=>{
+                setCurtidas(res.data)
+                res.data.length !== 0 ? setCurtido(true) : setCurtido(false) 
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(()=>{
         selectUser();
-    }, [])
+    }, [curtido, props.logado])
 
     const handleVoltar = () =>{
         props.setVendoResposta(false)
@@ -74,6 +88,48 @@ export function Respostas(props){
         }
     }
 
+    const curtirComentario = async() =>{
+        if (props.logado === false){
+            props.setOpenAviso(true);
+        }else{
+            if(curtido===true){
+                try {
+                    await axios.post(baseURL+"/comentarios/updateLikes", {
+                        forum_curtidas: props.curtidas-1,
+                        postId: props.post.id,
+                    }).then(async(res)=>{
+                        await axios.post(baseURL+"/comentarios/dislike", {
+                            userId: previewUser.idUser,
+                            postId: props.post.id
+                        }).then(res=>{
+                            props.getData()
+                            setCurtido(false)
+                        })
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+            } else{
+                try {
+                    await axios.post(baseURL+"/comentarios/updateLikes", {
+                        forum_curtidas: props.curtidas+1,
+                        postId: props.post.id,
+                    }).then(async(res)=>{
+                        await axios.post(baseURL+"/comentarios/like", {
+                            userId: previewUser.idUser,
+                            postId: props.post.id
+                        }).then((res)=>{
+                            props.getData()
+                            setCurtido(true)
+                        })
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }
+    }
+    
     return <>
         <ListItem sx={{postion: "relative"}}>
             <ListItemAvatar sx={{alignSelf: "start", width: "100px"}}>
@@ -89,9 +145,14 @@ export function Respostas(props){
                     <p style={{fontSize: "1.8rem", margin: "5px 0 5px 0"}}>{props.post.forum_titulo}</p>
                     <p style={{fontSize: "1.2rem"}}>{props.post.forum_descricao}</p>
                 </Box>
-                <Box sx={{display: "flex", justifyContent: "space-between"}}>
+                <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                     <Button sx={{margin: "10px 0 0 0"}}variant="contained" onClick={handleVoltar}>Voltar</Button>
-                    <IconButton><FavoriteBorderIcon/></IconButton>
+                    <Box>
+                        {props.curtidas}
+                        <IconButton onClick={curtirComentario}>
+                            {curtido === true ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+                        </IconButton>
+                    </Box>
                 </Box>
             </Box>
         </ListItem>
@@ -101,7 +162,7 @@ export function Respostas(props){
             <Button variant="outlined" onClick={()=>{handleCriarResposta(1)}}>Responder comentario</Button>
         </Box>
         <List sx={{padding: "0 10%"}}>
-            {Array.from(props.respostas).map(resposta => resposta.postId === props.post.id ? <RespostaList key={resposta.id} users={props.users} userId={resposta.userId} titulo={resposta.resposta_titulo} desc={resposta.resposta_desc}/> : console.log)}
+            {Array.from(props.respostas).map(resposta => resposta.postId === props.post.id ? <RespostaList key={resposta.id} setRespostas={props.setRespostas} id={resposta.id} getData={props.getData} handleOpenAlert={props.handleOpenAlert} users={props.users} userId={resposta.userId} titulo={resposta.resposta_titulo} desc={resposta.resposta_desc}/> : console.log)}
         </List>
 
         <Modal open={modalResposta}>
@@ -144,6 +205,27 @@ export function RespostaList(props){
         selectUser();
     }, [])
 
+    const deleteComentario = async () =>{
+        try {
+            await axios.post(baseURL+"/respostas/del", {
+                id: props.id
+            }).then(async (res) =>{
+                props.getData()
+                try {
+                    await axios.get(baseURL+"/respostas").then(res=>{
+                        props.setRespostas(res.data)
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+                props.handleOpenAlert("Resposta deletada!", 1)
+            })
+        } catch (error) {
+            console.log(error)
+            props.handleOpenAlert("Erro ao deletar resposta!", 2)
+        }
+    }
+
     return <>
         <ListItem>
             <ListItemAvatar sx={{alignSelf: "start"}}>
@@ -156,8 +238,10 @@ export function RespostaList(props){
                 </Box>
                 <ListItemText primary={props.titulo} secondary={props.desc}/>
                 <Box sx={{display:"flex", justifyContent: "space-between", alignItems: "center"}}>
-                    <IconButton><FavoriteBorderIcon/></IconButton>
                 </Box>
+                {user.id === previewUser.idUser ? 
+                    <IconButton onClick={deleteComentario}><DeleteForeverRoundedIcon/></IconButton> : 
+                ""}
             </Box>
         </ListItem>
     </>
