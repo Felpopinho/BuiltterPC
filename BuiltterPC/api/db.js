@@ -1,11 +1,11 @@
-import Sequelize from 'sequelize'
 import mysql from 'mysql'
+import 'dotenv/config'
 
 export const db = mysql.createConnection({
-    host     : `bhkcblgonvrzmbiawbut-mysql.services.clever-cloud.com`,
-    database : `bhkcblgonvrzmbiawbut`,
-    user     : `uzafcrmlhdppkmek`,
-    password : `AUFoDFchry9QRg7R8OZS`
+    host     : process.env.DB_HOST,
+    database : process.env.DB_NAME,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASSWORD
 });
 
 //export const db = new Sequelize('mysql://uzafcrmlhdppkmek:AUFoDFchry9QRg7R8OZS@bhkcblgonvrzmbiawbut-mysql.services.clever-cloud.com:3306/bhkcblgonvrzmbiawbutnpm')
