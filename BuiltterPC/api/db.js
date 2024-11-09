@@ -23,7 +23,7 @@ import 'dotenv/config'
 //    password: "AUFoDFchry9QRg7R8OZS",
 //    database: "bhkcblgonvrzmbiawbut",
 //});
-
+//
 import mysql from 'mysql2'
 
 export const db = mysql.createPool({
@@ -44,4 +44,5 @@ db.getConnection((err, conn) => {
 })
 
 //mysql://uzafcrmlhdppkmek:AUFoDFchry9QRg7R8OZS@bhkcblgonvrzmbiawbut-mysql.services.clever-cloud.com:3306/bhkcblgonvrzmbiawbutnpm
+
 

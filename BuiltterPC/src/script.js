@@ -117,7 +117,7 @@ import i_armazem from './assets/imagens/ssd.png'
 import i_fonte from './assets/imagens/fonte-de-energia.png'
 
 //imagem perfil desconhecido em uma const
-export  const perfilDesconhecido = imageUnknown
+export const perfilDesconhecido = imageUnknown
 
 //Array das imagens de templates dos produtos
 export const templateImagens= [t_processador, t_armazem, t_fonte, t_mae, t_memoria, t_pvideo]
@@ -157,26 +157,6 @@ const forum ={
     descricao: 'Converse com diversas pessoas interessadas nos diversos assuntos de hardware, tire duvidas, responda duvidas e se divirta com o forum de review e dicas',
     imagem: imageForum,
 };
-
-//Objetos dos comentarios
-const comentario0 ={
-    forum_id: 4,
-    forum_descricao: 'Eu abro muitos jogos porém quando abro vários PW e a memória atinge 61% de uso e tenro abrir navegador ou ate mais PW"S o Pc trava, e as vezes desinstala sozinho o softwaree da placa devídeo. Alguem sabe como resolver ?',
-    forum_tipo: "Software",
-}
-const comentario1 ={
-    forum_id: 5,
-    forum_descricao: 'é minha primeira vez com uma GTX, e a minha é GTX 1050, ela é usada, a minha dúvida é, posso  colocar thermal pads nos chips que ficam perto  do chip gráfico ? (não sei se é esse o nome kkkk) irei colocar só para poder ajudar na temperatura,  ela não está com alta temperatura nem nada, pretendo mais para manter a vida dela ainda.',
-    forum_tipo: "Hardware",
-}
-const comentario2 ={
-    forum_id: 6,
-    forum_descricao: 'não sei se uma Fonte Atx Gamer Semi-modular 600w Real 80plus Pfc Ativo Nf seria bom para esse processador e placa de Vídeo ou procuro outra melhor',
-    forum_tipo: "Hardware",
-}
-
-//Array dos objetos de dados das sessões
-export const comentarioLista = [comentario0,comentario1,comentario2];
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
 
