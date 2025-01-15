@@ -3,13 +3,13 @@
     "builds": [
         {
             "src": "./server.js",
-            "use": "@vercel/vite"
+            "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "./api",
-            "dest": "/"
+            "dest": "./src"
         }
     ]
 }
