@@ -27,7 +27,7 @@ import axios from 'axios';
 import { previewUser } from './script.js';
 
 //export const baseURL = "http://localhost:3000"
-export const baseURL = "https://builtterpc.vercel.app:3306"
+export const baseURL = "https://builtterpc.vercel.app"
 
 export const darkTheme = createTheme({
   palette: {
