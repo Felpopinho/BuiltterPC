@@ -113,37 +113,12 @@ export function MoldeResultDois(props){
             props.handleOpenAlert("Alterar nome do molde falhou!", 2)
         }
     }
-    const editMae = () =>{
+    const editarPeca = (peca) =>{
+        props.handleSection(peca)
         props.setMoldeOpen(true)
         props.setResultOpen(false)
-        props.setSection(1)
+        props.getProdSimulacoes()
     }
-    const editPro = () =>{
-        props.setMoldeOpen(true)
-        props.setResultOpen(false)
-        props.setSection(2)
-    }
-    const editMem = () =>{
-        props.setMoldeOpen(true)
-        props.setResultOpen(false)
-        props.setSection(3)
-    }
-    const editArm = () =>{
-        props.setMoldeOpen(true)
-        props.setResultOpen(false)
-        props.setSection(4)
-    }
-    const editVid = () =>{
-        props.setMoldeOpen(true)
-        props.setResultOpen(false)
-        props.setSection(5)
-    }
-    const editFon = () =>{
-        props.setMoldeOpen(true)
-        props.setResultOpen(false)
-        props.setSection(6)
-    }
-
     const fecharEdit = () =>{
         props.setEditMolde(false)
         props.setResultOpen(false)
@@ -192,7 +167,7 @@ export function MoldeResultDois(props){
                 </Typography>
                 <Box sx={{height: "30vh", overflowY: "scroll", padding: "0 5px 0 5px"}}>
                     <Box className="sel_prod_container" sx={{position: "relative"}}>
-                        {props.edit === true ? <IconButton onClick={editMae} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
+                        {props.edit === true ? <IconButton onClick={()=>{editarPeca(1)}} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
                         <img src={props.mae[0].imagem_produto}/>
                         <div>
                             <p>{props.mae[0].nome_produto}</p>
@@ -201,7 +176,7 @@ export function MoldeResultDois(props){
                     </Box>
                     <Divider sx={{margin: "10px 0 10px 0"}}/>
                     <Box className="sel_prod_container" sx={{position: "relative"}}>
-                        {props.edit === true ? <IconButton onClick={editPro} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
+                        {props.edit === true ? <IconButton onClick={()=>{editarPeca(2)}} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
                         <img src={props.processador[0].imagem_produto}/>
                         <div>
                             <p>{props.processador[0].nome_produto}</p>
@@ -210,7 +185,7 @@ export function MoldeResultDois(props){
                     </Box>
                     <Divider sx={{margin: "10px 0 10px 0"}}/>
                     <Box className="sel_prod_container" sx={{position: "relative"}}>
-                        {props.edit === true ? <IconButton onClick={editMem} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
+                        {props.edit === true ? <IconButton onClick={()=>{editarPeca(3)}} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
                         <img src={props.memoria[0].imagem_produto}/>
                         <div>
                             <p>{props.memoria[0].nome_produto}</p>
@@ -219,7 +194,7 @@ export function MoldeResultDois(props){
                     </Box>
                     <Divider sx={{margin: "10px 0 10px 0"}}/>
                     <Box className="sel_prod_container" sx={{position: "relative"}}>
-                        {props.edit === true ? <IconButton onClick={editArm} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
+                        {props.edit === true ? <IconButton onClick={()=>{editarPeca(4)}} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
                         <img src={props.armazem[0].imagem_produto}/>
                         <div>
                             <p>{props.armazem[0].nome_produto}</p>
@@ -228,7 +203,7 @@ export function MoldeResultDois(props){
                     </Box>
                     <Divider sx={{margin: "10px 0 10px 0"}}/>
                     <Box className="sel_prod_container" sx={{position: "relative"}}>
-                        {props.edit === true ? <IconButton onClick={editVid} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
+                        {props.edit === true ? <IconButton onClick={()=>{editarPeca(5)}} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
                         <img src={props.pvideo[0].imagem_produto}/>
                         <div>
                             <p>{props.pvideo[0].nome_produto}</p>
@@ -237,7 +212,7 @@ export function MoldeResultDois(props){
                     </Box>
                     <Divider sx={{margin: "10px 0 10px 0"}}/>
                     <Box className="sel_prod_container" sx={{position: "relative"}}>
-                        {props.edit === true ? <IconButton onClick={editFon} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
+                        {props.edit === true ? <IconButton onClick={()=>{editarPeca(6)}} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
                         <img src={props.fonte[0].imagem_produto}/>
                         <div>
                             <p>{props.fonte[0].nome_produto}</p>

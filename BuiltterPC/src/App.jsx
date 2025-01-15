@@ -20,13 +20,14 @@ import { Promocoes } from './Promocoes_pecas/Promocoes.jsx';
 import './Simulacao_pecas/Style_simulacao.css'
 import { Simulacao } from './Simulacao_pecas/Simulacao.jsx';
 
-import { Conta } from './Conta.jsx';
+import { Conta } from './Menu/Conta.jsx';
 import { useCallback, useEffect, useState } from 'react';
 
 import axios from 'axios';
+import { previewUser } from './script.js';
 
-//export const baseURL = "http://localhost:3000"
-export const baseURL = "https://builtterpc.vercel.app"
+export const baseURL = "http://localhost:3000"
+//export const baseURL = "https://builtterpc.vercel.app"
 
 export const darkTheme = createTheme({
   palette: {
@@ -59,7 +60,12 @@ function App() {
       setVideos(res.data)
     });
     await axios.get(baseURL+"/simulacoes").then(res =>{
-      setSimulacoes(res.data)
+      const sim = res.data
+      sim.push({
+        userId: previewUser.idUser,
+        mae: "criacao"
+      })
+      setSimulacoes(sim)
     });
     await axios.get(baseURL+"/produtos").then(res =>{
       setProdutos(res.data)

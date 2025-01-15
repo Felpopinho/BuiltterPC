@@ -1,9 +1,9 @@
-import { Modal, Box, Button, IconButton, Avatar, Divider } from "@mui/material";
-import { useEffect, useState, React } from "react";
-import { perfilDesconhecido, previewUser } from "./script";
+import { Box, Button, IconButton, Avatar, Divider } from "@mui/material";
+import { useState, React } from "react";
+import { previewUser } from "../script";
 import axios from "axios";
-import { baseURL } from "./App";
-import { Close, DeleteForever } from "@mui/icons-material";
+import { baseURL } from "../App";
+import { Close } from "@mui/icons-material";
 
 
 export function Conta(props){
