@@ -26,8 +26,8 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { previewUser } from './script.js';
 
-//export const baseURL = "http://localhost:3000"
-export const baseURL = "https://builtterpc.vercel.app"
+export const baseURL = "http://localhost:3300"
+//export const baseURL = "https://builtterpc.vercel.app"
 
 export const darkTheme = createTheme({
   palette: {
@@ -61,10 +61,10 @@ function App() {
     });
     await axios.get(baseURL+"/simulacoes").then(res =>{
       const sim = res.data
-      sim.push({
-        userId: previewUser.idUser,
-        mae: "criacao"
-      })
+      //sim.push({
+      //  userId: previewUser.idUser,
+      //  mae: "criacao"
+      //})
       setSimulacoes(sim)
     });
     await axios.get(baseURL+"/produtos").then(res =>{

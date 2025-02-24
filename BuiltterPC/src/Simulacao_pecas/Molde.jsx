@@ -117,7 +117,9 @@ export function Molde(props){
                 simulacao_arm: idArm[1],
                 simulacao_vid: idVid[1],
                 simulacao_fon: idFon[1],
-            })
+            }).then(await axios.post(baseURL+"/simulacoes/del", {
+                
+            }))
             props.getData()
             props.handleOpenAlert("Molde criado!", 1)
         } catch (error) {
