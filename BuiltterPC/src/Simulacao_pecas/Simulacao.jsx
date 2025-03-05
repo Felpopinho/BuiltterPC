@@ -19,6 +19,7 @@ export function Simulacao(props){
                     {Array.from(props.simulacoes).map(molde => molde.userId === previewUser.idUser ? (<Molde getData={props.getData} produtos={props.produtos} key={molde.id} simulacao_nome={molde.nome} molde={molde} 
                     simulacao_status={molde.status} simulacao_id={molde.id} simulacao_mae={molde.mae} simulacao_pro={molde.pro} simulacao_mem={molde.mem} simulacoes={props.simulacoes}
                     simulacao_arm={molde.arm} simulacao_vid={molde.vid} simulacao_fon={molde.fon} handleOpenAlert={props.handleOpenAlert} setOpenAviso={props.setOpenAviso}/>): "")}
+                    <Box></Box>
                 </Box>)
             }
             </Box>

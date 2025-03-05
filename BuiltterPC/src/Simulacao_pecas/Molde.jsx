@@ -94,6 +94,8 @@ export function Molde(props){
 
     const [productS, setPselected] = useState('')
 
+    const [carregou, setCarregou] = useState(false)
+
     const updateSelected = (s) =>{
         setPselected(s)
     }
@@ -109,7 +111,6 @@ export function Molde(props){
     const finalizarModal = async () =>{
         try {
             await axios.post(baseURL+"/simulacoes", {
-                userId: previewUser.idUser,
                 simulacao_nome: idNome,
                 simulacao_mae: idMae[1],
                 simulacao_pro: idPro[1],
@@ -117,9 +118,9 @@ export function Molde(props){
                 simulacao_arm: idArm[1],
                 simulacao_vid: idVid[1],
                 simulacao_fon: idFon[1],
-            }).then(await axios.post(baseURL+"/simulacoes/del", {
-                
-            }))
+                id: props.simulacao_id,
+                userId: previewUser.idUser
+            })
             props.getData()
             props.handleOpenAlert("Molde criado!", 1)
         } catch (error) {
@@ -129,8 +130,11 @@ export function Molde(props){
         setMoldeOpen(false);
     }
 
+    const [carregando, setCarregando] = useState(false)
+
     const finalizarEdicao = async () =>{
         try{
+            setCarregando(true)
             await axios.post(baseURL+"/simulacoes/update", section === 1 ?{
                 pNome: idMae[1],
                 id: props.molde.id
@@ -154,6 +158,9 @@ export function Molde(props){
                 setResultOpen(true)
                 props.getData()
                 props.handleOpenAlert("Peça trocada!", 1);
+                setTimeout(()=>{
+                    setCarregando(false)
+                }, "5000")
             })
         } catch(error){
             console.log(error)
@@ -179,6 +186,7 @@ export function Molde(props){
     }
 
     const getProdSimulacoes = async () =>{
+        
         try{
             await axios.post(baseURL+"/simulacoes/produtos", {
                 mae: props.simulacao_mae,
@@ -194,6 +202,8 @@ export function Molde(props){
                 setIdArm(res.data[3])
                 setIdVid(res.data[4])
                 setIdFon(res.data[5])
+            }).then(()=>{
+                setCarregou(true)
             })
         } catch(error){
             console.log(error)
@@ -212,15 +222,16 @@ export function Molde(props){
 
         {Array.from(props.simulacoes).filter(molde => molde.userId === previewUser.idUser).length !== 0 ? <Fragment>
             <Box className="boxCont" sx={{cursor: 'pointer', border: 'solid 3px', display: 'flex', justifyContent: 'center', 
-            alignItems: 'center', flexDirection: 'column', backgroundColor: 'var(--fundo)', position: "relative"}} onMouseUp={idFon.length === 0 ? ()=>{} : handleOpenResult}> 
-            {props.simulacao_mae === "criacao" ? <Fragment>
+            alignItems: 'center', flexDirection: 'column', backgroundColor: 'var(--fundo)', position: "relative"}}> 
+            {carregou === false ? <CircularProgress/> :
+            props.simulacao_mae === "criacao" ? <Fragment>
                 <Box sx={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center", display: "flex"}} onClick={handleOpenModal}>
                     <h1>+</h1>
                 </Box>
-            </Fragment> : idFon.length === 0 ? <CircularProgress/> : <Fragment>
-                <h2 className="sim_desc" fontWeight={600}>{props.simulacao_nome}</h2>
-                <Typography sx={{textalign:'center'}}>{}</Typography>
-                <Fragment>
+            </Fragment> : <Fragment>
+                <Box onMouseUp={carregou === false ? ()=>{} : handleOpenResult} sx={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center", display: "flex"}}>
+                    <h2 className="sim_desc" fontWeight={600}>{props.simulacao_nome}</h2>
+                    <Typography sx={{textalign:'center'}}>{}</Typography>
                     <Box sx={{width: "100%", display: "flex", justifyContent: "space-between", position: "absolute", bottom: "0px", padding: "10px", zIndex: "4"}}>
                         <IconButton onClick={editarMolde}>
                             <EditRoundedIcon/>
@@ -229,7 +240,7 @@ export function Molde(props){
                             <DeleteForeverRoundedIcon/>
                         </IconButton>
                     </Box> 
-                </Fragment>
+                </Box>
             </Fragment>}
             </Box>
         </Fragment> :
@@ -371,9 +382,9 @@ export function Molde(props){
         <Modal open={resultOpen}>
             <Box sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',bgcolor: '#f7fbff',boxShadow: 24,p: 4,borderRadius: '20px'}}>
                 <MoldeResultDois sessao={section} mae={idMae} processador={idPro} memoria={idMem} armazem={idArm} fonte={idFon} pvideo={idVid} idNome={idNome} setIdNome={setIdNome}
-                setEditMolde={setEditMolde} edit={editMolde} simulacao_nome={props.simulacao_nome} setCompleted={setCompleted} handleSection={handleSection} setPassar={setPassar} 
+                setEditMolde={setEditMolde} edit={editMolde} simulacao_nome={props.simulacao_nome} simulacao_mae={props.simulacao_mae} setCompleted={setCompleted} handleSection={handleSection} setPassar={setPassar} 
                 setMoldeOpen={setMoldeOpen} setResultOpen={setResultOpen} resultOpen={resultOpen} simulacao_id={props.simulacao_id} getProdSimulacoes={getProdSimulacoes} 
-                finalizarEdicao={finalizarEdicao} handleOpenAlert={props.handleOpenAlert}/>
+                finalizarEdicao={finalizarEdicao} handleOpenAlert={props.handleOpenAlert} carregando={carregando}/>
             </Box>
         </Modal>
 

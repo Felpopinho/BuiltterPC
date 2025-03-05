@@ -1,4 +1,4 @@
-import { Typography, Box, Divider, TextField, Input, IconButton, Button, FormControl, FormHelperText } from "@mui/material";
+import { Typography, Box, Divider, TextField, Input, IconButton, Button, FormControl, FormHelperText, CircularProgress } from "@mui/material";
 import { useState, Fragment, useEffect } from "react";
 import { Close } from "@mui/icons-material";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
@@ -15,6 +15,16 @@ export function MoldeResultUm(props){
             props.setIdNome(e.target.value.slice(0,(e.target.value).length-1))
         }
     }
+
+    const [precos, setPrecos] = useState(0)
+
+    const somaPreco = () =>{
+        setPrecos(props.mae[3]+props.processador[3]+props.memoria[3]+props.armazem[3]+props.pvideo[3]+props.fonte[3])
+    }
+
+    useEffect(()=>{
+        somaPreco()
+    }, [])
 
     return<>
         <Box sx={{display: "flex", alignItems: "center", justifyContent: "space-evenly", height: "100%"}} className="resultadoSimulacao_container">
@@ -75,7 +85,7 @@ export function MoldeResultUm(props){
                     <TextField onChange={(e)=>{setNome(e)}} label="Nome do molde" value={props.idNome} fullWidth/>
                     <FormHelperText>{props.idNome.length}/15</FormHelperText>
                 </FormControl>
-                <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>Preço total: {props.mae[3]+props.processador[3]+props.memoria[3]+props.armazem[3]+props.pvideo[3]+props.fonte[3]}</h1>
+                <h1 style={{display: "flex", justifyContent: "center", margin: "15px"}}>Preço total: {precos}</h1>
             </Box>
         </Box>
     </>
@@ -84,8 +94,16 @@ export function MoldeResultUm(props){
 
 export function MoldeResultDois(props){
 
+    const [precos, setPrecos] = useState([])
+
+    const setarPrecos = () =>{
+        if(props.simulacao_mae === "criacao"){
+            return
+        } else{
+            setPrecos([props.mae[0].preco_produto, props.processador[0].preco_produto, props.memoria[0].preco_produto, props.armazem[0].preco_produto, props.pvideo[0].preco_produto, props.fonte[0].preco_produto])
+        }
+    }
     const [pMedia, setPmedia] = useState(0)
-    const precos = [props.mae[0].preco_produto, props.processador[0].preco_produto, props.memoria[0].preco_produto, props.armazem[0].preco_produto, props.pvideo[0].preco_produto, props.fonte[0].preco_produto]
 
     const precoMedia = () =>{
         const arrP = []
@@ -127,6 +145,8 @@ export function MoldeResultDois(props){
 
     useEffect (()=>{
         precoMedia();
+        setarPrecos();
+        props.getProdSimulacoes();
     }, [props.mae,props.processador,props.memoria,props.pvideo,props.fonte,props.armazem])
 
     const [nome, setNome] = useState(props.simulacao_nome)
@@ -165,6 +185,7 @@ export function MoldeResultDois(props){
                 <Typography fontWeight={700} sx={{display: "flex", justifyContent: "center", marginBottom: "15px", fontSize: "2rem"}}>
                     Produtos selecionados:
                 </Typography>
+                {props.carregando === true ? <CircularProgress/> : <Fragment>
                 <Box sx={{height: "30vh", overflowY: "scroll", padding: "0 5px 0 5px"}}>
                     <Box className="sel_prod_container" sx={{position: "relative"}}>
                         {props.edit === true ? <IconButton onClick={()=>{editarPeca(1)}} color="primary" sx={{position: "absolute", bottom: "0px", left: "0px", margin: "2px"}}><EditRoundedIcon/></IconButton> : console.log}
@@ -220,6 +241,7 @@ export function MoldeResultDois(props){
                         </div>
                     </Box>
                 </Box>
+                </Fragment>}
             </Box>
             <Box>
                 <h1 style={{display: "flex", justifyContent: "center", margin: "15px", width: "auto"}}>Preço total: {pMedia}</h1>

@@ -41,10 +41,9 @@ export const getProdSimulacoes = (req, res) =>{
 }
 
 export const addSimulacao = (req, res) => {
-    const q = "INSERT INTO simulacoes (`userId`, `nome`, `mae`, `pro`, `mem`, `arm`, `vid`, `fon`) VALUES (?)"
+    const q = "UPDATE simulacoes SET `nome` = ?, `mae` = ?, `pro` = ?, `mem` = ?, `arm` = ?, `vid` = ?, `fon` = ? WHERE `id` = ?"
 
     const values = [
-        req.body.userId,
         req.body.simulacao_nome,
         req.body.simulacao_mae,
         req.body.simulacao_pro,
@@ -52,12 +51,30 @@ export const addSimulacao = (req, res) => {
         req.body.simulacao_arm,
         req.body.simulacao_vid,
         req.body.simulacao_fon,
+        req.body.id
     ]
 
-    db.query(q, [values], (err, data)=>{
+    db.query(q, [... values], (err, data)=>{
         if (err) return res.status(500).json(err);
 
-        return res.status(200).json(data);
+        const q = "INSERT INTO simulacoes (`userId`, `nome`, `mae`, `pro`, `mem`, `arm`, `vid`, `fon`) VALUES (?)"
+
+        const values = [
+            req.body.userId,
+            "",
+            "criacao",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+
+        db.query(q, [values], (err, data)=>{
+            if(err) return res.status(500).json(err)
+
+            return res.status(200).json(data)
+        })
     })
 }
 
