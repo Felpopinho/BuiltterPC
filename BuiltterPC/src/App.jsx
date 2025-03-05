@@ -27,7 +27,7 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { previewUser } from './script.js';
 
-export const baseURL = process.env.URL
+export const baseURL = import.meta.env.BASE_URL
 
 export const darkTheme = createTheme({
   palette: {
