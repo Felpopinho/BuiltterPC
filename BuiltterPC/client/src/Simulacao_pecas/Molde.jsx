@@ -1,8 +1,8 @@
 import { Typography, Box, Modal, Stepper, Step, StepButton, Button, Divider, IconButton, CircularProgress } from "@mui/material";
 import { useState, Fragment, useEffect } from "react";
-import { ProdutosMolde } from "./CriarMolde";
-import { templateImagens, iconSection, previewUser } from "../script";
-import { MoldeResultUm, MoldeResultDois } from "./MoldeResult";
+import { ProdutosMolde } from "./CriarMolde.jsx.jsx";
+import { templateImagens, iconSection, previewUser } from "../script.js.js";
+import { MoldeResultUm, MoldeResultDois } from "./MoldeResult.jsx.jsx";
 import { Close } from "@mui/icons-material";
 import axios from "axios";
 import { baseURL } from "../App.jsx"
