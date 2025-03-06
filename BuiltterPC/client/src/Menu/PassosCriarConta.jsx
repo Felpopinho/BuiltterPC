@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Input, styled, TextField, Select, MenuItem, InputLabel, FormControl, IconButton, ToggleButton, ToggleButtonGroup, Avatar, ThemeProvider } from "@mui/material";
-import { previewUser } from "../script";
+import { previewUser } from "../script.js";
 import axios from "axios";
-import { baseURL, darkTheme } from "../App";
+import { baseURL, darkTheme } from "../App.jsx";
 export const arrPreview = [previewUser];
 
 export function PassoUm(props) {

@@ -6,12 +6,12 @@ import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import { Divider, List,  Box, Modal, Typography, BottomNavigation, BottomNavigationAction, CircularProgress } from "@mui/material" 
-import { SessaoUm, SessaoDois, SessaoTres, SessaoQuatro, SessaoFavorito } from "./Sessoes_suporte" 
+import { SessaoUm, SessaoDois, SessaoTres, SessaoQuatro, SessaoFavorito } from "./Sessoes_suporte.jsx" 
 import { Fragment, useState, useEffect } from "react" 
-import { VideoHistorico } from './VideoFilter';
-import { baseURL } from '../App';
+import { VideoHistorico } from './VideoFilter.jsx';
+import { baseURL } from '../App.jsx';
 import axios from 'axios';
-import { previewUser } from '../script';
+import { previewUser } from '../script.js';
 
 
 export function Suporte(props){

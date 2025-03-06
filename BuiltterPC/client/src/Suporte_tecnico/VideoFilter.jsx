@@ -2,10 +2,10 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Divider, Box, IconButton, Modal } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useState, useEffect, Fragment } from 'react';
-import { previewUser, videos } from "../script"
+import { previewUser, videos } from "../script.js"
 import StarIcon from '@mui/icons-material/Star'
 import axios from 'axios';
-import { baseURL } from '../App';
+import { baseURL } from '../App.jsx';
 
 export function VideoHistorico(props){
     const [videosVistos, setVideosVistos] = useState("")

@@ -4,7 +4,7 @@ import { Close } from "@mui/icons-material";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import EditOffRoundedIcon from '@mui/icons-material/EditOffRounded';
 import SendIcon from '@mui/icons-material/Send';
-import { baseURL } from "../App";
+import { baseURL } from "../App.jsx";
 import axios from "axios";
 
 export function MoldeResultUm(props){

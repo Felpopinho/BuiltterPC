@@ -1,10 +1,10 @@
 import { Divider, Box, Input, Modal } from "@mui/material"
-import { previewUser, videos } from "../script"
+import { previewUser, videos } from "../script.js"
 import StarIcon from '@mui/icons-material/Star'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { baseURL } from "../App";
+import { baseURL } from "../App.jsx";
 
 export function Videos(props){
 

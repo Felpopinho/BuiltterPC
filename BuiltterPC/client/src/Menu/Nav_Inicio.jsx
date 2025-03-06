@@ -1,6 +1,6 @@
 import { CircularProgress } from "@mui/material";
 import { useDebugValue, useEffect, useState } from "react";
-import { previewUser } from "../script";
+import { previewUser } from "../script.js";
 
 export function NavEsquerdo(props){
 

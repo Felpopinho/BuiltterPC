@@ -1,10 +1,10 @@
 import { Fragment, useState, useRef } from "react";
 import { Button, Modal, Box, Typography, Stepper, Step, StepButton, Input, TextField, IconButton} from "@mui/material";
-import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta"; 
-import { PreviewPerfil } from "./Preview-Perfil";
-import { previewUser } from "../script";
+import { PassoUm, PassoDois, PassoTres, arrPreview } from "./PassosCriarConta.jsx"; 
+import { PreviewPerfil } from "./Preview-Perfil.jsx";
+import { previewUser } from "../script.js";
 import axios from "axios";
-import { baseURL } from "../App";
+import { baseURL } from "../App.jsx";
 import { Close } from "@mui/icons-material";
 
 export function CriarLogarConta(props){

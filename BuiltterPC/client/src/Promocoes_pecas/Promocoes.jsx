@@ -1,7 +1,7 @@
 import { Box, Typography, Tab, Tabs, Divider, Menu, MenuItem, Button, CircularProgress } from "@mui/material";
 import { Fragment, useState, useEffect } from "react";
-import { Catalogo } from "./Catalogo";
-import { iconSection } from "../script"
+import { Catalogo } from "./Catalogo.jsx";
+import { iconSection } from "../script.js"
 
 export function Promocoes(props){
 

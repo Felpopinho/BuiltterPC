@@ -1,8 +1,8 @@
 import { useEffect, useState, useSyncExternalStore } from "react"
-import { Videos } from "./Videos"
-import { VideoFavorite } from "./VideoFilter"
-import { baseURL } from "../App"
-import { previewUser } from "../script"
+import { Videos } from "./Videos.jsx"
+import { VideoFavorite } from "./VideoFilter.jsx"
+import { baseURL } from "../App.jsx"
+import { previewUser } from "../script.js"
 import axios from "axios"
 
 export function SessaoUm(props){

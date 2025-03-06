@@ -1,7 +1,7 @@
 import { Box, Button, Divider, Typography, LinearProgress } from "@mui/material"
-import { Molde } from "./Molde"
+import { Molde } from "./Molde.jsx"
 import { Fragment, useEffect, useState } from "react"
-import { previewUser } from "../script";
+import { previewUser } from "../script.js";
     
 export function Simulacao(props){    
 

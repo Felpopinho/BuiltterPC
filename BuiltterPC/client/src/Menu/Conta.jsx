@@ -1,8 +1,8 @@
 import { Box, Button, IconButton, Avatar, Divider } from "@mui/material";
 import { useState, React } from "react";
-import { previewUser } from "../script";
+import { previewUser } from "../script.js";
 import axios from "axios";
-import { baseURL } from "../App";
+import { baseURL } from "../App.jsx";
 import { Close } from "@mui/icons-material";
 
 
