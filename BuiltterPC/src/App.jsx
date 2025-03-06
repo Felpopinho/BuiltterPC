@@ -2,7 +2,6 @@ import { Divider, ThemeProvider, createTheme, Modal, Box, Typography, Button, Sn
 import { Close } from '@mui/icons-material';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
-import 'dotenv/config'
 
 import './style_global.css';
 
@@ -27,7 +26,7 @@ import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { previewUser } from './script.js';
 
-export const baseURL = ""
+export const baseURL = "https://builtterpc.vercel.app"
 
 export const darkTheme = createTheme({
   palette: {
