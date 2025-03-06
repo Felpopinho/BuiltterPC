@@ -1,4 +1,4 @@
-import mysql from 'mysql2'
+import mysql from 'mysql'
 import 'dotenv/config'
 
 export const db = mysql.createConnection({
