@@ -8,7 +8,7 @@
     ],
     "routes": [
         {
-            "src": "/index.html",
+            "src": "/api",
             "dest": "/server.js",
             "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
         }
