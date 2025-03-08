@@ -81,7 +81,6 @@ function App() {
 
   useEffect(()=>{
     getData();
-    console.log(source)
   },[logado, valueFiltro])
 
   const [openAviso, setOpenAviso] = useState(false)
