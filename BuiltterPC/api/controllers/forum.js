@@ -24,6 +24,8 @@ export const addComment = (req, res) =>{
     db.query(q, [values], (err,data)=>{
         if (err) return res.status(500).json(err)
 
+        db.end()
+
         return res.status(200).json("Postagem feita")
     })
 }
@@ -33,6 +35,8 @@ export const deleteComment = (req, res) =>{
 
     db.query(q, [req.body.id], (err) =>{
         if (err) return res.json(err);
+
+        db.end()
 
         return res.status(200).json("Comentario deletado com sucesso!")
     });
@@ -49,6 +53,8 @@ export const likeComment = (req, res) =>{
     db.query(q, [values], (err,data)=>{
         if (err) return res.status(500).json(err);
 
+        db.end()
+
         return res.status(200).json(data);
     })
 }
@@ -59,6 +65,8 @@ export const dislikeComment = (req,res) =>{
     db.query(q, [req.body.userId, req.body.postId], (err,data)=>{
         if (err) return res.status(404).json(err);
 
+        db.end()
+
         return res.status(200).json(data);
     })
 }
@@ -68,6 +76,8 @@ export const updateLikes = (req,res) =>{
 
     db.query(q, [req.body.forum_curtidas, req.body.postId], (err,data)=>{
         if (err) return res.status(500).json(err)
+
+        db.end()
         
         return res.status(200).json(data)
     })
@@ -79,6 +89,8 @@ export const getLikes = (req, res) =>{
     db.query(q, [req.body.userId,req.body.postId],(err,data)=>{
         if (err) return res.status(404).json(err)
 
+        db.end()
+
         return res.status(200).json(data)
     })
 }
@@ -88,6 +100,8 @@ export const getRespostas = (req, res) =>{
 
     db.query(q, (err,data)=>{
         if (err) return res.status(404).json(err)
+        
+        db.end()
 
         return res.status(200).json(data)
     })
@@ -97,6 +111,8 @@ export const getActualRespostas = (req, res) =>{
 
     db.query(q, [req.body.id], (err,data)=>{
         if (err) return res.status(404).json(err)
+
+        db.end()
 
         return res.status(200).json(data)
     })
@@ -116,6 +132,8 @@ export const addRespostas = (req,res) =>{
     db.query(q, [values], (err,data)=>{
         if (err) return res.status(500).json(err)
 
+        db.end()
+
         return res.status(200).json("Respostas postada!")
     })
 }
@@ -125,6 +143,8 @@ export const deleteRespostas = (req, res) =>{
 
     db.query(q, [req.body.id], (err) =>{
         if (err) return res.json(err);
+
+        db.end()
 
         return res.status(200).json("Resposta deletada com sucesso!")
     });
