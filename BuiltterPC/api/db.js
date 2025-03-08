@@ -12,7 +12,7 @@ export const db = mysql.createPool({
 
 db.getConnection((err, conn) =>{
   if(err) console.log(err)
-  console.log("Conexão sucedida")
+  console.log(conn)
 })
 
 
