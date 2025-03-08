@@ -10,11 +10,9 @@ export const db = mysql.createPool({
     queueLimit: 0
 });
 
-db.connect();
-
-db.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-  if (err) throw err;
-  console.log('Database connected');
-});
+db.getConnection((err, conn) =>{
+  if(err) console.log(err)
+  console.log("Conexão sucedida")
+})
 
 
