@@ -30,7 +30,7 @@ export const getProdSimulacoes = (req, res) =>{
                         db.query(q, [req.body.fon], (err,data)=>{
                             if (err) return res.json(err);
                             let fon = data
-                            db.end()
+                            
                             return res.json([mae,pro,mem,arm,vid,fon])
                         })
                     })
@@ -74,7 +74,7 @@ export const addSimulacao = (req, res) => {
         db.query(q, [values], (err, data)=>{
             if(err) return res.status(500).json(err)
 
-            db.end()
+            
             return res.status(200).json(data)
         })
     })
@@ -91,7 +91,7 @@ export const updateSimulacao = (req, res) => {
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
-                db.end()
+                
                 return res.status(200).json(data);
             })
         } else if (dataT[0].tipo_produto === "processador") {
@@ -99,7 +99,7 @@ export const updateSimulacao = (req, res) => {
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
-                db.end()
+                
                 return res.status(200).json(data);
             })
         } else if (dataT[0].tipo_produto === "memoria") {
@@ -107,7 +107,7 @@ export const updateSimulacao = (req, res) => {
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
-                db.end()
+                
                 return res.status(200).json(data);
             })
         } else if (dataT[0].tipo_produto === "armazem") {
@@ -115,7 +115,7 @@ export const updateSimulacao = (req, res) => {
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
-                db.end()
+                
                 return res.status(200).json(data);
             })
         } else if (dataT[0].tipo_produto === "pvideo") {
@@ -123,7 +123,7 @@ export const updateSimulacao = (req, res) => {
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
-                db.end()
+                
                 return res.status(200).json(data);
             })
         } else if (dataT[0].tipo_produto === "fonte") {
@@ -131,11 +131,11 @@ export const updateSimulacao = (req, res) => {
 
             db.query(q, [req.body.pNome, req.body.id], (err,data)=>{
                 if (err) return res.status(500).json(err);
-                db.end()
+                
                 return res.status(200).json(data);
             })
         } else{
-            db.end()
+            
             return res.status(404).json("tipo não encontrado")
         }
     })
@@ -145,7 +145,7 @@ export const updateNomeSimulacao = (req, res) =>{
 
     db.query(q, [req.body.nome, req.body.id] ,(err,data)=>{
         if (err) return res.status(500).json(err);
-        db.end()
+        
         return res.status(200).json(data);
     })
 }
@@ -155,7 +155,7 @@ export const deleteSimulacao = (req, res) => {
 
     db.query(q, [req.body.id], (err,data) =>{
         if (err) return res.status(500).json(err);
-        db.end()
+        
         return res.status(200).json(data)
     })
 }

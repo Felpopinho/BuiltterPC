@@ -6,7 +6,7 @@ export const getVideos = (_, res) => {
 
     db.query(q, (err, data) => {
         if (err) return res.json(err);
-        db.end()
+        
         return res.status(200).json(data)
     })
 };
@@ -23,7 +23,7 @@ export const addVideos = (req, res) =>{
 
     db.query(q, [values], (err, data) =>{
         if (err) return res.json(err);
-        db.end()
+        
         return res.status(200).json(data)
     })
 };
@@ -38,7 +38,7 @@ export const favoriteVideo = (req, res) =>{
 
         db.query(q, [values], (err, data)=>{
             if (err) return res.json(err);
-            db.end()
+            
             return res.status(200).json(data)
         })
     
@@ -53,7 +53,7 @@ export const deleteFavorite = (req, res) =>{
 
         db.query(q, [...values], (err, data)=>{
             if (err) return res.json(err);
-            db.end()
+            
             return res.status(200).json(data)
         })
 }
@@ -67,7 +67,7 @@ export const viewVideo = (req, res) =>{
 
     db.query(q, [values], (err, data)=>{
         if (err) return res.json(err);
-        db.end()
+        
         return res.status(200).json(data)
     })
 }
@@ -82,7 +82,7 @@ export const deleteView = (req, res) =>{
 
     db.query(q, [...values], (err, data)=>{
         if (err) return res.json(err);
-        db.end()
+        
         return res.status(200).json(data)
     }) 
 }
@@ -97,7 +97,7 @@ export const getFavoritos = (req,res) =>{
 
     db.query(q, [...values], (err, data)=>{
         if (err) return res.status(404).json(err)
-        db.end()
+        
         return res.status(200).json(data)
     })
 }
@@ -107,7 +107,7 @@ export const getAllFavoritos = (req,res) =>{
 
     db.query(q, [req.body.user_id],(err,data)=>{
         if (err) return res.status(404).json(err)
-        db.end()
+        
         return res.status(200).json(data)
     })
 }
@@ -117,7 +117,7 @@ export const getAllView = (req,res) =>{
 
     db.query(q, [req.body.user_id], (err,data)=>{
         if (err) return res.status(404).json(err)
-        db.end()
+        
         return res.status(200).json(data)
     })
 }
@@ -127,7 +127,7 @@ export const updateViews = (req,res) =>{
 
     db.query(q, [req.body.video_estatisticas, req.body.video_id], (err,data)=>{
         if (err) return res.status(500).json(err)
-        db.end()
+        
         return res.status(200).json(data)
     })
 }

@@ -27,7 +27,7 @@ export const getProdutos = (_, res) =>{
                             if (err) return res.json(err);
                             arrData.push(data)
 
-                            db.end()
+                            
                             return res.status(200).send(arrData)
                         });
                     });
@@ -50,7 +50,7 @@ export const addProdutos = (req, res) =>{
     db.query(q, [values], (err, data) =>{
         if (err) return res.json(err);
 
-        db.end()
+        
         return res.status(200).json(data)
     })
 }
@@ -61,7 +61,7 @@ export const getPromocoes = (_, res) =>{
     db.query(q, (err, data) =>{
         if (err) return res.json(err);
         
-        db.end()
+        
         return res.status(200).json(data)
     });
 }
@@ -81,7 +81,7 @@ export const addPromocoes = (req, res) =>{
     db.query(q, [values], (err, data)=>{
         if (err) return res.json(err);
 
-        db.end()
+        
         return res.status(200).json(data)
     })
 }

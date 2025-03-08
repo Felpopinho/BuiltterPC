@@ -6,7 +6,7 @@ export const getUsers = (_, res) => {
 
     db.query(q, (err, data) =>{
         if (err) return res.json(err);
-        db.end()
+        
         return res.status(200).json(data)
     });
 };
@@ -16,7 +16,7 @@ export const loginUser = (req, res) =>{
     db.query(q, [req.body.email, req.body.senha], (err, data) =>{
         if (err) return res.status(500).json(err);
         if (data.lenght === 0) return res.status(404).json("Usuário não encontrado!")
-        db.end()
+        
         return res.status(200).json(data)
     })
 };
@@ -42,7 +42,7 @@ export const addUser = (req, res) => {
 
         db.query(q, [values], (err,data) => {
             if (err) return res.status(500).json(err);
-            db.end()
+            
             return res.status(200).json(data)
         })
 
@@ -63,7 +63,7 @@ export const updateUser = (req, res) =>{
 
     db.query(q, [...values, req.params.id], (err) =>{
         if (err) return res.json(err);
-        db.end()
+        
         return res.status(200).json("Usuário editado com sucesso")
     });
 };
@@ -73,7 +73,7 @@ export const deleteUser = (req, res) =>{
 
     db.query(q, [req.body.id], (err) =>{
         if (err) return res.json(err);
-        db.end()
+        
         return res.status(200).json("Usuário deletado com sucesso!")
     });
 };
@@ -85,7 +85,7 @@ export const getAmigos = (_,res)=>{
 
     db.query(q, (err,data)=>{
         if (err) return res.status(404).json(err)
-            db.end()
+            
         return res.status(200).json(data)
     })
 }
@@ -95,7 +95,7 @@ export const addAmigo = (req, res)=>{
 
     db.query(q, [req.body.userId, req.body.amigoId], (err,data)=>{
         if (err) return res.status(500).json(err)
-            db.end()
+            
         return res.status(200).json("Amigo adicionado")
     })
 }
