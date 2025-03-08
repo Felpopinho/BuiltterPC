@@ -22,6 +22,4 @@ app.use("/", produtoRoutes);
 app.use("/", simulacaoRoutes);
 app.use("/", forumRoutes);
 
-app.post("/profile")
-
 ViteExpress.listen(app, port, ()=>{console.log(`http://localhost:${port}`)});
