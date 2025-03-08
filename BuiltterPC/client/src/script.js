@@ -30,6 +30,8 @@ import thumbnail2 from './assets/imagens/thumbnail-2.png';
 import thumbnail3 from './assets/imagens/thumbnail-3.jpg';
 import thumbnail4 from './assets/imagens/thumbnail-deleted.jpg'
 
+export const thumbnail00 = thumbnail0
+
 //Imagens dos processadores
 import processador0 from './assets/imagens/produtos/1-processador.png'
 import processador1 from './assets/imagens/produtos/2-processador.png'
@@ -159,8 +161,6 @@ const forum ={
 };
 
 export const sessoesLista = [suporteTecnico, simulacaoMontagem, promocaoPecas, forum];
-
-//OBJETOS DE DADOS DOS PRODUTOS:
 
 //Objeto dos icones de produtos
 export const iconSection = {

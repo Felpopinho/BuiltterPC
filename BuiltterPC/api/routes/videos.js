@@ -1,5 +1,5 @@
 import express from 'express'
-import { addVideos, favoriteVideo, getVideos, viewVideo, deleteFavorite, deleteView, getFavoritos, getAllView, getAllFavoritos, updateViews } from '../controllers/video.js'
+import { addVideos, favoriteVideo, getVideos, viewVideo, deleteFavorite, deleteView, getFavoritos, getAllView, getAllFavoritos, updateViews, getThumbnails } from '../controllers/video.js'
 
 const routerVideos = express.Router();
 
@@ -15,5 +15,7 @@ routerVideos.post("/videos/view", viewVideo)
 routerVideos.post("/videos/updateView", deleteView)
 routerVideos.post("/view/all", getAllView)
 routerVideos.post("/view/viewUpdate", updateViews)
+
+routerVideos.post("/thumbnails", getThumbnails)
 
 export default routerVideos
