@@ -1,6 +1,7 @@
 import express from "express";
 import ViteExpress from "vite-express";
 import cors from 'cors';
+import multer from "multer";
 import userRoutes from "./routes/users.js";
 import videoRoutes from "./routes/videos.js";
 import produtoRoutes from "./routes/produtos.js";
@@ -20,5 +21,7 @@ app.use("/", videoRoutes);
 app.use("/", produtoRoutes);
 app.use("/", simulacaoRoutes);
 app.use("/", forumRoutes);
+
+app.post("/profile")
 
 ViteExpress.listen(app, port, ()=>{console.log(`http://localhost:${port}`)});

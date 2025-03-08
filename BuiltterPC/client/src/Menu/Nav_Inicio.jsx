@@ -38,7 +38,7 @@ export function NavDisplay(props){
                         <p className="suporteDescVid">{props.videos[0].video_descricao}</p>
                     </div>
                     <div className="vidImg">
-                        <img src={props.videos[0].video_imagem}/>
+                        <img src={`.${props.videos[0].video_imagem}`}/>
                     </div>
                 </div> :
             props.sessaoSelecionada === 1 ?
@@ -53,7 +53,7 @@ export function NavDisplay(props){
             props.sessaoSelecionada === 2 ?
                 <div id="promoDisplay" style={{display: "grid", gridTemplateColumns: "30% 63%", width: "100%", columnGap: "20px", placeItems: "center"}}>
                     <div>
-                        <img src={props.promocoes[0].promocao_imagem}/>
+                        <img src={`.${props.promocoes[0].promocao_imagem}`}/>
                     </div>
                     <div className="promoDescCont" style={{height: "80%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignSelf: "start"}}>
                         <p>{props.promocoes[0].promocao_nome}</p>
@@ -71,7 +71,7 @@ export function NavDisplay(props){
                     </div>
                     <div style={{justifySelf: "space-evenly", display: "flex", flexDirection: "column", alignItems: "center"}}>
                         <h4>Por:{props.comentarios[0].forum_nome}</h4>
-                        <img src={props.comentarios[0].forum_imagem}/>
+                        <img src={`.${props.comentarios[0].forum_imagem}`}/>
                         <h2>{props.comentarios[0].forum_nome}</h2>
                     </div>
                 </div>
