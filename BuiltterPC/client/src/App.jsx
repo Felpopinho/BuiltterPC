@@ -2,7 +2,6 @@ import { Divider, ThemeProvider, createTheme, Modal, Box, Typography, Button, Sn
 import { Close } from '@mui/icons-material';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
-import { thumbnail00 } from './script.js';
 
 import './style_global.css';
 
@@ -82,6 +81,7 @@ function App() {
 
   useEffect(()=>{
     getData();
+    console.log(source)
   },[logado, valueFiltro])
 
   const [openAviso, setOpenAviso] = useState(false)

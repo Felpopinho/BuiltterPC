@@ -1,6 +1,4 @@
 //Variaveis de elementos
-import axios from 'axios';
-
 export const perfilUsuario = document.getElementById('UserPerfil');
 export const emailUsuario = document.getElementById('UserEmail');
 export const nomeUsuario = document.getElementById('UserName');
@@ -29,8 +27,6 @@ import thumbnail1 from './assets/imagens/thumbnail-1.png';
 import thumbnail2 from './assets/imagens/thumbnail-2.png';
 import thumbnail3 from './assets/imagens/thumbnail-3.jpg';
 import thumbnail4 from './assets/imagens/thumbnail-deleted.jpg'
-
-export const thumbnail00 = thumbnail0
 
 //Imagens dos processadores
 import processador0 from './assets/imagens/produtos/1-processador.png'
