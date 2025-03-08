@@ -9,7 +9,6 @@ export const db = mysql.createPool({
     waitForConections: true,
     connectionLimit: 10,
     queueLimit: 0
-
 });
 
 db.connect();
