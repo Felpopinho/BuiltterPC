@@ -2,7 +2,7 @@ import express from "express";
 import ViteExpress from "vite-express";
 import cors from 'cors';
 import multer from "multer";
-import { serverRouter } from 'server-router.js'
+import { serverRouter } from './routes/server-router.js'
 import 'dotenv/config'
 
 const app = express();
