@@ -11,11 +11,12 @@ export const db = mysql.createPool({
     queueLimit: 0
 });
 
+let connections = 0
+
 db.getConnection((err, conn) =>{
   if(err) console.log(err)
-  console.log(conn)
+  connections = connections + 1
+  console.log(`Eu sou a ${connections}º conexão`)
 })
-
-db.end()
 
 
