@@ -8,15 +8,12 @@ export const db = mysql.createPool({
     password: process.env.DB_PASSWORD,
     connectionLimit: 5,
     waitForConnections: true,
-    queueLimit: 0
+    queueLimit: 20
 });
-
-let connections = 0
 
 db.getConnection((err, conn) =>{
   if(err) console.log(err)
-  connections = connections + 1
-  console.log(`Eu sou a ${connections}º conexão`)
+  console.log(`conexão sucedida`)
 })
 
 
