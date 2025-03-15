@@ -52,27 +52,27 @@ function App() {
     await axios.get(baseURL+"/user").then(res =>{
       setUsers(res.data)
     });
-    //await axios.get(baseURL+"/amigos").then(res =>{
-    //  setAmigos(res.data)
-    //});
-    //await axios.get(baseURL+"/videos").then(res =>{
-    //  setVideos(res.data)
-    //});
-    //await axios.get(baseURL+"/simulacoes").then(res =>{
-    //  const sim = res.data
-    //  setSimulacoes(sim)
-    //});
-    //await axios.get(baseURL+"/produtos").then(res =>{
-    //  setProdutos(res.data)
-    //});
-    //await axios.get(baseURL+"/promocoes").then(res =>{
-    //  setPromocoes(res.data)
-    //});
-    //await axios.post(baseURL+"/comentarios",{
-    //  filtro: valueFiltro
-    //}).then(res =>{
-    //  setComentarios(res.data)
-    //});
+    await axios.get(baseURL+"/amigos").then(res =>{
+      setAmigos(res.data)
+    });
+    await axios.get(baseURL+"/videos").then(res =>{
+      setVideos(res.data)
+    });
+    await axios.get(baseURL+"/simulacoes").then(res =>{
+      const sim = res.data
+      setSimulacoes(sim)
+    });
+    await axios.get(baseURL+"/produtos").then(res =>{
+      setProdutos(res.data)
+    });
+    await axios.get(baseURL+"/promocoes").then(res =>{
+      setPromocoes(res.data)
+    });
+    await axios.post(baseURL+"/comentarios",{
+      filtro: valueFiltro
+    }).then(res =>{
+      setComentarios(res.data)
+    });
   }, [logado, valueFiltro])
 
   useEffect(()=>{
