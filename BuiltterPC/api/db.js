@@ -8,11 +8,15 @@ export const db = mysql.createPool({
     password: process.env.DB_PASSWORD,
     connectionLimit: 20,
     waitForConnections: true,
-    queueLimit: 0
+    queueLimit: 0,
+    port: 3306
 });
 
-db.getConnection((err, conn) =>{
-  if(err) console.log(err)
-  console.log(`conexão sucedida`)
+db.connect(err => {
+  if (err) {
+    console.error("Erro ao conectar:", err);
+    return;
+  }
+  console.log("Conectado ao MySQL do InfinityFree!");
 });
 
