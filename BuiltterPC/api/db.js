@@ -12,7 +12,7 @@ export const db = mysql.createPool({
     port: 3306
 });
 
-db.connect(err => {
+db.getConection(err => {
   if (err) {
     console.error("Erro ao conectar:", err);
     return;
