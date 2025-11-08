@@ -4,6 +4,8 @@ import 'dotenv/config'
 const privateKey64 = process.env.ENCODE_PRIVATE_KEY
 const privateKey = Buffer.from(privateKey64, 'base64').toString('ascii');
 
+console.log(privateKey)
+
 const serviceAccount = {
   type: process.env.SERVICE_ACCOUNT_TYPE,
   project_id: process.env.PROJECT_ID,
@@ -17,6 +19,8 @@ const serviceAccount = {
   client_x509_cert_url: process.env.CLIENT_X509_CERT_URL,
   universe_domain: process.env.UNIVERSE_DOMAIN
 }
+
+console.log(serviceAccount)
 
 const firebaseApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
