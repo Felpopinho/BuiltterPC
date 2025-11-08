@@ -5,7 +5,7 @@ const privateKey64 = process.env.ENCODE_PRIVATE_KEY
 const privateKey = Buffer.from(privateKey64, 'base64').toString('ascii');
 
 const serviceAccount = {
-  type: process.env.TYPE,
+  type: process.env.SERVICE_ACCOUNT_TYPE,
   project_id: process.env.PROJECT_ID,
   private_key_id: process.env.PRIVATE_KEY_ID,
   private_key: privateKey.replace(/\\n/g, '\n'),
