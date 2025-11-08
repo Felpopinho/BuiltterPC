@@ -7,8 +7,6 @@ import { addComment, getComments, getRespostas, getActualRespostas, addRespostas
 
 const serverRouter = express.Router()
 
-serverRouter.get("/start", getData)
-
 serverRouter.get("/user", getUsers);
 serverRouter.post("/user/log", loginUser);
 serverRouter.post("/user", addUser);
