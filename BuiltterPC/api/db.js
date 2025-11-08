@@ -1,18 +1,9 @@
-import mysql from 'mysql2'
-import 'dotenv/config'
+import admin from "firebase-admin"
+import serviceAccountKey from './serviceAccountKey.json' with { type: 'json' }
 
-export const db = mysql.createPool({
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    connectionLimit: 5,
-    waitForConnections: true,
-    queueLimit: 0
+const firebaseApp = admin.initializeApp({
+  credential: admin.credential.cert(serviceAccountKey),
 });
 
-db.getConnection((err, conn) =>{
-  if(err) console.log(err)
-  console.log(`conexão sucedida`)
-});
-
+const db = admin.firestore();
+export { firebaseApp, db };

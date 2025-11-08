@@ -1,5 +1,4 @@
 import express from 'express'
-import { db } from '../db.js'
 import { addUser, getUsers, deleteUser, updateUser, loginUser, addAmigo, getAmigos } from '../controllers/user.js'
 import { addVideos, favoriteVideo, getVideos, viewVideo, deleteFavorite, deleteView, getFavoritos, getAllView, getAllFavoritos, updateViews } from '../controllers/video.js'
 import { updateSimulacao, getProdSimulacoes,getSimulacoes, deleteSimulacao, addSimulacao, updateNomeSimulacao } from '../controllers/simulacao.js'
@@ -7,15 +6,6 @@ import { addProdutos, getProdutos, getPromocoes, addPromocoes } from '../control
 import { addComment, getComments, getRespostas, getActualRespostas, addRespostas, deleteComment, deleteRespostas, likeComment, updateLikes, dislikeComment, getLikes } from '../controllers/forum.js'
 
 const serverRouter = express.Router()
-
-const getData = (req, res) =>{
-    const q = "SHOW TABLES"
-    db.query(q,(err,data)=>{
-        if(err) return res.status(404).json(err)
-
-        return res.status(200).json(data)
-    })
-}
 
 serverRouter.get("/start", getData)
 
